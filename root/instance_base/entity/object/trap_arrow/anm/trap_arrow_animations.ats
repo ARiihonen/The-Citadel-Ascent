@@ -1,0 +1,26 @@
+--{ contexts
+
+base = addContext("base", 1)
+stretched = addContext("stretched", 1)
+
+--{ Params
+
+target_distance = addParam("target_distance")
+
+--{ Animation: s_base
+s_base = addState(base, "s_base");
+s_base:blendTime(0);
+s_base:loop(false);
+s_base:add("base.fbxanim");
+
+--}
+
+
+--{ Animation: s_stretch
+s_stretch = addState(stretched, "s_stretch");
+s_stretch:blendTime(0);
+s_stretch:loop(false);
+s_stretch:add(target_distance(0), "base.fbxanim");
+s_stretch:add(target_distance(1), "stretched.fbxanim");
+
+--}

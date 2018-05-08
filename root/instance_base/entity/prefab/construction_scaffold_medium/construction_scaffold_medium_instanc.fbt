@@ -1,0 +1,88 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("construction_scaffold_mediumInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xDBDB3C96','0xD8191EDC','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'), "bc_wooden_beam_05x05x10");
+  typeManager:setLastKnownNameForGUID(GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'), "bc_wooden_beam_05x05x10");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'), "bc_wooden_beam_1x1x16");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'), "bc_wooden_beam_1x1x16");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'), "bc_wooden_beam_1x1x16");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'), "bc_wooden_beam_1x1x16");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'), "bc_wooden_beam_05x05x10");
+  typeManager:setLastKnownNameForGUID(GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'), "bc_wooden_beam_05x05x10");
+  typeManager:setLastKnownNameForGUID(GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C483040','0x3D515A92','0x00770223','0x00005500'), "bc_wooden_beam_1x05x4");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'), "bc_wooden_beam_05x05x10");
+  typeManager:setLastKnownNameForGUID(GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'), "bc_wooden_beam_05x05x10");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'), "bc_wooden_beam_1x1x16");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'), "bc_wooden_beam_1x1x16");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x2");
+  typeManager:setLastKnownNameForGUID(GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x2");
+  typeManager:setLastKnownNameForGUID(GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x2");
+  typeManager:setLastKnownNameForGUID(GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x2");
+  typeManager:setLastKnownNameForGUID(GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'), "bc_wooden_beam_1x05x8");
+  typeManager:setLastKnownNameForGUID(GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'), "bc_wooden_beam_05x05x8");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x10
+    GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x10
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'),  -- bc_wooden_beam_1x1x16
+    GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'),  -- bc_wooden_beam_1x1x16
+    GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'),  -- bc_wooden_beam_1x1x16
+    GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'),  -- bc_wooden_beam_1x1x16
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x8
+    GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x8
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x10
+    GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x10
+    GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x8
+    GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x8
+    GUID('0x6C483040','0x3D515A92','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x4
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x10
+    GUID('0x72D7E1FF','0x07EE0DF7','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x10
+    GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'),  -- bc_wooden_beam_1x1x16
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x6C43D5F0','0x55AE0F2D','0x00770223','0x00005500'),  -- bc_wooden_beam_1x1x16
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x2
+    GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x2
+    GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x2
+    GUID('0x72F7D86E','0x155A106D','0x00770223','0x00005500'),  -- bc_wooden_beam_05x05x2
+    GUID('0x6C5030F8','0x620113DD','0x00770223','0x00005500'),  -- bc_wooden_beam_1x05x8
+    GUID('0x73B7D988','0x8AA00F7D','0x00770223','0x00005500')}) -- bc_wooden_beam_05x05x8
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(-2.3485, -1.7005, 5.0651), VC3(-2.3485, -1.7005, 5.3151), VC3(0.9015, -3.7171, 5.9932), VC3(2.4015, 0.533, 1.065), VC3(-2.5985, 0.533, 1.065), VC3(-2.5985, 0.533, 9.0646), VC3(2.4015, 0.533, 9.0646), VC3(-1.0985, 0.2829, 5.0651), VC3(0.9015, 0.2829, 5.0651), VC3(2.1515, 0.2829, 5.0651), VC3(2.1515, -3.7171, 5.0651), VC3(0.9015, 2.3164, 4.4041), VC3(-1.0985, -3.7171, 5.065), VC3(-2.3485, 2.7995, 4.815), VC3(-2.3485, 2.7995, 5.065), VC3(2.1515, -3.7177, -2.935), VC3(2.1515, 4.2823, -2.935), VC3(-0.0977, 0.2829, -7.9355), VC3(0.9015, 4.2829, -2.935), VC3(-1.0985, 4.2829, -2.935), VC3(-2.3485, -1.7005, -2.685), VC3(-2.3485, -1.7005, -2.935), VC3(2.4015, 0.533, -6.9355), VC3(-1.0985, -3.7171, -2.935), VC3(0.9015, -3.7171, -2.935), VC3(-2.5985, 0.533, -6.9355), VC3(-1.0985, 0.2829, -2.935), VC3(0.9015, 0.2829, -5.185), VC3(0.9015, 0.2829, -5.685), VC3(0.9015, 0.2829, -6.185), VC3(0.9015, 0.2829, -6.6855), VC3(0.9015, -1.6836, -1.5959), VC3(2.6515, 4.2823, -2.935)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0.183013, 0.683013, -0.183013, 0.683013), QUAT(-0.183013, 0.683013, 0.183013, 0.683013), QUAT(0, -0.707107, 0, 0.707107), QUAT(4.21468e-008, -4.21468e-008, 0.707107, 0.707107), QUAT(4.21468e-008, -4.21468e-008, 0.707107, 0.707107), QUAT(4.21468e-008, -4.21468e-008, 0.707107, 0.707107), QUAT(4.21468e-008, -4.21468e-008, 0.707107, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(-0.183013, -0.683013, -0.183013, 0.683013), QUAT(0, -0.707107, 0, 0.707107), QUAT(0.183013, 0.683013, -0.183013, 0.683013), QUAT(-0.183013, 0.683013, 0.183013, 0.683013), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, 5.96046e-008, 0, -1), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(-0.183013, 0.683013, 0.183013, 0.683013), QUAT(0.183013, 0.683013, -0.183013, 0.683013), QUAT(4.21468e-008, -4.21468e-008, 0.707107, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(4.21468e-008, -4.21468e-008, 0.707107, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -2.5332e-007, 0, 1), QUAT(-2.5332e-007, 8.82265e-015, -1, -4.37113e-008), QUAT(0, -2.5332e-007, 0, 1), QUAT(0, -2.5332e-007, 0, 1), QUAT(-0.183013, -0.683013, -0.183013, 0.683013), QUAT(0, -0.707107, 0, -0.707107)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}))
+  type:setInstanceCounter(33)
+end

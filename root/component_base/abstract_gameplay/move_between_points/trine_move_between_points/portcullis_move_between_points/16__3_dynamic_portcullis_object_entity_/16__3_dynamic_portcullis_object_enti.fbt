@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/dynamic_portcullis_container/3_dynamic_portcullis_object/portcullis_move_between_points_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("16__3_DynamicPortcullis_ObjectEntityTrineMoveBetweenPointsComponent", GUID('0x83E71F95','0x2AC063E9','0x0077024F','0x00005500')); -- PortcullisMoveBetweenPointsComponent
+  type:setGuid(GUID('0xFC0BB4B6','0x2F9F6431','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMoveToPosition(VC3(77.094, 53.665, 106.19))
+  type:setAreaEnterMovesToPosition(true)
+  type:setAreaExitMovesToRest(true)
+  typeManager:setLastKnownNameForGUID(GUID('0xD66C941C','0xA36B12A3','0x0077024F','0x00005500'), "100__3_DynamicPortcullis_ObjectEntityBoxAreaComponent");
+  type:addComponentTypeGUID(GUID('0xD66C941C','0xA36B12A3','0x0077024F','0x00005500')); -- 100__3_DynamicPortcullis_ObjectEntityBoxAreaComponent
+end

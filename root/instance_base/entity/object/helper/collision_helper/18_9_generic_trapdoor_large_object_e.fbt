@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/game_door_component_floor_hatch.fbt")
+  local type = typeManager:inheritNewTypeByGUID("18_9_generic_trapdoor_large_ObjectEntityGameDoorComponent", GUID('0x5C951E73','0x53E13E0A','0x0077021C','0x00005500')); -- GameDoorComponentFloorHatch
+  type:setGuid(GUID('0xC93B104A','0x9EE16DCD','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x6FD31DA8','0x61273160','0x00770265','0x00005500'), "NoObstacleLilyAINavigationMeshType");
+  type:setPropertyGUIDArray(type.PropertyObstacleMeshTypes, {GUID('0x6FD31DA8','0x61273160','0x00770265','0x00005500')}) -- NoObstacleLilyAINavigationMeshType
+  type:setNavigationMeshObstacleRadius(2)
+  type:setNavigationMeshObstacleHeight(1)
+  type:setNavigationMeshObstacleOffset(VC3(0, -1, 0))
+end

@@ -1,0 +1,57 @@
+sheep_idle = addContext("sheep_idle", 1)
+cutscene_meet_goblin = addContext("cutscene_meet_goblin", 1)
+cutscene_flee = addContext("cutscene_flee", 0)
+cutscene_save_sheep = addContext("cutscene_save_sheep", 1)
+cutscene_abducted2 = addContext("cutscene_abducted2", 1)
+cutscene_abducted2_wait = addContext("cutscene_abducted2_wait", 1)
+idle_hang = addContext("idle_hang", 1)
+
+--{ Animation: s_idle1
+s_idle1 = addState(sheep_idle, "s_idle1");
+s_idle1:loopBlendTime(300);
+s_idle1:blendTime(0);
+s_idle1:loop(true);
+s_idle1:add("idle1.fbxanim");
+--}
+
+--{ Animation: s_idle_hang
+s_idle_hang = addState(idle_hang, "s_idle_hang");
+s_idle_hang:blendTime(300);
+s_idle_hang:loop(true);
+s_idle_hang:add("idle_hang.fbxanim");
+--}
+
+--{ Animation: s_cutscene_meet_goblin
+s_cutscene_meet_goblin = addState(cutscene_meet_goblin, "s_cutscene_meet_goblin");
+s_cutscene_meet_goblin:blendTime(200);
+s_cutscene_meet_goblin:loop(false);
+s_cutscene_meet_goblin:add("cutscene_meet_goblin.fbxanim");
+--}
+
+--{ Animation: s_cutscene_flee
+s_cutscene_flee = addState(cutscene_flee, "s_cutscene_flee");
+s_cutscene_flee:blendTime(500);
+s_cutscene_flee:loop(false);
+s_cutscene_flee:add("cutscene_meet_goblin_flee.fbxanim");
+--}
+
+--{ Animation: s_cutscene_save_sheep
+s_cutscene_save_sheep = addState(cutscene_save_sheep, "s_cutscene_save_sheep");
+s_cutscene_save_sheep:blendTime(300);
+s_cutscene_save_sheep:loop(false);
+s_cutscene_save_sheep:add("cutscene_save_sheep.fbxanim");
+--}
+
+--{ Animation: s_cutscene_abducted2
+s_cutscene_abducted2 = addState(cutscene_abducted2, "s_cutscene_abducted2");
+s_cutscene_abducted2:blendTime(0);
+s_cutscene_abducted2:loop(false);
+s_cutscene_abducted2:add("cutscene_abducted2.fbxanim");
+--}
+
+--{ Animation: s_cutscene_abducted2_wait
+s_cutscene_abducted2_wait = addState(cutscene_abducted2_wait, "s_cutscene_abducted2_wait");
+s_cutscene_abducted2_wait:blendTime(0);
+s_cutscene_abducted2_wait:loop(false);
+s_cutscene_abducted2_wait:add("cutscene_abducted2_wait.fbxanim");
+--}

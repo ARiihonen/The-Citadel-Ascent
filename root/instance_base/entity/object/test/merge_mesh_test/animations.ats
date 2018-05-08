@@ -1,0 +1,8 @@
+idle = addContext("idle", 15)
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(0);
+s_idle:loop(true);
+s_idle:add("merge_mesh_test.fbxanim");
+--}

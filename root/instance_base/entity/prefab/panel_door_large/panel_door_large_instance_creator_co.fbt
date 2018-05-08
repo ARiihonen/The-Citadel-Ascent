@@ -1,0 +1,74 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("panel_door_largeInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0x7FC0AF4B','0xEEBC3799','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x6CD82F5A','0xEEBD37A1','0x0077021C','0x00005500'), "8_panel_door_large_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x76457CAD','0xEEBC379D','0x0077021C','0x00005500'), "0_panel_door_large_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6B38E493','0x1F2B73E2','0x00770225','0x00005500'), "wooden_pillars_thin.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6B38E493','0x1F2B73E2','0x00770225','0x00005500'), "wooden_pillars_thin.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'), "wood_panel_4x4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'), "wood_panel_4x4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'), "wood_panel_4x4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'), "wood_panel_4x4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'), "wood_panel_floor_border_4m.fbxmodel");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x6CD82F5A','0xEEBD37A1','0x0077021C','0x00005500'),  -- 8_panel_door_large_ObjectEntity
+    GUID('0x76457CAD','0xEEBC379D','0x0077021C','0x00005500'),  -- 0_panel_door_large_JointEntity
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x6B38E493','0x1F2B73E2','0x00770225','0x00005500'),  -- wooden_pillars_thin.fbxmodel
+    GUID('0x6B38E493','0x1F2B73E2','0x00770225','0x00005500'),  -- wooden_pillars_thin.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'),  -- wood_panel_4x4m.fbxmodel
+    GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'),  -- wood_panel_4x4m.fbxmodel
+    GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'),  -- wood_panel_4x4m.fbxmodel
+    GUID('0x6235E72A','0x17895B8A','0x0077022E','0x00005500'),  -- wood_panel_4x4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500'),  -- wood_panel_floor_border_4m.fbxmodel
+    GUID('0x7734A249','0x178B5B8E','0x0077022E','0x00005500')}) -- wood_panel_floor_border_4m.fbxmodel
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0, 0, 0), VC3(0.1991, -0.0732, 1.9493), VC3(3.3607, -0.0115, -0.0032), VC3(-3.3719, -0.0079, 0.0024), VC3(-1.4448, -0.019, 1.9294), VC3(-1.4448, 0.0169, 1.9294), VC3(1.4351, 0.0169, 1.9294), VC3(1.4351, -0.019, 1.9294), VC3(0.887, -0.08, 2.0179), VC3(-0.9086, -0.081, 2.0179), VC3(-3.3719, -0.0005, 0.0024), VC3(-1.4506, 0.1396, -0.0007), VC3(1.4508, 0.1396, -0.0007), VC3(1.4508, -0.1416, -0.0007), VC3(-1.4506, -0.1416, -0.0007), VC3(-1.4448, 0.0169, -1.9318), VC3(1.4351, 0.0169, -1.9318), VC3(1.4351, -0.019, -1.9318), VC3(-1.4448, -0.019, -1.9318), VC3(3.3607, -0.019, -0.0032)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 1.33118e-007, 0, 1), QUAT(0, 1.33118e-007, 0, 1), QUAT(6.18172e-008, 0.707107, -8.8442e-015, 0.707107), QUAT(0.707107, 3.09086e-008, 0.707107, -9.27258e-008), QUAT(1, 4.37114e-008, 1.33118e-007, -5.78416e-016), QUAT(0, -1, 0, 1.33118e-007), QUAT(0, -1, 0, 1.33118e-007), QUAT(1, 4.37114e-008, 1.33118e-007, -5.78416e-016), QUAT(5.32604e-008, 5.32604e-008, -0.707107, 0.707107), QUAT(5.32604e-008, 5.32604e-008, -0.707107, 0.707107), QUAT(-3.75812e-017, -0.707107, 6.18172e-008, 0.707107), QUAT(-0.707107, 5.32604e-008, -5.32604e-008, 0.707107), QUAT(-0.707107, 5.32604e-008, -5.32604e-008, 0.707107), QUAT(6.34428e-009, 0.707107, 0.707107, -9.79638e-008), QUAT(6.34428e-009, 0.707107, 0.707107, -9.79638e-008), QUAT(0, 1.33118e-007, 0, 1), QUAT(0, 1.33118e-007, 0, 1), QUAT(-1.33118e-007, -5.78416e-016, 1, -4.37114e-008), QUAT(-1.33118e-007, -5.78416e-016, 1, -4.37114e-008), QUAT(-0.707107, 3.09086e-008, 0.707107, -3.09086e-008)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(2.7474, 0.1274, 7.9018), VC3(0.3, 0.3, 0.3), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({0, 1}))
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xDAC3F837','0xEEBD379F','0x0077021C','0x00005500'), "8_0_panel_door_large_JointEntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0xDAC3F837','0xEEBD379F','0x0077021C','0x00005500')}) -- 8_0_panel_door_large_JointEntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component1", "Component0"}))
+  type:setTargetInstanceIds(IntPropertyArray({0, 0}))
+  typeManager:setLastKnownNameForGUID(GUID('0xC948115A','0xEEBD37A3','0x0077021C','0x00005500'), "2_8_panel_door_large_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC948115A','0xEEBD37A3','0x0077021C','0x00005500'), "2_8_panel_door_large_ObjectEntityPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0xC948115A','0xEEBD37A3','0x0077021C','0x00005500'),  -- 2_8_panel_door_large_ObjectEntityPhysicsComponent
+    GUID('0xC948115A','0xEEBD37A3','0x0077021C','0x00005500')}) -- 2_8_panel_door_large_ObjectEntityPhysicsComponent
+  type:setChildLevels(IntPropertyArray({0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}))
+  type:setChildParentIDs(IntPropertyArray({-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}))
+  type:setInstanceCounter(20)
+  type:setPrefabVersion(1)
+end

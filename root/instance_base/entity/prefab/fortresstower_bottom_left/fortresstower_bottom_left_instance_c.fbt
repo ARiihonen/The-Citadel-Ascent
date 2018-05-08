@@ -1,0 +1,86 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("fortresstower_bottom_leftInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xC91713EE','0xA634625B','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'), "11_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'), "11_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'), "11_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C3695','0x8EAC7434','0x0077024F','0x00005500'), "0_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C36A3','0x8EAC743A','0x0077024F','0x00005500'), "1_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C36B1','0x8EAC7440','0x0077024F','0x00005500'), "2_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EC2D','0x8EB2749A','0x0077024F','0x00005500'), "18_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB97','0x8EB0747E','0x0077024F','0x00005500'), "13_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EBD3','0x8EB1748A','0x0077024F','0x00005500'), "15_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB79','0x8EB07478','0x0077024F','0x00005500'), "12_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EBB5','0x8EB17484','0x0077024F','0x00005500'), "14_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EC0F','0x8EB27494','0x0077024F','0x00005500'), "17_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7C0A093E','0x8EB17490','0x0077024F','0x00005500'), "16_fortresstower_module_middle_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C36E9','0x8EAE7456','0x0077024F','0x00005500'), "6_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C36F7','0x8EAE745C','0x0077024F','0x00005500'), "7_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB3D','0x8EAF746C','0x0077024F','0x00005500'), "10_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EC4B','0x8EB274A0','0x0077024F','0x00005500'), "19_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB69','0x8EB374A8','0x0077024F','0x00005500'), "21_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C36BF','0x8EAD7446','0x0077024F','0x00005500'), "3_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C36DB','0x8EAD7450','0x0077024F','0x00005500'), "5_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x83F246D9','0x8EAD744C','0x0077024F','0x00005500'), "4_fortresstower_module_middle_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB4B','0x8EB374A4','0x0077024F','0x00005500'), "20_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C3713','0x8EAF7466','0x0077024F','0x00005500'), "9_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x83F24711','0x8EAE7462','0x0077024F','0x00005500'), "8_fortresstower_module_middle_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7014BA3C','0xF3AD5299','0x0077024F','0x00005500'), "generic_fortress_window_closed");
+  typeManager:setLastKnownNameForGUID(GUID('0x6DAE5ABD','0x8BA1372E','0x0077024F','0x00005500'), "fortresstower_narrow_stairs_base");
+  typeManager:setLastKnownNameForGUID(GUID('0x315FB232','0x11EB02A6','0x0077024F','0x00005500'), "generic_door_closed");
+  typeManager:setLastKnownNameForGUID(GUID('0x6D9E5F54','0x9EB03818','0x0077024F','0x00005500'), "fortresstower_narrow_stairs_arch");
+  typeManager:setLastKnownNameForGUID(GUID('0x7014BA3C','0xF3AD5299','0x0077024F','0x00005500'), "generic_fortress_window_closed");
+  typeManager:setLastKnownNameForGUID(GUID('0x7014BA3C','0xF3AD5299','0x0077024F','0x00005500'), "generic_fortress_window_closed");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'),  -- 11_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'),  -- 11_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'),  -- 11_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C3695','0x8EAC7434','0x0077024F','0x00005500'),  -- 0_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C36A3','0x8EAC743A','0x0077024F','0x00005500'),  -- 1_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C36B1','0x8EAC7440','0x0077024F','0x00005500'),  -- 2_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EC2D','0x8EB2749A','0x0077024F','0x00005500'),  -- 18_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB97','0x8EB0747E','0x0077024F','0x00005500'),  -- 13_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EBD3','0x8EB1748A','0x0077024F','0x00005500'),  -- 15_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB79','0x8EB07478','0x0077024F','0x00005500'),  -- 12_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EBB5','0x8EB17484','0x0077024F','0x00005500'),  -- 14_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EC0F','0x8EB27494','0x0077024F','0x00005500'),  -- 17_fortresstower_module_middle_ObjectEntity
+    GUID('0x7C0A093E','0x8EB17490','0x0077024F','0x00005500'),  -- 16_fortresstower_module_middle_Entity
+    GUID('0xA08C36E9','0x8EAE7456','0x0077024F','0x00005500'),  -- 6_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C36F7','0x8EAE745C','0x0077024F','0x00005500'),  -- 7_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB3D','0x8EAF746C','0x0077024F','0x00005500'),  -- 10_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EC4B','0x8EB274A0','0x0077024F','0x00005500'),  -- 19_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB69','0x8EB374A8','0x0077024F','0x00005500'),  -- 21_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C36BF','0x8EAD7446','0x0077024F','0x00005500'),  -- 3_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C36DB','0x8EAD7450','0x0077024F','0x00005500'),  -- 5_fortresstower_module_middle_ObjectEntity
+    GUID('0x83F246D9','0x8EAD744C','0x0077024F','0x00005500'),  -- 4_fortresstower_module_middle_Entity
+    GUID('0x97A1EB4B','0x8EB374A4','0x0077024F','0x00005500'),  -- 20_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C3713','0x8EAF7466','0x0077024F','0x00005500'),  -- 9_fortresstower_module_middle_ObjectEntity
+    GUID('0x83F24711','0x8EAE7462','0x0077024F','0x00005500'),  -- 8_fortresstower_module_middle_Entity
+    GUID('0x7014BA3C','0xF3AD5299','0x0077024F','0x00005500'),  -- generic_fortress_window_closed
+    GUID('0x6DAE5ABD','0x8BA1372E','0x0077024F','0x00005500'),  -- fortresstower_narrow_stairs_base
+    GUID('0x315FB232','0x11EB02A6','0x0077024F','0x00005500'),  -- generic_door_closed
+    GUID('0x6D9E5F54','0x9EB03818','0x0077024F','0x00005500'),  -- fortresstower_narrow_stairs_arch
+    GUID('0x7014BA3C','0xF3AD5299','0x0077024F','0x00005500'),  -- generic_fortress_window_closed
+    GUID('0x7014BA3C','0xF3AD5299','0x0077024F','0x00005500')}) -- generic_fortress_window_closed
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(-5.8973, -0.0273, 2.1749), VC3(-5.8973, 1.9764, -2.2362), VC3(-5.8973, -0.0273, -5.1521), VC3(-2.3064, -0.0308, -6.2806), VC3(2.2007, 3.464, -6.2806), VC3(4.1081, -0.034, -6.2768), VC3(5.1082, -0.0345, -2.6411), VC3(5.1082, 3.4692, 2.8983), VC3(5.1082, -0.0308, 4.81), VC3(1.5133, -0.0205, 4.8202), VC3(5.4179, 1.9894, 2.9219), VC3(5.116, -3.0228, 2.9078), VC3(5.0371, -1.9483, 2.9149), VC3(-2.4162, 3.4718, 4.638), VC3(-2.9987, 2.4632, 5.1299), VC3(-4.8992, -0.0277, 4.8204), VC3(-4.3559, 2.9034, 3.5314), VC3(-0.3955, -10.697, -0.7317), VC3(2.2096, 1.9597, -6.5902), VC3(2.1955, -3.0259, -6.2883), VC3(2.2026, -1.9483, -6.2095), VC3(-4.2851, -2.0268, -4.6709), VC3(-2.9847, -3.0229, 4.8237), VC3(-2.9918, -1.9483, 4.7494), VC3(2.2095, -0.6455, -6.5938), VC3(-1.0489, -2.7878, -4.67), VC3(-5.6285, -2.6721, -2.2266), VC3(-4.3342, 1.3808, -0.5095), VC3(-2.9986, -0.6455, 5.1337), VC3(5.4214, -0.6455, 2.9218)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, -1, 0, 1.19209e-007), QUAT(0, -1, 0, 1.19209e-007), QUAT(0, -1, 0, 1.19209e-007), QUAT(0, -7.54979e-008, 0, -1), QUAT(0, -7.54979e-008, 0, -1), QUAT(0, -7.54979e-008, 0, -1), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, -1, 0, 1.19209e-007), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(0.269244, -0.653841, -0.269244, 0.653841), QUAT(0, -1, 0, 1.19209e-007), QUAT(0, -1, 0, 1.19209e-007), QUAT(0, -1, 0, 1.19209e-007), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(0, -7.54979e-008, 0, -1), QUAT(0, -7.54979e-008, 0, -1), QUAT(-6.2035e-008, -0.924671, -0.380768, 6.98107e-008), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(0, -1, 0, 1.19209e-007), QUAT(0.380768, 1.10229e-007, -4.53911e-008, 0.924671), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 1, 0, -4.37114e-008), QUAT(0, 0.707107, 0, 0.707107)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.4, 3.1949, 12.569), VC3(0.4, 1.5919, 5.1447), VC3(0.4, 3.1949, 6.5139), VC3(2.4727, 3.1966, 2), VC3(1.133, 0.4021, 2), VC3(0.4001, 3.2007, 1.9849), VC3(3.3103, 3.2039, 2), VC3(1.1213, 0.3983, 2), VC3(0.4083, 3.1979, 2), VC3(2.4759, 3.1908, 2.001), VC3(1.133, 0.8237, 0.7953), VC3(1.133, 0.8044, 2.0029), VC3(1.1273, 0.2, 1.44), VC3(0.674, 0.3962, 1.2784), VC3(1.133, 1.2028, 0.7945), VC3(0.3985, 3.1951, 2), VC3(0.8805, 0.8506, 5.6902), VC3(4.8015, 5.3408, 24.195), VC3(1.133, 0.8, 0.7953), VC3(1.133, 0.8069, 2.0029), VC3(1.1273, 0.2, 1.44), VC3(0.8927, 1.5924, 4.4902), VC3(1.133, 0.8045, 1.985), VC3(1.1273, 0.2, 1.44), VC3(0.75, 0.75, 0.75), VC3(0.75, 0.75, 0.75), VC3(0.75, 0.75, 0.75), VC3(0.75, 0.75, 0.75), VC3(0.75, 0.75, 0.75), VC3(0.75, 0.75, 0.75)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1}))
+  type:setInstanceCounter(30)
+  type:setPrefabVersion(1)
+end

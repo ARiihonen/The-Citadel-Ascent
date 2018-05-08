@@ -1,0 +1,38 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("ContextDoorSet_Closed_DoubleInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xDED2C7BF','0x85A63183','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x8C8792CB','0x85A63187','0x0077021C','0x00005500'), "0_ContextDoorSet_Closed_Double_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x8C8792D9','0x85A6318D','0x0077021C','0x00005500'), "1_ContextDoorSet_Closed_Double_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6A9087B5','0x931A01C1','0x0077022E','0x00005500'), "door_n_window_set_5.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6B59B74F','0x934401E5','0x0077022E','0x00005500'), "door_n_window_set_frame_5.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x8C879303','0x85A73193','0x0077021C','0x00005500'), "4_ContextDoorSet_Closed_Double_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x8C879311','0x85A73199','0x0077021C','0x00005500'), "5_ContextDoorSet_Closed_Double_ObjectEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x8C8792CB','0x85A63187','0x0077021C','0x00005500'),  -- 0_ContextDoorSet_Closed_Double_ObjectEntity
+    GUID('0x8C8792D9','0x85A6318D','0x0077021C','0x00005500'),  -- 1_ContextDoorSet_Closed_Double_ObjectEntity
+    GUID('0x6A9087B5','0x931A01C1','0x0077022E','0x00005500'),  -- door_n_window_set_5.fbxmodel
+    GUID('0x6B59B74F','0x934401E5','0x0077022E','0x00005500'),  -- door_n_window_set_frame_5.fbxmodel
+    GUID('0x8C879303','0x85A73193','0x0077021C','0x00005500'),  -- 4_ContextDoorSet_Closed_Double_ObjectEntity
+    GUID('0x8C879311','0x85A73199','0x0077021C','0x00005500')}) -- 5_ContextDoorSet_Closed_Double_ObjectEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0.0351, -2.5019, -0.0121), VC3(-0.1054, -0.5719, -0.007), VC3(-0.1064, -0.5943, 0.0252), VC3(0.0044, -0.219, 0.0187), VC3(0.0351, 1.5738, -1.4366), VC3(0.0351, 1.5433, 1.4251)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, -0.707107, 0, -0.707107), QUAT(0, 0, 0, 1), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0.653281, -0.270598, -0.653282, -0.270598), QUAT(0.270598, -0.653282, -0.270598, -0.653281)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(1.3733, 0.202, 2.0077), VC3(0.0483, 1.3488, 4.5307), VC3(1, 1, 1), VC3(1, 1, 1), VC3(0.7359, 0.3441, 2.0077), VC3(0.7359, 0.3096, 2.0077)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(3)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 4, 2, 2, 2}))
+  type:setInstanceCounter(6)
+  type:setPrefabVersion(2)
+end

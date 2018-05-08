@@ -1,0 +1,9 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper_wall_info_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("0_1_ContextDoorSet_Closed_Double_ObjectEntityWallInfoComponent", GUID('0x5F1733DE','0x7073504D','0x00770265','0x00005500')); -- CollisionHelperWallInfoComponent
+  type:setGuid(GUID('0xE04C9467','0x85A7318F','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setGrabEnabled(false)
+  type:setGrabMovementEnabled(false)
+end

@@ -1,0 +1,11 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_joint/joint/prismatic_joint/prismatic_joint_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("3_12_generic_door_openable_player_PrismaticJointEntityPrismaticJointComponent", GUID('0x3638E458','0x00000000','0x00770200','0x00005500')); -- PrismaticJointComponent
+  type:setGuid(GUID('0x3837AD7D','0x547138F0','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMinDistance(0)
+  type:setMaxDistance(0)
+  type:setSpring(100)
+  type:setSpringDamper(200)
+end

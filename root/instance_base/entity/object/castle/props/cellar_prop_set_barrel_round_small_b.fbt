@@ -1,0 +1,35 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/breakable/breakable_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cellar_prop_set_barrel_round_small_breakable.fbxmodelBreakableComponent", GUID('0x33DC6680','0x00000000','0x00770200','0x00005500')); -- BreakableComponent
+  type:setGuid(GUID('0x38162604','0xF69A7F66','0x0077022D','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/do_effect/do_effect_on_break/do_effect_on_break_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cellar_prop_set_barrel_round_small_breakable.fbxmodelDoEffectOnBreakComponent", GUID('0x7044B324','0x00000000','0x00770200','0x00005500')); -- DoEffectOnBreakComponent
+  type:setGuid(GUID('0x3316F921','0x338B24C4','0x0077022D','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x7FA33392','0x500452DA','0x0077020B','0x00005500'), "Barrel_Dynamic_BreakParticleSystemEntity");
+  type:setPropertyGUID(type.PropertyEffectType, GUID('0x7FA33392','0x500452DA','0x0077020B','0x00005500')) -- Barrel_Dynamic_BreakParticleSystemEntity
+  type:setAudioEvent("Play_barrel_destroyed")
+end
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/health/trine_health/game_health/game_health_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cellar_prop_set_barrel_round_small_breakable.fbxmodelGameHealthComponent", GUID('0x3244BF12','0x00000000','0x00770200','0x00005500')); -- GameHealthComponent
+  type:setGuid(GUID('0x251FDC72','0xA5C709C5','0x0077022D','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMaxHealth(1)
+  type:setHealth(1)
+end
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/contact_damage/physics_contact_damage/physics_contact_damage_to_self/trine_physics_contact_damage_to_self/trine_physics_contact_damage_to_self_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cellar_prop_set_barrel_round_small_breakable.fbxmodelTrinePhysicsContactDamageToSelfComponent", GUID('0x7D46DF4E','0x00000000','0x00770200','0x00005500')); -- TrinePhysicsContactDamageToSelfComponent
+  type:setGuid(GUID('0x9C3B2CEA','0x144343B0','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMinContactForceThreshold(5)
+  type:setMinContactVelocityThreshold(5)
+end

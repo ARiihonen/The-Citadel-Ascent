@@ -1,0 +1,9 @@
+rot = addContext("rot",1)
+
+--{ Animation: s_rot
+s_rot = addState(rot, "s_rot");
+s_rot:blendTime(200);
+s_rot:loop(true);
+s_rot:speedFactor(1);
+s_rot:add("astronomyclock_rotation.fbxanim");
+--}

@@ -1,0 +1,10 @@
+test = addContext("test",1)
+
+
+--{ Animation: s_test
+	s_test = addState(test, "s_test");
+	s_test:blendTime(100); 
+	s_test:loop(true);  
+	s_test:add( "test.fbxanim");
+--}  
+		

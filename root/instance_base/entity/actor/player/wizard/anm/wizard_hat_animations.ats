@@ -1,0 +1,8 @@
+idle = addContext("idle", 1)
+
+--{ Animation: wizard_hat_idle
+wizard_hat_idle = addState(idle, "wizard_hat_idle");
+wizard_hat_idle:blendTime(300);
+wizard_hat_idle:loop(true);
+wizard_hat_idle:add("wizard_hat_idle.anm");
+--}

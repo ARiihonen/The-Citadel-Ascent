@@ -1,0 +1,50 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/winch_crane_rotating_prefab_container/winch_crane_rotating_prefab_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("14_winch_crane_rotating_prefab_ObjectEntity", GUID('0x7A51CD25','0x72902B66','0x0077020A','0x00005500')); -- winch_crane_rotating_prefabContainer
+  type:setGuid(GUID('0x965B8C7D','0x48494503','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x53F01030','0xA15935D2','0x0077021C','0x00005500'), "28__14_winch_crane_rotating_prefab_ObjectEntityGenerateSoundOnEventComponent");
+  type:addComponentTypeGUID(GUID('0x53F01030','0xA15935D2','0x0077021C','0x00005500')); -- 28__14_winch_crane_rotating_prefab_ObjectEntityGenerateSoundOnEventComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xEB0EBEC4','0x484A4505','0x0077021C','0x00005500'), "2_14_winch_crane_rotating_prefab_ObjectEntityPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0xEB0EBEC4','0x484A4505','0x0077021C','0x00005500')); -- 2_14_winch_crane_rotating_prefab_ObjectEntityPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x08E28B60','0x942E32BE','0x0077020A','0x00005500'), "2x2_Jump_Height_CrateAimedRopeTargetGameplayEntityBoxAreaComponent");
+  type:addComponentTypeGUID(GUID('0x08E28B60','0x942E32BE','0x0077020A','0x00005500')); -- 2x2_Jump_Height_CrateAimedRopeTargetGameplayEntityBoxAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x45A9E83D','0x66773594','0x0077020A','0x00005500'), "2x2_Jump_Height_CratelAimedRopeTargetGameplayEntityAimedRopeTargetComponent");
+  type:addComponentTypeGUID(GUID('0x45A9E83D','0x66773594','0x0077020A','0x00005500')); -- 2x2_Jump_Height_CratelAimedRopeTargetGameplayEntityAimedRopeTargetComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7CA2AC8E','0xCD39613C','0x0077025D','0x00005500'), "BasicMacbethAudioPropertiesComponent");
+  type:addComponentTypeGUID(GUID('0x7CA2AC8E','0xCD39613C','0x0077025D','0x00005500')); -- BasicMacbethAudioPropertiesComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D014DE1','0xD5900BD3','0x00770288','0x00005500'), "BasicReverbAudioReceiverComponent");
+  type:addComponentTypeGUID(GUID('0x6D014DE1','0xD5900BD3','0x00770288','0x00005500')); -- BasicReverbAudioReceiverComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7444C228','0x225E12A4','0x0077025D','0x00005500'), "BigWoodenBoxPhysicsAudioComponent");
+  type:addComponentTypeGUID(GUID('0x7444C228','0x225E12A4','0x0077025D','0x00005500')); -- BigWoodenBoxPhysicsAudioComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6DA3A80C','0x506709FE','0x0077021A','0x00005500'), "BoxRollingDetectionComponent");
+  type:addComponentTypeGUID(GUID('0x6DA3A80C','0x506709FE','0x0077021A','0x00005500')); -- BoxRollingDetectionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7B1445C5','0x4A827933','0x0077022E','0x00005500'), "cellar_prop_set_box_cube.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0x7B1445C5','0x4A827933','0x0077022E','0x00005500')); -- cellar_prop_set_box_cube.fbxmodel_ModCom
+  typeManager:setLastKnownNameForGUID(GUID('0x0786C1E6','0x38D70EF4','0x007702E0','0x00005500'), "cellar_prop_set_box_cube_dynamic_breakable.fbxmodelBreakableComponent");
+  type:addComponentTypeGUID(GUID('0x0786C1E6','0x38D70EF4','0x007702E0','0x00005500')); -- cellar_prop_set_box_cube_dynamic_breakable.fbxmodelBreakableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x44947C27','0x51EF0EF8','0x007702E0','0x00005500'), "cellar_prop_set_box_cube_dynamic_breakable.fbxmodelDoEffectOnBreakComponent");
+  type:addComponentTypeGUID(GUID('0x44947C27','0x51EF0EF8','0x007702E0','0x00005500')); -- cellar_prop_set_box_cube_dynamic_breakable.fbxmodelDoEffectOnBreakComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x40C3E82C','0xBB6A0EF6','0x007702E0','0x00005500'), "cellar_prop_set_box_cube_dynamic_breakable.fbxmodelGameHealthComponent");
+  type:addComponentTypeGUID(GUID('0x40C3E82C','0xBB6A0EF6','0x007702E0','0x00005500')); -- cellar_prop_set_box_cube_dynamic_breakable.fbxmodelGameHealthComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD7E4A55B','0xF0DA7F27','0x0077020E','0x00005500'), "cellar_prop_set_box_cube_dynamic_BuoyancyComponent");
+  type:addComponentTypeGUID(GUID('0xD7E4A55B','0xF0DA7F27','0x0077020E','0x00005500')); -- cellar_prop_set_box_cube_dynamic_BuoyancyComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xA5F683BC','0x6B1212EC','0x0077021C','0x00005500'), "cellar_prop_set_box_cube_dynamic_physics_breakablebox_wooden_breakablePhysicsContactDamageToSelfComponent");
+  type:addComponentTypeGUID(GUID('0xA5F683BC','0x6B1212EC','0x0077021C','0x00005500')); -- cellar_prop_set_box_cube_dynamic_physics_breakablebox_wooden_breakablePhysicsContactDamageToSelfComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xDD7AA719','0x67DA647C','0x00770223','0x00005500'), "cellar_prop_set_box_cube_dynamicPushingInfoComponent");
+  type:addComponentTypeGUID(GUID('0xDD7AA719','0x67DA647C','0x00770223','0x00005500')); -- cellar_prop_set_box_cube_dynamicPushingInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x5F1733DE','0x7073504D','0x00770265','0x00005500'), "CollisionHelperWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0x5F1733DE','0x7073504D','0x00770265','0x00005500')); -- CollisionHelperWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x5A2BAED1','0x00000000','0x00770200','0x00005500'), "DistractionObjectComponent");
+  type:addComponentTypeGUID(GUID('0x5A2BAED1','0x00000000','0x00770200','0x00005500')); -- DistractionObjectComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7C5A9A40','0x9E9E54EB','0x0077025D','0x00005500'), "GenericDoEffectOnWaterContactComponent");
+  type:addComponentTypeGUID(GUID('0x7C5A9A40','0x9E9E54EB','0x0077025D','0x00005500')); -- GenericDoEffectOnWaterContactComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+  typeManager:setLastKnownNameForGUID(GUID('0x987D17FF','0xCEAE75D8','0x0077027A','0x00005500'), "WoodCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x987D17FF','0xCEAE75D8','0x0077027A','0x00005500')); -- WoodCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7B493C4C','0x2D1D2440','0x00770279','0x00005500'), "WoodCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x7B493C4C','0x2D1D2440','0x00770279','0x00005500')); -- WoodCollisionHelperHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x88E92D4B','0x15110A13','0x0077025D','0x00005500'), "WoodenObjectBigDoEffectOnContactComponent");
+  type:addComponentTypeGUID(GUID('0x88E92D4B','0x15110A13','0x0077025D','0x00005500')); -- WoodenObjectBigDoEffectOnContactComponent
+end

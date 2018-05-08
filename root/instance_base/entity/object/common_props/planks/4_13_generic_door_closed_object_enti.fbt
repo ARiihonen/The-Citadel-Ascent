@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/common_props/planks/plank_set_single_3.fbxmodel_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_13_generic_door_closed_ObjectEntityModelComponent", GUID('0x641390EE','0xFFC9016D','0x0077021D','0x00005500')); -- plank_set_single_3.fbxmodel_ModCom
+  type:setGuid(GUID('0xCE9A9A0E','0x7E503B8F','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setDiffuseColor(COL(0.573, 0.573, 0.573))
+end

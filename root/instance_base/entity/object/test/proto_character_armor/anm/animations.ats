@@ -1,0 +1,16 @@
+idle = addContext("idle", 1)
+teaser = addContext("teaser", 1)
+
+--{ Animation: breath
+breath = addState(idle, "breath");
+breath:blendTime(0);
+breath:loop(true);
+breath:add("breath.anm");
+--}
+
+--{ Animation: ragdoll_hit
+ragdoll_hit = addState(teaser, "ragdoll_hit");
+ragdoll_hit:blendTime(300);
+ragdoll_hit:loop(true);
+ragdoll_hit:add("teaser.anm");
+--}

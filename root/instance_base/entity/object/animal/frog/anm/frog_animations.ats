@@ -1,0 +1,41 @@
+idle = addContext("idle", 1)
+idle_in_place = addContext("idle_in_place", 2)
+
+
+
+--{ Animation: frog_idle
+frog_idle = addState(idle, "frog_idle");
+frog_idle:randomizedStartTime();
+-- frog_idle:synchronizedStartTimeGroup(1);
+frog_idle:blendTime(300);
+frog_idle:loop(true);
+frog_idle:add("frog_idle.fbxanim");
+--}
+
+--{ Animation: frog_idle_in_place
+frog_idle_in_place = addState(idle_in_place, "frog_idle_in_place");
+frog_idle_in_place:randomizedStartTime();
+frog_idle_in_place:blendTime(300);
+frog_idle_in_place:loop(true);
+frog_idle_in_place:add("frog_idle_in_place.fbxanim");
+--}
+
+--{ Animation: frog_idle_synchronized
+frog_idle_synchronized = addState(idle, "frog_idle_synchronized");
+frog_idle_synchronized:from(frog_idle_in_place);
+frog_idle_synchronized:synchronizedStartTimeGroup(1);
+frog_idle_synchronized:blendTime(300);
+frog_idle_synchronized:loop(true);
+frog_idle_synchronized:add("frog_idle.fbxanim");
+--}
+
+--{ Animation: frog_idle_in_place_synchronized
+frog_idle_in_place_synchronized = addState(idle_in_place, "frog_idle_in_place_synchronized");
+frog_idle_in_place_synchronized:from(frog_idle_synchronized);
+frog_idle_in_place_synchronized:from(frog_idle);
+frog_idle_in_place_synchronized:synchronizedStartTimeGroup(1);
+-- frog_idle_in_place_synchronized:synchronizedStartTimeGroup(1);
+frog_idle_in_place_synchronized:blendTime(0);
+frog_idle_in_place_synchronized:loop(false);
+frog_idle_in_place_synchronized:add("frog_idle.fbxanim");
+--}

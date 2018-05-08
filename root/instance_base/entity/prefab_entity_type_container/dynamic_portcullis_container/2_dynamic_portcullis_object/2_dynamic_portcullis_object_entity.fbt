@@ -1,0 +1,14 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/dynamic_portcullis_container/dynamic_portcullis_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("2_DynamicPortcullis_ObjectEntity", GUID('0x61809E22','0x32081769','0x0077021C','0x00005500')); -- DynamicPortcullisContainer
+  type:setGuid(GUID('0x6F7483B6','0x9FE83DB2','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x93B775F0','0xF3E143A7','0x0077020B','0x00005500'), "MetalCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x93B775F0','0xF3E143A7','0x0077020B','0x00005500')); -- MetalCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x311F27E3','0x81A36B78','0x0077025C','0x00005500'), "MetalHittableComponent");
+  type:addComponentTypeGUID(GUID('0x311F27E3','0x81A36B78','0x0077025C','0x00005500')); -- MetalHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x54AF22B1','0xEE1D2271','0x0077022E','0x00005500'), "portcullis.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0x54AF22B1','0xEE1D2271','0x0077022E','0x00005500')); -- portcullis.fbxmodel_ModCom
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

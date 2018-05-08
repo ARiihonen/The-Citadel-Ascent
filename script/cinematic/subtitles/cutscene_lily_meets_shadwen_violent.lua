@@ -1,0 +1,15 @@
+addSubtitle(1.0, "locales.saving_b_01_shadwen", 2,7);
+addSubtitle(3.0, "locales.saving_b_02_lily", 7.9);
+addSubtitle(8.5, "locales.saving_b_03_shadwen", 10.7);
+addSubtitle(11.1, "locales.saving_b_04_lily", 12.2);
+addSubtitle(12.4, "locales.saving_b_05_shadwen", 15.4);
+addSubtitle(15.6, "locales.saving_b_06_lily", 17.0);
+addSubtitle(17.3, "locales.saving_b_07_shadwen", 21.0);
+addSubtitle(21.3, "locales.saving_b_08_shadwen", 23.3);
+addSubtitle(23.7, "locales.saving_b_09_lily", 25.3);
+addSubtitle(25.4, "locales.saving_b_10_shadwen", 29.7);
+addSubtitle(30.0, "locales.saving_b_11_lily", 32.8);
+addSubtitle(33.0, "locales.saving_b_12_shadwen", 35.3);
+addSubtitle(35.5, "locales.saving_b_13_lily", 36.0);
+addSubtitle(36.2, "locales.saving_b_14_shadwen", 40.7);
+addSubtitle(41.0, "locales.saving_b_15_lily", 43.0);

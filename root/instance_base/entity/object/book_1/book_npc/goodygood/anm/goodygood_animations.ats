@@ -1,0 +1,18 @@
+kill_goodygood = addContext("kill_goodygood",1)
+kill_goodygood_wait = addContext("kill_goodygood_wait",1)
+
+--{ Animation: s_kill_goodygood
+s_kill_goodygood = addState(kill_goodygood, "s_kill_goodygood");
+s_kill_goodygood:loop(false);
+s_kill_goodygood:loopBlendTime(0); 
+s_kill_goodygood:speedFactor(1);
+s_kill_goodygood:add("kill_goodygood.fbxanim");
+--}
+
+--{ Animation: s_kill_goodygood_wait
+s_kill_goodygood_wait = addState(kill_goodygood_wait, "s_kill_goodygood_wait");
+s_kill_goodygood_wait:loop(false);
+s_kill_goodygood_wait:loopBlendTime(0); 
+s_kill_goodygood_wait:speedFactor(1);
+s_kill_goodygood_wait:add("kill_goodygood_wait.fbxanim");
+--}

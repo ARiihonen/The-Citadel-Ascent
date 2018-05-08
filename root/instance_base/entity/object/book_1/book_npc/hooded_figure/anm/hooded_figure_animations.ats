@@ -1,0 +1,6 @@
+gift_from_hooded = addContext("gift_from_hooded",1)
+
+--{ Animation: s_gift_from_hooded
+s_gift_from_hooded = addState(gift_from_hooded, "s_gift_from_hooded");
+s_gift_from_hooded:add("gift_from_hooded_figure.fbxanim"); 
+--}

@@ -1,0 +1,2033 @@
+--{ Contexts
+mirror = addContext("mirror", 100)
+
+player_visual = addContext("player_visual", -1)
+child_visual = addContext("child_visual", -1)
+
+test1 = addContext("test1", 5000)
+test2 = addContext("test2", 5000)
+prepare = addContext("prepare", 66)
+
+crossbow = addContext("crossbow", 62)
+
+attack  = addContext("attack", -2)
+reload = addContext("reload", 2)
+fight = addContext("fight", 30)
+alarmed = addContext("alarmed", 4)
+alert = addContext("alert", 4)
+cautious = addContext("cautious", 3)
+grab_child = addContext("grab_child", 37)
+push = addContext("push", 2)
+
+stand = addContext("stand", 1)
+idle = addContext("idle", 123)
+turn_left = addContext("turn_left", 3)
+turn_right = addContext("turn_right", 3)
+walk = addContext("walk", 4)
+walk_right = addContext("walk_right", 3)
+walk_left = addContext("walk_left", 3)
+run = addContext("run", 2)
+-- fight_strafe_l = addContext("fight_strafe_l", 1)
+-- fight_strafe_r = addContext("fight_strafe_r", 1)
+
+fast  = addContext("fast", 2)
+-- fast_circling  = addContext("fast_circling", 15)
+
+attack_melee  = addContext("attack_melee", -1)
+attack_melee2  = addContext("attack_melee2", -1)
+
+stagger  = addContext("stagger", -2)
+die = addContext("die", -5) 
+poisoned = addContext("poisoned", 21)
+exploded = addContext("exploded", 20)
+nonlethal = addContext("nonlethal", 21)
+lethal_attack_1 = addContext("stagger_lethal_attack_1",-10)
+lethal_attack_2 = addContext("stagger_lethal_attack_2",-10) 
+lethal_attack_3 = addContext("stagger_lethal_attack_3",-10)
+lethal_attack_4 = addContext("stagger_lethal_attack_4",-10)
+
+stab_interrupted = addContext("stab_interrupted",-1000) 
+
+stab_near = addContext("stab_near",1)
+stab_far = addContext("stab_far",1)
+
+jump_attack = addContext("jump_attack",-10)
+jump_attack_ready = addContext("jump_attack_ready",-10)
+
+jump_crush = addContext("jump_crush",-10) 
+jump_crush_ready = addContext("jump_crush_ready",-10)
+fall_crush = addContext("fall_crush",-10)
+heavy = addContext("heavy",-10)
+
+fall = addContext("fall", -3)
+ 
+lift_corpse = addContext("lift_corpse",-7)
+drop_corpse = addContext("drop_corpse",-7)
+drag_corpse = addContext("drag_corpse",-6)
+feet_drag = addContext("feet_drag",1)
+-- dead = addContext("dead", -20)
+
+additive = addContext("additive", 25) 
+
+
+--}
+
+--{ Tables
+attacking = {};
+walking = {};
+walking_cautious = {};
+standing = {};
+mirrorstanding = {};
+running = {};
+jumping = {};
+dashing = {};
+falling = {};
+on_wall = {};
+on_ledge = {};
+blocking = {};
+crouching = {};
+attacking = {};
+staggering = {};
+falling = {};
+dragging_corpse = {};
+preparing = {};
+preparing_cautious = {};
+
+--}
+
+--{ Params
+
+turn_angle = addParam("turn_angle")
+
+angle_around_up = addParam("angle_around_up")
+angle_axis = addParam("angle_axis")
+
+attack_dir = addParam("attack_dir")
+attack_dist = addParam("attack_dist")
+combo_select = addParam("combo_select")
+enemy_dir = addParam("enemy_dir")
+push_speed = addParam("push_speed")
+push_angle = addParam("push_angle")
+distance = addParam("distance")
+slope = addParam("slope")
+
+
+--}
+
+--{ Animation_set: test
+--{ Animation: turn_right_test
+turn_right_test = addState(test1, "turn_right_test");
+-- turn_right_test:from(standing);
+turn_right_test:blendTime(300);
+turn_right_test:loop(true);
+turn_right_test:add(turn_angle(180), "push_loop_right_90.fbxanim");
+
+
+-- s_push:add(push_angle(-90), "push_left_90.fbxanim");
+-- s_push:add(push_angle(0), "push.fbxanim");
+-- s_push:add(push_angle(22), "push_right.fbxanim");
+-- s_push:add(push_angle(90), "push_right_90.fbxanim");
+
+-- s_push_loop:add(push_angle(-22), "push_loop_left.fbxanim");
+-- s_push_loop:add(push_angle(-90), "push_loop_left_90.fbxanim");
+-- s_push_loop:add(push_angle(0), "push_loop.fbxanim");
+-- s_push_loop:add(push_angle(22), "push_loop_right.fbxanim");
+-- s_push_loop:add(push_angle(90), "push_loop_right_90.fbxanim");
+
+--}
+
+--{ Animation: turn_left_test
+turn_left_test = addState(test2, "turn_left_test");
+-- turn_left_test:from(turn_right_test);
+turn_left_test:blendTime(300);
+turn_left_test:loop(true);
+turn_left_test:add("walk_crossbow_up.fbxanim");
+--}
+--}
+
+--{ Animation_set: stands
+
+--{ Animation: s_stand
+s_stand = addState(stand, "s_stand");
+s_stand:speedFactor(0.95);
+s_stand:from(standing);
+s_stand:blendTime(400);
+s_stand:loop(true);
+s_stand:add("idle.fbxanim");
+table.insert(standing, s_stand);
+s_stand:randomizedStartTime();
+--}
+
+
+--{ Animation: s_idle
+s_idle = addState(stand+idle, "s_idle");
+s_idle:speedFactor(0.7);
+s_idle:loopBlendTime(400);
+s_idle:from(s_stand);
+s_idle:blendTime(500);
+s_idle:loop(true);
+s_idle:add("idle_long.fbxanim");
+table.insert(standing, s_idle);
+s_idle:randomizedStartTime();
+--}
+
+
+--{ Animation: s_stand_cautious
+s_stand_cautious = addState(stand+cautious, "s_stand_cautious");
+-- s_stand_cautious:from(standing);
+s_stand_cautious:blendTime(300);
+s_stand_cautious:loop(true);
+s_stand_cautious:add("stand_cautious.fbxanim");
+table.insert(standing, s_stand_cautious);
+s_stand_cautious:randomizedStartTime();
+--}
+
+
+
+--{ Animation: s_walk_stop
+s_walk_stop = addState(stand, "s_walk_stop");
+s_walk_stop:blendTime(400);
+s_walk_stop:loop(false);
+s_walk_stop:add("walk_end.fbxanim");
+table.insert(standing, s_walk_stop);
+--}
+
+--{ Animation: s_alarmed
+s_alarmed = addState(stand+cautious+player_visual, "s_alarmed");
+s_alarmed:blendTime(300);
+s_alarmed:loop(false);
+s_alarmed:from(walking);
+s_alarmed:from(standing);
+s_alarmed:from(walking_cautious);
+s_alarmed:add(angle_axis(-90), angle_around_up(-90), "alarmed_crossbow_downleft.fbxanim");
+s_alarmed:add(angle_axis(-90), angle_around_up(0), "alarmed_crossbow_down.fbxanim");
+s_alarmed:add(angle_axis(-90), angle_around_up(90), "alarmed_crossbow_downright.fbxanim");
+s_alarmed:add(angle_axis(0), angle_around_up(-90), "alarmed_crossbow_left.fbxanim");
+s_alarmed:add(angle_axis(0), angle_around_up(0), "alarmed_crossbow.fbxanim");
+s_alarmed:add(angle_axis(0), angle_around_up(90), "alarmed_crossbow_right.fbxanim");
+s_alarmed:add(angle_axis(88), angle_around_up(-90), "alarmed_crossbow_upleft.fbxanim");
+s_alarmed:add(angle_axis(88), angle_around_up(0), "alarmed_crossbow_up.fbxanim");
+s_alarmed:add(angle_axis(88), angle_around_up(90), "alarmed_crossbow_upright.fbxanim");
+table.insert(standing, s_alarmed);
+--}
+
+--{ Animation: s_alarmed2
+s_alarmed2 = addState(stand+cautious+player_visual, "s_alarmed2");
+s_alarmed2:blendTime(300);
+s_alarmed2:loop(false);
+s_alarmed2:from(walking);
+s_alarmed2:from(standing);
+s_alarmed2:from(walking_cautious);
+s_alarmed2:add(angle_axis(-90), angle_around_up(-90), "alarmed_crossbow_alt_downleft.fbxanim");
+s_alarmed2:add(angle_axis(-90), angle_around_up(0), "alarmed_crossbow_alt_down.fbxanim");
+s_alarmed2:add(angle_axis(-90), angle_around_up(90), "alarmed_crossbow_alt_downright.fbxanim");
+s_alarmed2:add(angle_axis(0), angle_around_up(-90), "alarmed_crossbow_alt_left.fbxanim");
+s_alarmed2:add(angle_axis(0), angle_around_up(0), "alarmed_crossbow_alt_center.fbxanim");
+s_alarmed2:add(angle_axis(0), angle_around_up(90), "alarmed_crossbow_alt_right.fbxanim");
+s_alarmed2:add(angle_axis(88), angle_around_up(-90), "alarmed_crossbow_alt_upleft.fbxanim");
+s_alarmed2:add(angle_axis(88), angle_around_up(0), "alarmed_crossbow_alt_up.fbxanim");
+s_alarmed2:add(angle_axis(88), angle_around_up(90), "alarmed_crossbow_alt_upright.fbxanim");
+table.insert(standing, s_alarmed2);
+--}
+
+
+--{ Animation: s_stand_alert
+s_stand_alert = addState(stand+cautious+player_visual, "s_stand_alert");
+s_stand_alert:from(s_stand_alert);
+-- s_stand_alert:from(walking);
+-- s_stand_alert:from(standing);
+-- s_stand_alert:from(walking_cautious);
+s_stand_alert:blendTime(120);
+s_stand_alert:loop(true);
+s_stand_alert:add(angle_axis(-90), angle_around_up(-90), "stand_crossbow_downleft.fbxanim");
+s_stand_alert:add(angle_axis(-90), angle_around_up(0), "stand_crossbow_down.fbxanim");
+s_stand_alert:add(angle_axis(-90), angle_around_up(90), "stand_crossbow_downright.fbxanim");
+s_stand_alert:add(angle_axis(0), angle_around_up(-90), "stand_crossbow_left.fbxanim");
+s_stand_alert:add(angle_axis(0), angle_around_up(0), "stand_crossbow.fbxanim");
+s_stand_alert:add(angle_axis(0), angle_around_up(90), "stand_crossbow_right.fbxanim");
+s_stand_alert:add(angle_axis(88), angle_around_up(-90), "stand_crossbow_upleft.fbxanim");
+s_stand_alert:add(angle_axis(88), angle_around_up(0), "stand_crossbow_up.fbxanim");
+s_stand_alert:add(angle_axis(88), angle_around_up(90), "stand_crossbow_upright.fbxanim");
+table.insert(standing, s_stand_alert);
+--}
+
+--{ Animation: s_stand_crossbow
+-- s_stand_crossbow = addState(stand+crossbow, "s_stand_crossbow");
+-- s_stand_crossbow:blendTime(300);
+-- s_stand_crossbow:loop(true);
+-- s_stand_crossbow:add("stand_crossbow.fbxanim");
+--}
+	
+--{ Animation: s_turn_left_start
+-- s_turn_left_start = addState(stand+turn_left, "s_turn_left_start");
+-- s_turn_left_start:from(standing);
+-- s_turn_left_start:blendTime(300);
+-- s_turn_left_start:loop(true);
+-- s_turn_left_start:restart(true);
+-- s_turn_left_start:add(turn_angle(0), "turn_0.fbxanim");
+-- s_turn_left_start:add(turn_angle(-180), "turn_left_start.fbxanim");
+-- table.insert(standing, s_turn_left_start);
+--}
+
+--{ Animation: s_turn_right_start
+-- s_turn_right_start = addState(stand+turn_right, "s_turn_right_start");
+-- s_turn_right_start:from(standing);
+-- s_turn_right_start:blendTime(300);
+-- s_turn_right_start:loop(true);
+-- s_turn_right_start:restart(true);
+-- s_turn_right_start:add(turn_angle(0), "turn_0.fbxanim");
+-- s_turn_right_start:add(turn_angle(180), "turn_right_start.fbxanim");
+-- table.insert(standing, s_turn_right_start);
+--}	
+	
+--{ Animation: s_turn_left
+s_turn_left = addState(stand+turn_left, "s_turn_left");
+-- s_turn_left:from(s_turn_left_start);
+s_turn_left:blendTime(200);
+s_turn_left:loop(false);
+s_turn_left:restart(true);
+s_turn_left:add(turn_angle(0), "turn_0.fbxanim");
+s_turn_left:add(turn_angle(180), "turn_left.fbxanim");
+table.insert(standing, s_turn_left);
+s_turn_left:addFinishedEvent("EventAnimTurnComplete");
+s_turn_left:addExitEvent("EventAnimTurnComplete");
+--}
+
+--{ Animation: s_turn_right
+s_turn_right = addState(stand+turn_right, "s_turn_right");
+-- s_turn_right:from(s_turn_right_start);
+s_turn_right:blendTime(200);
+s_turn_right:loop(false); 
+s_turn_right:restart(true);
+s_turn_right:add(turn_angle(0), "turn_0.fbxanim");
+s_turn_right:add(turn_angle(180), "turn_right.fbxanim");
+table.insert(standing, s_turn_right);
+s_turn_right:addFinishedEvent("EventAnimTurnComplete");
+s_turn_right:addExitEvent("EventAnimTurnComplete");
+--}
+
+--{ Animation: s_exit_cautious_standing
+s_exit_cautious_standing = addState(stand, "s_exit_cautious_standing");
+-- s_exit_cautious_standing:speedFactor(0.95);
+s_exit_cautious_standing:from(s_stand_cautious); 
+s_exit_cautious_standing:from(s_stand_alert);
+s_exit_cautious_standing:from(s_stand_cautious);
+s_exit_cautious_standing:from(walking_cautious);
+s_exit_cautious_standing:blendTime(300);
+s_exit_cautious_standing:loop(false);
+s_exit_cautious_standing:add("bah.fbxanim");
+table.insert(standing, s_exit_cautious_standing);
+--}
+ 
+ --{ Animation: s_exit_cautious_standing2
+s_exit_cautious_standing2 = addState(stand, "s_exit_cautious_standing2");
+-- s_exit_cautious_standing2:speedFactor(0.95);
+s_exit_cautious_standing2:from(s_stand_cautious); 
+s_exit_cautious_standing2:from(s_stand_alert);
+s_exit_cautious_standing2:from(s_stand_cautious);
+s_exit_cautious_standing2:from(walking_cautious);
+s_exit_cautious_standing2:blendTime(300);
+s_exit_cautious_standing2:loop(false);
+s_exit_cautious_standing2:add("bah2.fbxanim");
+table.insert(standing, s_exit_cautious_standing2);
+--}
+ 
+--}
+
+--{ Animation_set: Attacks
+
+--{ Animation: s_attack_melee
+s_attack_melee = addState(attack_melee, "s_attack_melee");
+s_attack_melee:blendTime(50);
+s_attack_melee:loop(false);
+-- s_attack_melee:add("melee1_down.fbxanim");
+s_attack_melee:add(angle_axis(-90), distance(0), "melee1_down.fbxanim"); 
+s_attack_melee:add(angle_axis(0), distance(0), "melee1.fbxanim");
+s_attack_melee:add(angle_axis(60), distance(0), "melee1_up.fbxanim"); 
+s_attack_melee:add(angle_axis(-90), distance(3.5), "melee1_down_far.fbxanim"); 
+s_attack_melee:add(angle_axis(0), distance(3.5), "melee1_far.fbxanim");
+s_attack_melee:add(angle_axis(60), distance(3.5), "melee1_up_far.fbxanim");
+s_attack_melee:restart(true);
+s_attack_melee:addFinishedEvent("EventAnimAttackFinished");
+table.insert(attacking, s_attack_melee);
+--}
+
+--{ Animation: s_attack_melee2
+s_attack_melee2 = addState(attack_melee2, "s_attack_melee2");
+s_attack_melee2:blendTime(50);
+s_attack_melee2:loop(false);
+s_attack_melee2:add(angle_axis(-90), distance(0), "melee2_down.fbxanim"); 
+s_attack_melee2:add(angle_axis(0), distance(0), "melee2.fbxanim");
+s_attack_melee2:add(angle_axis(60), distance(0), "melee2_up.fbxanim"); 
+s_attack_melee2:add(angle_axis(-90), distance(3.5), "melee2_down_far.fbxanim"); 
+s_attack_melee2:add(angle_axis(0), distance(3.5), "melee2_mid_far.fbxanim");
+s_attack_melee2:add(angle_axis(60), distance(3.5), "melee2_up_far.fbxanim");
+s_attack_melee2:restart(true);
+s_attack_melee2:addFinishedEvent("EventAnimAttackFinished");
+table.insert(attacking, s_attack_melee2);
+--}
+
+--{ Animation: s_reload
+s_reload = addState(reload, "s_reload");
+s_reload:blendTime(300);
+s_reload:loop(false);
+s_reload:add(angle_axis(-90), angle_around_up(-90), "reload_crossbow_downleft.fbxanim");
+s_reload:add(angle_axis(-90), angle_around_up(0), "reload_crossbow_down.fbxanim");
+s_reload:add(angle_axis(-90), angle_around_up(90), "reload_crossbow_downright.fbxanim");
+s_reload:add(angle_axis(0), angle_around_up(-90), "reload_crossbow_left.fbxanim");
+s_reload:add(angle_axis(0), angle_around_up(0), "reload_crossbow.fbxanim");
+s_reload:add(angle_axis(0), angle_around_up(90), "reload_crossbow_right.fbxanim");
+s_reload:add(angle_axis(88), angle_around_up(-90), "reload_crossbow_upleft.fbxanim");
+s_reload:add(angle_axis(88), angle_around_up(0), "reload_crossbow_up.fbxanim");
+s_reload:add(angle_axis(88), angle_around_up(90), "reload_crossbow_upright.fbxanim");
+--}
+
+--{ Animation: s_grab_child
+s_grab_child = addState(grab_child, "s_grab_child");
+s_grab_child:blendTime(150);
+s_grab_child:loop(false);
+s_grab_child:restart(true);
+s_grab_child:add("grab_child.fbxanim"); 
+s_grab_child:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+--{ Animation: s_crossbow_attack
+s_crossbow_attack = addState(attack, "s_crossbow_attack");
+s_crossbow_attack:blendTime(70);
+s_crossbow_attack:loop(false);
+s_crossbow_attack:restart(true);
+s_crossbow_attack:add(angle_axis(-90), angle_around_up(-90), "attack_crossbow_downleft.fbxanim");
+s_crossbow_attack:add(angle_axis(-90), angle_around_up(0), "attack_crossbow_down.fbxanim");
+s_crossbow_attack:add(angle_axis(-90), angle_around_up(90), "attack_crossbow_downright.fbxanim");
+s_crossbow_attack:add(angle_axis(0), angle_around_up(-90), "attack_crossbow_left.fbxanim");
+s_crossbow_attack:add(angle_axis(0), angle_around_up(0), "attack_crossbow.fbxanim");
+s_crossbow_attack:add(angle_axis(0), angle_around_up(90), "attack_crossbow_right.fbxanim");
+s_crossbow_attack:add(angle_axis(88), angle_around_up(-90), "attack_crossbow_upleft.fbxanim");
+s_crossbow_attack:add(angle_axis(88), angle_around_up(0), "attack_crossbow_up.fbxanim");
+s_crossbow_attack:add(angle_axis(88), angle_around_up(90), "attack_crossbow_upright.fbxanim");
+-- s_crossbow_attack:addEnterEvent("EventAnimAttackExecute");
+s_crossbow_attack:addFinishedEvent("EventAnimAttackFinished");
+table.insert(attacking, s_crossbow_attack);
+--}
+
+--}
+
+--{ Animation_set: movement
+
+--{ Animation: s_fall
+s_fall = addState(fall, "s_fall");
+s_fall:blendTime(100);
+s_fall:loop(true);
+s_fall:add("fall.fbxanim");
+table.insert(falling, s_fall);
+--}
+
+	--{ Animation: s_land_standing
+	s_land_standing = addState(stand, "s_land_standing");
+	s_land_standing:from(falling);
+	s_land_standing:blendTime(50);
+	s_land_standing:loop(false);
+	s_land_standing:add("land_standing.fbxanim");
+	table.insert(standing, s_land_standing);
+	--}
+
+		--{ Animation: s_land_die
+	s_land_die = addState(die, "s_land_die");
+	s_land_die:from(falling);
+	s_land_die:blendTime(10);
+	s_land_die:loop(false);
+	s_land_die:add("land_die.fbxanim");
+	-- table.insert(standing, s_land_die);
+	--}
+	
+--{ Animation: s_walk_start
+s_walk_start = addState(walk, "s_walk_start");
+s_walk_start:from(attacking);
+s_walk_start:from(standing);
+-- s_walk_start:from(walking);
+-- s_walk_start:loopBlendTime(300);
+s_walk_start:blendTime(300);
+s_walk_start:loop(false);
+-- s_walk_start:add("walk_start.fbxanim");
+s_walk_start:add(turn_angle(-90), "turn_left_walking_90.fbxanim");
+s_walk_start:add(turn_angle(-180), "turn_left_walking_180.fbxanim");
+s_walk_start:add(turn_angle(0), "walk_start.fbxanim");
+s_walk_start:add(turn_angle(90), "turn_right_walking_90.fbxanim");
+s_walk_start:add(turn_angle(180), "turn_right_walking_180.fbxanim");
+table.insert(walking, s_walk_start);
+--}
+
+--{ Animation: s_turn_left_walking
+s_turn_left_walking = addState(walk+turn_left, "s_turn_left_walking");
+s_turn_left_walking:from(standing);
+s_turn_left_walking:blendTime(300);
+s_turn_left_walking:loop(false);
+s_turn_left_walking:restart(true);
+s_turn_left_walking:add(turn_angle(0), "turn_0_aswalking.fbxanim");
+-- s_turn_left_walking:add(turn_angle(90), "turn_left_walking_90.fbxanim");
+s_turn_left_walking:add(turn_angle(180), "turn_left_walking_180.fbxanim");
+table.insert(walking, s_turn_left_walking);
+s_turn_left_walking:addFinishedEvent("EventAnimTurnComplete");
+s_turn_left_walking:addExitEvent("EventAnimTurnComplete");
+--}
+
+--{ Animation: s_turn_right_walking
+s_turn_right_walking = addState(walk+turn_right, "s_turn_right_walking");
+s_turn_right_walking:from(standing);
+s_turn_right_walking:blendTime(300);
+s_turn_right_walking:loop(false);
+s_turn_right_walking:restart(true);
+s_turn_right_walking:add(turn_angle(0), "turn_0_aswalking.fbxanim");
+-- s_turn_right_walking:add(turn_angle(90), "turn_right_walking_90.fbxanim");
+s_turn_right_walking:add(turn_angle(180), "turn_right_walking_180.fbxanim");
+table.insert(walking, s_turn_right_walking);
+s_turn_right_walking:addFinishedEvent("EventAnimTurnComplete");
+s_turn_right_walking:addExitEvent("EventAnimTurnComplete");
+--}
+
+--{ Animation: s_turn_left_aswalking
+s_turn_left_aswalking = addState(walk+turn_left, "s_turn_left_aswalking");
+s_turn_left_aswalking:from(walking);
+s_turn_left_aswalking:speedFactor(0.9);
+s_turn_left_aswalking:blendTime(400);
+s_turn_left_aswalking:loop(false);
+s_turn_left_aswalking:restart(true);
+s_turn_left_aswalking:synchronizedStartTimeGroup(79);
+s_turn_left_aswalking:add(turn_angle(0), "turn_0_aswalking.fbxanim");
+s_turn_left_aswalking:add(turn_angle(90), "turn_left_90_aswalking.fbxanim");
+s_turn_left_aswalking:add(turn_angle(180), "turn_left_180_aswalking.fbxanim");
+table.insert(walking, s_turn_left_aswalking);
+s_turn_left_aswalking:addFinishedEvent("EventAnimTurnComplete");
+s_turn_left_aswalking:addExitEvent("EventAnimTurnComplete");
+--}
+
+--{ Animation: s_turn_right_aswalking
+s_turn_right_aswalking = addState(walk+turn_right, "s_turn_right_aswalking");
+s_turn_right_aswalking:from(walking);
+s_turn_right_aswalking:speedFactor(0.9);
+s_turn_right_aswalking:blendTime(400);
+s_turn_right_aswalking:loop(false);
+s_turn_right_aswalking:restart(true);
+s_turn_right_aswalking:synchronizedStartTimeGroup(79);
+s_turn_right_aswalking:add(turn_angle(0), "turn_0_aswalking.fbxanim");
+s_turn_right_aswalking:add(turn_angle(90), "turn_right_90_aswalking.fbxanim");
+s_turn_right_aswalking:add(turn_angle(180), "turn_right_180_aswalking.fbxanim");
+table.insert(walking, s_turn_right_aswalking);
+s_turn_right_aswalking:addFinishedEvent("EventAnimTurnComplete");
+s_turn_right_aswalking:addExitEvent("EventAnimTurnComplete");
+--}
+	
+--{ Animation: s_walk
+s_walk = addState(walk, "s_walk");
+s_walk:from(walking);
+s_walk:from(staggering);
+s_walk:from(s_walk_start);
+s_walk:from(s_turn_left_walking);
+s_walk:from(s_turn_right_walking);
+s_walk:from(s_turn_right_aswalking);
+s_walk:from(s_turn_left_aswalking);
+s_walk:blendTime(500);
+s_walk:loopBlendTime(100);
+s_walk:loop(false);
+s_walk:restart(true);
+-- s_walk:add("walk.fbxanim");
+s_walk:add(slope(-30), "walk_alt0_slopedown.fbxanim");
+s_walk:add(slope(0), "walk.fbxanim");
+s_walk:add(slope(30), "walk_alt0_slopeup.fbxanim");
+table.insert(walking, s_walk);
+--}
+
+
+--{ Animation: s_walk_alt1
+-- s_walk_alt1 = addState(walk, "s_walk_alt1");
+-- s_walk_alt1:from(walking);
+-- s_walk_alt1:from(s_walk_start);
+-- s_walk_alt1:from(s_turn_left_walking);
+-- s_walk_alt1:from(s_turn_right_walking);
+-- s_walk_alt1:from(s_turn_right_aswalking);
+-- s_walk_alt1:from(s_turn_left_aswalking);
+-- s_walk_alt1:blendTime(500);
+-- s_walk_alt1:loopBlendTime(100);
+-- s_walk_alt1:loop(false);
+-- s_walk_alt1:restart(true);
+-- s_walk_alt1:add("walk_alt1.fbxanim");
+-- table.insert(walking, s_walk_alt1);
+--}
+
+--{ Animation: s_walk_alt2
+-- s_walk_alt2 = addState(walk, "s_walk_alt2");
+-- s_walk_alt2:from(walking);
+-- s_walk_alt2:from(s_walk_start);
+-- s_walk_alt2:from(s_turn_left_walking);
+-- s_walk_alt2:from(s_turn_right_walking);
+-- s_walk_alt2:from(s_turn_right_aswalking);
+-- s_walk_alt2:from(s_turn_left_aswalking);
+-- s_walk_alt2:blendTime(500);
+-- s_walk_alt2:loopBlendTime(100);
+-- s_walk_alt2:loop(false);
+-- s_walk_alt2:restart(true);
+-- s_walk_alt2:add("walk_alt2.fbxanim");
+-- table.insert(walking, s_walk_alt2);
+--}
+
+--{ Animation: s_walk_alt3
+-- s_walk_alt3 = addState(walk, "s_walk_alt3");
+-- s_walk_alt3:from(walking);
+-- s_walk_alt3:from(s_walk_start);
+-- s_walk_alt3:from(s_turn_left_walking);
+-- s_walk_alt3:from(s_turn_right_walking);
+-- s_walk_alt3:from(s_turn_right_aswalking);
+-- s_walk_alt3:from(s_turn_left_aswalking);
+-- s_walk_alt3:blendTime(500);
+-- s_walk_alt3:loopBlendTime(100);
+-- s_walk_alt3:loop(false);
+-- s_walk_alt3:restart(true);
+-- s_walk_alt3:add("walk_alt3.fbxanim");
+-- table.insert(walking, s_walk_alt3);
+--}
+	
+--{ Animation: s_walk_start_crossbow
+s_walk_start_crossbow = addState(walk+cautious, "s_walk_start_crossbow");
+-- s_walk_start_crossbow:from(standing);
+-- s_walk_start_crossbow:from(s_alarmed);
+s_walk_start_crossbow:from(s_walk_stop);
+-- s_walk_start_crossbow:from(s_stand_alert);
+-- s_walk_start_crossbow:from(walking_cautious);
+-- s_walk_start_crossbow:from(walking);
+s_walk_start_crossbow:loopBlendTime(200);
+s_walk_start_crossbow:blendTime(300);
+s_walk_start_crossbow:loop(false);
+s_walk_start_crossbow:synchronizedStartTimeGroup(82);
+s_walk_start_crossbow:add(angle_axis(-90), angle_around_up(-90), "walk_start_crossbow_downleft.fbxanim");
+s_walk_start_crossbow:add(angle_axis(-90), angle_around_up(0), "walk_start_crossbow_down.fbxanim");
+s_walk_start_crossbow:add(angle_axis(-90), angle_around_up(90), "walk_start_crossbow_downright.fbxanim");
+s_walk_start_crossbow:add(angle_axis(0), angle_around_up(-90), "walk_start_crossbow_left.fbxanim");
+s_walk_start_crossbow:add(angle_axis(0), angle_around_up(0), "walk_start_crossbow.fbxanim");
+s_walk_start_crossbow:add(angle_axis(0), angle_around_up(90), "walk_start_crossbow_right.fbxanim");
+s_walk_start_crossbow:add(angle_axis(90), angle_around_up(-90), "walk_start_crossbow_upleft.fbxanim");
+s_walk_start_crossbow:add(angle_axis(90), angle_around_up(0), "walk_start_crossbow_up.fbxanim");
+s_walk_start_crossbow:add(angle_axis(90), angle_around_up(90), "walk_start_crossbow_upright.fbxanim");
+-- table.insert(walking_cautious, s_walk_start_crossbow);
+--}
+
+--{ Animation: s_walk_start_crossbow_fromprepare
+s_walk_start_crossbow_fromprepare = addState(walk+cautious, "s_walk_start_crossbow_fromprepare");
+s_walk_start_crossbow_fromprepare:from(standing);
+s_walk_start_crossbow_fromprepare:from(preparing);
+s_walk_start_crossbow_fromprepare:from(preparing_cautious);
+s_walk_start_crossbow_fromprepare:blendTime(500);
+s_walk_start_crossbow_fromprepare:loopBlendTime(200);
+s_walk_start_crossbow_fromprepare:loop(false);
+s_walk_start_crossbow_fromprepare:synchronizedStartTimeGroup(82);
+s_walk_start_crossbow_fromprepare:add(angle_axis(0), angle_around_up(-180), "turn_crossbow_left_180.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(-90), angle_around_up(-90), "walk_start_crossbow_downleft.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(-90), angle_around_up(0), "walk_start_crossbow_down.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(-90), angle_around_up(90), "walk_start_crossbow_downright.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(0), angle_around_up(-90), "walk_start_crossbow_left.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(0), angle_around_up(0), "walk_start_crossbow.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(0), angle_around_up(90), "walk_start_crossbow_right.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(90), angle_around_up(-90), "walk_start_crossbow_upleft.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(90), angle_around_up(0), "walk_start_crossbow_up.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(90), angle_around_up(90), "walk_start_crossbow_upright.fbxanim");
+s_walk_start_crossbow_fromprepare:add(angle_axis(0), angle_around_up(180), "turn_crossbow_right_180.fbxanim");
+-- table.insert(walking_cautious, s_walk_start_crossbow_fromprepare);
+--}
+
+		--{ Animation: s_walk_start_crossbow_pvisible
+		s_walk_start_crossbow_pvisible = addState(walk+cautious+player_visual, "s_walk_start_crossbow_pvisible");
+		s_walk_start_crossbow_pvisible:from(s_alarmed);
+		s_walk_start_crossbow_pvisible:from(s_alarmed2);
+		s_walk_start_crossbow_pvisible:from(s_walk_stop);
+		s_walk_start_crossbow_pvisible:from(s_stand_alert);
+		-- s_walk_start_crossbow_pvisible:from(walking_cautious);
+		-- s_walk_start_crossbow_pvisible:from(walking);
+		-- s_walk_start_crossbow_pvisible:loopBlendTime(300);
+		s_walk_start_crossbow_pvisible:blendTime(300);
+		s_walk_start_crossbow_pvisible:loop(false);
+		s_walk_start_crossbow_pvisible:add(angle_axis(-90), angle_around_up(-90), "walk_start_crossbow_downleft.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(-90), angle_around_up(0), "walk_start_crossbow_down.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(-90), angle_around_up(90), "walk_start_crossbow_downright.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(0), angle_around_up(-90), "walk_start_crossbow_left.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(0), angle_around_up(0), "walk_start_crossbow.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(0), angle_around_up(90), "walk_start_crossbow_right.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(90), angle_around_up(-90), "walk_start_crossbow_upleft.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(90), angle_around_up(0), "walk_start_crossbow_up.fbxanim");
+		s_walk_start_crossbow_pvisible:add(angle_axis(90), angle_around_up(90), "walk_start_crossbow_upright.fbxanim");
+		table.insert(walking_cautious, s_walk_start_crossbow_pvisible);
+		--}
+
+--{ Animation: s_turn_left_cautious
+s_turn_left_cautious = addState(walk+cautious+turn_left, "s_turn_left_cautious");
+s_turn_left_cautious:from(walking_cautious);
+s_turn_left_cautious:blendTime(300);
+s_turn_left_cautious:loop(false);
+s_turn_left_cautious:speedFactor(0.9);
+s_turn_left_cautious:restart(true);
+s_turn_left_cautious:synchronizedStartTimeGroup(78);
+s_turn_left_cautious:add(turn_angle(0), "turn_crossbow_0.fbxanim");
+s_turn_left_cautious:add(turn_angle(90), "turn_crossbow_left_90.fbxanim");
+s_turn_left_cautious:add(turn_angle(180), "turn_crossbow_left_180.fbxanim");
+s_turn_left_cautious:addFinishedEvent("EventAnimTurnComplete");
+s_turn_left_cautious:addExitEvent("EventAnimTurnComplete");
+table.insert(walking_cautious, s_turn_left_cautious);
+--}
+
+--{ Animation: s_turn_right_cautious
+s_turn_right_cautious = addState(walk+cautious+turn_right, "s_turn_right_cautious");
+s_turn_right_cautious:from(walking_cautious);
+s_turn_right_cautious:blendTime(300);
+s_turn_right_cautious:loop(false);
+s_turn_right_cautious:speedFactor(0.9);
+s_turn_right_cautious:restart(true);
+s_turn_right_cautious:synchronizedStartTimeGroup(78);
+s_turn_right_cautious:add(turn_angle(0), "turn_crossbow_0.fbxanim");
+s_turn_right_cautious:add(turn_angle(90), "turn_crossbow_right_90.fbxanim");
+s_turn_right_cautious:add(turn_angle(180), "turn_crossbow_right_180.fbxanim");
+s_turn_right_cautious:addFinishedEvent("EventAnimTurnComplete");
+s_turn_right_cautious:addExitEvent("EventAnimTurnComplete");
+table.insert(walking_cautious, s_turn_right_cautious);
+--}
+		
+--{ Animation: s_walk_crossbow
+s_walk_crossbow = addState(walk+cautious, "s_walk_crossbow");
+s_walk_crossbow:from(s_walk_start_crossbow);
+s_walk_crossbow:from(s_walk_start_crossbow_fromprepare);
+s_walk_crossbow:from(s_walk_start_crossbow_pvisible);
+s_walk_crossbow:from(s_turn_right_cautious);
+s_walk_crossbow:from(s_turn_left_cautious);
+s_walk_crossbow:from(s_walk_start);
+s_walk_crossbow:from(s_walk);
+-- s_walk_crossbow:from(s_walk_alt1);
+-- s_walk_crossbow:from(s_walk_alt2);
+-- s_walk_crossbow:from(s_walk_alt3);
+s_walk_crossbow:blendTime(300);
+s_walk_crossbow:loop(true);
+s_walk_crossbow:restart(true);
+s_walk_crossbow:synchronizedStartTimeGroup(77);
+s_walk_crossbow:add(angle_axis(-90), angle_around_up(-90), "walk_crossbow_downleft.fbxanim");
+s_walk_crossbow:add(angle_axis(-90), angle_around_up(0), "walk_crossbow_down.fbxanim");
+s_walk_crossbow:add(angle_axis(-90), angle_around_up(90), "walk_crossbow_downright.fbxanim");
+s_walk_crossbow:add(angle_axis(0), angle_around_up(-90), "walk_crossbow_left.fbxanim");
+s_walk_crossbow:add(angle_axis(0), angle_around_up(0), "walk_crossbow_center.fbxanim");
+s_walk_crossbow:add(angle_axis(0), angle_around_up(90), "walk_crossbow_right.fbxanim");
+s_walk_crossbow:add(angle_axis(90), angle_around_up(-90), "walk_crossbow_upleft.fbxanim");
+s_walk_crossbow:add(angle_axis(90), angle_around_up(0), "walk_crossbow_up.fbxanim");
+s_walk_crossbow:add(angle_axis(90), angle_around_up(90), "walk_crossbow_upright.fbxanim");
+table.insert(walking_cautious, s_walk_crossbow);
+--}
+
+		--{ Animation: s_walk_crossbow_pvisible
+		s_walk_crossbow_pvisible = addState(walk+cautious+player_visual, "s_walk_crossbow_pvisible");
+		-- s_walk_crossbow_pvisible:from(s_walk_start_crossbow);
+		-- s_walk_crossbow_pvisible:from(s_turn_right_cautious);
+		-- s_walk_crossbow_pvisible:from(s_turn_left_cautious);
+		-- s_walk_crossbow_pvisible:from(s_walk_start);
+		-- s_walk_crossbow_pvisible:from(s_walk);
+		-- s_walk_crossbow_pvisible:from(s_walk_alt1);
+		-- s_walk_crossbow_pvisible:from(s_walk_alt2);
+		-- s_walk_crossbow_pvisible:from(s_walk_alt3);
+		s_walk_crossbow_pvisible:blendTime(300);
+		s_walk_crossbow_pvisible:loop(true);
+		s_walk_crossbow_pvisible:restart(true);
+		s_walk_crossbow_pvisible:synchronizedStartTimeGroup(77);
+		s_walk_crossbow_pvisible:add(angle_axis(-90), angle_around_up(-90), "walk_crossbow_downleft.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(-90), angle_around_up(0), "walk_crossbow_down.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(-90), angle_around_up(90), "walk_crossbow_downright.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(0), angle_around_up(-90), "walk_crossbow_left.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(0), angle_around_up(0), "walk_crossbow_center.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(0), angle_around_up(90), "walk_crossbow_right.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(90), angle_around_up(-90), "walk_crossbow_upleft.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(90), angle_around_up(0), "walk_crossbow_up.fbxanim");
+		s_walk_crossbow_pvisible:add(angle_axis(90), angle_around_up(90), "walk_crossbow_upright.fbxanim");
+		table.insert(walking_cautious, s_walk_crossbow_pvisible);
+		--}
+
+
+-- These are a bit special case and need to be connected after the cautious walkings are created.
+s_stand_alert:from(s_walk_start_crossbow);
+s_stand_alert:from(s_walk_start_crossbow_fromprepare);
+s_stand_alert:from(s_walk_start_crossbow_pvisible);
+s_stand_alert:from(s_walk_crossbow);
+s_stand_alert:from(attacking);
+
+--{ Animation: s_turn_preparation
+s_turn_preparation = addState(stand+prepare, "s_turn_preparation");
+s_turn_preparation:blendTime(600);
+s_turn_preparation:from(standing);
+s_turn_preparation:from(s_walk_crossbow);
+--s_turn_preparation:loop(true);
+s_turn_preparation:restart(true);
+s_turn_preparation:add("turn_preparation.fbxanim");
+s_turn_preparation:addFinishedEvent("EventAnimPrepareToTurnFinished");
+table.insert(preparing, s_turn_preparation);
+--}
+
+--{ Animation: s_turn_preparation_cautious
+s_turn_preparation_cautious = addState(stand+prepare+cautious, "s_turn_preparation_cautious");
+s_turn_preparation_cautious:blendTime(500);
+s_turn_preparation_cautious:from(standing);
+s_turn_preparation_cautious:from(s_walk_crossbow);
+s_turn_preparation_cautious:from(s_stand_alert);
+--s_turn_preparation_cautious:loop(true);
+s_turn_preparation_cautious:restart(true);
+s_turn_preparation_cautious:add("turn_preparation_cautious.fbxanim");
+s_turn_preparation_cautious:addFinishedEvent("EventAnimPrepareToTurnFinished");
+table.insert(preparing_cautious, s_turn_preparation_cautious);
+--}	
+
+--{ Animation: s_run
+s_run = addState(walk+fast, "s_run");
+s_run:from(walking);
+s_run:from(standing);
+s_run:blendTime(100);
+s_run:loop(true);
+s_run:restart(true);
+s_run:add("run.fbxanim");
+table.insert(walking, s_run);
+--}
+
+--{ Animation: s_run_crossbow
+s_run_crossbow = addState(walk+fast+cautious, "s_run_crossbow");
+-- s_run_crossbow:from(standing);
+s_run_crossbow:from(standing);
+s_run_crossbow:from(walking);
+s_run_crossbow:from(walking_cautious);
+s_run_crossbow:from(s_walk_stop);
+s_run_crossbow:from(s_stand_alert);
+s_run_crossbow:from(attacking);
+s_run_crossbow:blendTime(100);
+s_run_crossbow:loop(true);
+s_run_crossbow:restart(true);
+s_run_crossbow:synchronizedStartTimeGroup(66);
+s_run_crossbow:add(angle_axis(-90), angle_around_up(-90), "run_crossbow_downleft.fbxanim");
+s_run_crossbow:add(angle_axis(-90), angle_around_up(0), "run_crossbow_down.fbxanim");
+s_run_crossbow:add(angle_axis(-90), angle_around_up(90), "run_crossbow_downright.fbxanim");
+s_run_crossbow:add(angle_axis(0), angle_around_up(-90), "run_crossbow_left.fbxanim");
+s_run_crossbow:add(angle_axis(0), angle_around_up(0), "run_crossbow.fbxanim");
+s_run_crossbow:add(angle_axis(0), angle_around_up(90), "run_crossbow_right.fbxanim");
+s_run_crossbow:add(angle_axis(90), angle_around_up(-90), "run_crossbow_upleft.fbxanim");
+s_run_crossbow:add(angle_axis(90), angle_around_up(0), "run_crossbow_up.fbxanim");
+s_run_crossbow:add(angle_axis(90), angle_around_up(90), "run_crossbow_upright.fbxanim");
+table.insert(walking, s_run_crossbow);
+--}	
+
+--{ Animation: s_run_crossbow_pvisible
+s_run_crossbow_pvisible = addState(walk+fast+cautious+player_visual, "s_run_crossbow_pvisible");
+-- s_run_crossbow_pvisible:from(standing);
+s_run_crossbow_pvisible:from(walking);
+s_run_crossbow_pvisible:from(walking_cautious);
+s_run_crossbow_pvisible:from(s_walk_stop);
+s_run_crossbow_pvisible:from(s_stand_alert);
+s_run_crossbow_pvisible:from(attacking);
+s_run_crossbow_pvisible:blendTime(300);
+s_run_crossbow_pvisible:loop(true);
+s_run_crossbow_pvisible:restart(true);
+s_run_crossbow_pvisible:synchronizedStartTimeGroup(66);
+s_run_crossbow_pvisible:add(angle_axis(-90), angle_around_up(-90), "run_crossbow_downleft.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(-90), angle_around_up(0), "run_crossbow_down.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(-90), angle_around_up(90), "run_crossbow_downright.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(0), angle_around_up(-90), "run_crossbow_left.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(0), angle_around_up(0), "run_crossbow.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(0), angle_around_up(90), "run_crossbow_right.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(90), angle_around_up(-90), "run_crossbow_upleft.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(90), angle_around_up(0), "run_crossbow_up.fbxanim");
+s_run_crossbow_pvisible:add(angle_axis(90), angle_around_up(90), "run_crossbow_upright.fbxanim");
+table.insert(walking, s_run_crossbow_pvisible);
+--}	
+
+--{ Animation: s_run_crossbow_childvisible
+s_run_crossbow_childvisible = addState(walk+fast+cautious+child_visual, "s_run_crossbow_childvisible");
+-- s_run_crossbow_childvisible:from(standing);
+s_run_crossbow_childvisible:from(walking);
+s_run_crossbow_childvisible:from(walking_cautious);
+s_run_crossbow_childvisible:from(s_walk_stop);
+s_run_crossbow_childvisible:from(s_stand_alert);
+s_run_crossbow_childvisible:from(attacking);
+s_run_crossbow_childvisible:blendTime(300);
+s_run_crossbow_childvisible:loop(true);
+s_run_crossbow_childvisible:restart(true);
+s_run_crossbow_childvisible:synchronizedStartTimeGroup(66);
+s_run_crossbow_childvisible:add("run_chasing.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(-90), angle_around_up(-90), "run_crossbow_downleft.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(-90), angle_around_up(0), "run_crossbow_down.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(-90), angle_around_up(90), "run_crossbow_downright.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(0), angle_around_up(-90), "run_crossbow_left.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(0), angle_around_up(0), "run_crossbow.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(0), angle_around_up(90), "run_crossbow_right.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(90), angle_around_up(-90), "run_crossbow_upleft.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(90), angle_around_up(0), "run_crossbow_up.fbxanim");
+-- s_run_crossbow_childvisible:add(angle_axis(90), angle_around_up(90), "run_crossbow_upright.fbxanim");
+table.insert(walking, s_run_crossbow_childvisible);
+--}	
+
+--{ Animation: s_turn_left_run
+s_turn_left_run = addState(walk+fast+turn_left, "s_turn_left_run");
+s_turn_left_run:from(walking);
+s_turn_left_run:blendTime(50);
+s_turn_left_run:loop(false);
+s_turn_left_run:restart(true);
+s_turn_left_run:synchronizedStartTimeGroup(66);
+s_turn_left_run:add(turn_angle(0), "turn_run_0.fbxanim");
+s_turn_left_run:add(turn_angle(90), "turn_run_left_90.fbxanim");
+s_turn_left_run:add(turn_angle(180), "turn_run_left_180.fbxanim");
+s_turn_left_run:addFinishedEvent("EventAnimTurnComplete");
+s_turn_left_run:addExitEvent("EventAnimTurnComplete");
+table.insert(walking, s_turn_left_run);
+--}
+
+--{ Animation: s_turn_right_run
+s_turn_right_run = addState(walk+fast+turn_right, "s_turn_right_run");
+s_turn_right_run:from(walking);
+s_turn_right_run:blendTime(50);
+s_turn_right_run:loop(false);
+s_turn_right_run:restart(true);
+s_turn_right_run:synchronizedStartTimeGroup(66);
+s_turn_right_run:add(turn_angle(0), "turn_run_0.fbxanim");
+s_turn_right_run:add(turn_angle(90), "turn_run_right_90.fbxanim");
+s_turn_right_run:add(turn_angle(180), "turn_run_right_180.fbxanim");
+s_turn_right_run:addFinishedEvent("EventAnimTurnComplete");
+s_turn_right_run:addExitEvent("EventAnimTurnComplete");
+table.insert(walking, s_turn_right_run);
+--}
+
+--{ Animation: s_turn_left_run_cautious
+s_turn_left_run_cautious = addState(walk+fast+cautious+turn_left, "s_turn_left_run_cautious");
+s_turn_left_run_cautious:from(walking);
+s_turn_left_run_cautious:from(walking_cautious);
+s_turn_left_run_cautious:from(s_stand_alert);
+s_turn_left_run_cautious:from(s_walk_crossbow);
+s_turn_left_run_cautious:from(s_run_crossbow);
+s_turn_left_run_cautious:blendTime(300);
+s_turn_left_run_cautious:loop(false);
+s_turn_left_run_cautious:restart(true);
+s_turn_left_run_cautious:add(turn_angle(0), "turn_run_0.fbxanim");
+s_turn_left_run_cautious:add(turn_angle(90), "turn_run_left_90.fbxanim");
+s_turn_left_run_cautious:add(turn_angle(180), "turn_run_left_180.fbxanim");
+s_turn_left_run_cautious:addFinishedEvent("EventAnimTurnComplete");
+s_turn_left_run_cautious:addExitEvent("EventAnimTurnComplete");
+table.insert(walking_cautious, s_turn_left_run_cautious);
+--}
+
+--{ Animation: s_turn_right_run_cautious
+s_turn_right_run_cautious = addState(walk+fast+cautious+turn_right, "s_turn_right_run_cautious");
+s_turn_right_run_cautious:from(walking);
+s_turn_right_run_cautious:from(walking_cautious);
+s_turn_right_run_cautious:from(s_stand_alert);
+s_turn_right_run_cautious:from(s_walk_crossbow);
+s_turn_right_run_cautious:from(s_run_crossbow);
+s_turn_right_run_cautious:blendTime(300);
+s_turn_right_run_cautious:loop(false);
+s_turn_right_run_cautious:restart(true);
+s_turn_right_run_cautious:add(turn_angle(0), "turn_run_0.fbxanim");
+s_turn_right_run_cautious:add(turn_angle(90), "turn_run_right_90.fbxanim");
+s_turn_right_run_cautious:add(turn_angle(180), "turn_run_right_180.fbxanim");
+s_turn_right_run_cautious:addFinishedEvent("EventAnimTurnComplete");
+s_turn_right_run_cautious:addExitEvent("EventAnimTurnComplete");
+table.insert(walking_cautious, s_turn_right_run_cautious);
+--}
+
+--{ Animation: sidewalk_l
+sidewalk_l = addState(walk_left, "sidewalk_l");
+sidewalk_l:blendTime(300);
+sidewalk_l:loop(true);
+sidewalk_l:add("strafe_left.fbxanim");
+table.insert(walking, sidewalk_l);
+--}
+
+--{ Animation: sidewalk_r
+sidewalk_r = addState(walk_right, "sidewalk_r");
+sidewalk_r:blendTime(300);
+sidewalk_r:loop(true);
+sidewalk_r:add("strafe_right.fbxanim");
+table.insert(walking, sidewalk_r);
+--}
+
+--{ Animation: fight_sidewalk_l
+fight_sidewalk_l = addState(cautious+walk_left, "fight_sidewalk_l");
+fight_sidewalk_l:blendTime(300);
+fight_sidewalk_l:loop(true);
+fight_sidewalk_l:add("fight_sidewalk_l.fbxanim");
+table.insert(walking, fight_sidewalk_l);
+--}
+ 
+--{ Animation: fight_sidewalk_r
+fight_sidewalk_r = addState(cautious+walk_right, "fight_sidewalk_r");
+fight_sidewalk_r:blendTime(300);
+fight_sidewalk_r:loop(true);
+fight_sidewalk_r:add("fight_sidewalk_r.fbxanim");
+table.insert(walking, fight_sidewalk_r);
+--}
+ 
+ --{ Animation: s_push
+s_push = addState(push, "s_push");
+s_push:from(walking);
+s_push:from(standing);
+s_push:from(walking_cautious);
+s_push:blendTime(400);
+s_push:loop(false);
+-- s_push:add("push.fbxanim");
+-- s_push:add(push_angle(45),push_speed(0.0), 0.5, "push_right.fbxanim");
+-- s_push:add(push_angle(45),push_speed(0.5), 0.5, "push_right.fbxanim");
+-- s_push:add(push_angle(45),push_speed(1.0), 1.0, "push_right.fbxanim");
+-- s_push:add(push_angle(45),push_speed(2.0), 2.0, "push_right.fbxanim"); 
+-- s_push:add(push_angle(45),push_speed(3.0), 2.0, "push_right.fbxanim");
+
+-- s_push:add(push_angle(-45),push_speed(0.0), 0.5, "push_left.fbxanim");
+-- s_push:add(push_angle(-45),push_speed(0.5), 0.5, "push_left.fbxanim");
+-- s_push:add(push_angle(-45),push_speed(1.0), 1.0, "push_left.fbxanim");
+-- s_push:add(push_angle(-45),push_speed(2.0), 2.0, "push_left.fbxanim"); 
+-- s_push:add(push_angle(-45),push_speed(3.0), 2.0, "push_left.fbxanim");
+
+-- s_push:add(push_angle(0),push_speed(0.0), 0.5, "push.fbxanim");
+-- s_push:add(push_angle(0),push_speed(0.5), 0.5, "push.fbxanim");
+-- s_push:add(push_angle(0),push_speed(1.0), 1.0, "push.fbxanim");
+-- s_push:add(push_angle(0),push_speed(2.0), 2.0, "push.fbxanim"); 
+-- s_push:add(push_angle(0),push_speed(3.0), 2.0, "push.fbxanim");
+
+-- s_push:speedFactor(push_speed);
+-- s_push:speedFactorFromParam(push_speed
+
+
+s_push:add(push_angle(-22), "push_left.fbxanim");
+s_push:add(push_angle(-90), "push_left_90.fbxanim");
+s_push:add(push_angle(0), "push.fbxanim");
+s_push:add(push_angle(22), "push_right.fbxanim");
+s_push:add(push_angle(90), "push_right_90.fbxanim");
+table.insert(standing, s_push);
+--}
+--{ Animation: s_push_loop
+s_push_loop = addState(push, "s_push_loop");
+s_push_loop:blendTime(400);
+s_push_loop:loopBlendTime(300);
+s_push_loop:from(s_push);
+s_push_loop:loop(true);
+-- s_push_loop:speedFactorFromParam(push_speed);
+-- s_push_loop:add("push_loop.fbxanim");
+-- s_push_loop:add(push_speed(0.0), 0.5, "push_loop.fbxanim");
+-- s_push_loop:add(push_speed(0.5), 0.5, "push_loop.fbxanim");
+-- s_push_loop:add(push_speed(1.0), 1.0, "push_loop.fbxanim");
+-- s_push_loop:add(push_speed(2.0), 2.0, "push_loop.fbxanim"); 
+-- s_push_loop:add(push_speed(3.0), 2.0, "push_loop.fbxanim");
+
+
+-- s_push_loop:add(push_angle(90),push_speed(0.0), 0.5, "push_loop_right.fbxanim");
+-- s_push_loop:add(push_angle(90),push_speed(0.5), 0.5, "push_loop_right.fbxanim");
+-- s_push_loop:add(push_angle(90),push_speed(1.0), 1.0, "push_loop_right.fbxanim");
+-- s_push_loop:add(push_angle(90),push_speed(2.0), 2.0, "push_loop_right.fbxanim"); 
+-- s_push_loop:add(push_angle(90),push_speed(3.0), 2.0, "push_loop_right.fbxanim");
+
+-- s_push_loop:add(push_angle(-90),push_speed(0.0), 0.5, "push_loop_left.fbxanim");
+-- s_push_loop:add(push_angle(-90),push_speed(0.5), 0.5, "push_loop_left.fbxanim");
+-- s_push_loop:add(push_angle(-90),push_speed(1.0), 1.0, "push_loop_left.fbxanim");
+-- s_push_loop:add(push_angle(-90),push_speed(2.0), 2.0, "push_loop_left.fbxanim"); 
+-- s_push_loop:add(push_angle(-90),push_speed(3.0), 2.0, "push_loop_left.fbxanim");
+
+-- s_push_loop:add(push_angle(0),push_speed(0.0), 0.5, "push_loop.fbxanim");
+-- s_push_loop:add(push_angle(0),push_speed(0.5), 0.5, "push_loop.fbxanim");
+-- s_push_loop:add(push_angle(0),push_speed(1.0), 1.0, "push_loop.fbxanim");
+-- s_push_loop:add(push_angle(0),push_speed(2.0), 2.0, "push_loop.fbxanim"); 
+-- s_push_loop:add(push_angle(0),push_speed(3.0), 2.0, "push_loop.fbxanim");
+
+-- s_push_loop:speedFactor(push_speed);
+
+
+s_push_loop:add(push_angle(-22), "push_loop_left.fbxanim");
+s_push_loop:add(push_angle(-90), "push_loop_left_90.fbxanim");
+s_push_loop:add(push_angle(0), "push_loop.fbxanim");
+s_push_loop:add(push_angle(22), "push_loop_right.fbxanim");
+s_push_loop:add(push_angle(90), "push_loop_right_90.fbxanim");
+
+table.insert(walking, s_push_loop);
+--}
+ --}
+ 
+s_walk_start:from(s_push_loop);
+s_walk_start_crossbow:from(s_push_loop);
+s_walk_start_crossbow:from(s_walk_start_crossbow_fromprepare);
+s_walk_start_crossbow:from(s_walk_start_crossbow_pvisible);
+s_walk_start_crossbow:from(s_push_loop);
+s_run_crossbow:from(s_push_loop);
+s_run:from(s_push_loop);
+ 
+--{ Animation_set: stagger & death
+
+	--{ Animation: s_jump_attack_death_start
+	s_jump_attack_death_start = addState(die+jump_attack_ready, "s_jump_attack_death_start");
+	s_jump_attack_death_start:blendTime(50); 
+	s_jump_attack_death_start:loop(false);
+	s_jump_attack_death_start:add("guard_die_jump_attack_start.fbxanim");
+	--}
+	
+	--{ Animation: s_jump_attack_death
+	s_jump_attack_death = addState(die+jump_attack, "s_jump_attack_death"); 
+	s_jump_attack_death:blendTime(50);
+	s_jump_attack_death:loop(false);
+	s_jump_attack_death:add("guard_die_jump_attack.fbxanim");
+	--}
+	
+	--{ Animation: s_jump_crush_death_start
+	s_jump_crush_death_start = addState(die+jump_crush_ready, "s_jump_crush_death_start");
+	s_jump_crush_death_start:blendTime(50);
+	s_jump_crush_death_start:loop(false);
+	s_jump_crush_death_start:add("guard_die_jump_crush_start.fbxanim");
+	--}
+	 
+	--{ Animation: s_jump_crush_death
+	s_jump_crush_death = addState(fall_crush, "s_jump_crush_death");
+	s_jump_crush_death:blendTime(50);
+	s_jump_crush_death:loop(false);
+	s_jump_crush_death:add("guard_die_jump_crush.fbxanim");
+	--s_jump_crush_death:add("guard_die_heavy_crush.fbxanim");
+	--}
+	
+	--{ Animation: s_jump_crush_heavy_death
+	s_jump_crush_heavy_death = addState(fall_crush+heavy, "s_jump_crush_heavy_death");
+	s_jump_crush_heavy_death:blendTime(50);
+	s_jump_crush_heavy_death:loop(false);  
+	s_jump_crush_heavy_death:add("guard_die_heavy_crush.fbxanim");
+	--}
+	
+	--{ Animation: s_stagger1
+	s_stagger1 = addState(stagger, "s_stagger1");
+	s_stagger1:blendTime(0);
+	s_stagger1:loop(false); 
+	s_stagger1:restart(true);
+	s_stagger1:add("stagger1.fbxanim");
+	s_stagger1:addFinishedEvent("EventAnimStaggerFinished"); 
+	s_stagger1:addExitEvent("EventAnimStaggerFinished"); 
+	table.insert(staggering, s_stagger1);
+	--}
+	
+	-- attack_dir_clamped = addParam("attack_dir_clamped") 
+	  
+	-- if attack_dir >= 135.0 then attack_dir_clamped = 180.0 end 
+	-- elseif attack_dir <= -135 then attack_dir_clamped = -180    
+	-- elseif attack_dir < 135 and attack_dir >= 90 then attack_dir_clamped = 90
+ 	-- elseif attack_dir > -135 and attack_dir <= -90 then attack_dir_clamped = -90 
+	-- elseif attack_dir < 90 and attack_dir >= 45 then attack_dir_clamped = 90
+	-- elseif attack_dir > -90 and attack_dir <= -45 then attack_dir_clamped = -90 
+	-- elseif attack_dir > -45 and attack_dir < 45 then attack_dir_clamped = 0 end
+	
+	--{ Animation: s_stagger_nonlethal
+	s_stagger_nonlethal = addState(die+poisoned, "s_stagger_nonlethal"); 
+	s_stagger_nonlethal:blendTime(50);
+	s_stagger_nonlethal:loop(false);
+	s_stagger_nonlethal:add(attack_dir(-180), "stagger_nonlethal_back.fbxanim");
+	s_stagger_nonlethal:add(attack_dir(-90), "stagger_nonlethal_right.fbxanim");
+	s_stagger_nonlethal:add(attack_dir(0), "stagger_nonlethal_front.fbxanim");	
+	s_stagger_nonlethal:add(attack_dir(90), "stagger_nonlethal_left.fbxanim");
+	s_stagger_nonlethal:add(attack_dir(180), "stagger_nonlethal_back.fbxanim");
+	
+	--}
+	
+	--{ Animation: s_death1
+	s_death1 = addState(die, "s_death1");
+	s_death1:blendTime(50);
+	s_death1:loop(false); 
+	s_death1:add("land_die.fbxanim");
+	--} 
+
+	--{ Animation: s_death_poisoned
+	s_death_poisoned = addState(poisoned, "s_death_poisoned");
+	s_death_poisoned:blendTime(50); 
+	s_death_poisoned:loop(false);
+	s_death_poisoned:from(s_stagger_nonlethal);
+	s_death_poisoned:add(attack_dir(180), "death_poisoned_back.fbxanim");
+	s_death_poisoned:add(attack_dir(135.1), "death_poisoned_back.fbxanim");
+	s_death_poisoned:add(attack_dir(134.9), "death_poisoned_left.fbxanim");
+	s_death_poisoned:add(attack_dir(45.1), "death_poisoned_left.fbxanim");
+	s_death_poisoned:add(attack_dir(44.9), "death_poisoned_front.fbxanim");
+	s_death_poisoned:add(attack_dir(-44.9), "death_poisoned_front.fbxanim");
+	s_death_poisoned:add(attack_dir(-45.1), "death_poisoned_right.fbxanim");
+	s_death_poisoned:add(attack_dir(-134.9), "death_poisoned_right.fbxanim");
+	s_death_poisoned:add(attack_dir(-135.1), "death_poisoned_back.fbxanim");
+	s_death_poisoned:add(attack_dir(-180), "death_poisoned_back.fbxanim");
+	--}
+	 
+	--{ Animation: s_death_explosion
+	s_death_explosion = addState(die+exploded, "s_death_explosion");
+	s_death_explosion:blendTime(50);
+	s_death_explosion:loop(false);
+	-- s_death_explosion:add("exlosion_death_r.fbxanim");
+	s_death_explosion:add(attack_dir(180), "exlosion_death_b.fbxanim");
+	s_death_explosion:add(attack_dir(135.1), "exlosion_death_b.fbxanim");
+	s_death_explosion:add(attack_dir(134.9), "exlosion_death_l.fbxanim");
+	s_death_explosion:add(attack_dir(45.1), "exlosion_death_l.fbxanim");
+	s_death_explosion:add(attack_dir(44.9), "exlosion_death_f.fbxanim");
+	s_death_explosion:add(attack_dir(-44.9), "exlosion_death_f.fbxanim");
+	s_death_explosion:add(attack_dir(-45.1), "exlosion_death_r.fbxanim");
+	s_death_explosion:add(attack_dir(-134.9), "exlosion_death_r.fbxanim");
+	s_death_explosion:add(attack_dir(-135.1), "exlosion_death_b.fbxanim");
+	s_death_explosion:add(attack_dir(-180), "exlosion_death_b.fbxanim");
+	--} 
+	 
+	-- -- { Animation: s_death2
+	-- s_death2 = addState(die+lethal_attack_1, "s_death2");
+	-- s_death2:blendTime(0);
+	-- s_death2:loop(false);
+
+	-- --s_death2:absoluteRootMotionPosition(true);
+	-- --s_death2:absoluteRootMotionRotation(true);
+
+	-- s_death2:add(attack_dir(135), "stab_2_r90.fbxanim");
+	-- s_death2:add(attack_dir(90), "stab_2_r90.fbxanim");
+	-- s_death2:add(attack_dir(67.5), "stab_2_r90.fbxanim");
+	-- s_death2:add(attack_dir(67.5), "stab_2_r45.fbxanim");
+	-- s_death2:add(attack_dir(45), "stab_2_r45.fbxanim");
+	-- s_death2:add(attack_dir(22.5), "stab_2_r45.fbxanim");
+	-- s_death2:add(attack_dir(22.5), "stab_2_c0.fbxanim");
+	-- s_death2:add(attack_dir(0), "stab_2_c0.fbxanim");
+	-- s_death2:add(attack_dir(-22.5), "stab_2_c0.fbxanim");
+	-- s_death2:add(attack_dir(-22.5), "stab_2_l45.fbxanim");
+	-- s_death2:add(attack_dir(-45), "stab_2_l45.fbxanim");
+	-- s_death2:add(attack_dir(-67.5), "stab_2_l45.fbxanim");
+	-- s_death2:add(attack_dir(-67.5), "stab_2_l90.fbxanim");
+	-- s_death2:add(attack_dir(-90), "stab_2_l90.fbxanim");
+	-- s_death2:add(attack_dir(-135), "stab_2_l90.fbxanim");
+	-- -- } 
+	
+	-- -- { Animation: s_death4
+	-- s_death4 = addState(die+lethal_attack_2, "s_death4");
+	-- s_death4:blendTime(0);
+	-- s_death4:loop(false);
+
+	-- s_death4:add(attack_dir(180), "stab_3_f.fbxanim");
+	-- s_death4:add(attack_dir(157.5), "stab_3_f.fbxanim");
+	-- s_death4:add(attack_dir(157.5), "stab_3_l135.fbxanim");
+	-- s_death4:add(attack_dir(112.5), "stab_3_l135.fbxanim");
+	-- s_death4:add(attack_dir(112.5), "stab_3_l90.fbxanim");
+	-- s_death4:add(attack_dir(67.5), "stab_3_l90.fbxanim");
+	-- s_death4:add(attack_dir(67.5), "stab_3_l45.fbxanim");
+	-- s_death4:add(attack_dir(22.5), "stab_3_l45.fbxanim");
+	-- s_death4:add(attack_dir(22.5), "stab_3_b.fbxanim");
+	-- s_death4:add(attack_dir(-22.5), "stab_3_b.fbxanim");
+	-- s_death4:add(attack_dir(-22.5), "stab_3_r45.fbxanim");
+	-- s_death4:add(attack_dir(-67.5), "stab_3_r45.fbxanim");
+	-- s_death4:add(attack_dir(-67.5), "stab_3_r90.fbxanim");
+	-- s_death4:add(attack_dir(-112.5), "stab_3_r90.fbxanim");
+	-- s_death4:add(attack_dir(-112.5), "stab_3_r135.fbxanim");
+	-- s_death4:add(attack_dir(-157.5), "stab_3_r135.fbxanim");
+	-- s_death4:add(attack_dir(-157.5), "stab_3_f.fbxanim");
+	-- s_death4:add(attack_dir(-180), "stab_3_f.fbxanim");
+	-- -- } 
+
+	 
+--{ STAB COMBO DIE
+
+	--{ Handy dandy helper function
+		start="start"; hold="hold"; unstab="unstab"; restab="restab"; stop="end" -- stop is not named end because it's a keyword in Lua.
+		combo_phases={start,hold,unstab,restab,stop}
+		
+		function addComboState(contexts, phase, combo_number, repeat_number, name)
+			assert_string(phase)
+			assert_number(combo_number)
+			assert_table(attacking)
+			if repeat_number == nil then repeat_number = 1 end
+			
+			do -- phase validity check
+				local combo_phase_is_valid = false
+				for _,p in pairs(combo_phases) do
+					if p==phase then
+						combo_phase_is_valid = true
+					end
+				end
+				assert(combo_phase_is_valid)
+			end
+			
+			do -- Make sure necessary contexts exist
+				if not combo_contexts then combo_contexts={} end
+				if not combo_contexts[combo_number] then
+					combo_contexts[combo_number] = addContext("stab_combo_"..combo_number, -9)
+				end
+				if not phase_contexts then phase_contexts = {} end
+				if not phase_contexts[phase] then
+					phase_contexts[phase] = addContext("stab_phase_"..phase, -8)
+				end
+				
+				if not repeat_contexts then repeat_contexts = {} end
+				if not repeat_contexts[repeat_number] then
+					repeat_contexts[repeat_number] = addContext("stab_repeat_"..repeat_number, -7)
+				end
+			end
+			
+			if not contexts then
+				contexts = combo_contexts[combo_number]+phase_contexts[phase]+repeat_contexts[repeat_number]
+			else
+				contexts = contexts+combo_contexts[combo_number]+phase_contexts[phase]+repeat_contexts[repeat_number]
+			end
+			
+			if not name then
+				name = "s_stab_combo_"..combo_number.."_"..phase.."_r"..repeat_number.."_".. #attacking
+			end
+			
+			-- Create state and set it up
+			local s_combo = addState(contexts, name)
+			s_combo:blendTime(0);
+			s_combo:loop(false);
+			s_combo:restart(false);
+			s_combo:addFinishedEvent("EventAnimStab".. (phase:gsub("^%l", string.upper)) .."Finished")
+			
+			table.insert(attacking, s_combo)
+			return s_combo
+		end
+	--}
+		
+	--{ START
+		-- temp = addComboState(nil, start, 1);
+		-- temp:blendTime(200); 
+		
+		-- temp:add(enemy_dir(90), "guard_die_stab_combo_start_1_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_start_1_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_start_1.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_start_1.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_start_1_left.fbxanim");
+		-- temp:add(enemy_dir(-90), "guard_die_stab_combo_start_1_left.fbxanim");
+		
+		temp = addComboState(nil, start, 1);
+		temp:blendTime(200); 
+		temp:add(enemy_dir(0), "guard_die_stab_combo_6_start.fbxanim");
+		 
+		--combo 2
+		temp = addComboState(nil, start, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_start.fbxanim");
+		
+		--combo 4
+		temp = addComboState(nil, start, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_start.fbxanim");
+		
+		--combo 5
+		temp = addComboState(nil, start, 5);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_start.fbxanim");
+		
+		--combo 6
+		temp = addComboState(nil, start, 6);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_start.fbxanim");
+		
+		--combo 7
+		temp = addComboState(nil, start, 7);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_start.fbxanim");
+		
+		--combo 8
+		temp = addComboState(nil, start, 8);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_start.fbxanim");
+		
+		
+		--combo 3
+		s_fall_stab_start = addComboState(nil, start, 3); 
+		s_fall_stab_start:blendTime(200);
+		s_fall_stab_start:add("guard_die_fall_stab_start_1.fbxanim"); 
+		
+		
+			
+		--{ HOLD
+		-- temp = addComboState(nil, hold, 1, 1);
+		-- --temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_1.fbxanim");
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_1_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_1_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_1.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_1.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_1_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_1_left.fbxanim");
+		
+		-- temp = addComboState(nil, hold, 1, 2);
+		-- temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_2.fbxanim"); 
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_2_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_2_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_2.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_2.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_2_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_2_left.fbxanim");
+		
+		-- temp = addComboState(nil, hold, 1, 3);
+		-- temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_3.fbxanim");  
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_3_right.fbxanim"); 
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_3_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_3.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_3.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_3_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_3_left.fbxanim");
+		
+		temp = addComboState(nil, hold, 1, 1);
+		temp:add(enemy_dir(44.9), "guard_die_stab_combo_6_hold_1.fbxanim");
+		temp = addComboState(nil, hold, 1, 2);
+		temp:blendTime(200);
+		temp:add(enemy_dir(44.9), "guard_die_stab_combo_6_hold_2.fbxanim");
+		temp = addComboState(nil, hold, 1, 3);
+		temp:blendTime(200);
+		temp:add(enemy_dir(44.9), "guard_die_stab_combo_6_hold_3.fbxanim");
+
+		--Combo2
+		temp = addComboState(nil, hold, 2, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_1.fbxanim");
+		temp = addComboState(nil, hold, 2, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_2.fbxanim");   
+		temp = addComboState(nil, hold, 2, 3);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_3.fbxanim");   
+		
+		--Combo4
+		temp = addComboState(nil, hold, 4, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_1.fbxanim");
+		temp = addComboState(nil, hold, 4, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_2.fbxanim");   
+		temp = addComboState(nil, hold, 4, 3);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_2.fbxanim"); 
+		temp = addComboState(nil, hold, 4, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_2.fbxanim");   
+		
+		--Combo5
+		temp = addComboState(nil, hold, 5, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_hold_1.fbxanim");
+		temp = addComboState(nil, hold, 5, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_1.fbxanim");   
+		temp = addComboState(nil, hold, 5, 3);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2.fbxanim"); 
+		temp = addComboState(nil, hold, 5, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_3.fbxanim"); 
+		
+		--Combo6
+		temp = addComboState(nil, hold, 6, 1);
+		--temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold.fbxanim");
+		temp = addComboState(nil, hold, 6, 2);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold_2.fbxanim");   
+		temp = addComboState(nil, hold, 6, 3);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold_2.fbxanim"); 
+		temp = addComboState(nil, hold, 6, 4);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold_2.fbxanim");   
+		
+		--Combo7
+		temp = addComboState(nil, hold, 7, 1);
+		--temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold.fbxanim");
+		temp = addComboState(nil, hold, 7, 2);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold_2.fbxanim");   
+		temp = addComboState(nil, hold, 7, 3);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_2_hold_2.fbxanim"); 
+		temp = addComboState(nil, hold, 7, 4);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_2_hold_3.fbxanim");   
+		
+		--Combo8
+		temp = addComboState(nil, hold, 8, 1);
+		--temp:blendTime(600);
+		temp:add("guard_die_stab_combo_2_hold_1.fbxanim");
+		temp = addComboState(nil, hold, 8, 2);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold_2.fbxanim");   
+		temp = addComboState(nil, hold, 8, 3);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold_2.fbxanim"); 
+		temp = addComboState(nil, hold, 8, 4);
+		temp:blendTime(600);
+		temp:add("guard_die_stab_combo_5_hold_2.fbxanim");   
+
+
+		--Combo 3 (fall stab)
+		s_fall_stab_hold = addComboState(nil, hold, 3, 1);
+		s_fall_stab_hold:blendTime(200);
+		s_fall_stab_hold:add("guard_die_fall_stab_1.fbxanim");
+		
+	--} 
+	
+	--{ UNSTAB
+		-- temp = addComboState(nil, unstab, 1, 1);
+		-- temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_unstab_1.fbxanim");
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_unstab_1_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_unstab_1_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_unstab_1.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_unstab_1.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_unstab_1_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_unstab_1_left.fbxanim");
+		
+		
+		-- temp = addComboState(nil, unstab, 1, 2);
+		-- temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_unstab_2.fbxanim");
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_unstab_2_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_unstab_2_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_unstab_2.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_unstab_2.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_unstab_2_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_unstab_2_left.fbxanim");
+		
+		temp = addComboState(nil, unstab, 1, 1);
+		temp:blendTime(200);
+		temp:add(enemy_dir(0), "guard_die_stab_combo_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 1, 2);
+		temp:blendTime(200);
+		temp:add(enemy_dir(0), "guard_die_stab_combo_unstab_2.fbxanim");
+
+		--Combo2
+		temp = addComboState(nil, unstab, 2, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 2, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_unstab_2.fbxanim");
+		
+		--Combo4
+		temp = addComboState(nil, unstab, 4, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 4, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 4, 3);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 4, 4);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		
+		--Combo5
+		temp = addComboState(nil, unstab, 5, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 5, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 5, 3);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_unstab_2.fbxanim");
+		temp = addComboState(nil, unstab, 5, 4);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_unstab_2.fbxanim");
+		
+		--Combo6
+		temp = addComboState(nil, unstab, 6, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		temp = addComboState(nil, unstab, 6, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		temp = addComboState(nil, unstab, 6, 3);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		temp = addComboState(nil, unstab, 6, 4);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		
+		--Combo7
+		temp = addComboState(nil, unstab, 7, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		temp = addComboState(nil, unstab, 7, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		temp = addComboState(nil, unstab, 7, 3);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 7, 4);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_2_unstab_2.fbxanim");
+		
+		--Combo8
+		temp = addComboState(nil, unstab, 8, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_unstab_1.fbxanim");
+		temp = addComboState(nil, unstab, 8, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_unstab_2.fbxanim");
+		temp = addComboState(nil, unstab, 8, 3);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		temp = addComboState(nil, unstab, 8, 4);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_5_unstab.fbxanim");
+		
+		
+		--Combo 3 (fall stab)
+		temp = addComboState(nil, unstab, 3, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_fall_stab_unstab_1.fbxanim");
+
+	
+	--{ RESTAB
+		-- temp = addComboState(nil, restab, 1, 1);
+		-- temp:blendTime(100);
+		-- --temp:add("guard_die_stab_combo_restab_1.fbxanim"); 
+		
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_restab_1_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_restab_1_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_restab_1.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_restab_1.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_restab_1_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_restab_1_left.fbxanim");
+		
+		-- temp = addComboState(nil, restab, 1, 2);
+		-- temp:blendTime(100);
+		-- --temp:add("guard_die_stab_combo_restab_2.fbxanim"); 
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_restab_2_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_restab_2_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_restab_2.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_restab_2.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_restab_2_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_restab_2_left.fbxanim");
+		
+		temp = addComboState(nil, restab, 1, 1);
+		temp:blendTime(100);
+		temp:add(enemy_dir(0), "guard_die_stab_combo_6_restab_1.fbxanim");
+		temp = addComboState(nil, restab, 1, 2);
+		temp:blendTime(100);
+		temp:add(enemy_dir(0), "guard_die_stab_combo_6_restab_2.fbxanim");
+
+		
+		--COMBO 2
+		temp = addComboState(nil, restab, 2, 1);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_2_restab_1.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 2, 2);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_2_restab_2.fbxanim"); 
+		
+		
+		--COMBO 4
+		temp = addComboState(nil, restab, 4, 1);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_2_restab_1.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 4, 2);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_2_restab_1.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 4, 3);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_2_restab_1.fbxanim"); 
+		
+		
+		--COMBO 5
+		temp = addComboState(nil, restab, 5, 1);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_restab_1.fbxanim"); 
+		 
+		temp = addComboState(nil, restab, 5, 2);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_restab_2.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 5, 3);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_restab_2.fbxanim"); 
+		
+		
+		--COMBO 6
+		temp = addComboState(nil, restab, 6, 1);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_5_restab.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 6, 2);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_5_restab.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 6, 3);
+		temp:blendTime(100); 
+		temp:add("guard_die_stab_combo_5_restab.fbxanim"); 
+		
+		
+		--COMBO 7
+		temp = addComboState(nil, restab, 7, 1);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_5_restab.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 7, 2);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_2_restab_1.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 7, 3);
+		temp:blendTime(100); 
+		temp:add("guard_die_stab_combo_2_restab_2.fbxanim"); 
+		
+		--COMBO 8
+		temp = addComboState(nil, restab, 8, 1); 
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_2_restab_1.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 8, 2);
+		temp:blendTime(100);
+		temp:add("guard_die_stab_combo_5_restab.fbxanim"); 
+		
+		temp = addComboState(nil, restab, 8, 3);
+		temp:blendTime(100); 
+		temp:add("guard_die_stab_combo_5_restab.fbxanim"); 
+		
+		
+		--COMBO 3 fall stab
+		temp = addComboState(nil, restab, 3, 1);
+		temp:blendTime(300);
+		temp:add("guard_die_stab_combo_restab_1.fbxanim");
+		
+	--{ END
+		-- temp = addComboState(nil, stop, 1, 1);
+		-- temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_end_1.fbxanim");
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_end_1_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_end_1_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_end_1.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_end_1.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_end_1_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_end_1_left.fbxanim");
+		
+		-- temp = addComboState(nil, stop, 1, 2);
+		-- temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_end_1.fbxanim");
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_end_2_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_end_2_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_end_2.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_end_2.fbxanim"); 
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_end_2_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_end_2_left.fbxanim");
+		
+		-- temp = addComboState(nil, stop, 1, 3);
+		-- temp:blendTime(200);
+		-- --temp:add("guard_die_stab_combo_end_2.fbxanim");
+		
+		
+		-- temp:add(enemy_dir(110), "guard_die_stab_combo_end_2_right.fbxanim");
+		-- temp:add(enemy_dir(45.1), "guard_die_stab_combo_end_2_right.fbxanim");
+		-- temp:add(enemy_dir(44.9), "guard_die_stab_combo_end_2.fbxanim");
+		-- temp:add(enemy_dir(-44.9), "guard_die_stab_combo_end_2.fbxanim");
+		-- temp:add(enemy_dir(-45.1), "guard_die_stab_combo_end_2_left.fbxanim");
+		-- temp:add(enemy_dir(-110), "guard_die_stab_combo_end_2_left.fbxanim");
+		
+		
+		temp = addComboState(nil, stop, 1, 1);
+		temp:blendTime(200);
+		temp:add(enemy_dir(0), "guard_die_stab_combo_6_end_1.fbxanim");
+		temp = addComboState(nil, stop, 1, 2);
+		temp:blendTime(200);
+		temp:add(enemy_dir(0), "guard_die_stab_combo_6_end_2.fbxanim");
+		temp = addComboState(nil, stop, 1, 3);
+		temp:blendTime(200);
+		temp:add(enemy_dir(0), "guard_die_stab_combo_6_end_2.fbxanim");
+
+		
+		-- Combo 2
+		temp = addComboState(nil, stop, 2, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 2, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_3.fbxanim");
+		temp = addComboState(nil, stop, 2, 3);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_3.fbxanim"); 
+		
+		
+		-- Combo 4
+		temp = addComboState(nil, stop, 4, 1); 
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 4, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 4, 3); 
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 4, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		
+		
+		-- Combo 5
+		temp = addComboState(nil, stop, 5, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 5, 2);
+		temp:blendTime(200); 
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 5, 3); 
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 5, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		--temp:add("guard_die_stab_combo_end_1.fbxanim");
+		
+		
+		-- Combo 6
+		temp = addComboState(nil, stop, 6, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end_2.fbxanim");
+		temp = addComboState(nil, stop, 6, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end.fbxanim");
+		temp = addComboState(nil, stop, 6, 3); 
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end.fbxanim");
+		temp = addComboState(nil, stop, 6, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end.fbxanim");
+		
+		
+		-- Combo 7
+		temp = addComboState(nil, stop, 7, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end_2.fbxanim");
+		temp = addComboState(nil, stop, 7, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end_2.fbxanim");
+		temp = addComboState(nil, stop, 7, 3); 
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 7, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_3.fbxanim");
+		
+		
+		-- Combo 8
+		temp = addComboState(nil, stop, 8, 1);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_1.fbxanim");
+		temp = addComboState(nil, stop, 8, 2);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_2_end_2.fbxanim");
+		temp = addComboState(nil, stop, 8, 3); 
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end_2.fbxanim");
+		temp = addComboState(nil, stop, 8, 4);
+		temp:blendTime(200);
+		temp:add("guard_die_stab_combo_5_end_2.fbxanim");
+ 
+ 
+		-- Combo 3 (fall stab)
+		temp = addComboState(nil, stop, 3, 1);
+		temp:blendTime(300);
+		temp:from(s_fall_stab_hold)
+		temp:add("guard_die_fall_stab_end_1.fbxanim");
+		
+		temp = addComboState(stab_interrupted, stop, 3, 1, "s_fall_stab_interrupted");
+		temp:blendTime(300);
+		temp:add("guard_die_fall_stab_end_2.fbxanim"); 
+		
+		temp = addComboState(nil, stop, 3, 1, "s_fall_stab_stop_fast");
+		temp:blendTime(300);
+		temp:from(s_fall_stab_start) 
+		temp:add("guard_die_fall_stab_end_2.fbxanim");
+		
+--}
+
+--}
+
+--{	DRAG CORPSE
+
+	--{HEAD
+	
+		--{ Animation: s_lift_corpse
+		s_lift_corpse = addState(lift_corpse+drag_corpse, "s_lift_corpse"); 
+		--s_lift_corpse_idle:from(crouching);
+		s_lift_corpse:blendTime(150);
+		--s_lift_corpse:speedFactor(1.3);
+		s_lift_corpse:loop(false);
+		--s_lift_corpse:absoluteRootMotionPosition(true);
+		--s_lift_corpse:absoluteRootMotionRotation(true); 
+		s_lift_corpse:add("lift_corpse_1.fbxanim");
+		--s_lift_corpse:add("corpse_pickup_feet_01.fbxanim");
+		--s_lift_corpse:add("pick_up_corpse_start_moving.fbxanim");
+		table.insert(dragging_corpse, s_lift_corpse);
+		--}
+
+		--{ Animation: s_drag_corpse_idle
+		s_drag_corpse_idle = addState(drag_corpse, "s_drag_corpse_idle"); 
+		--s_drag_corpse_idle:from(crouching);
+		s_drag_corpse_idle:blendTime(300);
+		s_drag_corpse_idle:loopBlendTime(600); 
+		s_drag_corpse_idle:loop(true);
+		s_drag_corpse_idle:add("corpse_drag_stand.fbxanim");
+		--s_drag_corpse_idle:add("corpse_drag_stand_feet.fbxanim"); 
+		table.insert(dragging_corpse, s_drag_corpse_idle);
+		--}
+		
+		--{ Animation: s_drag_corpse_start
+		s_drag_corpse_start = addState(drag_corpse+walk, "s_drag_corpse_start");
+		--s_drag_corpse_start:from(crouching);
+		s_drag_corpse_start:blendTime(300);
+		s_drag_corpse_start:speedFactor(1.15);
+		s_drag_corpse_start:loop(false);
+		s_drag_corpse_start:add("corpse_drag_start.fbxanim");
+		--s_drag_corpse_start:add("corpse_drag_start_feet.fbxanim");
+		table.insert(dragging_corpse, s_drag_corpse_start);
+		--}
+		
+		--{ Animation: s_drag_corpse_loop 
+		s_drag_corpse_loop = addState(drag_corpse+walk, "s_drag_corpse_loop");
+		s_drag_corpse_loop:from(s_drag_corpse_start);
+		s_drag_corpse_loop:blendTime(300);
+		s_drag_corpse_loop:loopBlendTime(300); 
+		s_drag_corpse_loop:speedFactor(1.15);
+		s_drag_corpse_loop:loop(true);
+		s_drag_corpse_loop:add("corpse_drag_loop.fbxanim");
+		--s_drag_corpse_loop:add("corpse_drag_loop_feet.fbxanim");
+		table.insert(dragging_corpse, s_drag_corpse_loop);
+		--}
+	
+		-- --{ Animation: s_drag_corpse_turn_left
+		-- s_drag_corpse_turn_left = addState(walk+drag_corpse+turn_left, "s_drag_corpse_turn_left");
+		-- s_drag_corpse_turn_left:restart(true);
+		-- --s_drag_corpse_turn_left:from(crouching); 
+		-- s_drag_corpse_turn_left:blendTime(300);
+		-- --s_drag_corpse_turn_left:synchronizedStartTimeGroup(26);
+		-- s_drag_corpse_turn_left:add("corpse_drag_turn_left.fbxanim");
+		-- s_drag_corpse_turn_left:addFinishedEvent("EventAnimTurnComplete");
+		-- s_drag_corpse_turn_left:addExitEvent("EventAnimTurnComplete"); 
+		-- table.insert(dragging_corpse, s_drag_corpse_turn_left);
+		-- --}
+		
+		-- --{ Animation: s_drag_corpse_turn_right
+		-- s_drag_corpse_turn_right = addState(walk+drag_corpse+turn_right, "s_drag_corpse_turn_right");
+		-- s_drag_corpse_turn_right:restart(true);
+		-- --s_drag_corpse_turn_right:from(crouching);
+		-- s_drag_corpse_turn_right:blendTime(300);
+		-- --s_drag_corpse_turn_right:synchronizedStartTimeGroup(26);
+		-- s_drag_corpse_turn_right:add("corpse_drag_turn_right.fbxanim"); 
+		-- s_drag_corpse_turn_right:addFinishedEvent("EventAnimTurnComplete");
+		-- s_drag_corpse_turn_right:addExitEvent("EventAnimTurnComplete"); 
+		-- table.insert(dragging_corpse, s_drag_corpse_turn_right);
+		-- --}
+		
+		-- --{ Animation: s_drag_corpse_turn_180_right
+		-- s_drag_corpse_turn_180_right = addState(drag_corpse+turn_right, "s_drag_corpse_turn_180_right");
+		-- s_drag_corpse_turn_180_right:restart(true);
+		-- --s_drag_corpse_turn_180_right:from(crouching);
+		-- s_drag_corpse_turn_180_right:blendTime(300);
+		-- --s_drag_corpse_turn_180_right:synchronizedStartTimeGroup(26);
+		-- s_drag_corpse_turn_180_right:add("corpse_drag_turn_180_right.fbxanim"); 
+		-- s_drag_corpse_turn_180_right:addFinishedEvent("EventAnimTurnComplete");
+		-- s_drag_corpse_turn_180_right:addExitEvent("EventAnimTurnComplete");
+		-- table.insert(dragging_corpse, s_drag_corpse_turn_180_right);
+		-- --}
+		
+		-- --{ Animation: s_drag_corpse_end
+		-- s_drag_corpse_end = addState(drag_corpse, "s_drag_corpse_end");
+		-- s_drag_corpse_end:from(s_drag_corpse_start);
+		-- s_drag_corpse_end:from(s_drag_corpse_loop);
+		-- s_drag_corpse_end:from(s_drag_corpse_turn_left);
+		-- s_drag_corpse_end:from(s_drag_corpse_turn_right); 
+		-- s_drag_corpse_end:blendTime(300); 
+		-- s_drag_corpse_end:loop(false);
+		-- s_drag_corpse_end:add("corpse_drag_end.fbxanim");
+		-- table.insert(dragging_corpse, s_drag_corpse_end);
+		-- --}
+		
+		--{ Animation: s_drop_corpse
+		s_drop_corpse = addState(drop_corpse, "s_drop_corpse");
+		s_drop_corpse:from(dragging_corpse);
+		s_drop_corpse:blendTime(300);
+		s_drop_corpse:speedFactor(2);
+		s_drop_corpse:loop(false);
+		s_drop_corpse:add("drop_corpse_1.fbxanim");
+		--s_drop_corpse:add("corpse_drop_feet_01.fbxanim");
+		--table.insert(standing, s_drop_corpse); 
+		--}
+		
+	--}
+	
+	--{FEET
+		
+		--{ Animation: s_lift_corpse_feet
+		s_lift_corpse_feet = addState(lift_corpse+drag_corpse+feet_drag, "s_lift_corpse_feet"); 
+		--s_lift_corpse_feet_idle:from(crouching);
+		s_lift_corpse_feet:blendTime(300);
+		s_lift_corpse_feet:speedFactor(2);
+		s_lift_corpse_feet:loop(false); 
+		s_lift_corpse_feet:add("corpse_pickup_feet_01.fbxanim");
+		--s_lift_corpse_feet:absoluteRootMotionPosition(true);
+		--s_lift_corpse_feet:absoluteRootMotionRotation(true);
+		--s_lift_corpse_feet:add("pick_up_corpse_start_moving.fbxanim");
+		table.insert(dragging_corpse, s_lift_corpse_feet);
+		--}
+
+		--{ Animation: s_drag_corpse_feet_idle
+		s_drag_corpse_feet_idle = addState(drag_corpse+feet_drag, "s_drag_corpse_feet_idle"); 
+		--s_drag_corpse_feet_idle:from(crouching);
+		s_drag_corpse_feet_idle:blendTime(600);
+		s_drag_corpse_feet_idle:loopBlendTime(600);  
+		s_drag_corpse_feet_idle:loop(true);
+		s_drag_corpse_feet_idle:add("corpse_drag_stand_feet.fbxanim");
+		table.insert(dragging_corpse, s_drag_corpse_feet_idle);
+		--}
+		
+		--{ Animation: s_drag_corpse_feet_start
+		s_drag_corpse_feet_start = addState(drag_corpse+walk+feet_drag, "s_drag_corpse_feet_start");
+		--s_drag_corpse_feet_start:from(crouching);
+		s_drag_corpse_feet_start:blendTime(300);
+		s_drag_corpse_feet_start:speedFactor(1.15);
+		s_drag_corpse_feet_start:loop(false);
+		s_drag_corpse_feet_start:add("corpse_drag_start_feet.fbxanim");
+		table.insert(dragging_corpse, s_drag_corpse_feet_start);
+		--}
+		
+		--{ Animation: s_drag_corpse_feet_loop 
+		s_drag_corpse_feet_loop = addState(drag_corpse+walk+feet_drag, "s_drag_corpse_feet_loop");
+		s_drag_corpse_feet_loop:from(s_drag_corpse_feet_start);
+		s_drag_corpse_feet_loop:blendTime(300);
+		s_drag_corpse_feet_loop:loopBlendTime(300); 
+		s_drag_corpse_feet_loop:speedFactor(1.15);
+		s_drag_corpse_feet_loop:loop(true);
+		s_drag_corpse_feet_loop:add("corpse_drag_loop_feet.fbxanim");
+		table.insert(dragging_corpse, s_drag_corpse_feet_loop);
+		--}
+		
+		--{ Animation: s_drop_corpse_feet
+		s_drop_corpse_feet = addState(drop_corpse+feet_drag, "s_drop_corpse_feet");
+		s_drop_corpse_feet:from(dragging_corpse);
+		s_drop_corpse_feet:blendTime(300);
+		s_drop_corpse_feet:loop(false);
+		s_drop_corpse_feet:add("corpse_drop_feet_01.fbxanim");
+		--table.insert(standing, s_drop_corpse_feet); 
+		
+	--}
+
+--{ Animation: s_stand_alert_special
+-- s_stand_alert_special = addState(player_visual, "s_stand_alert_special");
+-- s_stand_alert_special:from(walking);
+-- s_stand_alert_special:from(standing);
+-- s_stand_alert_special:from(walking_cautious);
+-- s_stand_alert_special:blendTime(120);
+-- s_stand_alert_special:loop(true);
+-- s_stand_alert_special:add(angle_axis(-90), angle_around_up(-90), "stand_crossbow_downleft.fbxanim");
+-- s_stand_alert_special:add(angle_axis(-90), angle_around_up(0), "stand_crossbow_down.fbxanim");
+-- s_stand_alert_special:add(angle_axis(-90), angle_around_up(90), "stand_crossbow_downright.fbxanim");
+-- s_stand_alert_special:add(angle_axis(0), angle_around_up(-90), "stand_crossbow_left.fbxanim");
+-- s_stand_alert_special:add(angle_axis(0), angle_around_up(0), "stand_crossbow.fbxanim");
+-- s_stand_alert_special:add(angle_axis(0), angle_around_up(90), "stand_crossbow_right.fbxanim");
+-- s_stand_alert_special:add(angle_axis(90), angle_around_up(-90), "stand_crossbow_upleft.fbxanim");
+-- s_stand_alert_special:add(angle_axis(90), angle_around_up(0), "stand_crossbow_up.fbxanim");
+-- s_stand_alert_special:add(angle_axis(90), angle_around_up(90), "stand_crossbow_upright.fbxanim");
+--}	
+	
+--}

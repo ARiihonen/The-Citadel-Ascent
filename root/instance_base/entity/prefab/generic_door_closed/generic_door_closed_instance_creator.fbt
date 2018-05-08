@@ -1,0 +1,62 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("generic_door_closedInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0x9190D8D5','0x11EB02A8','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x6CE07ED8','0x11EB02AC','0x0077024F','0x00005500'), "0_generic_door_closed_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x6CE07EF4','0x11EC02B2','0x0077024F','0x00005500'), "2_generic_door_closed_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0x73AB9849','0x7E4F3B81','0x0077024F','0x00005500'), "10_generic_door_closed_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6CE07F10','0x11EC02B6','0x0077024F','0x00005500'), "4_generic_door_closed_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6CE07F1E','0x11EC02BA','0x0077024F','0x00005500'), "5_generic_door_closed_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0x73AB9867','0x7E503B85','0x0077024F','0x00005500'), "11_generic_door_closed_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x73AB9885','0x7E503B89','0x0077024F','0x00005500'), "12_generic_door_closed_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x73AB98A3','0x7E503B8D','0x0077024F','0x00005500'), "13_generic_door_closed_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x73AB98C1','0x7E513B91','0x0077024F','0x00005500'), "14_generic_door_closed_ObjectEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x6CE07ED8','0x11EB02AC','0x0077024F','0x00005500'),  -- 0_generic_door_closed_Entity
+    GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'),  -- NavMeshHoleCreatorDynamicCollisionHelper
+    GUID('0x6CE07EF4','0x11EC02B2','0x0077024F','0x00005500'),  -- 2_generic_door_closed_Entity
+    GUID('0x73AB9849','0x7E4F3B81','0x0077024F','0x00005500'),  -- 10_generic_door_closed_ObjectEntity
+    GUID('0x6CE07F10','0x11EC02B6','0x0077024F','0x00005500'),  -- 4_generic_door_closed_Entity
+    GUID('0x6CE07F1E','0x11EC02BA','0x0077024F','0x00005500'),  -- 5_generic_door_closed_Entity
+    GUID('0x73AB9867','0x7E503B85','0x0077024F','0x00005500'),  -- 11_generic_door_closed_ObjectEntity
+    GUID('0x73AB9885','0x7E503B89','0x0077024F','0x00005500'),  -- 12_generic_door_closed_ObjectEntity
+    GUID('0x73AB98A3','0x7E503B8D','0x0077024F','0x00005500'),  -- 13_generic_door_closed_ObjectEntity
+    GUID('0x73AB98C1','0x7E513B91','0x0077024F','0x00005500')}) -- 14_generic_door_closed_ObjectEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(-0.0326, 0.6594, -0.0089), VC3(0.0326, -0.6594, 0.0089), VC3(0.2655, 0.4306, -0.088), VC3(-0.0625, 0.6662, -0.0523), VC3(-0.052, 1.8063, -1.2661), VC3(0.2721, 0.3838, 1.028), VC3(-0.1041, 0.743, 0.0414), VC3(-0.1165, 0.743, -0.0014), VC3(0.012, 0.743, -0.0014), VC3(0.0244, 0.743, 0.0414)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, 0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, 0.707107), QUAT(0.653282, 0.653282, 0.270598, 0.270598), QUAT(0.353553, 0.353553, 0.612373, 0.612372), QUAT(0.353553, 0.353553, 0.612373, 0.612372), QUAT(0.653282, 0.653282, 0.270598, 0.270598)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.9747, 1.5941, 0.3057), VC3(1, 0.5515, 0.5492), VC3(0.3, 0.3, 0.3), VC3(1, 1.0519, 1), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(1.8787, 0.5785, 1), VC3(1.8787, 0.5785, 1), VC3(1.8787, 0.5785, 1), VC3(1.8787, 0.5785, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({2, 2, 4, 5}))
+  typeManager:setLastKnownNameForGUID(GUID('0xBEAB0442','0x11EC02B4','0x0077024F','0x00005500'), "0_2_generic_door_closed_EntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xBEAB0442','0x11EC02B4','0x0077024F','0x00005500'), "0_2_generic_door_closed_EntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xBEAB0660','0x11EC02B8','0x0077024F','0x00005500'), "0_4_generic_door_closed_EntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xBEAB076F','0x11EC02BC','0x0077024F','0x00005500'), "0_5_generic_door_closed_EntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0xBEAB0442','0x11EC02B4','0x0077024F','0x00005500'),  -- 0_2_generic_door_closed_EntityHingeJointComponent
+    GUID('0xBEAB0442','0x11EC02B4','0x0077024F','0x00005500'),  -- 0_2_generic_door_closed_EntityHingeJointComponent
+    GUID('0xBEAB0660','0x11EC02B8','0x0077024F','0x00005500'),  -- 0_4_generic_door_closed_EntityHingeJointComponent
+    GUID('0xBEAB076F','0x11EC02BC','0x0077024F','0x00005500')}) -- 0_5_generic_door_closed_EntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component0", "Component1", "Component0", "Component0"}))
+  type:setTargetInstanceIds(IntPropertyArray({0, 1, 0, 0}))
+  typeManager:setLastKnownNameForGUID(GUID('0x981676CC','0x11EB02AE','0x0077024F','0x00005500'), "5_0_generic_door_closed_EntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x981676CC','0x11EB02AE','0x0077024F','0x00005500'), "5_0_generic_door_closed_EntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x981676CC','0x11EB02AE','0x0077024F','0x00005500'), "5_0_generic_door_closed_EntityPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0x981676CC','0x11EB02AE','0x0077024F','0x00005500'),  -- 5_0_generic_door_closed_EntityPhysicsComponent
+    GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500'),  -- NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent
+    GUID('0x981676CC','0x11EB02AE','0x0077024F','0x00005500'),  -- 5_0_generic_door_closed_EntityPhysicsComponent
+    GUID('0x981676CC','0x11EB02AE','0x0077024F','0x00005500')}) -- 5_0_generic_door_closed_EntityPhysicsComponent
+  type:setChildLevels(IntPropertyArray({0, 1, 1, 1, 1, 1, 1, 1, 1, 1}))
+  type:setChildParentIDs(IntPropertyArray({-1, 0, 0, 0, 0, 0, 0, 0, 0, 0}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 4, 8, 8, 4, 4, 4, 4}))
+  type:setInstanceCounter(15)
+  type:setPrefabVersion(2)
+end

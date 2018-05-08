@@ -1,0 +1,18 @@
+--{ Contexts
+idle = addContext("idle", 1)
+cutscene_second_shard = addContext("cutscene_second_shard", 1)
+
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(300);
+s_idle:loop(true);
+s_idle:add("idle.fbxanim");
+--}
+
+--{ Animation: s_cutscene_second_shard
+s_cutscene_second_shard = addState(cutscene_second_shard, "s_cutscene_second_shard");
+s_cutscene_second_shard:blendTime(0);
+s_cutscene_second_shard:loop(false);
+s_cutscene_second_shard:add("cutscene_second_shard.fbxanim");
+--}

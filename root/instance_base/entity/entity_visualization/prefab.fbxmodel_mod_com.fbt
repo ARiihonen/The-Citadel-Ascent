@@ -1,0 +1,20 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/entity_visualization_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("prefab.fbxmodel_ModCom", GUID('0x66F8A53E','0x82364994','0x0077020B','0x00005500')); -- entity_visualization_ModCom
+  type:setGuid(GUID('0x329A0D65','0xB0642E6E','0x0077020B','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("entity_visualization/prefab.fbxmodel_ModCom")
+  resourceManager:setLastKnownNameForGUID(GUID('0xE29FB785','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/entity_visualization/prefab.fbxmodel");
+  resourceManager:setLastKnownFilenameForGUID(GUID('0xE29FB785','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/entity_visualization/prefab.fbxmodel");
+  type:setPropertyGUID(type.PropertyModel, GUID('0xE29FB785','0x00000000','0x00770100','0x00004400')) -- data/root/instance_base/entity/entity_visualization/prefab.fbxmodel
+  type:setVisibleInGame(false)
+  type:setSelfIllumination(COL(1, 1, 1))
+  type:setUseScale(true)
+  type:setRenderShadows(false)
+  type:setDiffuseColor(COL(0.5, 0.5, 0.5))
+  type:setBillboardX(true)
+  type:setBillboardY(true)
+  type:setBillboardZ(true)
+  type:setAmbientLightingOnly(true)
+end

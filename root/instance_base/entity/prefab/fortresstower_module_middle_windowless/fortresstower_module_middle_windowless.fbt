@@ -1,0 +1,13 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity.fbt")
+  local type = typeManager:inheritNewTypeByGUID("fortresstower_module_middle_windowless", GUID('0x169E3CAB','0x00000000','0x00770200','0x00005500')); -- PrefabEntity
+  type:setGuid(GUID('0x7F2C26D9','0xB0307151','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500'), "PrefabEntityInstanceCreatorComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD8EDC2EA','0xB0307153','0x0077024F','0x00005500'), "fortresstower_module_middle_windowlessInstanceCreatorComponent");
+  type:addComponentTypeGUID(GUID('0xD8EDC2EA','0xB0307153','0x0077024F','0x00005500')); -- fortresstower_module_middle_windowlessInstanceCreatorComponent
+  -- inherits prefab.fbxmodel_ModCom GUID('0x329A0D65','0xB0642E6E','0x0077020B','0x00005500')
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

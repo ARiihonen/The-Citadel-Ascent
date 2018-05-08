@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/light/point_light/animated_point_light/animated_point_light_entity_point_light_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("wooden_torch_5_2_PointLightEntity_5PointLightComponent", GUID('0xA17FAC48','0xA5FB03ED','0x007702A1','0x00005500')); -- AnimatedPointLightEntityPointLightComponent
+  type:setGuid(GUID('0xC5EED742','0xE7300B65','0x00770262','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setRange(10)
+  type:setColor(COL(1, 0.3294, 0))
+  type:setIntensity(5)
+  type:setColorMultiplier(COL(0.502, 0.502, 0.502))
+  type:setPositionOffset(VC3(0, 0, 0))
+end

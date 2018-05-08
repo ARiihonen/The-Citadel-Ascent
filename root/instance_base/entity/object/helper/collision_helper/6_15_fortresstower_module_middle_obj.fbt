@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/rock_collision_helper_collision_helper_model_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("6_15_fortresstower_module_middle_ObjectEntityModelComponent", GUID('0xD006BBA1','0x185A0A3A','0x00770279','0x00005500')); -- RockCollisionHelperCollisionHelperModelComponent
+  type:setGuid(GUID('0xEE59BAF2','0x8EB1748C','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setVisibleInGame(true)
+end

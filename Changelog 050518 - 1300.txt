@@ -1,0 +1,165 @@
+REMOVE DIRECTORIES: ROOT, MISSION, SCRIPT; THEN UNPACK THIS TO REPLACE. DO NOT UNPACK AND OVERWRITE, MAKE SURE EVERYTHING IS GONE FIRST
+
+
+QUESTIONS TO ALWAYS KEEP IN MIND:
+	- where did I get stuck?
+		- why? unclear objective? awkward level geometry? arbitrary AI behaviour?
+	- where did my camera annoy me?
+	- where did Lily annoy me?
+	- where did it feel like I should be able to make a jump but couldn't? (even if you made it but it took several tries)
+
+--------------------------------------------------------------------------------------------
+CHANGELOG, CURRENT VERSION:
+
+020518 - 1444
+-------------
+
+MAJOR CHANGES
+- Revamped selective AI Enabling
+- Replaced logic for Lily's elevator behaviour to hopefully remove bug where she refused to move after reuniting at the top
+
+MINOR CHANGES
+- Enemy path and behaviour tweaks
+- Some more LoS blocks to remove arbitrarity in guiding Lily
+
+
+
+----------------
+EARLIER VERSIONS
+----------------
+
+020518 - 1444
+-------------
+MINOR CHANGES
+- Added: Various new hiding places and stealth geomtery
+- Added: More lighting to communicate enemy vision
+- Added: New tooltip messages to provide player direction in problem situations
+- Added: Explosive barrel setups in various places
+- Changed: Improved enemy paths and behaviour overall
+
+300418 - 0208
+-------------
+MAJOR CHANGES
+- Level is playable from start to finish
+	- Majorly improved gameplay and geometry of bridge area
+
+280418 - 1027
+-------------
+MINOR CHANGES
+- Added: More stealth options for fortress top
+- Changed: Various simplifactions for traversal
+- Changed: Some custom physics containment areas
+- Changed: Mechanism for making sure Lily hangs out at elevator top nicely
+
+280418 - 1027
+-------------
+MAJOR ADDITIONS/CHANGES
+- Added: First pass geometry and gameplay for final bridge section
+- Changed: Revamp of entire fortress top area
+
+MINOR CHANGES
+- Changed: various traversal improvements
+- Changed: various improvements for more intuitive stealth
+- Fixed: Openable door latch parameters on fortress top
+
+270418 - 1714
+-------------
+MAJOR ADDITIONS/CHANGES
+- Added: basic playability until getting to final section on the bridge
+- Added: First pass lighting and sky art
+
+MINOR CHANGES
+- Added: Various lights to mark important things
+- Added: Cleanup mechanism for big crane debris
+- Changed: Small wall now has rope targets for swings
+- Changed: Exit from tower when going around the fortress clearer
+
+260418 - 2137
+-------------
+MINOR CHANGES
+- Added: lighting to draw player eye to intended locations
+- Added: options for backtracking more easily on the wall and from the inn attic
+- Changed: Inn attic collisions to make navigation and camera more intuitive
+- Changed: Simplified some guard locations on docks
+- Fixed: some climbing collisions
+- Fixed: Sewer door handles had shitton of bloom
+- Fixed: Some cranes dropping their boxes by themselves (LIKE THE FIFTEENTH TIME GODDAMN THIS SHOULD BE THE LAST THO)
+
+SOMETHING??
+-----------
+MAJOR ADDITIONS/CHANGES
+- Starting area redesigned to tutorialize openable doors
+- Swimmable water added
+- Basic layout of upper fortress, and routes there
+
+MINOR CHANGES
+- Added: Added lootable stuff to reward exploration further
+- Fixed/Changed: Too much to list
+
+130418 - 1628
+-------------
+NOTES
+- Player should not be able to enter the top part of the fortress (aside from the broken tower with scaffolding)
+- Player should have to get Lily to the top of the elevator in order to progress
+- Even though the elevator mechanics for the return to the lower courtyard are not present, the player should be able to get to where its roof is going to be if quick and resourceful
+- Even if access to the (not present, but will be) elevator during the return to the lower courtyard can't be gained, the player should be able to get into the tower and climb to the top, where progress will be impeded by a roof. This is an intended route and will be opened
+- The 2nd configuration of the lower courtyard is only available if you play through the rope breaking event
+
+MAJOR ADDITIONS/CHANGES
+- Level is now continuously playable until 2nd visit to the lower elevator courtyard
+	- Added mechanics and geometry for
+		- Climb back up into a broken tower after losing rope
+		- Climb back down to the courtyard from the broken tower
+		- Changes to the lower courtyard to rearrange it for new challenges when you return
+	- The last section lacks planned routes to the next one (elevator + tower ascent), but is otherwise playable
+	
+MINOR CHANGES
+- Added: Selective AI Enabler areas
+- Fixed: various level geometry issues that made for awkward traversal
+- Fixed: possibility to leave Lily on lower courtyard while riding up with second elevator
+- Fixed: various guards able to hear player unintentionally
+- Changed: Inn 2nd floor balcony shelf had a low roof which made traversal awkward. Made the slope gentler
+- Changed: Added distraction options for guards on docks guard house
+- Changed: added some guards to lower elevator courtyard
+- Changed: Removed guard entering lower courtyard after Lily is up top, as it was possible for him to immediately detect guards the player had killed and this would have been unfair
+
+100418 - 2248
+-------------
+MAJOR ADDITIONS/CHANGES
+- Both paths after elevator section now have both geometry and mechanics
+
+100428 - 2010
+-------------
+MAJOR ADDITIONS/CHANGES
+- Elevator sequence rebuilt (again)
+- Paths forward after Lily has ridden the elevator
+
+MINOR CHANGES
+- Fixed: Door latch to guard house
+- Fixed: sewer doors being able to be opened from the wrong side
+- Fixed: Lily important spots in sewers
+- Changed: secret sewer entrance can now be prepped to open from both sides
+- Changed: Added more traversal options to fortress lower courtyard
+- Changed: inn alley simplified for camera and traversal
+- Changed: widened small wall to allow better crane operation
+- Changed: Smoothed traversal on small wall ledgegrabs
+- Changed: Fortress lower courtyard outer wall, added new LoS breaks for guards
+- Changed: All doors Shadwen can't open now have uniform visuals to differentiate from the ones she can
+
+090418 - 2144
+-------------
+MAJOR ADDITIONS/CHANGES:
+	- alley behind inn
+	- inn main room rafters
+	- fortress lower courtyard, walls & elevator
+	
+	Traversal testable, few or no AI present:
+		- climb around upper fortress
+		- climb up after ninjarope breaks
+		- traversal back to lower courtyard walls
+
+MINOR CHANGES
+	- inn indoors revamp:s
+		- improved sightlines
+		- simplified guard baiting
+		- tweaked Lily's hiding spots

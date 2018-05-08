@@ -1,0 +1,10 @@
+idle = addContext("idle", 0)
+
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(300);
+s_idle:loop(true);
+s_idle:randomizedStartTime();
+s_idle:add("fake_light.fbxanim");
+--}

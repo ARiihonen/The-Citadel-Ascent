@@ -1,0 +1,23 @@
+--{ Contexts
+page1 = addContext("page1", 1)
+page2 = addContext("page2", 0)
+
+
+
+--{ Animation: s_page1
+s_page1 = addState(page1, "s_page1");
+s_page1:blendTime(0);
+s_page1:loop(false);
+s_page1:add("page1.fbxanim");
+--}
+
+--{ Animation: s_page2
+s_page2 = addState(page2, "s_page2");
+s_page2:blendTime(0);
+s_page2:loop(false);
+s_page2:add("page2.fbxanim");
+s_page2:addFinishedEvent("EventAnimPage2Finished");
+--}
+
+
+

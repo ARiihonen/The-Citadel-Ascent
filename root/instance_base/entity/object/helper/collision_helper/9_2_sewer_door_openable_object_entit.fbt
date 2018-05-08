@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/rope_target_wood_collision_helper_co.fbt")
+  local type = typeManager:inheritNewTypeByGUID("9_2_sewer_door_openable_ObjectEntityWallInfoComponent", GUID('0xDC3C2525','0x3B674275','0x0077020E','0x00005500')); -- RopeTargetWoodCollisionHelperCollisionHelperWallInfoComponent
+  type:setGuid(GUID('0xCEF363C6','0x8CC01296','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setGrabEnabled(false)
+  type:setGrabMovementEnabled(false)
+  type:setWallRunEnabled(false)
+  type:setWallSlideEnabled(false)
+  type:setBlocksAIVision(false)
+end

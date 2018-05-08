@@ -1,0 +1,106 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("generic_door_openable_playerInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xDE4643A5','0x547038D4','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x93F7C039','0x547038D8','0x0077024F','0x00005500'), "0_generic_door_openable_player_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x97AD1FE6','0x547038DC','0x0077024F','0x00005500'), "2_generic_door_openable_player_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x84D48CF0','0xDDF3182D','0x0077021D','0x00005500'), "wall_set_basic_courtyard_door_2.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'), "wall_set_ascetic_hallway_lock.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x9AB0821A','0x547138EA','0x0077024F','0x00005500'), "11_generic_door_openable_player_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97AD1FF4','0x547038E0','0x0077024F','0x00005500'), "3_generic_door_openable_player_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x93F7C071','0x547138E4','0x0077024F','0x00005500'), "4_generic_door_openable_player_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'), "wall_set_ascetic_hallway_lock.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0xC77359C6','0x547138EE','0x0077024F','0x00005500'), "12_generic_door_openable_player_PrismaticJointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9B7D84E3','0x547138F2','0x0077024F','0x00005500'), "13_generic_door_openable_player_TriggerEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9CCB2140','0x547138F6','0x0077024F','0x00005500'), "14_generic_door_openable_player_AreaEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9AB08292','0x547238FC','0x0077024F','0x00005500'), "15_generic_door_openable_player_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x695414E5','0xAA9C0E10','0x0077024F','0x00005500'), "MetalCollisionHelperLock");
+  typeManager:setLastKnownNameForGUID(GUID('0x695414E5','0xAA9C0E10','0x0077024F','0x00005500'), "MetalCollisionHelperLock");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x93F7C039','0x547038D8','0x0077024F','0x00005500'),  -- 0_generic_door_openable_player_ObjectEntity
+    GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'),  -- NavMeshHoleCreatorDynamicCollisionHelper
+    GUID('0x97AD1FE6','0x547038DC','0x0077024F','0x00005500'),  -- 2_generic_door_openable_player_JointEntity
+    GUID('0x84D48CF0','0xDDF3182D','0x0077021D','0x00005500'),  -- wall_set_basic_courtyard_door_2.fbxmodel
+    GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'),  -- wall_set_ascetic_hallway_lock.fbxmodel
+    GUID('0x9AB0821A','0x547138EA','0x0077024F','0x00005500'),  -- 11_generic_door_openable_player_JointEntity
+    GUID('0x97AD1FF4','0x547038E0','0x0077024F','0x00005500'),  -- 3_generic_door_openable_player_JointEntity
+    GUID('0x93F7C071','0x547138E4','0x0077024F','0x00005500'),  -- 4_generic_door_openable_player_ObjectEntity
+    GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'),  -- handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel
+    GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'),  -- wall_set_ascetic_hallway_lock.fbxmodel
+    GUID('0xC77359C6','0x547138EE','0x0077024F','0x00005500'),  -- 12_generic_door_openable_player_PrismaticJointEntity
+    GUID('0x9B7D84E3','0x547138F2','0x0077024F','0x00005500'),  -- 13_generic_door_openable_player_TriggerEntity
+    GUID('0x9CCB2140','0x547138F6','0x0077024F','0x00005500'),  -- 14_generic_door_openable_player_AreaEntity
+    GUID('0x9AB08292','0x547238FC','0x0077024F','0x00005500'),  -- 15_generic_door_openable_player_JointEntity
+    GUID('0x695414E5','0xAA9C0E10','0x0077024F','0x00005500'),  -- MetalCollisionHelperLock
+    GUID('0x695414E5','0xAA9C0E10','0x0077024F','0x00005500')}) -- MetalCollisionHelperLock
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0.9308, 0.1561, -0.0697), VC3(0.9474, -1.4895, -0.0025), VC3(0.972, -0.1184, 0.2304), VC3(0.9743, 0.1628, -0.0901), VC3(-0.0776, 0.3442, -0.0009), VC3(2.1869, 1.303, -0.082), VC3(-0.038, 0.3366, 0.087), VC3(-0.2925, 0.3571, 0.0573), VC3(-0.2936, 0.3575, 0.0593), VC3(-0.6787, 0.3442, 0.0108), VC3(0.9197, 0.3521, 0.0573), VC3(-1.0567, 2.8793, -0.0809), VC3(-1.1016, 0.3272, 0.0865), VC3(-0.9236, 0.3542, 0.075), VC3(-0.8989, 0.3476, 0.0418), VC3(-0.6941, 0.3476, -0.027)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 8.9407e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, -1, 0, 2.98023e-008), QUAT(0, 1, 0, -8.9407e-008), QUAT(0, 1, 0, -2.98023e-008), QUAT(0, 8.9407e-008, 0, 1), QUAT(0, 8.9407e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 1, 0, -8.9407e-008), QUAT(0, 8.9407e-008, 0, 1), QUAT(0, 8.9407e-008, 0, 1), QUAT(0, 8.9407e-008, 0, 1), QUAT(0, 8.9407e-008, 0, 1), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, 8.9407e-008, 0, 1)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.9747, 1.5941, 0.3057), VC3(1, 0.7763, 0.5492), VC3(0.3, 0.3, 0.3), VC3(1, 1.0519, 1), VC3(1, 1, 1.8529), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(0.4469, 0.0434, 0.0745), VC3(1, 0.6568, 0.2498), VC3(1, 1, 1.6635), VC3(0.3037, 1, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(0.3, 0.3, 0.3), VC3(0.0787, 0.1252, 0.1464), VC3(0.1319, 0.1267, 0.1305)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({2, 2, 5, 6, 6, 10, 10, 12, 12, 13, 13, 13}))
+  typeManager:setLastKnownNameForGUID(GUID('0xF02D3638','0x547038DE','0x0077024F','0x00005500'), "8_2_generic_door_openable_player_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xF02D3638','0x547038DE','0x0077024F','0x00005500'), "8_2_generic_door_openable_player_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xFB91A2A7','0x547138EC','0x0077024F','0x00005500'), "8_11_generic_door_openable_player_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xF02D3747','0x547038E2','0x0077024F','0x00005500'), "8_3_generic_door_openable_player_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xF02D3747','0x547038E2','0x0077024F','0x00005500'), "8_3_generic_door_openable_player_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x3837AD7D','0x547138F0','0x0077024F','0x00005500'), "3_12_generic_door_openable_player_PrismaticJointEntityPrismaticJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x3837AD7D','0x547138F0','0x0077024F','0x00005500'), "3_12_generic_door_openable_player_PrismaticJointEntityPrismaticJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x33960C1A','0x547138F8','0x0077024F','0x00005500'), "0_14_generic_door_openable_player_AreaEntityTriggerOtherInstancesComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x707AF3CB','0x9BA10788','0x0077025C','0x00005500'), "OtherTriggerWhenCollectedComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x2873E767','0x54723900','0x0077024F','0x00005500'), "12_15_generic_door_openable_player_JointEntityPropertyConnectionComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x2873E767','0x54723900','0x0077024F','0x00005500'), "12_15_generic_door_openable_player_JointEntityPropertyConnectionComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xFB91E2E7','0x547238FE','0x0077024F','0x00005500'), "8_15_generic_door_openable_player_JointEntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0xF02D3638','0x547038DE','0x0077024F','0x00005500'),  -- 8_2_generic_door_openable_player_JointEntityHingeJointComponent
+    GUID('0xF02D3638','0x547038DE','0x0077024F','0x00005500'),  -- 8_2_generic_door_openable_player_JointEntityHingeJointComponent
+    GUID('0xFB91A2A7','0x547138EC','0x0077024F','0x00005500'),  -- 8_11_generic_door_openable_player_JointEntityHingeJointComponent
+    GUID('0xF02D3747','0x547038E2','0x0077024F','0x00005500'),  -- 8_3_generic_door_openable_player_JointEntityHingeJointComponent
+    GUID('0xF02D3747','0x547038E2','0x0077024F','0x00005500'),  -- 8_3_generic_door_openable_player_JointEntityHingeJointComponent
+    GUID('0x3837AD7D','0x547138F0','0x0077024F','0x00005500'),  -- 3_12_generic_door_openable_player_PrismaticJointEntityPrismaticJointComponent
+    GUID('0x3837AD7D','0x547138F0','0x0077024F','0x00005500'),  -- 3_12_generic_door_openable_player_PrismaticJointEntityPrismaticJointComponent
+    GUID('0x33960C1A','0x547138F8','0x0077024F','0x00005500'),  -- 0_14_generic_door_openable_player_AreaEntityTriggerOtherInstancesComponent
+    GUID('0x707AF3CB','0x9BA10788','0x0077025C','0x00005500'),  -- OtherTriggerWhenCollectedComponent
+    GUID('0x2873E767','0x54723900','0x0077024F','0x00005500'),  -- 12_15_generic_door_openable_player_JointEntityPropertyConnectionComponent
+    GUID('0x2873E767','0x54723900','0x0077024F','0x00005500'),  -- 12_15_generic_door_openable_player_JointEntityPropertyConnectionComponent
+    GUID('0xFB91E2E7','0x547238FE','0x0077024F','0x00005500')}) -- 8_15_generic_door_openable_player_JointEntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component0", "Component1", "Component0", "Component0", "Component1", "Component0", "Component1", "OtherInstances", "RestrictToInstances", "InputInstance", "OutputInstance", "Component0"}))
+  type:setTargetInstanceIds(IntPropertyArray({0, 1, 0, 0, 7, 0, 7, 11, 7, 11, 13, 7}))
+  typeManager:setLastKnownNameForGUID(GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'), "5__0_generic_door_openable_player_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'), "5__0_generic_door_openable_player_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'), "5__0_generic_door_openable_player_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE73DFC1F','0x547138E6','0x0077024F','0x00005500'), "1_4_generic_door_openable_player_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'), "5__0_generic_door_openable_player_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE73DFC1F','0x547138E6','0x0077024F','0x00005500'), "1_4_generic_door_openable_player_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xDE4643A5','0x547038D4','0x0077024F','0x00005500'), "generic_door_openable_playerInstanceCreatorComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xDE4643A5','0x547038D4','0x0077024F','0x00005500'), "generic_door_openable_playerInstanceCreatorComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x46D54B41','0x547138F4','0x0077024F','0x00005500'), "0_13_generic_door_openable_player_TriggerEntityTriggerToBoolPropertyComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xFB91E2E7','0x547238FE','0x0077024F','0x00005500'), "8_15_generic_door_openable_player_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE73DFC1F','0x547138E6','0x0077024F','0x00005500'), "1_4_generic_door_openable_player_ObjectEntityPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'),  -- 5__0_generic_door_openable_player_ObjectEntityPhysicsComponent
+    GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500'),  -- NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent
+    GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'),  -- 5__0_generic_door_openable_player_ObjectEntityPhysicsComponent
+    GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'),  -- 5__0_generic_door_openable_player_ObjectEntityPhysicsComponent
+    GUID('0xE73DFC1F','0x547138E6','0x0077024F','0x00005500'),  -- 1_4_generic_door_openable_player_ObjectEntityPhysicsComponent
+    GUID('0xC8A1351B','0x8ED56715','0x0077024F','0x00005500'),  -- 5__0_generic_door_openable_player_ObjectEntityPhysicsComponent
+    GUID('0xE73DFC1F','0x547138E6','0x0077024F','0x00005500'),  -- 1_4_generic_door_openable_player_ObjectEntityPhysicsComponent
+    GUID('0xDE4643A5','0x547038D4','0x0077024F','0x00005500'),  -- generic_door_openable_playerInstanceCreatorComponent
+    GUID('0xDE4643A5','0x547038D4','0x0077024F','0x00005500'),  -- generic_door_openable_playerInstanceCreatorComponent
+    GUID('0x46D54B41','0x547138F4','0x0077024F','0x00005500'),  -- 0_13_generic_door_openable_player_TriggerEntityTriggerToBoolPropertyComponent
+    GUID('0xFB91E2E7','0x547238FE','0x0077024F','0x00005500'),  -- 8_15_generic_door_openable_player_JointEntityHingeJointComponent
+    GUID('0xE73DFC1F','0x547138E6','0x0077024F','0x00005500')}) -- 1_4_generic_door_openable_player_ObjectEntityPhysicsComponent
+  type:setChildLevels(IntPropertyArray({0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, 0, 0, 0, 0, 0, -1, -1, 7, -1, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 4, 4, 8, 2, 2, 4, 4, 8, 8, 8, 8, 2, 2}))
+  type:setInstanceCounter(16)
+  type:setPrefabVersion(2)
+end

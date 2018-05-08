@@ -1,0 +1,35 @@
+test = addContext("test", 1)
+run = addContext("run", 1)
+stand = addContext("stand", 1)
+
+--{ Animation: temp_test
+temp_test = addState(test, "temp_test");
+temp_test:blendTime(0);
+temp_test:loop(true);
+temp_test:randomizedStartTime();
+temp_test:add("test1.fbxanim");
+--}
+
+
+
+--{ Animation: s_stand
+s_stand = addState(stand, "s_stand");
+s_stand:blendTime(0);
+s_stand:loop(true);
+s_stand:add("stand.fbxanim");
+--}
+
+--{ Animation: s_run_start
+s_run_start = addState(run, "s_run_start");
+s_run_start:blendTime(300);
+s_run_start:loop(false);
+s_run_start:add("run_start.fbxanim");
+--}
+
+--{ Animation: s_run
+s_run = addState(run, "s_run");
+s_run:from(s_run_start);
+s_run:blendTime(0);
+s_run:loop(true);
+s_run:add("run.fbxanim");
+--}

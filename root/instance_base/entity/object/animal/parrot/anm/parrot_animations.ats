@@ -1,0 +1,102 @@
+idle1 = addContext("idle1", 1)
+takeoff1 = addContext("takeoff1", 1)
+takeoff2 = addContext("takeoff2", 1)
+fly = addContext("fly", 1)
+cutscene_get_gem = addContext("cutscene_get_gem", 1)
+cutscene_get_gem_wait = addContext("cutscene_get_gem_wait", 1)
+cutscene_abducted = addContext("cutscene_abducted", 1)
+
+fly_gem = addContext("fly_gem", 1)
+land_gem = addContext("land_gem", 2)
+land_gem_wait = addContext("land_gem_wait", 2)
+idle_gem = addContext("idle_gem", 2)
+takeoff_gem = addContext("takeoff_gem", 0)
+
+
+--{ Animation: parrot_idle1
+parrot_idle1 = addState(idle1, "parrot_idle1");
+parrot_idle1:blendTime(300);
+parrot_idle1:loop(true);
+parrot_idle1:add("idle1.fbxanim");
+--}
+
+-- from tree
+--{ Animation: parrot_takeoff1
+parrot_takeoff1 = addState(takeoff1, "parrot_takeoff1");
+parrot_takeoff1:blendTime(300);
+parrot_takeoff1:loop(false);
+parrot_takeoff1:add("takeoff1.fbxanim");
+--}
+
+-- from ground
+--{ Animation: parrot_takeoff2
+parrot_takeoff2 = addState(takeoff2, "parrot_takeoff2");
+parrot_takeoff2:blendTime(300);
+parrot_takeoff2:loop(false);
+parrot_takeoff2:add("takeoff2.fbxanim");
+--}
+
+--{ Animation: s_fly
+s_fly = addState(fly, "s_fly");
+s_fly:blendTime(300);
+s_fly:loop(true);
+s_fly:add("fly.fbxanim");
+--}
+
+--{ Animation: s_cutscene_get_gem
+s_cutscene_get_gem = addState(cutscene_get_gem, "s_cutscene_get_gem");
+s_cutscene_get_gem:blendTime(0);
+s_cutscene_get_gem:loop(false);
+s_cutscene_get_gem:add("cutscene_get_gem.fbxanim");
+--}
+
+--{ Animation: s_cutscene_get_gem_wait
+s_cutscene_get_gem_wait = addState(cutscene_get_gem_wait, "s_cutscene_get_gem_wait");
+s_cutscene_get_gem_wait:blendTime(0);
+s_cutscene_get_gem_wait:loop(false);
+s_cutscene_get_gem_wait:add("cutscene_get_gem_wait.fbxanim");
+--}
+
+--{ Animation: s_cutscene_abducted
+s_cutscene_abducted = addState(cutscene_abducted, "s_cutscene_abducted");
+s_cutscene_abducted:blendTime(0);
+s_cutscene_abducted:loop(false);
+s_cutscene_abducted:add("cutscene_abducted.fbxanim");
+--}
+
+--{ Animation: s_fly_gem
+s_fly_gem = addState(fly_gem, "s_fly_gem");
+s_fly_gem:blendTime(300);
+s_fly_gem:loop(true);
+s_fly_gem:add("fly_gem.fbxanim");
+--}
+
+--{ Animation: s_land_gem
+s_land_gem = addState(land_gem, "s_land_gem");
+s_land_gem:blendTime(0);
+s_land_gem:loop(false);
+s_land_gem:add("land_gem.fbxanim");
+--}
+
+--{ Animation: s_land_gem_wait
+s_land_gem_wait = addState(land_gem_wait, "s_land_gem_wait");
+s_land_gem_wait:blendTime(0);
+s_land_gem_wait:loop(false);
+s_land_gem_wait:add("land_gem_wait.fbxanim");
+--}
+
+
+--{ Animation: s_idle_gem
+s_idle_gem = addState(idle_gem, "s_idle_gem");
+s_idle_gem:blendTime(300);
+s_idle_gem:loop(true);
+s_idle_gem:add("idle_gem.fbxanim");
+--}
+
+
+--{ Animation: s_takeoff_gem
+s_takeoff_gem = addState(takeoff_gem, "s_takeoff_gem");
+s_takeoff_gem:blendTime(300);
+s_takeoff_gem:loop(false);
+s_takeoff_gem:add("takeoff_gem.fbxanim");
+--}

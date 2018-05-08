@@ -1,0 +1,16 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/fortresswall_elevator_container/fortresswall_elevator_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("25_fortresswall_elevator_AreaEntity", GUID('0x70C57D00','0x9C945AD6','0x0077024F','0x00005500')); -- fortresswall_elevatorContainer
+  type:setGuid(GUID('0x8761F53B','0xAE2B174C','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x09D697DB','0xAE2B174E','0x0077024F','0x00005500'), "0_25_fortresswall_elevator_AreaEntityTriggerOtherInstancesComponent");
+  type:addComponentTypeGUID(GUID('0x09D697DB','0xAE2B174E','0x0077024F','0x00005500')); -- 0_25_fortresswall_elevator_AreaEntityTriggerOtherInstancesComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD5F5BC84','0xAE2B1750','0x0077024F','0x00005500'), "4_25_fortresswall_elevator_AreaEntityBoxAreaComponent");
+  type:addComponentTypeGUID(GUID('0xD5F5BC84','0xAE2B1750','0x0077024F','0x00005500')); -- 4_25_fortresswall_elevator_AreaEntityBoxAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6AAF59A2','0xDBB93CD8','0x0077020B','0x00005500'), "collector_object.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0x6AAF59A2','0xDBB93CD8','0x0077020B','0x00005500')); -- collector_object.fbxmodel_ModCom
+  typeManager:setLastKnownNameForGUID(GUID('0x707AF3CB','0x9BA10788','0x0077025C','0x00005500'), "OtherTriggerWhenCollectedComponent");
+  type:addComponentTypeGUID(GUID('0x707AF3CB','0x9BA10788','0x0077025C','0x00005500')); -- OtherTriggerWhenCollectedComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

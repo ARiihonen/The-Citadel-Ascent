@@ -1,0 +1,70 @@
+epicPose1 = addContext("epicPose1",1)
+epicPose2 = addContext("epicPose2",1)
+kill_goodygood = addContext("kill_goodygood",1)
+kill_goodygood_wait = addContext("kill_goodygood_wait",1)
+hide_heart = addContext("hide_heart",1)
+chased = addContext("chased",1)
+
+
+sarek_battle = addContext("sarek_battle",1)
+sarek_battle_wait = addContext("sarek_battle_wait",1)
+
+--{ Animation: s_sarek_battle
+s_sarek_battle = addState(sarek_battle, "s_sarek_battle");
+s_sarek_battle:loop(false);
+s_sarek_battle:loopBlendTime(0); 
+s_sarek_battle:speedFactor(1);
+s_sarek_battle:add("sarek_battle.fbxanim");
+--}
+
+--{ Animation: s_sarek_battle_wait
+s_sarek_battle_wait = addState(sarek_battle_wait, "s_sarek_battle_wait");
+s_sarek_battle_wait:loop(true);
+s_sarek_battle_wait:loopBlendTime(0); 
+s_sarek_battle_wait:speedFactor(1);
+s_sarek_battle_wait:add("sarek_battle_wait.fbxanim");
+--}
+
+--{ Animation: s_epic_pose_1
+s_epic_pose_1 = addState(epicPose1, "s_epic_pose_1");
+s_epic_pose_1:add("epic_pose_1.fbxanim");
+--}
+
+--{ Animation: s_sarek_chased
+s_sarek_chased = addState(chased, "s_sarek_chased");
+s_sarek_chased:loop(true);
+s_sarek_chased:add("sarek_chased.fbxanim");
+--}
+
+--{ Animation: s_epic_pose_2
+s_epic_pose_2 = addState(epicPose2, "s_epic_pose_2");
+s_epic_pose_2:loop(true);
+s_epic_pose_2:loopBlendTime(1200); 
+s_epic_pose_2:speedFactor(0.3);
+s_epic_pose_2:add("epic_pose_2.fbxanim"); 
+--}
+
+--{ Animation: s_kill_goodygood
+s_kill_goodygood = addState(kill_goodygood, "s_kill_goodygood");
+s_kill_goodygood:loop(false);
+s_kill_goodygood:loopBlendTime(0); 
+s_kill_goodygood:speedFactor(1);
+s_kill_goodygood:add("kill_goodygood.fbxanim");
+--}
+
+--{ Animation: s_kill_goodygood_wait
+s_kill_goodygood_wait = addState(kill_goodygood_wait, "s_kill_goodygood_wait");
+s_kill_goodygood_wait:loop(false);
+s_kill_goodygood_wait:loopBlendTime(0); 
+s_kill_goodygood_wait:speedFactor(1);
+s_kill_goodygood_wait:add("kill_goodygood_wait.fbxanim");
+--}
+
+--{ Animation: s_hide_heart
+s_hide_heart = addState(hide_heart, "s_hide_heart");
+s_hide_heart:loop(false);
+s_hide_heart:loopBlendTime(0); 
+s_hide_heart:speedFactor(1);
+s_hide_heart:add("hide_heart.fbxanim");
+--}
+ 

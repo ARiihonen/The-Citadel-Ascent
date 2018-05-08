@@ -1,0 +1,22 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/dynamic_metal_collision_helper_metal.fbt")
+  local type = typeManager:inheritNewTypeByGUID("2_0_fortresswall_elevator_ObjectEntityPhysicsComponent", GUID('0x0732ADD9','0xB3871533','0x0077022D','0x00005500')); -- DynamicMetalCollisionHelperMetalCollisionHelperBoxPhysicsComponent
+  type:setGuid(GUID('0xE3DD86F4','0x9C945ADA','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMass(engine.component.AbstractPhysicsComponent.MassVeryLightLevel1)
+  type:setGravityEnabled(false)
+  type:setCollisionGroup(engine.component.AbstractPhysicsComponent.CollisionGroupDynamicNoStatic)
+  type:setDominanceGroup(engine.component.AbstractPhysicsComponent.DominanceGroupDynamic)
+  type:setPositionXEnabled(false)
+  type:setPositionZEnabled(false)
+  type:setRotationXEnabled(false)
+  type:setRotationYEnabled(false)
+  type:setRotationZEnabled(false)
+  type:setIgnoreAddForce(true)
+  typeManager:setLastKnownNameForGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500'), "CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')); -- CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x17E47C19','0xF2583BCF','0x0077024F','0x00005500'), "100__0_fortresswall_elevator_ObjectEntityBoxPhysicsCollisionComponent");
+  type:addComponentTypeGUID(GUID('0x17E47C19','0xF2583BCF','0x0077024F','0x00005500')); -- 100__0_fortresswall_elevator_ObjectEntityBoxPhysicsCollisionComponent
+  -- inherits PhysicsActivationSphereAreaComponent GUID('0x668FC7D3','0xC6D46DC4','0x0077020B','0x00005500')
+end

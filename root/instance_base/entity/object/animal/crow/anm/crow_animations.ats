@@ -1,0 +1,53 @@
+idle1 = addContext("idle1", 1)
+idle2 = addContext("idle2", 1)
+
+fly1 = addContext("fly1", 1)
+fly2 = addContext("fly2", 1)
+
+takeoff1 = addContext("takeoff1", -1)
+takeoff2 = addContext("takeoff2", -1)
+
+--{ Animation: crow_idle1
+crow_idle1 = addState(idle1, "crow_idle1");
+crow_idle1:blendTime(300);
+crow_idle1:loop(true);
+crow_idle1:randomizedStartTime();
+crow_idle1:add("crow_idle1.fbxanim");
+--}
+
+--{ Animation: crow_idle2
+crow_idle2 = addState(idle2, "crow_idle2");
+crow_idle2:blendTime(300);
+crow_idle2:loop(true);
+crow_idle2:randomizedStartTime();
+crow_idle2:add("crow_idle2.fbxanim");
+--}
+
+
+--{ Animation: crow_fly1
+crow_fly1 = addState(fly1, "crow_fly1");
+crow_fly1:blendTime(300);
+crow_fly1:loop(true);
+crow_fly1:add("crow_fly1.fbxanim");
+--}
+
+--{ Animation: crow_fly2
+crow_fly2 = addState(fly2, "crow_fly2");
+crow_fly2:blendTime(300);
+crow_fly2:loop(true);
+crow_fly2:add("crow_fly2.fbxanim");
+--}
+
+--{ Animation: crow_takeoff1
+crow_takeoff1 = addState(takeoff1, "crow_takeoff1");
+crow_takeoff1:blendTime(300);
+crow_takeoff1:loop(false);
+crow_takeoff1:add("crow_takeoff1.fbxanim");
+--}
+
+--{ Animation: crow_takeoff2
+crow_takeoff2 = addState(takeoff2, "crow_takeoff2");
+crow_takeoff2:blendTime(300);
+crow_takeoff2:loop(false);
+crow_takeoff2:add("crow_takeoff2.fbxanim");
+--}

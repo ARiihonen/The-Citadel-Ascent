@@ -1,0 +1,14 @@
+--{ Contexts
+activate = addContext("activate", 1)
+
+
+
+--{ Animation: s_activate
+s_activate = addState(activate, "s_activate");
+s_activate:blendTime(0);
+s_activate:loop(false);
+s_activate:add("spiritpoint_activate.fbxanim");
+--}
+
+
+

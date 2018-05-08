@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/generate_sound_on_event/object_generate_sound_on_event/object_generate_sound_on_event_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("MediumObjectGenerateSoundOnEventComponent", GUID('0x7F3168E8','0xC698203B','0x00770223','0x00005500')); -- ObjectGenerateSoundOnEventComponent
+  type:setGuid(GUID('0xA0AD9E74','0x6D622041','0x00770223','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setSoundVolumeOnBreak(trinebase.gameplay.GameplaySoundVolumeLoud)
+  type:setSoundVolumeOnDeath(trinebase.gameplay.GameplaySoundVolumeLoud)
+  type:setSoundVolumeOnHit(trinebase.gameplay.GameplaySoundVolumeMedium)
+  type:setSoundVolumeOnContact(trinebase.gameplay.GameplaySoundVolumeVeryQuiet)
+  type:setSoundVolumeOnDrag(trinebase.gameplay.GameplaySoundVolumeQuiet)
+end

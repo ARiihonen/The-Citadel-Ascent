@@ -1,0 +1,16 @@
+cinematic = addContext("cinematic", 1)
+cinematic_wait = addContext("cinematic_wait", 1)
+
+--{ Animation: s_rope
+s_rope = addState(cinematic, "s_rope");
+s_rope:blendTime(0);
+s_rope:loop(false);
+s_rope:add("jungle_nut_plant_2_cinematic.fbxanim");
+--}
+
+--{ Animation: s_default
+s_default = addState(cinematic_wait, "s_default");
+s_default:blendTime(0);
+s_default:loop(false);
+s_default:add("jungle_nut_plant_2_cinematic.fbxanim");
+--}

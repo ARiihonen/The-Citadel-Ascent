@@ -1,0 +1,9 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/castle/props/cellar_prop_set_box_cube_dynamic_phy.fbt")
+  local type = typeManager:inheritNewTypeByGUID("28__14_winch_crane_rotating_prefab_ObjectEntityGenerateSoundOnEventComponent", GUID('0x613CFAE1','0x1CAB1680','0x0077021C','0x00005500')); -- cellar_prop_set_box_cube_dynamic_physics_breakableMediumObjectGenerateSoundOnEventComponent
+  type:setGuid(GUID('0x53F01030','0xA15935D2','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setSoundVolumeOnDeath(trinebase.gameplay.GameplaySoundVolumeMedium)
+  type:setSoundVolumeOnDrag(trinebase.gameplay.GameplaySoundVolumeNone)
+end

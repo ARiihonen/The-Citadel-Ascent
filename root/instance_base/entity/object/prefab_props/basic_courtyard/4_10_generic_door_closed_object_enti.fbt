@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_courtyard/wall_set_basic_courtyard_door_2.fbxm.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_10_generic_door_closed_ObjectEntityModelComponent", GUID('0xD6B1F9AA','0xDDF4182F','0x0077021D','0x00005500')); -- wall_set_basic_courtyard_door_2.fbxmodel_ModCom
+  type:setGuid(GUID('0xCE9A69DE','0x7E4F3B83','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setDiffuseColor(COL(0.2913, 0.2913, 0.2913))
+end

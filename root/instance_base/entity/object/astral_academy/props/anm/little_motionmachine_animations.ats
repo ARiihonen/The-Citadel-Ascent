@@ -1,0 +1,10 @@
+working = addContext("working", 1)
+
+
+
+--{ Animation: little_motionmachine_working
+little_motionmachine_working = addState(working, "little_motionmachine_working");
+little_motionmachine_working:blendTime(300);
+little_motionmachine_working:loop(true);
+little_motionmachine_working:add("little_motionmachine_working.fbxanim");
+--}

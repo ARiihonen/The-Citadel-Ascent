@@ -1,0 +1,9 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/audio/point_audio/point_audio_basic_audio_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("wooden_torch_5_3_AudioEntity_4AudioComponent", GUID('0x6F7BC919','0x2AC74797','0x007702C3','0x00005500')); -- PointAudioBasicAudioComponent
+  type:setGuid(GUID('0x92DE4CCB','0xE7300B69','0x00770262','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setDryValue(0.20000000298023)
+  type:setStartEvent("Play_torch")
+end

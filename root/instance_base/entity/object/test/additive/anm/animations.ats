@@ -1,0 +1,74 @@
+-- I've commented out the layered animation commands, you can enable them to test it.
+-- The move animation is on the base layer, and jump and spin on additive layers
+-- Each layer has an idle animation, otherwise clearing a context would probably
+-- have no effect. It's a bit of an overkill for essentially disabling a layer if
+-- it doesn't support any of the active contexts, but at least it should work.
+
+
+move = addContext("move", 1)
+jump = addContext("jump", 2)
+spin = addContext("spin", 3)
+shear = addContext("shear", 4)
+idle = addContext("idle", 5)
+
+layerFoo = 1
+layerBar = 2
+layerFooFoo = 3
+
+--{ Animation: s_move
+s_move = addState(move, "s_move");
+s_move:blendTime(300);
+s_move:loop(true);
+s_move:add("move.anm");
+--}
+--{ Animation: s_jump
+s_jump = addState(jump, "s_jump", layerFoo);
+s_jump:blendTime(300);
+s_jump:loop(true);
+s_jump:add("jump.anm");
+s_jump:addReference("reference.anm");
+-- s_jump:layer(1);
+--}
+--{ Animation: s_spin
+s_spin = addState(spin, "s_spin", layerBar);
+s_spin:blendTime(300);
+s_spin:loop(true);
+s_spin:add("spin.anm");
+s_spin:addReference("reference.anm");
+--}
+--{ Animation: s_shear
+s_shear = addState(shear, "s_shear", layerFooFoo);
+s_shear:blendTime(300);
+s_shear:loop(true);
+s_shear:add("shear.anm");
+s_shear:addReference("reference.anm");
+--}
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(300);
+s_idle:loop(true);
+s_idle:add("reference.anm");
+--}
+--{ Animation: s_idle_layer1
+s_idle_layer1 = addState(idle, "s_idle_layer1", layerFoo);
+s_idle_layer1:blendTime(300);
+s_idle_layer1:loop(true);
+s_idle_layer1:add("reference.anm");
+s_idle_layer1:addReference("reference.anm");
+--}
+--{ Animation: s_idle_layer2
+s_idle_layer2 = addState(idle, "s_idle_layer2", layerBar);
+s_idle_layer2:blendTime(300);
+s_idle_layer2:loop(true);
+s_idle_layer2:add("reference.anm");
+s_idle_layer2:addReference("reference.anm");
+--}
+--{ Animation: s_idle_layer3
+s_idle_layer3 = addState(idle, "s_idle_layer3", layerFooFoo);
+s_idle_layer3:blendTime(300);
+s_idle_layer3:loop(true);
+s_idle_layer3:add("reference.anm");
+s_idle_layer3:addReference("reference.anm");
+-- s_idle_layer3:layer(3);
+--}

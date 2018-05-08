@@ -1,0 +1,130 @@
+--{ Contexts
+stage1 = addContext("stage1", 4)
+stage2 = addContext("stage2", 3)
+stage3 = addContext("stage3", 2)
+stagger = addContext("stagger", 10)
+stagger2 = addContext("stagger2", 10)
+fast = addContext("fast", 15)
+defeat = addContext("defeat", 1)
+default_pose = addContext("default_pose", 4)
+test = addContext("test", 0)
+--}
+
+--{ Parameters
+aim = addParam("aim")
+--}
+
+--{ Tables
+running = {};
+
+--}
+
+--{ IK chains
+-- l1 = VC3(0, 0, -1) -- rotate limb vertical
+-- l2 = VC3(0, 1, 0) -- rotate limb horizontal
+-- l3 = VC3(1, 0, 0) -- towards parent joint
+-- r1 = VC3(0, 0, -1)
+-- r2 = VC3(0, -1, 0)
+-- r3 = VC3(-1, 0, 0)
+-- left_arm_ik = addIKChain("left_arm_ik", "arm_L0_0_shd", "arm_L0_2_shd", "arm_L0_end_shd", l1, l2, l3)
+-- right_arm_ik = addIKChain("right_arm_ik", "arm_R0_0_shd", "arm_R0_2_shd", "arm_R0_end_shd", r1, r2, r3)
+-- left_leg_ik = addIKChain("left_leg_ik", "leg_L0_0_shd", "leg_L0_2_shd", "leg_L0_end_shd", l1, l2, l3)
+-- right_leg_ik = addIKChain("right_leg_ik", "leg_R0_0_shd", "leg_R0_2_shd", "leg_R0_end_shd", r1, r2, r3)
+--}
+
+--{ Animation: s_default_pose
+s_default_pose = addState(default_pose, "s_default_pose");
+s_default_pose:blendTime(0);
+s_default_pose:loop(true);
+s_default_pose:add("default_pose.fbxanim");
+--}
+
+--{ Animation: s_stage1_pattern
+s_stage1_pattern = addState(stage1, "s_stage1_pattern");
+s_stage1_pattern:blendTime(800);
+s_stage1_pattern:loopBlendTime(800);
+s_stage1_pattern:loop(true);
+s_stage1_pattern:add("stage1_pattern_chain.fbxanim");
+--}
+
+--{ Animation: s_stage1_knee_hit
+s_stage1_knee_hit = addState(stage1+stagger, "s_stage1_knee_hit");
+s_stage1_knee_hit:blendTime(500);
+-- s_stage1_knee_hit:loopBlendTime(800);
+s_stage1_knee_hit:loop(false);
+s_stage1_knee_hit:add("stage1_knee_hit_chain.fbxanim");
+s_stage1_knee_hit:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_stage2_start
+s_stage2_start = addState(stage2, "s_stage2_start");
+-- s_stage2_start:speedFactor(1);
+s_stage2_start:from(s_stage1_knee_hit);
+s_stage2_start:from(s_stage1_pattern);
+s_stage2_start:blendTime(600);
+s_stage2_start:loop(false);
+s_stage2_start:add("stage2_start.fbxanim");
+--}
+
+--{ Animation: s_stage2_pattern
+s_stage2_pattern = addState(stage2, "s_stage2_pattern");
+s_stage2_pattern:blendTime(800);
+s_stage2_pattern:loopBlendTime(800);
+s_stage2_pattern:loop(true);
+s_stage2_pattern:add("stage2_pattern.fbxanim");
+s_stage2_pattern:addEnterEvent("EventAnimHeadVulnerable");
+--}
+
+
+--{ Animation: s_stage2_pattern_fast
+s_stage2_pattern_fast = addState(stage2+fast, "s_stage2_pattern_fast");
+s_stage2_pattern_fast:blendTime(800);
+s_stage2_pattern_fast:loopBlendTime(800);
+s_stage2_pattern_fast:loop(true);
+s_stage2_pattern_fast:add("stage2_pattern_fast.fbxanim");
+s_stage2_pattern_fast:addEnterEvent("EventAnimHeadVulnerable");
+--}
+
+--{ Animation: s_stage2_stagger
+s_stage2_stagger = addState(stage2+stagger, "s_stage2_stagger");
+s_stage2_stagger:blendTime(400);
+s_stage2_stagger:loop(false);
+s_stage2_stagger:add("stage2_stagger.fbxanim");
+s_stage2_stagger:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_stage3_start
+s_stage3_start = addState(stage3, "s_stage3_start");
+-- s_stage3_start:speedFactor(1);
+s_stage3_start:from(s_stage2_stagger);
+s_stage3_start:from(s_stage2_pattern);
+s_stage3_start:from(s_stage2_pattern_fast);
+s_stage3_start:blendTime(600);
+s_stage3_start:loop(false);
+s_stage3_start:add("stage3_start.fbxanim");
+--}
+
+
+--{ Animation: s_stage3_pattern
+s_stage3_pattern = addState(stage3, "s_stage3_pattern");
+s_stage3_pattern:blendTime(800);
+s_stage3_pattern:loopBlendTime(800);
+s_stage3_pattern:loop(true);
+s_stage3_pattern:add("stage3_pattern.fbxanim");
+--}
+
+--{ Animation: s_stage3_test
+s_stage3_test = addState(test, "s_stage3_test");
+s_stage3_test:blendTime(800);
+s_stage3_test:loopBlendTime(800);
+s_stage3_test:loop(false);
+s_stage3_test:add("stage3_test.fbxanim");
+--}
+
+--{ Animation: s_stage3_defeat
+s_stage3_defeat = addState(defeat, "s_stage3_defeat");
+s_stage3_defeat:blendTime(400);
+s_stage3_defeat:loopBlendTime(800);
+s_stage3_defeat:loop(false);
+s_stage3_defeat:add("stage3_defeat.fbxanim");
+--}

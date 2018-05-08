@@ -1,0 +1,32 @@
+roll = addContext("roll", 1)
+stop = addContext("stop", 1)
+
+vel = addParam("vel")
+
+--{ Animation: s_roll
+s_roll = addState(roll, "s_roll");
+s_roll:loopBlendTime(0);
+s_roll:loop(true);  
+s_roll:add(vel(1.0), "roll_slow.fbxanim");
+--s_roll:add(vel(2.0), "roll_slow.fbxanim");
+s_roll:add(vel(2.0), "roll_fast.fbxanim");
+--}
+
+
+--{ Animation: s_stop_start
+s_stop_start = addState(stop, "s_stop_start");
+s_stop_start:from(s_roll);
+s_stop_start:loopBlendTime(100);
+s_stop_start:loop(false);  
+s_stop_start:add("stop_start.fbxanim");
+
+--}
+
+--{ Animation: s_idle
+s_idle = addState(stop, "s_idle");
+s_idle:loopBlendTime(200); 
+s_idle:loop(true);  
+s_idle:add("idle.fbxanim"); 
+
+--}
+

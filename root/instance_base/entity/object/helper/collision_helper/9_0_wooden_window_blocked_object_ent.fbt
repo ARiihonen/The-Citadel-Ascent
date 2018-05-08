@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/wood_collision_helper_model_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("9_0_wooden_window_blocked_ObjectEntityModelComponent", GUID('0x71ED70C5','0x3F6E2442','0x00770279','0x00005500')); -- WoodCollisionHelperModelComponent
+  type:setGuid(GUID('0xDB7845C1','0xB1426FBE','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setVisibleInGame(true)
+end

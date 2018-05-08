@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/generic_fortress_window_open_container/generic_fortress_window_open_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_generic_fortress_window_open_ObjectEntity", GUID('0x7C8ED691','0x70E45527','0x0077024F','0x00005500')); -- generic_fortress_window_openContainer
+  type:setGuid(GUID('0x9F76A9DC','0x70E45529','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xA09F8E90','0x9365021F','0x0077022E','0x00005500'), "door_n_window_set_window_7.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0xA09F8E90','0x9365021F','0x0077022E','0x00005500')); -- door_n_window_set_window_7.fbxmodel_ModCom
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

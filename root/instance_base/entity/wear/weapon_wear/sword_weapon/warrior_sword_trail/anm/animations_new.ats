@@ -1,0 +1,322 @@
+--{ Contexts
+rush = addContext("rush", 1)
+
+jump = addContext("jump", 4)
+fall = addContext("fall", 5)
+stand = addContext("stand", 10)
+crouch = addContext("crouch", 6)
+run = addContext("run", 15)
+turn_left = addContext("turn_left", 30)
+turn_right = addContext("turn_right", 30)
+wall = addContext("wall", 8)
+stick = addContext("stick", 9)
+ledge = addContext("ledge", 4)
+over_ledge = addContext("over_ledge", 100)
+hang = addContext("hang", 15)
+losing_grip = addContext("losing_grip", 5)
+climb = addContext("climb", 6)
+drop_down = addContext("drop_down", 6)
+block = addContext("block", 0)
+rope_throw = addContext("rope_throw", 11)
+pull_lever = addContext("pull_lever", 12)
+root_motion_test = addContext("root_motion_test", 0)
+
+combat = addContext("combat", 2)
+default = addContext("default", 2)
+
+attack = addContext("attack", 1)
+a_front = addContext("a_front", 7)
+a_right = addContext("a_right", 7)
+a_left = addContext("a_left", 7)
+a_back = addContext("a_back", 7)
+a_long = addContext("a_long", 8)
+a_kill = addContext("a_kill", 6)
+a_humanoid = addContext("a_humanoid", 8)
+a_ground_slam = addContext("a_ground_slam", 5)
+
+
+slide = addContext("slide", 1)
+out_of_balance = addContext("out_of_balance", 10)
+
+
+attack1_sword = addContext("attack1_sword", 1)
+attack2_sword = addContext("attack2_sword", 1)
+attack3_sword = addContext("attack3_sword", 1)
+--}
+
+
+--{ Tables
+running = {};
+standing = {};
+jumping = {};
+falling = {};
+on_wall = {};
+on_ledge = {};
+blocking = {};
+crouching = {};
+pose2 = {};
+--}
+
+--{ Parameters
+aim = addParam("aim")
+run_direction = addParam("run_direction")
+run_lean = addParam("run_lean")
+turn_angle = addParam("turn_angle")
+wall_angle = addParam("wall_angle")
+movement_speed = addParam("movement_speed")
+movement_angle = addParam("movement_angle")
+--}
+
+--{ Animation: s_stand
+s_stand = addState(default, "stand");
+s_stand:blendTime(0);
+s_stand:loop(false);
+s_stand:add("none.fbxanim");
+-- s_stand:addFinishedEvent("EventAnimAttackComplete")
+--}
+
+--{ Animation: s_rush
+-- s_rush = addState(rush, "rush");
+-- s_rush:blendTime(150);
+-- s_rush:loop(true);
+-- s_rush:add("none.fbxanim");
+-- s_rush:addFinishedEvent("EventAnimAttackComplete")
+--}
+
+--{ Animation: s_attack_jumping
+s_attack_jumping = addState(attack+fall, "attack_jumping");
+s_attack_jumping:blendTime(0);
+s_attack_jumping:loop(false);
+-- s_attack_jumping:alwaysFinishAnimation(true);
+s_attack_jumping:add("attack_right_pose1_still.fbxanim");
+--}
+
+--{ Animation: s_attack_ground_slam
+s_attack_ground_slam = addState(attack+a_ground_slam, "attack_ground_slam");
+s_attack_ground_slam:blendTime(0);
+s_attack_ground_slam:synchronizedStartTimeGroup(15);
+s_attack_ground_slam:loop(false);
+-- s_attack_ground_slam:alwaysFinishAnimation(true);
+-- s_attack_ground_slam:add("attack_right_pose1_alt4.fbxanim");
+s_attack_ground_slam:add("kill_left_pose2_still.fbxanim");
+--}
+
+--{ Animation: s_attack_ground_slam_end
+-- s_attack_ground_slam_end = addState(default, "attack_ground_slam_end");
+-- s_attack_ground_slam_end:from(s_attack_ground_slam);
+-- s_attack_ground_slam_end:synchronizedStartTimeGroup(15);
+-- s_attack_ground_slam_end:blendTime(0);
+-- s_attack_ground_slam_end:loop(false);
+-- s_attack_ground_slam_end:alwaysFinishAnimation(true);
+-- s_attack_ground_slam_end:add("attack_right_pose1_alt4.fbxanim");
+-- s_attack_ground_slam_end:add("kill_left_pose2_still.fbxanim");
+--}
+
+
+
+--{ Animation: s_attack_front_pose1
+s_attack_front_pose1 = addState(attack, "attack_front_pose1");
+s_attack_front_pose1:blendTime(000);
+s_attack_front_pose1:loop(false);
+s_attack_front_pose1:add(movement_speed(0), "attack_front_pose1_still.fbxanim");
+s_attack_front_pose1:add(movement_speed(1), "attack_left_pose1_still.fbxanim");
+table.insert(pose2, s_attack_front_pose1);
+--}
+--{ Animation: s_kill_front_pose1
+s_kill_front_pose1 = addState(attack+a_kill+a_humanoid, "kill_front_pose1");
+s_kill_front_pose1:restart(true);
+s_kill_front_pose1:blendTime(000);
+s_kill_front_pose1:loop(false);
+s_kill_front_pose1:add("kill_front_pose1_still.fbxanim");
+-- s_kill_front_pose1:add("kill_left_pose2_still.fbxanim");
+-- s_kill_front_pose1:add("none.fbxanim");
+table.insert(pose2, s_kill_front_pose1);
+--}
+--{ Animation: s_attack_front_pose1_long
+s_attack_front_pose1_long = addState(attack+a_front+a_long, "attack_front_pose1_long");
+s_attack_front_pose1_long:blendTime(000);
+s_attack_front_pose1_long:loop(false);
+s_attack_front_pose1_long:add("attack_front_pose1_long.fbxanim");
+-- s_attack_front_pose1_long:add("none.fbxanim");
+table.insert(pose2, s_attack_front_pose1_long);
+--}
+
+--{ Animation: s_attack_left_pose1
+s_attack_left_pose1 = addState(attack+a_left, "attack_left_pose1");
+s_attack_left_pose1:blendTime(0);
+s_attack_left_pose1:loop(false);
+s_attack_left_pose1:restart(true);
+s_attack_left_pose1:add("attack_left_pose1_still.fbxanim");
+--}
+--{ Animation: s_attack_left_pose1_long
+s_attack_left_pose1_long = addState(attack+a_left+a_long, "attack_left_pose1_long");
+s_attack_left_pose1_long:blendTime(0);
+s_attack_left_pose1_long:loop(false);
+s_attack_left_pose1_long:restart(true);
+s_attack_left_pose1_long:add("attack_left_pose1_long_still.fbxanim");
+--}
+
+--{ Animation: s_attack_right_pose1
+s_attack_right_pose1 = addState(attack+a_right, "attack_right_pose1");
+s_attack_right_pose1:blendTime(0);
+s_attack_right_pose1:loop(false);
+s_attack_right_pose1:add("attack_right_pose1_still.fbxanim");
+-- s_attack_right_pose1:add("attack_right_pose1.fbxanim");
+-- s_attack_right_pose1:add("kill_front_pose1_still.fbxanim");
+-- s_attack_right_pose1:add("none.fbxanim");
+table.insert(pose2, s_attack_right_pose1);
+--}
+--{ Animation: s_attack_right_pose1_long
+s_attack_right_pose1_long = addState(attack+a_right+a_long, "attack_right_pose1_long");
+s_attack_right_pose1_long:blendTime(0);
+s_attack_right_pose1_long:loop(false);
+s_attack_right_pose1_long:add("attack_right_pose1_long_still.fbxanim");
+-- s_attack_right_pose1_long:add("kill_front_pose1_long_still.fbxanim");
+-- s_attack_right_pose1_long:add("none.fbxanim");
+table.insert(pose2, s_attack_right_pose1_long);
+--}
+--{ Animation: s_attack_back_pose1
+s_attack_back_pose1 = addState(attack+a_back, "attack_back_pose1");
+s_attack_back_pose1:blendTime(0);
+s_attack_back_pose1:loop(false);
+s_attack_back_pose1:add("attack_left_pose1_still.fbxanim");
+--}
+--{ Animation: s_attack_back_pose1_long
+s_attack_back_pose1_long = addState(attack+a_back+a_long, "attack_back_pose1_long");
+s_attack_back_pose1_long:blendTime(0);
+s_attack_back_pose1_long:loop(false);
+s_attack_back_pose1_long:add("attack_left_pose1_long_still.fbxanim");
+--}
+--{ Animation: s_attack_back_pose1_humanoid
+s_attack_back_pose1_humanoid = addState(attack+a_back+a_humanoid, "attack_back_pose1_humanoid");
+s_attack_back_pose1_humanoid:blendTime(0);
+s_attack_back_pose1_humanoid:loop(false);
+s_attack_back_pose1_humanoid:add("attack_back_pose1_still.fbxanim");
+--}
+--{ Animation: s_attack_back_pose1_humanoid_long
+s_attack_back_pose1_humanoid_long = addState(attack+a_back+a_long+a_humanoid, "attack_back_pose1_humanoid_long");
+s_attack_back_pose1_humanoid_long:blendTime(0);
+s_attack_back_pose1_humanoid_long:loop(false);
+s_attack_back_pose1_humanoid_long:add("attack_back_pose1_long_still.fbxanim");
+--}
+
+--{ Animation: s_attack_front_pose2
+s_attack_front_pose2 = addState(attack+a_front, "attack_front_pose2");
+s_attack_front_pose2:from(pose2);
+s_attack_front_pose2:blendTime(000);
+s_attack_front_pose2:loop(false);
+s_attack_front_pose2:add("attack_right_pose2_still.fbxanim");
+-- s_attack_front_pose2:add("none.fbxanim");
+-- table.insert(pose2, s_attack_front_pose2);
+--}
+--{ Animation: s_attack_front_pose1_long
+s_attack_front_pose2_long = addState(attack+a_front+a_long, "attack_front_pose2_long");
+s_attack_front_pose2_long:from(pose2);
+s_attack_front_pose2_long:blendTime(0);
+s_attack_front_pose2_long:loop(false);
+s_attack_front_pose2_long:add("attack_right_pose2_long_still.fbxanim");
+-- s_attack_front_pose2_long:add("kill_front_pose2_long_still.fbxanim");
+-- s_attack_front_pose2_long:add("none.fbxanim");
+table.insert(pose2, s_attack_front_pose2_long);
+--
+
+--{ Animation: s_attack_front_pose2_humanoid
+s_attack_front_pose2_humanoid = addState(attack+a_front+a_humanoid, "attack_front_pose2_humanoid");
+s_attack_front_pose2_humanoid:from(pose2);
+s_attack_front_pose2_humanoid:blendTime(000);
+s_attack_front_pose2_humanoid:loop(false);
+s_attack_front_pose2_humanoid:add("attack_front_pose2_still.fbxanim");
+-- s_attack_front_pose2_humanoid:add("none.fbxanim");
+-- table.insert(pose2_humanoid, s_attack_front_pose2_humanoid);
+--}
+
+--{ Animation: s_attack_right_pose2
+s_attack_right_pose2 = addState(attack+a_right, "attack_right_pose2");
+s_attack_right_pose2:from(pose2);
+s_attack_right_pose2:blendTime(000);
+s_attack_right_pose2:loop(false);
+s_attack_right_pose2:add("attack_right_pose2_still.fbxanim");
+--}
+--{ Animation: s_kill_right_pose2
+s_kill_right_pose2 = addState(attack+a_kill, "kill_right_pose2");
+s_kill_right_pose2:from(pose2);
+s_kill_right_pose2:restart(true);
+s_kill_right_pose2:blendTime(000);
+s_kill_right_pose2:loop(false);
+s_kill_right_pose2:add("attack_right_pose2_long_still.fbxanim");
+-- s_kill_right_pose2:add("none.fbxanim");
+--}
+--{ Animation: s_attack_right_pose2_long
+s_attack_right_pose2_long = addState(attack+a_right+a_long, "attack_right_pose2_long");
+s_attack_right_pose2_long:from(pose2);
+s_attack_right_pose2_long:blendTime(000);
+s_attack_right_pose2_long:loop(false);
+s_attack_right_pose2_long:add("attack_right_pose2_long_still.fbxanim");
+--}
+
+--{ Animation: s_attack_left_pose2
+s_attack_left_pose2 = addState(attack+a_left, "attack_left_pose2");
+s_attack_left_pose2:from(pose2);
+s_attack_left_pose2:blendTime(000);
+s_attack_left_pose2:loop(false);
+s_attack_left_pose2:add("attack_right_pose1_still.fbxanim");
+-- s_attack_left_pose2:add("none.fbxanim");
+-- table.insert(pose2, s_attack_left_pose2);
+--}
+--{ Animation: s_attack_left_pose2_long
+s_attack_left_pose2_long = addState(attack+a_left, "attack_left_pose2_long");
+s_attack_left_pose2_long:from(pose2);
+s_attack_left_pose2_long:blendTime(000);
+s_attack_left_pose2_long:loop(false);
+s_attack_left_pose2_long:add("attack_right_pose1_long_still.fbxanim");
+-- s_attack_left_pose2_long:add("none.fbxanim");
+-- table.insert(pose2_long, s_attack_left_pose2_long);
+--}
+--{ Animation: s_attack_left_pose2_humanoid
+s_attack_left_pose2_humanoid = addState(attack+a_left+a_humanoid, "attack_left_pose2_humanoid");
+s_attack_left_pose2_humanoid:from(pose2);
+s_attack_left_pose2_humanoid:blendTime(000);
+s_attack_left_pose2_humanoid:loop(false);
+-- s_attack_left_pose2_humanoid:add("attack_left_pose2_humanoid_still.fbxanim");
+s_attack_left_pose2_humanoid:add("none.fbxanim");
+-- table.insert(pose2, s_attack_left_pose2_humanoid);
+--}
+
+--{ Animation: s_attack_back_pose2_humanoid
+s_attack_back_pose2_humanoid = addState(attack+a_back+a_humanoid, "attack_back_pose2_humanoid");
+s_attack_back_pose2_humanoid:from(pose2);
+s_attack_back_pose2_humanoid:blendTime(000);
+s_attack_back_pose2_humanoid:loop(false);
+s_attack_back_pose2_humanoid:add("attack_back_pose2_still.fbxanim");
+--}
+--{ Animation: s_attack_back_pose2_humanoid_long
+s_attack_back_pose2_humanoid_long = addState(attack+a_back+a_long+a_humanoid, "attack_back_pose2_humanoid_long");
+s_attack_back_pose2_humanoid_long:from(pose2);
+s_attack_back_pose2_humanoid_long:blendTime(000);
+s_attack_back_pose2_humanoid_long:loop(false);
+s_attack_back_pose2_humanoid_long:add("attack_back_pose2_long_still.fbxanim");
+--}
+--{ Animation: s_attack_back_pose2
+s_attack_back_pose2 = addState(attack+a_back, "attack_back_pose2");
+s_attack_back_pose2:from(pose2);
+s_attack_back_pose2:blendTime(000);
+s_attack_back_pose2:loop(false);
+s_attack_back_pose2:add("attack_right_pose2_still.fbxanim");
+--}
+--{ Animation: s_attack_back_pose2_long
+s_attack_back_pose2_long = addState(attack+a_back+a_long, "attack_back_pose2_long");
+s_attack_back_pose2_long:from(pose2);
+s_attack_back_pose2_long:blendTime(000);
+s_attack_back_pose2_long:loop(false);
+s_attack_back_pose2_long:add("attack_right_pose2_long_still.fbxanim");
+--}
+
+
+
+--{ Animation: s_attack_right_pose1
+-- s_attack_right_pose1 = addState(attack+a_right, "attack_right_pose1");
+-- s_attack_right_pose1:blendTime(0);
+-- s_attack_right_pose1:loop(false);
+-- s_attack_right_pose1:add("attack_right_pose1_still.fbxanim");
+-- table.insert(pose2, s_attack_right_pose1);
+--}

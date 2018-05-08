@@ -1,0 +1,22 @@
+--{ Contexts
+trine_destroyed = addContext("trine_destroyed", 4)
+trine_destroyed_wait = addContext("trine_destroyed_wait", 4)
+
+
+--{ Animation: s_trine_destroyed
+s_trine_destroyed = addState(trine_destroyed, "s_trine_destroyed");
+s_trine_destroyed:blendTime(0);
+s_trine_destroyed:loopBlendTime(0);
+-- s_trine_destroyed:speedFactor(0.2);
+s_trine_destroyed:loop(false);
+s_trine_destroyed:add("trine_destroyed.fbxanim");
+--}
+
+--{ Animation: s_trine_destroyed_wait
+s_trine_destroyed_wait = addState(trine_destroyed_wait, "s_trine_destroyed_wait");
+s_trine_destroyed_wait:blendTime(0);
+s_trine_destroyed_wait:loopBlendTime(0);
+-- s_trine_destroyed_wait:speedFactor(0.2);
+s_trine_destroyed_wait:loop(false);
+s_trine_destroyed_wait:add("trine_destroyed_wait.fbxanim");
+--}

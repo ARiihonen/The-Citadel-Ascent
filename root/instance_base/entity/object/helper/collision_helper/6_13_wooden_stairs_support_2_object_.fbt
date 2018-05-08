@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/rope_target_wood_collision_helper_co.fbt")
+  local type = typeManager:inheritNewTypeByGUID("6_13_wooden_stairs_support_2_ObjectEntityWallInfoComponent", GUID('0xDC3C2525','0x3B674275','0x0077020E','0x00005500')); -- RopeTargetWoodCollisionHelperCollisionHelperWallInfoComponent
+  type:setGuid(GUID('0xF45645FF','0x7CA73806','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setBlocksAIVision(false)
+end

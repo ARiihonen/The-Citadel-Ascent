@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/sound_generator/sound_generator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("ObjectSoundGeneratorComponent", GUID('0x35D8A4B1','0x00000000','0x00770200','0x00005500')); -- SoundGeneratorComponent
+  type:setGuid(GUID('0x735A8393','0x512B2047','0x00770223','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setVolumeVeryQuietRadius(2)
+  type:setVolumeQuietRadius(4)
+  type:setVolumeMediumRadius(10)
+  type:setVolumeLoudRadius(15)
+  type:setVolumeVeryLoudRadius(20)
+end

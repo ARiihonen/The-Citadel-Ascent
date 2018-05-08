@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/rope_target_wood_collision_helper_wo.fbt")
+  local type = typeManager:inheritNewTypeByGUID("11_1_ConstructionTower_ObjectEntityModelComponent", GUID('0xD8E898A8','0x5631427D','0x0077020E','0x00005500')); -- RopeTargetWoodCollisionHelperWoodCollisionHelperModelComponent
+  type:setGuid(GUID('0xB62921CC','0x669E4956','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setVisibleInGame(true)
+end

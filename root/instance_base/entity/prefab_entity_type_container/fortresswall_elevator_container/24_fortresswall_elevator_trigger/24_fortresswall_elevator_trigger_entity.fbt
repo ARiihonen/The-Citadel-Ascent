@@ -1,0 +1,14 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/fortresswall_elevator_container/fortresswall_elevator_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("24_fortresswall_elevator_TriggerEntity", GUID('0x70C57D00','0x9C945AD6','0x0077024F','0x00005500')); -- fortresswall_elevatorContainer
+  type:setGuid(GUID('0x8717C739','0xAE2B1748','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x40E8EA7D','0xAE2B174A','0x0077024F','0x00005500'), "0_24_fortresswall_elevator_TriggerEntityTriggerToBoolPropertyComponent");
+  type:addComponentTypeGUID(GUID('0x40E8EA7D','0xAE2B174A','0x0077024F','0x00005500')); -- 0_24_fortresswall_elevator_TriggerEntityTriggerToBoolPropertyComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+  typeManager:setLastKnownNameForGUID(GUID('0x6BEA5D16','0x29E136AC','0x0077020B','0x00005500'), "trigger_to_bool.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0x6BEA5D16','0x29E136AC','0x0077020B','0x00005500')); -- trigger_to_bool.fbxmodel_ModCom
+  typeManager:setLastKnownNameForGUID(GUID('0xBB8A8E5E','0xE77D2051','0x007702B2','0x00005500'), "TriggerToPropertyEditableScriptingEntityComponent");
+  type:addComponentTypeGUID(GUID('0xBB8A8E5E','0xE77D2051','0x007702B2','0x00005500')); -- TriggerToPropertyEditableScriptingEntityComponent
+end

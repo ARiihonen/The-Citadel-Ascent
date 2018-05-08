@@ -1,0 +1,18 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/water/ocean/beach_ocean_flat_40m.fbxmodel_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("beach_ocean_flat_40m_alternate.fbxmodel_ModCom", GUID('0x76A79738','0xF65F3F51','0x0077021D','0x00005500')); -- beach_ocean_flat_40m.fbxmodel_ModCom
+  type:setGuid(GUID('0x8E183E50','0xEC872B6A','0x007702E0','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setAlphaBlendingFade(true)
+  type:setAlphaBlendingFadeDistance(0.5)
+  type:setSortPriority(-30)
+  type:setReflectionEnabled(true)
+  type:setRefractionEnabled(true)
+  type:setRefractionMultiplier(3)
+  type:setRefFresnel(1)
+  type:setRefDiffuseFactor(1)
+  type:setRefLength(0.5)
+  type:setRefNormalFactor(1)
+  type:setDiffuseColor(COL(0.1216, 0.1216, 0.1529))
+end

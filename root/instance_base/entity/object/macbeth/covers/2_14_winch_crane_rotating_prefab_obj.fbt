@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/macbeth/covers/2x2_jump_height_crate_dynamic_wood_c.fbt")
+  local type = typeManager:inheritNewTypeByGUID("2_14_winch_crane_rotating_prefab_ObjectEntityPhysicsComponent", GUID('0x0CF1CAF8','0x1B3329B4','0x0077020A','0x00005500')); -- 2x2_Jump_Height_Crate_DynamicWoodCollisionHelperBoxPhysicsComponent
+  type:setGuid(GUID('0xEB0EBEC4','0x484A4505','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMass(engine.component.AbstractPhysicsComponent.MassHeavyLevel1)
+  type:setLinearDamping(0.5)
+  type:setAngularDamping(1)
+  -- inherits 2x2_Jump_Height_Crate_DynamicWoodCollisionHelperBoxPhysicsComponent2x2_Jump_Height_Crate_WoodCollisionHelperBoxPhysicsComponentCollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent GUID('0x332D876B','0x23DD29B6','0x0077020A','0x00005500')
+  -- inherits WoodConvexCompoundPhysicsComponent_MassLevelHeavyPhysicsActivationSphereAreaComponent GUID('0x45042928','0x9BAD6CB2','0x0077022E','0x00005500')
+end

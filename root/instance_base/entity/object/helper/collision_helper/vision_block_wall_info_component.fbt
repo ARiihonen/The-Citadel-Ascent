@@ -1,0 +1,7 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/wall_info/wall_info_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("VisionBlockWallInfoComponent", GUID('0x18066919','0x00000000','0x00770200','0x00005500')); -- WallInfoComponent
+  type:setGuid(GUID('0x6A1BF609','0xCDA30B37','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

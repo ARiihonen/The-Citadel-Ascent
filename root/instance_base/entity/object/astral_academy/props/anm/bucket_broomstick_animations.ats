@@ -1,0 +1,101 @@
+clean = addContext("clean",1)
+clean2 = addContext("clean2",1)
+fly_fwd = addContext("fly_fwd",1)
+fly_bwd = addContext("fly_bwd",1)
+die= addContext("die",1)
+
+place1 = {};
+place2 = {};
+
+--{Animation: s_clean2_2
+s_clean2_2 = addState(clean2, "s_clean2_2"); 
+s_clean2_2:blendTime(1200);
+s_clean2_2:loopBlendTime(500);
+s_clean2_2:loop(false);
+s_clean2_2:add("clean2.fbxanim");
+--}
+
+--{Animation: s_clean_2
+s_clean_2 = addState(clean2, "s_clean_2"); 
+s_clean_2:blendTime(1200);
+s_clean_2:loopBlendTime(500);
+s_clean_2:loop(false);
+s_clean_2:add("clean.fbxanim");
+--}
+
+
+
+
+
+
+--{Animation: s_clean
+s_clean = addState(clean, "s_clean"); 
+s_clean:blendTime(1200);
+s_clean:loopBlendTime(500);
+s_clean:loop(false);
+s_clean:add("clean.fbxanim");
+table.insert(place1, s_clean);
+--}
+
+--{Animation: s_clean2
+s_clean2 = addState(clean, "s_clean2"); 
+s_clean2:blendTime(1200);
+s_clean2:loopBlendTime(500);
+s_clean2:loop(false);
+s_clean2:add("clean2.fbxanim");
+table.insert(place1, s_clean2);
+--}
+
+--{Animation: s_fly_fwd
+s_fly_fwd = addState(clean, "s_fly_fwd"); 
+-- s_fly_fwd:from(s_clean);
+-- s_fly_fwd:from(s_clean2);
+s_fly_fwd:blendTime(1200);
+s_fly_fwd:loopBlendTime(500);
+s_fly_fwd:loop(false);
+s_fly_fwd:add("fly_fwd.fbxanim");
+table.insert(place2, s_fly_fwd);
+--}
+
+
+
+
+
+
+--{Animation: s_clean_place2
+s_clean_place2 = addState(clean, "s_clean_place2"); 
+s_clean_place2:from(place2);
+s_clean_place2:blendTime(1200);
+s_clean_place2:loopBlendTime(500);
+s_clean_place2:loop(false);
+s_clean_place2:add("clean_place2.fbxanim");
+table.insert(place2, s_clean_place2);
+--}
+
+--{Animation: s_clean_place2_2
+s_clean_place2_2 = addState(clean, "s_clean_place2_2"); 
+s_clean_place2_2:from(place2);
+s_clean_place2_2:blendTime(1200);
+s_clean_place2_2:loopBlendTime(500);
+s_clean_place2_2:loop(false);
+s_clean_place2_2:add("clean2_place2.fbxanim");
+table.insert(place2, s_clean_place2_2);
+--}
+
+--{Animation: s_fly_bwd
+s_fly_bwd = addState(clean, "s_fly_bwd"); 
+s_fly_bwd:from(place2);
+-- s_fly_bwd:from(s_clean_place2_2);
+s_fly_bwd:blendTime(1200);
+s_fly_bwd:loopBlendTime(500);
+s_fly_bwd:loop(false);
+s_fly_bwd:add("fly_bwd.fbxanim");
+table.insert(place1, s_fly_bwd);
+--}
+--{Animation: s_die
+s_die = addState(die, "s_die"); 
+s_die:blendTime(1);
+s_die:loopBlendTime(500);
+s_die:loop(false);
+s_die:add("die.fbxanim");
+--}

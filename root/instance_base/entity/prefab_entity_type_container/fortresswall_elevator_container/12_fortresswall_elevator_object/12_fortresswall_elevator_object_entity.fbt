@@ -1,0 +1,26 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/fortresswall_elevator_container/fortresswall_elevator_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("12_fortresswall_elevator_ObjectEntity", GUID('0x70C57D00','0x9C945AD6','0x0077024F','0x00005500')); -- fortresswall_elevatorContainer
+  type:setGuid(GUID('0x85A68FA3','0x9C985B1E','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xDCBAD20E','0x9C985B26','0x0077024F','0x00005500'), "15_12_fortresswall_elevator_ObjectEntityPhysicsAudioComponent");
+  type:addComponentTypeGUID(GUID('0xDCBAD20E','0x9C985B26','0x0077024F','0x00005500')); -- 15_12_fortresswall_elevator_ObjectEntityPhysicsAudioComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xE21F8D3A','0xA42F1724','0x0077024F','0x00005500'), "17__12_fortresswall_elevator_ObjectEntityBoxAreaComponent");
+  type:addComponentTypeGUID(GUID('0xE21F8D3A','0xA42F1724','0x0077024F','0x00005500')); -- 17__12_fortresswall_elevator_ObjectEntityBoxAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xDDBD3C69','0x9C985B20','0x0077024F','0x00005500'), "1_12_fortresswall_elevator_ObjectEntityWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0xDDBD3C69','0x9C985B20','0x0077024F','0x00005500')); -- 1_12_fortresswall_elevator_ObjectEntityWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500')); -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xE01E2C54','0x9C985B24','0x0077024F','0x00005500'), "8_12_fortresswall_elevator_ObjectEntityModelComponent");
+  type:addComponentTypeGUID(GUID('0xE01E2C54','0x9C985B24','0x0077024F','0x00005500')); -- 8_12_fortresswall_elevator_ObjectEntityModelComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500'), "BasicActivationAreaHolderComponent");
+  type:addComponentTypeGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500')); -- BasicActivationAreaHolderComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500'), "GenericCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500')); -- GenericCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  type:addComponentTypeGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500')); -- LockJointComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500'), "MetalCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500')); -- MetalCollisionHelperHittableComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

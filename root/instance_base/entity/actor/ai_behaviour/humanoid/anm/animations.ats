@@ -1,0 +1,1486 @@
+test = addContext("test", 1)
+run = addContext("run", 1)
+stand = addContext("stand", 3)
+stand2 = addContext("stand2", 2)
+walk = addContext("walk", 1)
+walk_distance = addContext("walk_distance", -2)
+walk_right = addContext("walk_right", 2)
+walk_left = addContext("walk_left", 2)
+walk_back = addContext("walk_back", 2)
+ledge_down_1000  = addContext("ledge_down_1000", 1)
+attack  = addContext("attack", 0)
+attack_hack  = addContext("attack_hack", 0)
+dodge  = addContext("dodge", 0)
+dodge_right  = addContext("dodge_right", 0)
+dodge_left  = addContext("dodge_left", 0)
+attack_long  = addContext("attack_long", -1)
+attack_verylong  = addContext("attack_verylong", -1)
+attack_ranged  = addContext("attack_ranged", -1)
+stagger  = addContext("stagger", -2)
+s_arrow  = addContext("s_arrow", -3)
+die  = addContext("die", -10)
+corner_left_90  = addContext("corner_left_90", 10)
+corner_right_90  = addContext("corner_right_90", 10)
+
+ranged = addContext("ranged",49)
+
+stagger_f1  = addContext("stagger_f1", -3)
+stagger_r1  = addContext("stagger_r1", -3)
+stagger_l1  = addContext("stagger_l1", -3)
+stagger_b1  = addContext("stagger_b1", -3)
+
+stagger_f2  = addContext("stagger_f2", -3)
+stagger_r2  = addContext("stagger_r2", -3)
+stagger_l2  = addContext("stagger_l2", -3)
+stagger_b2  = addContext("stagger_b2", -3)
+stagger_airstomp  = addContext("stagger_airstomp", -3)
+stagger_charge  = addContext("stagger_charge", -3)
+stagger_push_back  = addContext("stagger_push_back", -3)
+
+stagger_ledge  = addContext("stagger_ledge", -4)
+blocked  = addContext("blocked", -2)
+
+-- mirror  = addContext("mirror", -4)
+
+stagger_ground_slam  = addContext("stagger_ground_slam", -3)
+
+shield  = addContext("shield", 50)
+block  = addContext("block", 0)
+blocks  = addContext("blocks", -1)
+
+fast  = addContext("fast", 15)
+fast_circling  = addContext("fast_circling", 15)
+s_dodge  = addContext("s_dodge", -4)
+
+mirror  = addContext("mirror", 100)
+mole  = addContext("mole", 100)
+treeman  = addContext("treeman", 50)
+astral  = addContext("astral", 50)
+pine_elemental  = addContext("pine_elemental", 50)
+treeman1  = addContext("treeman1", 100)
+treeman2  = addContext("treeman2", 100)
+treeman3  = addContext("treeman3", 100)
+treeman4  = addContext("treeman4", 100)
+treeman5  = addContext("treeman5", 100)
+
+skeleton = addContext("skeleton",100)
+
+no_left_arm  = addContext("no_left_arm", 50)
+no_right_arm  = addContext("no_right_arm", 50)
+no_head  = addContext("no_head", 50)
+no_body  = addContext("no_body", 50)
+
+jump = addContext("jump", -2)
+
+spawn= addContext("spawn", -2)
+default= addContext("default", 120)
+
+tutorial_spawn1 = addContext("tutorial_spawn1", -2)
+tutorial_spawn2 = addContext("tutorial_spawn2", -2)
+tutorial_spawn3 = addContext("tutorial_spawn3", -2)
+tutorial_spawn4 = addContext("tutorial_spawn4", -2)
+tutorial_fireplace = addContext("tutorial_fireplace", -2)
+
+tpose = addContext("tpose", -2)
+
+
+target_direction = addParam("target_direction")
+jump_z = addParam("jump_z")
+jump_y = addParam("jump_y")
+angle_axis = addParam("angle_axis")
+angle_around_up = addParam("angle_around_up")
+
+
+staggering = {};
+stand_not_blocking = {};
+
+
+
+
+--{ Animation: treeman_no_left_arm
+treeman_no_left_arm = addState(treeman + no_left_arm, "treeman_no_left_arm", 2);
+treeman_no_left_arm:blendTime(0);
+treeman_no_left_arm:loop(true);
+-- treeman_no_left_arm:randomizedStartTime();
+treeman_no_left_arm:add("treeman/no_left_arm.fbxanim");
+treeman_no_left_arm:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: treeman_no_right_arm
+treeman_no_right_arm = addState(treeman + no_right_arm, "treeman_no_right_arm", 3);
+treeman_no_right_arm:blendTime(0);
+treeman_no_right_arm:loop(true);
+-- treeman_no_right_arm:randomizedStartTime();
+treeman_no_right_arm:add("treeman/no_right_arm.fbxanim");
+treeman_no_right_arm:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: treeman_no_head
+treeman_no_head = addState(treeman + no_head, "treeman_no_head", 4);
+treeman_no_head:blendTime(0);
+treeman_no_head:loop(true);
+-- treeman_no_head:randomizedStartTime();
+treeman_no_head:add("treeman/no_head.fbxanim");
+treeman_no_head:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: treeman_no_body
+treeman_no_body = addState(treeman + no_body, "treeman_no_body", 5);
+treeman_no_body:blendTime(0);
+treeman_no_body:loop(true);
+-- treeman_no_body:randomizedStartTime();
+treeman_no_body:add("treeman/no_body.fbxanim");
+treeman_no_body:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: rescale_mole
+rescale_mole = addState(mole, "rescale_mole", 1);
+rescale_mole:blendTime(0);
+rescale_mole:loop(false);
+-- rescale_mole:randomizedStartTime();
+rescale_mole:add("rescale_mole.fbxanim");
+rescale_mole:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: rescale_treeman_1
+rescale_treeman_1 = addState(treeman1, "rescale_treeman_1", 1);
+rescale_treeman_1:blendTime(0);
+rescale_treeman_1:loop(true);
+-- rescale_treeman_1:randomizedStartTime();
+rescale_treeman_1:add("treeman/bone_variation_1.fbxanim");
+rescale_treeman_1:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: rescale_treeman_2
+rescale_treeman_2 = addState(treeman2, "rescale_treeman_2", 1);
+rescale_treeman_2:blendTime(0);
+rescale_treeman_2:loop(true);
+-- rescale_treeman_2:randomizedStartTime();
+rescale_treeman_2:add("treeman/bone_variation_2.fbxanim");
+rescale_treeman_2:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: rescale_treeman_3
+rescale_treeman_3 = addState(treeman3, "rescale_treeman_3", 1);
+rescale_treeman_3:blendTime(0);
+rescale_treeman_3:loop(true);
+-- rescale_treeman_3:randomizedStartTime();
+rescale_treeman_3:add("treeman/bone_variation_3.fbxanim");
+rescale_treeman_3:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: rescale_treeman_4
+rescale_treeman_4 = addState(treeman4, "rescale_treeman_4", 1);
+rescale_treeman_4:blendTime(0);
+rescale_treeman_4:loop(true);
+-- rescale_treeman_4:randomizedStartTime();
+rescale_treeman_4:add("treeman/bone_variation_4.fbxanim");
+rescale_treeman_4:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: rescale_treeman_5
+rescale_treeman_5 = addState(treeman5, "rescale_treeman_5", 1);
+rescale_treeman_5:blendTime(0);
+rescale_treeman_5:loop(true);
+-- rescale_treeman_5:randomizedStartTime();
+rescale_treeman_5:add("treeman/bone_variation_5.fbxanim");
+rescale_treeman_5:addReference("t_pose.fbxanim");
+--}
+
+--{ Animation: tpose
+s_tpose = addState(tpose, "s_tpose");
+s_tpose:blendTime(1000);
+s_tpose:loop(false);
+-- tpose:randomizedStartTime();
+s_tpose:add("goblin/tpose.fbxanim");
+--}
+
+--{ Animation: temp_test
+temp_test = addState(test, "temp_test");
+temp_test:blendTime(0);
+temp_test:loop(true);
+-- temp_test:randomizedStartTime();
+temp_test:add("test/test1.fbxanim");
+--}
+
+
+--{ Animation: s_spawn1
+s_spawn1 = addState(spawn, "s_spawn1");
+s_spawn1:blendTime(0);
+s_spawn1:loop(false);
+s_spawn1:add("treeman/spawn1.fbxanim");
+--}
+
+--{ Animation: s_spawn_treeman
+s_spawn_treeman = addState(spawn+treeman, "s_spawn_treeman");
+s_spawn_treeman:blendTime(0);
+s_spawn_treeman:loop(false);
+s_spawn_treeman:add("treeman/spawn_from_smoke.fbxanim");
+--}
+
+--{ Animation: s_spawn_astral
+s_spawn_astral = addState(spawn+astral, "s_spawn_astral");
+s_spawn_astral:blendTime(0);
+s_spawn_astral:loop(false);
+s_spawn_astral:add("treeman/spawn_from_smoke.fbxanim");
+--}
+
+--{ Animation: s_spawn_skeleton
+s_spawn_skeleton = addState(spawn+skeleton, "s_spawn_skeleton");
+s_spawn_skeleton:blendTime(0);
+s_spawn_skeleton:loop(false);
+s_spawn_skeleton:add("treeman/spawn_from_smoke.fbxanim");
+--}
+
+--{ Animation: s_spawn_pine_elemental
+s_spawn_pine_elemental = addState(spawn+pine_elemental, "s_spawn_pine_elemental");
+s_spawn_pine_elemental:blendTime(0);
+s_spawn_pine_elemental:loop(false);
+s_spawn_pine_elemental:add("treeman/spawn_from_smoke.fbxanim");
+--}
+
+
+--{ Animation: s_tutorial_spawn1_wait
+s_tutorial_spawn1_wait = addState(tutorial_spawn1, "s_tutorial_spawn1_wait");
+s_tutorial_spawn1_wait:blendTime(0);
+s_tutorial_spawn1_wait:loop(false);
+s_tutorial_spawn1_wait:add("goblin/spawn1_wait.fbxanim");
+--}
+
+--{ Animation: s_tutorial_spawn1
+s_tutorial_spawn1 = addState(stand, "s_tutorial_spawn1");
+s_tutorial_spawn1:from(s_tutorial_spawn1_wait);
+s_tutorial_spawn1:blendTime(300);
+s_tutorial_spawn1:loop(false);
+s_tutorial_spawn1:add("goblin/spawn1.fbxanim");
+--}
+
+--{ Animation: s_tutorial_spawn2_wait
+s_tutorial_spawn2_wait = addState(tutorial_spawn2, "s_tutorial_spawn2_wait");
+s_tutorial_spawn2_wait:blendTime(0);
+s_tutorial_spawn2_wait:loop(false);
+s_tutorial_spawn2_wait:add("goblin/spawn2_wait.fbxanim");
+--}
+
+--{ Animation: s_tutorial_spawn2
+s_tutorial_spawn2 = addState(stand, "s_tutorial_spawn2");
+s_tutorial_spawn2:from(s_tutorial_spawn2_wait);
+s_tutorial_spawn2:blendTime(300);
+s_tutorial_spawn2:loop(false);
+s_tutorial_spawn2:add("goblin/spawn2.fbxanim");
+--}
+
+--{ Animation: s_tutorial_fireplace_wait
+s_tutorial_fireplace_wait = addState(tutorial_fireplace, "s_tutorial_fireplace_wait");
+s_tutorial_fireplace_wait:blendTime(0);
+s_tutorial_fireplace_wait:loop(true);
+s_tutorial_fireplace_wait:loopBlendTime(500);
+s_tutorial_fireplace_wait:add("goblin/fireplace.fbxanim");
+--}
+
+--{ Animation: s_tutorial_fireplace
+s_tutorial_fireplace = addState(stand, "s_tutorial_fireplace");
+s_tutorial_fireplace:from(s_tutorial_fireplace_wait);
+s_tutorial_fireplace:blendTime(200);
+s_tutorial_fireplace:loop(false);
+s_tutorial_fireplace:add("goblin/fireplace_end.fbxanim");
+--}
+
+--{ Animation: s_stand
+s_stand = addState(stand, "s_stand");
+s_stand:blendTime(400);
+s_stand:loop(true);
+-- s_stand:randomizedStartTime();
+s_stand:add("goblin/stand2.fbxanim");
+--}
+
+--{ Animation: s_stand2
+s_stand2 = addState(stand, "s_stand2");
+s_stand2:blendTime(300);
+s_stand2:loop(true);
+s_stand2:randomizedStartTime();
+s_stand2:add("goblin/stand2.fbxanim");
+--}
+
+--{ Animation: s_stand_treeman1
+s_stand_treeman1 = addState(stand+treeman, "s_stand_treeman1");
+s_stand_treeman1:blendTime(300);
+s_stand_treeman1:loop(true);
+s_stand_treeman1:randomizedStartTime();
+s_stand_treeman1:add("treeman/stand1.fbxanim");
+--}
+
+--{ Animation: s_stand_treeman_mirrored
+-- s_stand_treeman_mirrored = addState(attack+treeman+mirror, "s_stand_treeman_mirrored");
+-- s_stand_treeman_mirrored:blendTime(300);
+-- s_stand_treeman_mirrored:loop(false);
+-- s_stand_treeman_mirrored:randomizedStartTime();
+-- s_stand_treeman_mirrored:add("treeman/attack_short.fbxanim");
+--}
+
+
+--{ Animation: s_walk_start_front
+-- s_walk_start_front = addState(walk, "s_walk_start_front");
+-- s_walk_start_front:blendTime(300);
+-- s_walk_start_front:loop(false);
+-- s_walk_start_front:add("goblin/walk_start_front.fbxanim");
+--}
+
+--{ Animation: s_walk_corner_right_90
+s_walk_corner_right_90 = addState(walk+corner_right_90, "s_walk_corner_right_90");
+s_walk_corner_right_90:blendTime(700);
+-- s_walk_corner_right_90:absoluteRootMotionBlendTime(1500);
+s_walk_corner_right_90:restart(true);
+s_walk_corner_right_90:loop(false);
+s_walk_corner_right_90:absoluteRootMotionPosition(true);
+s_walk_corner_right_90:absoluteRootMotionRotation(true);
+s_walk_corner_right_90:add("goblin/walk_corner_right_90.fbxanim");
+-- s_walk_corner_right_90:add("goblin/jump_z4_y0.fbxanim");
+s_walk_corner_right_90:addExitEvent("EventAnimCornerWalkExit");
+-- s_walk_corner_right_90:addFinishedEvent("EventAnimCornerWalkExit");
+--}
+
+--{ Animation: s_walk_corner_left_90
+s_walk_corner_left_90 = addState(walk+corner_left_90, "s_walk_corner_left_90");
+s_walk_corner_left_90:blendTime(700);
+s_walk_corner_left_90:restart(true);
+s_walk_corner_left_90:loop(false);
+s_walk_corner_left_90:absoluteRootMotionPosition(true);
+s_walk_corner_left_90:absoluteRootMotionRotation(true);
+s_walk_corner_left_90:add("goblin/walk_corner_left_90.fbxanim");
+s_walk_corner_left_90:addExitEvent("EventAnimCornerWalkExit");
+-- s_walk_corner_left_90:addFinishedEvent("EventAnimCornerWalkExit");
+--}
+
+--{ Animation: s_run_corner_right_90
+s_run_corner_right_90 = addState(walk+fast+corner_right_90, "s_run_corner_right_90");
+s_run_corner_right_90:blendTime(500);
+-- s_run_corner_right_90:absoluteRootMotionBlendTime(1500);
+s_run_corner_right_90:restart(true);
+s_run_corner_right_90:loop(false);
+s_run_corner_right_90:absoluteRootMotionPosition(true);
+s_run_corner_right_90:absoluteRootMotionRotation(true);
+s_run_corner_right_90:add("goblin/run_corner_right_90.fbxanim");
+s_run_corner_right_90:addExitEvent("EventAnimCornerWalkExit");
+--}
+
+--{ Animation: s_run_corner_left_90
+s_run_corner_left_90 = addState(walk+fast+corner_left_90, "s_run_corner_left_90");
+s_run_corner_left_90:blendTime(500);
+s_run_corner_left_90:restart(true);
+s_run_corner_left_90:loop(false);
+s_run_corner_left_90:absoluteRootMotionPosition(true);
+s_run_corner_left_90:absoluteRootMotionRotation(true);
+s_run_corner_left_90:add("goblin/run_start.fbxanim");
+s_run_corner_left_90:addExitEvent("EventAnimCornerWalkExit");
+--}
+
+--{ Animation: s_walk_front
+s_walk_front = addState(walk, "s_walk_front");
+-- s_walk_front:from(s_walk_start_front);
+s_walk_front:blendTime(400);
+-- s_walk_front:speedFactor(1.3);
+s_walk_front:loop(true);
+-- s_walk_front:add("goblin/walk_front2.fbxanim");
+-- s_walk_front:add(target_direction(-180), "goblin/walk_front_left_180.fbxanim");
+-- s_walk_front:add(target_direction(-90), "goblin/walk_front_left_90.fbxanim");
+-- s_walk_front:add(target_direction(-30), "goblin/walk_front_left_90.fbxanim");
+-- s_walk_front:add(target_direction(0), "goblin/walk_straight_line_test.fbxanim");
+s_walk_front:add(target_direction(0), "goblin/walk_front.fbxanim");
+-- s_walk_front:add(target_direction(30), "goblin/walk_front_right_90.fbxanim");
+-- s_walk_front:add(target_direction(90), "goblin/walk_front_right_90.fbxanim");
+-- s_walk_front:add(target_direction(180), "goblin/walk_front_right_180.fbxanim");
+--}
+
+--<<<<RangedAnims
+
+--{ Animation: s_ranged_throw_treeman
+s_ranged_throw_treeman = addState(attack_ranged+ranged, "s_ranged_throw_treeman"); 
+s_ranged_throw_treeman:blendTime(300);
+s_ranged_throw_treeman:speedFactor(1.0);
+s_ranged_throw_treeman:loop(false);
+s_ranged_throw_treeman:restart(true);
+s_ranged_throw_treeman:add(angle_around_up(-90), "treeman/ranged/ranged_throw_left.fbxanim");
+s_ranged_throw_treeman:add(angle_around_up(-45), "treeman/ranged/ranged_throw_left.fbxanim");
+s_ranged_throw_treeman:add(angle_around_up(0), "treeman/ranged/ranged_throw_fwd.fbxanim");
+s_ranged_throw_treeman:add(angle_around_up(45), "treeman/ranged/ranged_throw_right.fbxanim");
+s_ranged_throw_treeman:add(angle_around_up(90), "treeman/ranged/ranged_throw_right.fbxanim");
+-- s_ranged_throw_treeman:absoluteRootMotionRotation(true);
+-- s_ranged_throw_treeman:addEnterEvent("EventAnimAttackExecute");
+s_ranged_throw_treeman:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+--{ Animation: s_ranged_stand_treeman
+s_ranged_stand_treeman = addState(stand+ranged, "s_ranged_stand_treeman");
+s_ranged_stand_treeman:blendTime(300);
+s_ranged_stand_treeman:loopBlendTime(500);
+s_ranged_stand_treeman:loop(true);
+s_ranged_stand_treeman:add(target_direction(0), "treeman/ranged/ranged_idle.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_fwd_start_treeman
+s_ranged_walk_fwd_start_treeman = addState(walk+ranged, "s_ranged_walk_fwd_start_treeman");
+s_ranged_walk_fwd_start_treeman:blendTime(300);
+s_ranged_walk_fwd_start_treeman:loop(false);
+s_ranged_walk_fwd_start_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_fwd_start.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_fwd_treeman
+s_ranged_walk_fwd_treeman = addState(walk+ranged, "s_ranged_walk_fwd_treeman");
+s_ranged_walk_fwd_treeman:from(s_ranged_walk_fwd_start_treeman);
+s_ranged_walk_fwd_treeman:blendTime(0);
+s_ranged_walk_fwd_treeman:loopBlendTime(500);
+s_ranged_walk_fwd_treeman:loop(true);
+s_ranged_walk_fwd_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_fwd.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_fwd_end_treeman
+s_ranged_walk_fwd_end_treeman = addState(walk+ranged, "s_ranged_walk_fwd_end_treeman");
+s_ranged_walk_fwd_end_treeman:from(s_ranged_walk_fwd_treeman);
+--s_ranged_walk_fwd_end_treeman:from(s_ranged_walk_fwd_start_treeman);
+s_ranged_walk_fwd_end_treeman:blendTime(300);
+s_ranged_walk_fwd_end_treeman:loop(false);
+s_ranged_walk_fwd_end_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_fwd_end.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_bwd_start_treeman
+s_ranged_walk_bwd_start_treeman = addState(walk_back+ranged, "s_ranged_walk_bwd_start_treeman");
+s_ranged_walk_bwd_start_treeman:blendTime(500);
+s_ranged_walk_bwd_start_treeman:loop(false);
+s_ranged_walk_bwd_start_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_bwd_start.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_bwd_treeman
+s_ranged_walk_bwd_treeman = addState(walk_back+ranged, "s_ranged_walk_bwd_treeman");
+s_ranged_walk_bwd_treeman:from(s_ranged_walk_bwd_start_treeman);
+s_ranged_walk_bwd_treeman:blendTime(500);
+s_ranged_walk_bwd_treeman:loopBlendTime(500);
+s_ranged_walk_bwd_treeman:loop(true);
+s_ranged_walk_bwd_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_bwd.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_bwd_end_treeman
+s_ranged_walk_bwd_end_treeman = addState(walk_back+ranged, "s_ranged_walk_bwd_end_treeman");
+s_ranged_walk_bwd_end_treeman:from(s_ranged_walk_bwd_treeman);
+s_ranged_walk_bwd_end_treeman:blendTime(500);
+s_ranged_walk_bwd_end_treeman:loop(false);
+s_ranged_walk_bwd_end_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_bwd_end.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_left_start_treeman
+s_ranged_walk_left_start_treeman = addState(walk_left+ranged, "s_ranged_walk_left_start_treeman");
+s_ranged_walk_left_start_treeman:blendTime(500);
+s_ranged_walk_left_start_treeman:loop(false);
+s_ranged_walk_left_start_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_left_start.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_right_start_treeman
+s_ranged_walk_right_start_treeman = addState(walk_right+ranged, "s_ranged_walk_right_start_treeman");
+s_ranged_walk_right_start_treeman:blendTime(500);
+s_ranged_walk_right_start_treeman:loop(false);
+s_ranged_walk_right_start_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_right_start.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_left_treeman
+s_ranged_walk_left_treeman = addState(walk_left+ranged, "s_ranged_walk_left_treeman");
+s_ranged_walk_left_treeman:from(s_ranged_walk_left_start_treeman);
+s_ranged_walk_left_treeman:blendTime(400);
+s_ranged_walk_left_treeman:loopBlendTime(400);
+s_ranged_walk_left_treeman:loop(true);
+s_ranged_walk_left_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_left.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_right_treeman
+s_ranged_walk_right_treeman = addState(walk_right+ranged, "s_ranged_walk_right_treeman");
+s_ranged_walk_right_treeman:from(s_ranged_walk_right_start_treeman);
+s_ranged_walk_right_treeman:blendTime(400);
+s_ranged_walk_right_treeman:loopBlendTime(400);
+s_ranged_walk_right_treeman:loop(true);
+s_ranged_walk_right_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_right.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_left_end_treeman
+s_ranged_walk_left_end_treeman = addState(walk_left+ranged, "s_ranged_walk_left_end_treeman");
+s_ranged_walk_left_end_treeman:from(s_ranged_walk_left_treeman);
+s_ranged_walk_left_end_treeman:blendTime(400);
+s_ranged_walk_left_end_treeman:loop(false);
+s_ranged_walk_left_end_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_left_end.fbxanim");
+--}
+
+--{ Animation: s_ranged_walk_right_end_treeman
+s_ranged_walk_right_end_treeman = addState(walk_right+ranged, "s_ranged_walk_right_end_treeman");
+s_ranged_walk_right_end_treeman:from(s_ranged_walk_right_treeman);
+s_ranged_walk_right_end_treeman:blendTime(400);
+s_ranged_walk_right_end_treeman:loop(false);
+s_ranged_walk_right_end_treeman:add(target_direction(0), "treeman/ranged/ranged_walk_right_end.fbxanim");
+--}
+
+-->>>
+
+
+
+
+--||||||||shielded skeleton anims||||||||
+
+--{ Animation: s_walk_fwd_start_skeleton_blocking
+s_walk_fwd_start_skeleton_blocking = addState(walk+skeleton+block, "s_walk_fwd_start_skeleton_blocking");
+s_walk_fwd_start_skeleton_blocking:blendTime(1000);
+s_walk_fwd_start_skeleton_blocking:loop(false);
+s_walk_fwd_start_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_fwd_start.fbxanim");
+--}
+--{ Animation: s_walk_fwd_skeleton_blocking
+s_walk_fwd_skeleton_blocking = addState(walk+skeleton+block, "s_walk_fwd_skeleton_blocking");
+s_walk_fwd_skeleton_blocking:from(s_walk_fwd_start_skeleton_blocking);
+s_walk_fwd_skeleton_blocking:blendTime(1000);
+s_walk_fwd_skeleton_blocking:loopBlendTime(500);
+s_walk_fwd_skeleton_blocking:loop(true);
+s_walk_fwd_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_fwd.fbxanim");
+--}
+--{ Animation: s_walk_fwd_end_skeleton_blocking
+s_walk_fwd_end_skeleton_blocking = addState(walk+skeleton+block, "s_walk_fwd_end_skeleton_blocking");
+s_walk_fwd_end_skeleton_blocking:from(s_walk_fwd_skeleton_blocking);
+s_walk_fwd_end_skeleton_blocking:blendTime(1000);
+s_walk_fwd_end_skeleton_blocking:loop(false);
+s_walk_fwd_end_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_fwd_end.fbxanim");
+--}
+
+--{ Animation: s_walk_bwd_start_skeleton_blocking
+s_walk_bwd_start_skeleton_blocking = addState(walk_back+skeleton+block, "s_walk_bwd_start_skeleton_blocking");
+s_walk_bwd_start_skeleton_blocking:blendTime(300);
+s_walk_bwd_start_skeleton_blocking:loop(false);
+s_walk_bwd_start_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_back_start.fbxanim");
+--}
+--{ Animation: s_walk_bwd_skeleton_blocking
+s_walk_bwd_skeleton_blocking = addState(walk_back+skeleton+block, "s_walk_bwd_skeleton_blocking");
+s_walk_bwd_skeleton_blocking:from(s_walk_bwd_start_skeleton_blocking);
+s_walk_bwd_skeleton_blocking:blendTime(300);
+s_walk_bwd_skeleton_blocking:loopBlendTime(300); 
+s_walk_bwd_skeleton_blocking:loop(true);
+s_walk_bwd_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_back.fbxanim");
+--}
+--{ Animation: s_walk_bwd_end_skeleton_blocking
+s_walk_bwd_end_skeleton_blocking = addState(walk_back+skeleton+block, "s_walk_bwd_end_skeleton_blocking");
+s_walk_bwd_end_skeleton_blocking:from(s_walk_bwd_skeleton_blocking);
+s_walk_bwd_end_skeleton_blocking:blendTime(300);
+s_walk_bwd_end_skeleton_blocking:loop(false);
+s_walk_bwd_end_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_back_end.fbxanim");
+--}
+
+
+--{ Animation: s_walk_left_start_skeleton_blocking
+s_walk_left_start_skeleton_blocking = addState(walk_left+skeleton+block, "s_walk_left_start_skeleton_blocking");
+s_walk_left_start_skeleton_blocking:blendTime(300);
+s_walk_left_start_skeleton_blocking:loop(false);
+s_walk_left_start_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_left_start.fbxanim");
+--}
+--{ Animation: s_walk_left_skeleton_blocking
+s_walk_left_skeleton_blocking = addState(walk_left+skeleton+block, "s_walk_left_skeleton_blocking");
+s_walk_left_skeleton_blocking:from(s_walk_left_start_skeleton_blocking);
+s_walk_left_skeleton_blocking:blendTime(300);
+s_walk_left_skeleton_blocking:loopBlendTime(300);
+s_walk_left_skeleton_blocking:loop(true);
+s_walk_left_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_left.fbxanim");
+--}
+--{ Animation: s_walk_left_end_skeleton_blocking
+s_walk_left_end_skeleton_blocking = addState(walk_left+skeleton+block, "s_walk_left_end_skeleton_blocking");
+s_walk_left_end_skeleton_blocking:from(s_walk_left_skeleton_blocking);
+s_walk_left_end_skeleton_blocking:blendTime(300);
+s_walk_left_end_skeleton_blocking:loop(false);
+s_walk_left_end_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_left_end.fbxanim");
+--}
+
+
+
+--{ Animation: s_walk_right_start_skeleton_blocking
+s_walk_right_start_skeleton_blocking = addState(walk_right+skeleton+block, "s_walk_right_start_skeleton_blocking");
+s_walk_right_start_skeleton_blocking:blendTime(300);
+s_walk_right_start_skeleton_blocking:loop(false);
+s_walk_right_start_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_right_start.fbxanim");
+--}
+--{ Animation: s_walk_right_skeleton_blocking
+s_walk_right_skeleton_blocking = addState(walk_right+skeleton+block, "s_walk_right_skeleton_blocking");
+s_walk_right_skeleton_blocking:from(s_walk_right_start_skeleton_blocking);
+s_walk_right_skeleton_blocking:blendTime(300);
+s_walk_right_skeleton_blocking:loopBlendTime(300);
+s_walk_right_skeleton_blocking:loop(true);
+s_walk_right_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_right.fbxanim");
+--}
+--{ Animation: s_walk_right_end_skeleton_blocking
+s_walk_right_end_skeleton_blocking = addState(walk_right+skeleton+block, "s_walk_right_end_skeleton_blocking");
+s_walk_right_end_skeleton_blocking:from(s_walk_right_skeleton_blocking);
+s_walk_right_end_skeleton_blocking:blendTime(300);
+s_walk_right_end_skeleton_blocking:loop(false);
+s_walk_right_end_skeleton_blocking:add(target_direction(0), "skeleton/walk_blocking_right_end.fbxanim");
+--}
+
+
+
+--{ Animation: s_skeleton_attack_blocking_short 
+s_skeleton_attack_blocking_short = addState(attack+skeleton+shield, "s_skeleton_attack_blocking_short");
+s_skeleton_attack_blocking_short:blendTime(300);
+s_skeleton_attack_blocking_short:loop(false);
+s_skeleton_attack_blocking_short:restart(true);
+s_skeleton_attack_blocking_short:add("skeleton/attack_blocking_short.fbxanim");
+-- s_skeleton_attack_blocking_short:addEnterEvent("EventAnimAttackExecute");
+s_skeleton_attack_blocking_short:addFinishedEvent("EventAnimAttackFinished");
+-- s_skeleton_attack_blocking_short:add("goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_skeleton_attack_blocking_long
+s_skeleton_attack_blocking_long = addState(attack_long+skeleton+shield, "s_skeleton_attack_blocking_long");
+s_skeleton_attack_blocking_long:blendTime(300);
+s_skeleton_attack_blocking_long:loop(false);
+s_skeleton_attack_blocking_long:restart(true);
+s_skeleton_attack_blocking_long:add("skeleton/attack_blocking_long.fbxanim");
+-- s_skeleton_attack_blocking_long:addEnterEvent("EventAnimAttackExecute");
+s_skeleton_attack_blocking_long:addFinishedEvent("EventAnimAttackFinished");
+-- s_skeleton_attack_blocking_long:add("goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_stagger_airstomp_shield
+s_stagger_airstomp_shield = addState(stagger_push_back+skeleton, "s_stagger_airstomp_shield");
+s_stagger_airstomp_shield:blendTime(200);
+s_stagger_airstomp_shield:speedFactor(1.0);
+s_stagger_airstomp_shield:loop(false);
+s_stagger_airstomp_shield:restart(true);
+s_stagger_airstomp_shield:add("skeleton/stagger_airstomp_small_shield.fbxanim");
+-- s_stagger_airstomp_shield:add("treeman/stagger_b2.fbxanim");
+-- s_stagger_airstomp_shield:add("goblin/stagger_airstomp3.fbxanim");
+s_stagger_airstomp_shield:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_airstomp_shield);
+--}
+
+--{ Animation: s_skeleton_stand_start
+s_skeleton_stand_start = addState(skeleton+stand, "s_skeleton_stand_start");
+s_skeleton_stand_start:blendTime(300);
+s_skeleton_stand_start:loop(false);
+s_skeleton_stand_start:add("skeleton/stand_start.fbxanim");
+table.insert(stand_not_blocking, s_skeleton_stand);
+--}
+
+--{ Animation: s_skeleton_stand
+s_skeleton_stand = addState(skeleton+stand, "s_skeleton_stand");
+s_skeleton_stand:blendTime(300);
+s_skeleton_stand:from(s_skeleton_stand_start);
+s_skeleton_stand:loopBlendTime(400);
+s_skeleton_stand:loop(true);
+s_skeleton_stand:add("skeleton/stand.fbxanim");
+table.insert(stand_not_blocking, s_skeleton_stand);
+--}
+
+--{ Animation: s_skeleton_stand_end
+--s_skeleton_stand_end = addState(skeleton+stand, "s_skeleton_stand_end");
+--s_skeleton_stand_start:from(s_skeleton_stand);
+--s_skeleton_stand_end:blendTime(300);
+--s_skeleton_stand_end:loop(false);
+--s_skeleton_stand_end:add("skeleton/stand_end.fbxanim");
+--}
+
+
+--||||||||||||||||||||||||||||||||||||||||||
+
+
+
+
+
+--{ Animation: s_walk_treeman1
+s_walk_treeman1 = addState(walk+treeman, "s_walk_treeman1");
+s_walk_treeman1:blendTime(400);
+s_walk_treeman1:loop(false);
+s_walk_treeman1:add(target_direction(0), "treeman/walk1.fbxanim");
+--}
+
+--{ Animation: s_walk_start_treeman2
+s_walk_start_treeman2 = addState(walk+treeman, "s_walk_start_treeman2");
+s_walk_start_treeman2:blendTime(500);
+s_walk_start_treeman2:loop(false);
+s_walk_start_treeman2:add(target_direction(0), "treeman/walk2_start.fbxanim");
+--}
+
+--{ Animation: s_walk_treeman2
+s_walk_treeman2 = addState(walk+treeman, "s_walk_treeman2");
+s_walk_treeman2:from(s_walk_start_treeman2);
+s_walk_treeman2:blendTime(300);
+s_walk_treeman2:loopBlendTime(300);
+s_walk_treeman2:loop(true);
+s_walk_treeman2:add(target_direction(0), "treeman/walk2.fbxanim");
+--}
+
+--{ Animation: s_walk_left_treeman
+s_walk_left_treeman = addState(walk_left+treeman, "s_walk_left_treeman");
+-- s_walk_left_treeman:from(s_walk_left_start_treeman);
+s_walk_left_treeman:blendTime(300);
+s_walk_left_treeman:loopBlendTime(300);
+s_walk_left_treeman:loop(true);
+s_walk_left_treeman:add(target_direction(0), "treeman/walk_left.fbxanim");
+-- s_walk_left_treeman:add(target_direction(0), "goblin/dodge_left.fbxanim");
+--}
+
+--{ Animation: s_walk_right_treeman
+s_walk_right_treeman = addState(walk_right+treeman, "s_walk_right_treeman");
+-- s_walk_right_treeman:from(s_walk_right_start_treeman);
+s_walk_right_treeman:blendTime(300);
+s_walk_right_treeman:loopBlendTime(300);
+s_walk_right_treeman:loop(true);
+s_walk_right_treeman:add(target_direction(0), "treeman/walk_right.fbxanim");
+-- s_walk_right_treeman:add(target_direction(0), "goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_walk_end_front
+s_walk_end_front = addState(stand, "s_walk_end_front");
+-- s_walk_end_front:from(s_walk_start_front);
+s_walk_end_front:from(s_walk_front);
+s_walk_end_front:blendTime(400);
+s_walk_end_front:loop(false);
+-- s_walk_end_front:add("goblin/walk_end_front2.fbxanim");
+s_walk_end_front:add("goblin/walk_end_front.fbxanim");
+--}
+
+
+--{ Animation: s_stand_astral
+s_stand_astral = addState(stand+astral, "s_stand_astral");
+s_stand_astral:blendTime(300);
+s_stand_astral:loopBlendTime(300);
+s_stand_astral:loop(true);
+s_stand_astral:add("astral/stand.fbxanim");
+--}
+
+--{ Animation: s_walk_start_astral1
+s_walk_start_astral1 = addState(walk+astral, "s_walk_start_astral1");
+s_walk_start_astral1:blendTime(300);
+s_walk_start_astral1:loop(false);
+s_walk_start_astral1:add("astral/walk_start.fbxanim");
+--}
+
+--{ Animation: s_walk_astral1
+s_walk_astral1 = addState(walk+astral, "s_walk_astral1");
+s_walk_astral1:from(s_walk_start_astral1);
+s_walk_astral1:blendTime(200);
+s_walk_astral1:loopBlendTime(300);
+s_walk_astral1:loop(true);
+s_walk_astral1:add("astral/walk.fbxanim");
+--}
+
+--{ Animation: s_walk_back_start_astral1
+s_walk_back_start_astral1 = addState(walk_back+astral, "s_walk_back_start_astral1");
+s_walk_back_start_astral1:blendTime(300);
+s_walk_back_start_astral1:loop(false);
+s_walk_back_start_astral1:add("astral/walk_back_start.fbxanim");
+--}
+
+--{ Animation: s_walk_back_astral1
+s_walk_back_astral1 = addState(walk_back+astral, "s_walk_back_astral1");
+s_walk_back_astral1:from(s_walk_back_start_astral1);
+s_walk_back_astral1:blendTime(200);
+s_walk_back_astral1:loopBlendTime(300);
+s_walk_back_astral1:loop(true);
+s_walk_back_astral1:add("astral/walk_back.fbxanim");
+--}
+
+
+--{ Animation: s_walk_right_start_astral1
+s_walk_right_start_astral1 = addState(walk_right+astral, "s_walk_right_start_astral1");
+s_walk_right_start_astral1:blendTime(300);
+s_walk_right_start_astral1:loop(false);
+s_walk_right_start_astral1:add("astral/walk_right_start.fbxanim");
+--}
+
+--{ Animation: s_walk_right_astral1
+s_walk_right_astral1 = addState(walk_right+astral, "s_walk_right_astral1");
+s_walk_right_astral1:from(s_walk_right_start_astral1);
+s_walk_right_astral1:blendTime(200);
+s_walk_right_astral1:loopBlendTime(300);
+s_walk_right_astral1:loop(true);
+s_walk_right_astral1:add("astral/walk_right.fbxanim");
+--}
+
+--{ Animation: s_walk_left_start_astral1
+s_walk_left_start_astral1 = addState(walk_left+astral, "s_walk_left_start_astral1");
+s_walk_left_start_astral1:blendTime(300);
+s_walk_left_start_astral1:loop(false);
+s_walk_left_start_astral1:add("astral/walk_left_start.fbxanim");
+--}
+
+--{ Animation: s_walk_left_astral1
+s_walk_left_astral1 = addState(walk_left+astral, "s_walk_left_astral1");
+s_walk_left_astral1:from(s_walk_left_start_astral1);
+s_walk_left_astral1:blendTime(200);
+s_walk_left_astral1:loopBlendTime(300);
+s_walk_left_astral1:loop(true);
+s_walk_left_astral1:add("astral/walk_left.fbxanim");
+--}
+
+
+--{ Animation: s_walk_astral2
+-- s_walk_astral2 = addState(walk+astral, "s_walk_astral2");
+-- s_walk_astral2:blendTime(400);
+-- s_walk_astral2:loop(true);
+-- s_walk_astral2:add(target_direction(0), "astral/walk2.fbxanim");
+--}
+
+--{ Animation: s_attack_astral
+s_attack_astral = addState(attack+astral, "s_attack_astral");
+s_attack_astral:blendTime(300);
+s_attack_astral:loop(false);
+s_attack_astral:restart(true);
+-- s_attack_astral:addEnterEvent("EventAnimAttackExecute");
+s_attack_astral:addFinishedEvent("EventAnimAttackFinished");
+s_attack_astral:add("astral/attack.fbxanim");
+--}
+
+--{ Animation: s_attack_long_astral
+s_attack_long_astral = addState(attack_long+astral, "s_attack_long_astral");
+s_attack_long_astral:blendTime(300);
+s_attack_long_astral:loop(false);
+s_attack_long_astral:restart(true);
+-- s_attack_long_astral:addEnterEvent("EventAnimattack_longExecute");
+s_attack_long_astral:addFinishedEvent("EventAnimAttackFinished");
+s_attack_long_astral:add("astral/attack_long.fbxanim");
+--}
+
+
+--{ Animation: s_run_start
+s_run_start = addState(walk+fast, "s_run_start");
+s_run_start:blendTime(300);
+s_run_start:loop(false);
+s_run_start:add("goblin/run_start.fbxanim");
+--}
+
+--{ Animation: s_run
+s_run = addState(walk+fast, "s_run");
+s_run:from(s_run_start);
+s_run:from(s_run_corner_right_90);
+s_run:from(s_run_corner_left_90);
+s_run:blendTime(0);
+s_run:loop(true);
+s_run:add("goblin/run.fbxanim");
+--}
+
+--{ Animation: s_run_end
+s_run_end = addState(walk, "s_run_end");
+s_run_end:from(s_run_start);
+s_run_end:from(s_run);
+s_run_end:blendTime(300);
+s_run_end:loop(false);
+s_run_end:add("goblin/run_end.fbxanim");
+--}
+
+--{ Animation: s_walk_distance_start_front
+s_walk_distance_start_front = addState(walk_distance, "s_walk_distance_start_front");
+s_walk_distance_start_front:blendTime(300);
+s_walk_distance_start_front:loop(false);
+-- s_walk_distance_start_front:add("goblin/walk_distance_front2.fbxanim");
+s_walk_distance_start_front:add("goblin/walk_start_front.fbxanim");
+--}
+
+--{ Animation: s_walk_distance_front
+s_walk_distance_front = addState(walk_distance, "s_walk_distance_front");
+s_walk_distance_front:from(s_walk_distance_start_front);
+s_walk_distance_front:blendTime(0);
+s_walk_distance_front:loop(true);
+-- s_walk_distance_front:add("goblin/walk_distance_front2.fbxanim");
+s_walk_distance_front:add("goblin/walk_front.fbxanim");
+--}
+
+--{ Animation: s_walk_distance_end_front
+s_walk_distance_end_front = addState(stand, "s_walk_distance_end_front");
+s_walk_distance_end_front:from(s_walk_distance_start_front);
+s_walk_distance_end_front:from(s_walk_distance_front);
+s_walk_distance_end_front:blendTime(400);
+s_walk_distance_end_front:loop(false);
+-- s_walk_distance_end_front:add("goblin/walk_distance_end_front2.fbxanim");
+s_walk_distance_end_front:add("goblin/walk_end_front.fbxanim");
+--}
+
+--{ Animation: s_walk_right
+s_walk_right = addState(walk_right, "s_walk_right");
+s_walk_right:blendTime(400);
+s_walk_right:loopBlendTime(300);
+s_walk_right:loop(true);
+-- s_walk_right:speedFactor(1.5);
+s_walk_right:add("goblin/walk_right.fbxanim");
+--}
+
+--{ Animation: s_run_right
+s_run_right = addState(walk_right+fast_circling, "s_run_right");
+s_run_right:blendTime(400);
+s_run_right:loopBlendTime(300);
+s_run_right:loop(true);
+-- s_run_right:speedFactor(1.5);
+s_run_right:add("goblin/run_right.fbxanim");
+--}
+
+--{ Animation: s_run_left
+s_run_left = addState(walk_left+fast_circling, "s_run_left");
+s_run_left:blendTime(400);
+s_run_left:loopBlendTime(300);
+s_run_left:loop(true);
+-- s_run_left:speedFactor(1.5);
+s_run_left:add(angle_around_up(-90), "goblin/run_left_look_left.fbxanim");
+s_run_left:add(angle_around_up(0), "goblin/run_left_look_forward.fbxanim");
+s_run_left:add(angle_around_up(90), "goblin/run_left_look_right.fbxanim");
+--}
+
+
+--{ Animation: s_walk_left
+s_walk_left = addState(walk_left, "s_walk_left");
+s_walk_left:blendTime(400);
+s_walk_left:loopBlendTime(300);
+s_walk_left:loop(true);
+-- s_walk_left:speedFactor(1.5);
+s_walk_left:add("goblin/walk_left.fbxanim");
+--}
+
+--{ Animation: s_walk_back
+s_walk_back = addState(walk_back, "s_walk_back");
+s_walk_back:speedFactor(1.8);
+s_walk_back:blendTime(400);
+s_walk_back:loop(true);
+s_walk_back:add("goblin/walk_back.fbxanim");
+--}
+
+--{ Animation: s_attack
+s_attack = addState(attack, "s_attack");
+s_attack:blendTime(300);
+s_attack:loop(false);
+s_attack:restart(true);
+s_attack:add("goblin/attack_short.fbxanim");
+-- s_attack:addEnterEvent("EventAnimAttackExecute");
+s_attack:addFinishedEvent("EventAnimAttackFinished");
+-- s_attack:add("goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_attack_short_treeman
+s_attack_short_treeman = addState(attack+treeman, "s_attack_short_treeman");
+s_attack_short_treeman:blendTime(300);
+s_attack_short_treeman:loop(false);
+s_attack_short_treeman:restart(true);
+s_attack_short_treeman:add("treeman/attack_short.fbxanim");
+-- s_attack_short_treeman:addEnterEvent("EventAnimAttackExecute");
+s_attack_short_treeman:addFinishedEvent("EventAnimAttackFinished");
+-- s_attack_short_treeman:add("goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_attack_long_treeman
+s_attack_long_treeman = addState(attack_long+treeman, "s_attack_long_treeman");
+s_attack_long_treeman:blendTime(300);
+s_attack_long_treeman:loop(false);
+s_attack_long_treeman:restart(true);
+s_attack_long_treeman:add("treeman/attack_long.fbxanim");
+-- s_attack_long_treeman:addEnterEvent("EventAnimAttackExecute");
+s_attack_long_treeman:addFinishedEvent("EventAnimAttackFinished");
+-- s_attack_long_treeman:add("goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_attack_short_pine_elemental
+s_attack_short_pine_elemental = addState(attack+pine_elemental, "s_attack_short_pine_elemental");
+s_attack_short_pine_elemental:blendTime(500);
+s_attack_short_pine_elemental:loop(false);
+s_attack_short_pine_elemental:restart(true);
+s_attack_short_pine_elemental:add("pine_elemental/attack_sweep.fbxanim");
+s_attack_short_pine_elemental:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+--{ Animation: s_attack_long_pine_elemental
+s_attack_long_pine_elemental = addState(attack_long+pine_elemental, "s_attack_long_pine_elemental");
+s_attack_long_pine_elemental:blendTime(500);
+s_attack_long_pine_elemental:loop(false);
+s_attack_long_pine_elemental:restart(true);
+s_attack_long_pine_elemental:add("pine_elemental/attack_slam.fbxanim");
+s_attack_long_pine_elemental:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+
+
+--{ Animation: s_dodge_right
+s_dodge_right = addState(dodge_right, "s_dodge_right");
+s_dodge_right:blendTime(200);
+s_dodge_right:loop(false);
+-- s_dodge_right:add("goblin/dodge_right.fbxanim");
+s_dodge_right:add("goblin/dodge_back_off_right.fbxanim");
+s_dodge_right:addFinishedEvent("EventAnimDodgeFinished");
+--}
+
+--{ Animation: s_dodge_left
+s_dodge_left = addState(dodge_left, "s_dodge_left");
+s_dodge_left:blendTime(200);
+s_dodge_left:loop(false);
+-- s_dodge_left:add("goblin/dodge_left.fbxanim");
+s_dodge_left:add("goblin/dodge_back_off_left2.fbxanim");
+s_dodge_left:addFinishedEvent("EventAnimDodgeFinished");
+--}
+
+-- { Animation: s_dodge_crouch
+s_dodge_crouch = addState(dodge, "s_dodge_crouch");
+s_dodge_crouch:blendTime(300);
+s_dodge_crouch:loop(false);
+s_dodge_crouch:add("goblin/dodge_crouch.fbxanim");
+s_dodge_crouch:addFinishedEvent("EventAnimDodgeFinished");
+-- }
+
+--{ Animation: s_hack_attack
+s_hack_attack = addState(attack_hack, "s_hack_attack");
+s_hack_attack:blendTime(300);
+s_hack_attack:loop(false);
+s_hack_attack:restart(true);
+s_hack_attack:addEnterEvent("EventAnimAttackExecute");
+s_hack_attack:addFinishedEvent("EventAnimAttackFinished");
+s_hack_attack:add("goblin/attack_short.fbxanim");
+s_hack_attack:add("goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_hack_dodge_right
+s_hack_dodge_right = addState(attack_hack, "s_hack_dodge_right");
+s_hack_dodge_right:blendTime(300);
+s_hack_dodge_right:loop(false);
+s_hack_dodge_right:add("goblin/dodge_right.fbxanim");
+--}
+
+--{ Animation: s_dodge_left
+-- s_dodge_left = addState(attack, "s_dodge_left");
+-- s_dodge_left:blendTime(300);
+-- s_dodge_left:loop(false);
+-- s_dodge_left:add("goblin/dodge_left.fbxanim");
+--}
+
+
+--{ Animation: s_walk_back_fake
+s_walk_back_fake = addState(attack_hack, "s_walk_back_fake");
+s_walk_back_fake:from(s_hack_attack);
+s_walk_back_fake:blendTime(400);
+s_walk_back_fake:loop(true);
+s_walk_back_fake:add("goblin/walk_back.fbxanim");
+--}
+
+--{ Animation: s_attack_long
+s_attack_long = addState(attack_long, "s_attack_long");
+s_attack_long:blendTime(300);
+s_attack_long:loop(false);
+-- s_attack_long:addEnterEvent("EventAnimAttackExecute"); 
+s_attack_long:addFinishedEvent("EventAnimAttackFinished");
+s_attack_long:add("goblin/attack_long.fbxanim");
+--}
+
+--{ Animation: s_attack_verylong
+s_attack_verylong = addState(attack_verylong, "s_attack_verylong");
+s_attack_verylong:blendTime(300);
+s_attack_verylong:loop(false);
+s_attack_verylong:restart(true);
+-- s_attack_verylong:addEnterEvent("EventAnimAttackExecute");
+s_attack_verylong:addFinishedEvent("EventAnimAttackFinished");
+s_attack_verylong:add("goblin/attack_verylong.fbxanim");
+--}
+
+--{ Animation: s_attack_ranged
+s_attack_ranged = addState(attack_ranged, "s_attack_ranged");
+s_attack_ranged:blendTime(300);
+s_attack_ranged:loop(false);
+s_attack_ranged:restart(true);
+-- s_attack_ranged:addEnterEvent("EventAnimAttackExecute");
+s_attack_ranged:addFinishedEvent("EventAnimAttackFinished");
+s_attack_ranged:add("goblin/attack_ranged.fbxanim");
+--}
+
+--{ Animation: s_stagger_arrow
+-- s_stagger_arrow = addState(stagger, "s_stagger_arrow", 2);
+s_stagger_arrow = addState(stagger, "s_stagger_arrow");
+s_stagger_arrow:blendTime(200);
+s_stagger_arrow:loop(false);
+s_stagger_arrow:restart(true);
+s_stagger_arrow:add("treeman/stagger_arrow_right.fbxanim");
+-- s_stagger_arrow:add("goblin/die_fly.fbxanim");
+s_stagger_arrow:addFinishedEvent("EventAnimStaggerFinished");
+--}
+--{ Animation: s_stagger_charge
+s_stagger_charge = addState(stagger_charge, "s_stagger_charge");
+s_stagger_charge:blendTime(200);
+s_stagger_charge:speedFactor(1.0);
+s_stagger_charge:loop(false);
+s_stagger_charge:restart(true);
+s_stagger_charge:add("goblin/stagger_airstomp3.fbxanim");
+s_stagger_charge:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_charge);
+--}
+
+--{ Animation: s_stagger_charge2
+s_stagger_charge2 = addState(stagger_charge, "s_stagger_charge2");
+s_stagger_charge2:blendTime(200);
+s_stagger_charge2:speedFactor(1.0);
+s_stagger_charge2:loop(false);
+s_stagger_charge2:restart(true);
+s_stagger_charge2:add("goblin/stagger_airstomp4.fbxanim");
+s_stagger_charge2:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_charge2);
+--}
+
+--{ Animation: s_stagger_charge3
+s_stagger_charge3 = addState(stagger_charge, "s_stagger_charge3");
+s_stagger_charge3:blendTime(200);
+s_stagger_charge3:speedFactor(1.0);
+s_stagger_charge3:loop(false);
+s_stagger_charge3:restart(true);
+s_stagger_charge3:add("goblin/stagger_airstomp5.fbxanim");
+s_stagger_charge3:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_charge3);
+--}
+
+--{ Animation: s_stagger_airstomp
+s_stagger_airstomp = addState(stagger_push_back, "s_stagger_airstomp");
+s_stagger_airstomp:blendTime(200);
+s_stagger_airstomp:speedFactor(1.0);
+s_stagger_airstomp:loop(false);
+s_stagger_airstomp:restart(true);
+s_stagger_airstomp:add("goblin/stagger_airstomp_small1.fbxanim");
+-- s_stagger_airstomp:add("goblin/stagger_airstomp5.fbxanim");
+-- s_stagger_airstomp:add("treeman/stagger_b2.fbxanim");
+-- s_stagger_airstomp:add("goblin/stagger_airstomp3.fbxanim");
+s_stagger_airstomp:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_airstomp);
+--}
+--{ Animation: s_stagger_airstomp2
+-- s_stagger_airstomp2 = addState(stagger_push_back, "s_stagger_airstomp2");
+-- s_stagger_airstomp2:blendTime(200);
+-- s_stagger_airstomp2:speedFactor(1.0);
+-- s_stagger_airstomp2:loop(false);
+-- s_stagger_airstomp2:restart(true);
+-- s_stagger_airstomp2:add("goblin/stagger_airstomp4.fbxanim");
+-- s_stagger_airstomp2:addFinishedEvent("EventAnimStaggerFinished");
+-- table.insert(staggering, s_stagger_airstomp2);
+--}
+--{ Animation: s_stagger_airstomp3
+-- s_stagger_airstomp3 = addState(stagger_push_back, "s_stagger_airstomp3");
+-- s_stagger_airstomp3:blendTime(200);
+-- s_stagger_airstomp3:speedFactor(1.0);
+-- s_stagger_airstomp3:loop(false);
+-- s_stagger_airstomp3:restart(true);
+-- s_stagger_airstomp3:add("goblin/stagger_airstomp5.fbxanim");
+-- s_stagger_airstomp3:addFinishedEvent("EventAnimStaggerFinished");
+-- table.insert(staggering, s_stagger_airstomp5);
+--}
+--{ Animation: s_blocked
+s_blocked = addState(blocked, "s_blocked");
+s_blocked:blendTime(50);
+s_blocked:speedFactor(1.0);
+s_blocked:loop(false);
+-- s_blocked:restart(true);
+s_blocked:add("goblin/attack_verylong_blocked.fbxanim");
+-- s_blocked:add("treeman/blocked.fbxanim");
+-- s_blocked:add("goblin/stagger_dodge.fbxanim");
+s_blocked:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_blocked);
+--}
+
+--{ Animation: s_skeleton_blocked
+s_skeleton_blocked = addState(skeleton+blocked+shield, "s_skeleton_blocked");
+s_skeleton_blocked:blendTime(50);
+s_skeleton_blocked:speedFactor(1.0);
+s_skeleton_blocked:loop(false);
+-- s_skeleton_blocked:restart(true);
+s_skeleton_blocked:add("skeleton/attack_long_shielded_blocked.fbxanim");
+-- s_skeleton_blocked:add("treeman/skeleton_blocked.fbxanim");
+-- s_skeleton_blocked:add("goblin/stagger_dodge.fbxanim");
+s_skeleton_blocked:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_blocked);
+--}
+
+--{ Animation: s_stagger_f1
+s_stagger_f1 = addState(stagger_f1, "s_stagger_f1");
+s_stagger_f1:blendTime(200);
+s_stagger_f1:speedFactor(1.0);
+s_stagger_f1:loop(false);
+s_stagger_f1:restart(true);
+-- s_stagger_f1:add("goblin/attack_verylong_blocked.fbxanim");
+s_stagger_f1:add("treeman/stagger_f1.fbxanim");
+-- s_stagger_f1:add("goblin/stagger_dodge.fbxanim");
+s_stagger_f1:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_f1);
+--}
+--{ Animation: s_stagger_r1
+s_stagger_r1 = addState(stagger_r1, "s_stagger_r1");
+s_stagger_r1:blendTime(200);
+s_stagger_r1:loop(false);
+s_stagger_r1:restart(true);
+s_stagger_r1:add("treeman/stagger_r1.fbxanim");
+-- s_stagger_r1:add("goblin/stagger_sweep.fbxanim");
+s_stagger_r1:setContextOnEnter("no_head", true);
+s_stagger_r1:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_r1);
+--}
+--{ Animation: s_stagger_l1
+s_stagger_l1 = addState(stagger_l1, "s_stagger_l1");
+s_stagger_l1:blendTime(200);
+s_stagger_l1:loop(false);
+s_stagger_l1:restart(true);
+s_stagger_l1:add("treeman/stagger_l1.fbxanim");
+-- s_stagger_l1:add("goblin/stagger_dodge.fbxanim");
+s_stagger_l1:setContextOnEnter("no_right_arm", true);
+s_stagger_l1:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_l1);
+--}
+--{ Animation: s_stagger_b1
+s_stagger_b1 = addState(stagger_b1, "s_stagger_b1");
+s_stagger_b1:blendTime(200);
+s_stagger_b1:loop(false);
+s_stagger_b1:restart(true);
+s_stagger_b1:add("treeman/stagger_b1.fbxanim");
+-- s_stagger_b1:add("treeman/stagger_fall.fbxanim");
+s_stagger_b1:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_b1);
+--}
+--{ Animation: s_stagger_f2
+s_stagger_f2 = addState(stagger_f2, "s_stagger_f2");
+s_stagger_f2:blendTime(200);
+s_stagger_f2:loop(false);
+s_stagger_f2:restart(true);
+s_stagger_f2:add("treeman/stagger_f2.fbxanim");
+s_stagger_f2:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_f2);
+--}
+--{ Animation: s_stagger_r2
+s_stagger_r2 = addState(stagger_r2, "s_stagger_r2");
+s_stagger_r2:blendTime(200);
+s_stagger_r2:loop(false);
+s_stagger_r2:restart(true);
+s_stagger_r2:add("treeman/stagger_r2.fbxanim");
+s_stagger_r2:setContextOnEnter("no_left_arm", true);
+s_stagger_r2:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_r2);
+--}
+--{ Animation: s_stagger_l2
+s_stagger_l2 = addState(stagger_l2, "s_stagger_l2");
+s_stagger_l2:blendTime(200);
+s_stagger_l2:loop(false);
+s_stagger_l2:restart(true);
+s_stagger_l2:add("treeman/stagger_toes.fbxanim");
+s_stagger_l2:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_l2);
+--}
+--{ Animation: s_stagger_b2
+s_stagger_b2 = addState(stagger_b2, "s_stagger_b2");
+s_stagger_b2:blendTime(200);
+s_stagger_b2:loop(false);
+s_stagger_b2:restart(true);
+s_stagger_b2:add("treeman/stagger_b2.fbxanim");
+s_stagger_b2:addFinishedEvent("EventAnimStaggerFinished");
+table.insert(staggering, s_stagger_b2);
+--}
+
+--{ Animation: s_stagger_dodge_f1
+-- s_stagger_dodge_f1 = addState(stagger+s_dodge, "s_stagger_dodge_f1");
+-- s_stagger_dodge_f1:blendTime(200);
+-- s_stagger_dodge_f1:speedFactor(1.0);
+-- s_stagger_dodge_f1:loop(false);
+-- s_stagger_dodge_f1:restart(true);
+-- s_stagger_dodge_f1:add("goblin/stagger_dodge.fbxanim");
+-- s_stagger_dodge_f1:addFinishedEvent("EventAnimStaggerFinished");
+-- table.insert(staggering, s_stagger_dodge_f1);
+--}
+
+--{ Animation: s_stagger_dodge_f1_mirrored
+-- s_stagger_dodge_f1_mirrored = addState(stagger+s_dodge, "s_stagger_dodge_f1_mirrored");
+-- s_stagger_dodge_f1_mirrored:blendTime(200);
+-- s_stagger_dodge_f1_mirrored:speedFactor(1.0);
+-- s_stagger_dodge_f1_mirrored:loop(false);
+-- s_stagger_dodge_f1_mirrored:restart(true);
+-- s_stagger_dodge_f1_mirrored:add("goblin/stagger_dodge.fbxanim");
+-- s_stagger_dodge_f1_mirrored:addFinishedEvent("EventAnimStaggerFinished");
+-- table.insert(staggering, s_stagger_dodge_f1_mirrored);
+--}
+
+--{ Animation: s_stagger_dodge_f2
+s_stagger_dodge_f2 = addState(stagger+s_dodge, "s_stagger_dodge_f2");
+s_stagger_dodge_f2:from(staggering);
+s_stagger_dodge_f2:blendTime(200);
+s_stagger_dodge_f2:speedFactor(1.0);
+s_stagger_dodge_f2:loop(false);
+s_stagger_dodge_f2:restart(true);
+s_stagger_dodge_f2:add("goblin/dodge_back_off_left2.fbxanim");
+s_stagger_dodge_f2:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_stagger_dodge_f3
+s_stagger_dodge_f3 = addState(stagger+s_dodge, "s_stagger_dodge_f3");
+s_stagger_dodge_f3:from(staggering);
+s_stagger_dodge_f3:blendTime(200);
+s_stagger_dodge_f3:speedFactor(1.0);
+s_stagger_dodge_f3:loop(false);
+s_stagger_dodge_f3:restart(true);
+-- s_stagger_dodge_f3:add("goblin/dodge_back_off_right.fbxanim");
+s_stagger_dodge_f3:add("goblin/dodge_crouch.fbxanim");
+s_stagger_dodge_f3:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_stagger_ledge
+s_stagger_ledge = addState(stagger_ledge, "s_stagger_ledge");
+s_stagger_ledge:blendTime(200);
+s_stagger_ledge:loop(false);
+s_stagger_ledge:restart(true);
+s_stagger_ledge:add("treeman/stagger_ledge.fbxanim");
+s_stagger_ledge:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_stagger_ground_slam
+s_stagger_ground_slam = addState(stagger_ground_slam, "s_stagger_ground_slam");
+s_stagger_ground_slam:blendTime(200);
+s_stagger_ground_slam:loop(false);
+-- s_stagger_ground_slam:restart(true);
+s_stagger_ground_slam:add("treeman/stagger_ground_slam.fbxanim");
+s_stagger_ground_slam:addFinishedEvent("EventAnimStaggerFinished");
+-- s_stagger_ground_slam:absoluteRootMotionPosition(true);
+-- s_stagger_ground_slam:absoluteRootMotionRotation(true);
+--}
+--{ Animation: s_die1
+s_die1 = addState(die, "s_die1");
+s_die1:blendTime(100);
+s_die1:loop(false);
+s_die1:add("goblin/die2.fbxanim");
+--}
+
+--{ Animation: s_die2
+s_die2 = addState(die, "s_die2");
+s_die2:blendTime(100);
+s_die2:loop(false);
+s_die2:add("goblin/die3.fbxanim");
+--}
+
+--{ Animation: s_die3
+s_die3 = addState(die, "s_die3");
+s_die3:from(s_stagger_charge);
+s_die3:from(s_stagger_charge2);
+s_die3:from(s_stagger_charge3);
+s_die3:blendTime(100);
+s_die3:loop(false);
+s_die3:add("goblin/stagger_charge_wall.fbxanim");
+--}
+
+--{ Animation: s_die_shield1
+s_die_shield1 = addState(die+stagger_b1, "s_die_shield1");
+s_die_shield1:blendTime(100);
+s_die_shield1:loop(false);
+s_die_shield1:add("goblin/die_shield1.fbxanim");
+--}
+
+--{ Animation: s_die_shield_down1
+s_die_shield_down1 = addState(die+stagger_r1, "s_die_shield_down1");
+s_die_shield_down1:blendTime(100);
+s_die_shield_down1:loop(false); 
+s_die_shield_down1:add("goblin/die_shield_down1.fbxanim");
+--}
+
+--{ Animation: s_die_f1
+-- s_die_f1 = addState(die+stagger_f1, "s_die_f1");
+-- s_die_f1:blendTime(100);
+-- s_die_f1:loop(false);
+-- -- s_die_f1:add("goblin/die_f1.fbxanim");
+-- s_die_f1:add("goblin/die_fly.fbxanim");
+-- -- s_die_f1:add("treeman/die_ground_slam.fbxanim");
+-- -- s_die_f1:addEnterEvent("EventAnimCreateRagdoll");
+-- s_die_f1:addFinishedEvent("EventAnimCreateRagdollWithoutAnimationDrive");
+-- -- s_die_f1:addFinishedEvent("EventAnimDisableRagdollAnimationDrive");
+-- -- s_die_f1:setContextOnFinished("die", false);
+--}
+
+--{ Animation: s_die_r2
+-- s_die_r2 = addState(die+stagger_r2, "s_die_r2");
+-- s_die_r2:blendTime(100);
+-- s_die_r2:loop(false);
+-- -- s_die_r2:add("goblin/die_r2.fbxanim");
+-- s_die_r2:add("treeman/die_body_chopped.fbxanim");
+-- -- s_die_r2:addEnterEvent("EventAnimCreateRagdoll");
+-- s_die_r2:setContextOnEnter("no_body", true);
+-- s_die_r2:addFinishedEvent("EventAnimCreateRagdollWithoutAnimationDrive");
+-- -- s_die_r2:addFinishedEvent("EventAnimDisableRagdollAnimationDrive");
+-- -- s_die_r2:setContextOnFinished("die", false);
+--}
+
+--{ Animation: s_die_ground_slam
+s_die_ground_slam = addState(die+stagger_ground_slam, "s_die_ground_slam");
+s_die_ground_slam:blendTime(100);
+s_die_ground_slam:loop(false);
+s_die_ground_slam:add("treeman/die_ground_slam.fbxanim");
+-- s_die_ground_slam:add("treeman/die_body_chopped.fbxanim");
+-- s_die_ground_slam:addEnterEvent("EventAnimCreateRagdoll");
+-- s_die_ground_slam:setContextOnEnter("no_body", true);
+-- s_die_ground_slam:addFinishedEvent("EventAnimCreateRagdollWithoutAnimationDrive");
+-- s_die_ground_slam:addFinishedEvent("EventAnimDisableRagdollAnimationDrive");
+-- s_die_ground_slam:setContextOnFinished("die", false);
+--}
+
+--{ Animation: s_ledge_down_1m
+s_ledge_down_1m = addState(ledge_down_1000, "s_ledge_down_1m");
+s_ledge_down_1m:blendTime(0);
+s_ledge_down_1m:loop(true);
+s_ledge_down_1m:randomizedStartTime();
+s_ledge_down_1m:add("goblin/ledge_down_1m.fbxanim");
+--}
+
+--{ Animation: s_jump
+s_jump = addState(jump, "s_jump");
+s_jump:blendTime(300);
+s_jump:restart(true);
+s_jump:rootMotionScaleWeight(0.0);
+
+s_jump:add(jump_z(4), jump_y(-10), "goblin/jump_z4_ym10.fbxanim");
+s_jump:add(jump_z(4), jump_y(0), "goblin/jump_z4_y0.fbxanim");
+s_jump:add(jump_z(4), jump_y(6), "goblin/jump_z4_y6.fbxanim");
+s_jump:add(jump_z(6), jump_y(-10), "goblin/jump_z6_ym10.fbxanim");
+s_jump:add(jump_z(6), jump_y(0), "goblin/jump_z6_y0.fbxanim");
+s_jump:add(jump_z(6), jump_y(6), "goblin/jump_z6_y6.fbxanim");
+s_jump:absoluteRootMotionPosition(true);
+s_jump:absoluteRootMotionRotation(true);
+s_jump:addFinishedEvent("EventAnimHelperFinished");
+
+--}
+
+--{ Animation: s_jump_astral
+s_jump_astral = addState(jump+astral, "s_jump_astral");
+s_jump_astral:blendTime(300);
+s_jump_astral:restart(true);
+s_jump_astral:rootMotionScaleWeight(0.0);
+
+s_jump_astral:add(jump_z(4), jump_y(-10), "astral/jump_z4_ym10.fbxanim");
+s_jump_astral:add(jump_z(4), jump_y(0), "astral/jump_z4_y0.fbxanim");
+s_jump_astral:add(jump_z(4), jump_y(6), "astral/jump_z4_y6.fbxanim");
+s_jump_astral:add(jump_z(6), jump_y(-10), "astral/jump_z6_ym10.fbxanim");
+s_jump_astral:add(jump_z(6), jump_y(0), "astral/jump_z6_y0.fbxanim");
+s_jump_astral:add(jump_z(6), jump_y(6), "astral/jump_z6_y6.fbxanim");
+s_jump_astral:absoluteRootMotionPosition(true);
+s_jump_astral:absoluteRootMotionRotation(true);
+s_jump_astral:addFinishedEvent("EventAnimHelperFinished");
+
+--}
+
+
+
+--{ Animation: s_block_start
+s_block_start = addState(block, "s_block_start");
+s_block_start:from(stand_not_blocking);
+s_block_start:blendTime(300);
+s_block_start:loopBlendTime(300);
+s_block_start:loop(true);
+s_block_start:add("skeleton/stand_end.fbxanim");
+--}
+
+--{ Animation: s_block
+s_block = addState(block, "s_block");
+s_block:blendTime(300);
+s_block:loopBlendTime(300);
+s_block:loop(true);
+s_block:add("skeleton/stand_blocking.fbxanim");
+--}
+
+--{ Animation: s_blocks
+s_blocks = addState(blocks, "s_blocks");
+s_blocks:blendTime(50);
+s_blocks:loop(false);
+s_blocks:add("skeleton/block.fbxanim");
+--}
+
+--{ Animation: s_jump_end
+-- s_jump_end = addState(jump, "s_jump_end");
+-- s_jump_end:from(s_jump);
+-- s_jump_end:blendTime(300);
+-- s_jump_end:loop(false);
+-- s_jump_end:randomizedStartTime();
+-- s_jump_end:add("goblin/walk_straight_line_test.fbxanim");
+--}

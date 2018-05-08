@@ -1,0 +1,25 @@
+
+idle = addContext("idle", 4)
+active = addContext("active", 1)
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(0);
+s_idle:loop(true);
+s_idle:add("inactive.fbxanim");
+--}
+
+--{ Animation: s_active
+s_active = addState(active, "s_active");
+s_active:blendTime(0);
+s_active:loop(true);
+s_active:add("active.fbxanim");
+--}
+
+--{ Animation: s_activation
+s_activation = addState(active, "s_activation");
+s_activation:blendTime(300);
+s_activation:from(s_idle);
+s_activation:loop(false);
+s_activation:add("activation.fbxanim");
+--}

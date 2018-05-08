@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/metal_collision_helper_box_physics_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4__4_generic_fortress_window_closed_ObjectEntityPhysicsComponent", GUID('0x720AE09C','0xFF652466','0x00770279','0x00005500')); -- MetalCollisionHelperBoxPhysicsComponent
+  type:setGuid(GUID('0x0BB99092','0x42040FE4','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setCollisionGroup(engine.component.AbstractPhysicsComponent.CollisionGroupFiretrough)
+  typeManager:setLastKnownNameForGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500'), "CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')); -- CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x336AC784','0x42040FF6','0x0077024F','0x00005500'), "104__4_generic_fortress_window_closed_ObjectEntityBoxPhysicsCollisionComponent");
+  type:addComponentTypeGUID(GUID('0x336AC784','0x42040FF6','0x0077024F','0x00005500')); -- 104__4_generic_fortress_window_closed_ObjectEntityBoxPhysicsCollisionComponent
+end

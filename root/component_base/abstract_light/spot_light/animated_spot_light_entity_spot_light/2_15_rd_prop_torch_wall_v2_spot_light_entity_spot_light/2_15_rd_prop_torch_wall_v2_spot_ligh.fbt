@@ -1,0 +1,15 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/light/spot_light/animated_spot_light/animated_spot_light_entity_spot_light_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("2_15_rd_prop_torch_wall_v2_SpotLightEntitySpotLightComponent", GUID('0x8C0678DF','0xFFFB0A64','0x007702A1','0x00005500')); -- AnimatedSpotLightEntitySpotLightComponent
+  type:setGuid(GUID('0xD5401A2F','0xEF3C0414','0x00770288','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setRange(10)
+  type:setColor(COL(1, 0.2667, 0))
+  type:setIntensity(37.042415618896)
+  type:setColorMultiplier(COL(0.7098, 0.7098, 0.7098))
+  type:setFov(105.23070526123)
+  type:setShadows(false)
+  type:setShadowQuality(lighting.SpotLightComponent.ShadowQuality3)
+  type:setShadowPCSSDistance(1)
+end

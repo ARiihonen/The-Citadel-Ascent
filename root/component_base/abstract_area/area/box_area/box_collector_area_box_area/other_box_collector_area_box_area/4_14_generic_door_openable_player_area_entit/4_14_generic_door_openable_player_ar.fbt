@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/area/collector_area/box_collector_area/other_box_collector_area/other_box_collector_area_box_area_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_14_generic_door_openable_player_AreaEntityBoxAreaComponent", GUID('0x76E5991F','0x6731610F','0x0077025C','0x00005500')); -- OtherBoxCollectorAreaBoxAreaComponent
+  type:setGuid(GUID('0xE2AD8EF5','0x547138FA','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setListenMask(BitSet("AreaGroupGameplay{ default = 1, usableItem = 0, pressurePlate = 0, distractionObject = 0, ActorPlayerPoint = 0, ActorPlayerBox = 0, ActorAiPoint = 0, ActorAiBox = 0, RareGameplayElement = 0, DynamicObject = 0, SwimPoint = 0, OxygenPoint = 0, ActorPlayerShadwen = 0, AreaFlow = 0, RagdollObject = 0, Lantern = 0, Magnetism = 0, Sunray = 0, Projectile = 0, Wind = 0, WindReceiver = 0, Rope = 0, ExperienceTracker = 0, GameplaySound = 0, InventoryArea = 0 }"))
+  type:setNotifyMask(BitSet("AreaGroupGameplay{ default = 0, usableItem = 0, pressurePlate = 0, distractionObject = 0, ActorPlayerPoint = 0, ActorPlayerBox = 0, ActorAiPoint = 0, ActorAiBox = 0, RareGameplayElement = 0, DynamicObject = 0, SwimPoint = 0, OxygenPoint = 0, ActorPlayerShadwen = 0, AreaFlow = 0, RagdollObject = 0, Lantern = 0, Magnetism = 0, Sunray = 0, Projectile = 0, Wind = 0, WindReceiver = 0, Rope = 0, ExperienceTracker = 0, GameplaySound = 0, InventoryArea = 0 }"))
+  type:setDimensions(VC3(0.7625, 0.7358, 0.8508))
+end

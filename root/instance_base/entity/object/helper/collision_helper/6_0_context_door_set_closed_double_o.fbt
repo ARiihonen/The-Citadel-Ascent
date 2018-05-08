@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/rock_collision_helper_collision_helper_model_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("6_0_ContextDoorSet_Closed_Double_ObjectEntityModelComponent", GUID('0xD006BBA1','0x185A0A3A','0x00770279','0x00005500')); -- RockCollisionHelperCollisionHelperModelComponent
+  type:setGuid(GUID('0xE70EBAAB','0x85A63189','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setVisibleInGame(true)
+end

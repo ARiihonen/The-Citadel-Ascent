@@ -1,0 +1,8 @@
+imfree = addContext("imfree", 1)
+
+--{ Animation: s_imfree
+s_imfree = addState(imfree, "s_imfree");
+s_imfree:blendTime(0);
+s_imfree:loop(true);
+s_imfree:add("sarek_solid_im_free.fbxanim"); 
+--}

@@ -1,0 +1,7 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/game_door_component_stop_lily.fbt")
+  local type = typeManager:inheritNewTypeByGUID("PortcullisGameDoorComponentStopLily", GUID('0x664329D4','0xB9A92C20','0x0077021C','0x00005500')); -- GameDoorComponentStopLily
+  type:setGuid(GUID('0x8526AC9F','0x388F1A31','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

@@ -1,0 +1,7 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper_box_physics_component_box_physics_collision_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("100__12_DynamicPortcullis_ObjectEntityBoxPhysicsCollisionComponent", GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')); -- CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent
+  type:setGuid(GUID('0xFDC5D669','0x2FA06469','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

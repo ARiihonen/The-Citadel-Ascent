@@ -1,0 +1,14 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/dynamic_ledge_grab_collision_helper_.fbt")
+  local type = typeManager:inheritNewTypeByGUID("0_4_DynamicPortcullis_ObjectEntityPhysicsComponent", GUID('0x399321F5','0x3B801513','0x0077022D','0x00005500')); -- DynamicLedgeGrabCollisionHelperLedgeGrabCollisionHelperBoxPhysicsComponent
+  type:setGuid(GUID('0xCC3AA782','0x1BF40B53','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMass(engine.component.AbstractPhysicsComponent.MassNotSet)
+  type:setGravityEnabled(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500'), "CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')); -- CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x084E7D1C','0x2FA06441','0x0077024F','0x00005500'), "100__4_DynamicPortcullis_ObjectEntityBoxPhysicsCollisionComponent");
+  type:addComponentTypeGUID(GUID('0x084E7D1C','0x2FA06441','0x0077024F','0x00005500')); -- 100__4_DynamicPortcullis_ObjectEntityBoxPhysicsCollisionComponent
+  -- inherits PhysicsActivationSphereAreaComponent GUID('0x668FC7D3','0xC6D46DC4','0x0077020B','0x00005500')
+end

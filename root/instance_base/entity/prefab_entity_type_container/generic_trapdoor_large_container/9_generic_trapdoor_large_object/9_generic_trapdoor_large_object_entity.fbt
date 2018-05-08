@@ -1,0 +1,30 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/generic_trapdoor_large_container/generic_trapdoor_large_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("9_generic_trapdoor_large_ObjectEntity", GUID('0x7393441C','0x9EE16DC1','0x0077024F','0x00005500')); -- generic_trapdoor_largeContainer
+  type:setGuid(GUID('0x7F1FDE51','0x9EE16DCB','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xC93B104A','0x9EE16DCD','0x0077024F','0x00005500'), "18_9_generic_trapdoor_large_ObjectEntityGameDoorComponent");
+  type:addComponentTypeGUID(GUID('0xC93B104A','0x9EE16DCD','0x0077024F','0x00005500')); -- 18_9_generic_trapdoor_large_ObjectEntityGameDoorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500'), "BasicActivationAreaHolderComponent");
+  type:addComponentTypeGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500')); -- BasicActivationAreaHolderComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x5A2BAED1','0x00000000','0x00770200','0x00005500'), "DistractionObjectComponent");
+  type:addComponentTypeGUID(GUID('0x5A2BAED1','0x00000000','0x00770200','0x00005500')); -- DistractionObjectComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'), "DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500')); -- DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8B5E898D','0x10F61C76','0x00770223','0x00005500'), "NinjaRopeTargetGameplayEntityBoxAreaComponent");
+  type:addComponentTypeGUID(GUID('0x8B5E898D','0x10F61C76','0x00770223','0x00005500')); -- NinjaRopeTargetGameplayEntityBoxAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xCBA9A1A8','0x90072504','0x00770223','0x00005500'), "RopeTargetWoodCollisionHelperAimedRopeTargetComponent");
+  type:addComponentTypeGUID(GUID('0xCBA9A1A8','0x90072504','0x00770223','0x00005500')); -- RopeTargetWoodCollisionHelperAimedRopeTargetComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xDC3C2525','0x3B674275','0x0077020E','0x00005500'), "RopeTargetWoodCollisionHelperCollisionHelperWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0xDC3C2525','0x3B674275','0x0077020E','0x00005500')); -- RopeTargetWoodCollisionHelperCollisionHelperWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x2D0799EE','0x42DB4277','0x0077020E','0x00005500'), "RopeTargetWoodCollisionHelperWoodCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x2D0799EE','0x42DB4277','0x0077020E','0x00005500')); -- RopeTargetWoodCollisionHelperWoodCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xF6A01983','0x511F427B','0x0077020E','0x00005500'), "RopeTargetWoodCollisionHelperWoodCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0xF6A01983','0x511F427B','0x0077020E','0x00005500')); -- RopeTargetWoodCollisionHelperWoodCollisionHelperHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD8E898A8','0x5631427D','0x0077020E','0x00005500'), "RopeTargetWoodCollisionHelperWoodCollisionHelperModelComponent");
+  type:addComponentTypeGUID(GUID('0xD8E898A8','0x5631427D','0x0077020E','0x00005500')); -- RopeTargetWoodCollisionHelperWoodCollisionHelperModelComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+  typeManager:setLastKnownNameForGUID(GUID('0x67BB3A56','0x59784762','0x0077025D','0x00005500'), "WoodenDoorPhysicsAudioComponent");
+  type:addComponentTypeGUID(GUID('0x67BB3A56','0x59784762','0x0077025D','0x00005500')); -- WoodenDoorPhysicsAudioComponent
+end

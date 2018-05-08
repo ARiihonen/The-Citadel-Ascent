@@ -1,0 +1,18 @@
+sarek_battle = addContext("sarek_battle",1)
+sarek_battle_wait = addContext("sarek_battle_wait",1)
+
+--{ Animation: s_sarek_battle
+s_sarek_battle = addState(sarek_battle, "s_sarek_battle");
+s_sarek_battle:loop(false);
+s_sarek_battle:loopBlendTime(0); 
+s_sarek_battle:speedFactor(1);
+s_sarek_battle:add("sarek_battle.fbxanim");
+--}
+
+--{ Animation: s_sarek_battle_wait
+s_sarek_battle_wait = addState(sarek_battle_wait, "s_sarek_battle_wait");
+s_sarek_battle_wait:loop(true);
+s_sarek_battle_wait:loopBlendTime(0); 
+s_sarek_battle_wait:speedFactor(1);
+s_sarek_battle_wait:add("sarek_battle_wait.fbxanim");
+--}

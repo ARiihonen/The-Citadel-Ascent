@@ -1,0 +1,26 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/dynamic_portcullis_container/dynamic_portcullis_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("3_DynamicPortcullis_ObjectEntity", GUID('0x61809E22','0x32081769','0x0077021C','0x00005500')); -- DynamicPortcullisContainer
+  type:setGuid(GUID('0x6F7483C4','0x1BF40B4D','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xFC0BB4B6','0x2F9F6431','0x0077024F','0x00005500'), "16__3_DynamicPortcullis_ObjectEntityTrineMoveBetweenPointsComponent");
+  type:addComponentTypeGUID(GUID('0xFC0BB4B6','0x2F9F6431','0x0077024F','0x00005500')); -- 16__3_DynamicPortcullis_ObjectEntityTrineMoveBetweenPointsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD4A37019','0xA36C12AF','0x0077024F','0x00005500'), "17__3_DynamicPortcullis_ObjectEntityPhysicsAudioComponent");
+  type:addComponentTypeGUID(GUID('0xD4A37019','0xA36C12AF','0x0077024F','0x00005500')); -- 17__3_DynamicPortcullis_ObjectEntityPhysicsAudioComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xCC3AA68F','0x1BF40B4F','0x0077024F','0x00005500'), "2_3_DynamicPortcullis_ObjectEntityPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0xCC3AA68F','0x1BF40B4F','0x0077024F','0x00005500')); -- 2_3_DynamicPortcullis_ObjectEntityPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500'), "BasicActivationAreaHolderComponent");
+  type:addComponentTypeGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500')); -- BasicActivationAreaHolderComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x5F1733DE','0x7073504D','0x00770265','0x00005500'), "CollisionHelperWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0x5F1733DE','0x7073504D','0x00770265','0x00005500')); -- CollisionHelperWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500'), "GenericCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500')); -- GenericCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  type:addComponentTypeGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500')); -- LockJointComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500'), "MetalCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500')); -- MetalCollisionHelperHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500'), "MetalCollisionHelperModelComponent");
+  type:addComponentTypeGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500')); -- MetalCollisionHelperModelComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

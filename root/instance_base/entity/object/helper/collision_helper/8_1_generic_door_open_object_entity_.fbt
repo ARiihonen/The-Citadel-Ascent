@@ -1,0 +1,9 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/rope_target_wood_collision_helper_ai.fbt")
+  local type = typeManager:inheritNewTypeByGUID("8_1_generic_door_open_ObjectEntityAimedRopeTargetComponent", GUID('0xCBA9A1A8','0x90072504','0x00770223','0x00005500')); -- RopeTargetWoodCollisionHelperAimedRopeTargetComponent
+  type:setGuid(GUID('0xDD79B585','0x51041AEB','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setAimTargetOffsets(VC3PropertyArray({VC3(0, -0.5965, -0.05)}))
+  -- inherits ThiefFUIInfoBubbleComponent GUID('0x694DAA8D','0x00000000','0x00770200','0x00005500')
+end

@@ -1,0 +1,7 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/generate_sound_on_event/object_generate_sound_on_event/quiet_object_generate_sound_on_event/quiet_object_generate_sound_on_event.fbt")
+  local type = typeManager:inheritNewTypeByGUID("ElevatorButtonQuietObjectGenerateSoundOnEventComponent", GUID('0x7B32C483','0x1008203F','0x00770223','0x00005500')); -- QuietObjectGenerateSoundOnEventComponent
+  type:setGuid(GUID('0xD006F68C','0xF4C10E60','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

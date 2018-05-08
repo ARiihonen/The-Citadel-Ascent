@@ -1,0 +1,84 @@
+-----------------------------------------------------
+-- Contexts
+
+jump = addContext("jump", 1)
+fall = addContext("fall", 2)
+stand = addContext("stand", 3)
+run = addContext("run", 4)
+fast = addContext("fast", 5)
+turn = addContext("turn", 6)
+backward = addContext("backward", 7)
+block = addContext("block", 0)
+block_end = addContext("block_end", -1)
+swamp = addContext("swamp", 50)
+attack1_sword = addContext("attack1_sword", 9)
+attack2_sword = addContext("attack2_sword", 10)
+attack3_sword = addContext("attack3_sword", 11)
+attack1_jump_sword = addContext("attack1_jump_sword", 8)
+attack_combo1_sword = addContext("attack_combo1_sword", -16)
+attack_combo2_sword = addContext("attack_combo2_sword", -17)
+attack_combo3_sword = addContext("attack_combo3_sword", -18)
+charge_hammer = addContext("charge_hammer", 12)
+execute_hammer = addContext("execute_hammer", 13)
+swing_hammer_left = addContext("swing_hammer_left", 14)
+swing_hammer_right = addContext("swing_hammer_right", 15)
+pull_lever = addContext("pull_lever", 16)
+hammer = addContext("hammer", 117)
+sword = addContext("sword", 118)
+carry = addContext("carry", 0)
+pickup = addContext("pickup", 1)
+throwing = addContext("throwing", -1)
+throw = addContext("throw", -2)
+left = addContext("left", 50)
+slippery = addContext("slippery", 51)
+trampoline = addContext("trampoline", -1)
+fatal = addContext("fatal", -2)
+out_of_balance = addContext("out_of_balance", 49)
+pushed_back = addContext("pushed_back", 20)
+pushed_front = addContext("pushed_front", 21)
+pushed_up = addContext("pushed_up", 22)
+push = addContext("push", -22)
+
+-----------------------------------------------------
+-- Params
+
+slope = addParam("slope")
+aim = addParam("aim")
+
+--{ Basic animations
+
+--{ Attack with sword
+
+--{ Animation: attack_jump_sword
+attack_jump_sword = addState(attack1_jump_sword, "attack_jump_sword");
+attack_jump_sword:blendTime(0);
+attack_jump_sword:add("attack_jump_sword_trail.anm");
+--}
+
+attacking1_sword = addState(attack1_sword, "attacking1_sword");
+attacking1_sword:blendTime(0);
+attacking1_sword:add("attack1_sword_trail.anm");
+
+attacking2_sword = addState(attack2_sword, "attacking2_sword");
+attacking2_sword:blendTime(0);
+attacking2_sword:add("attack2_sword_trail.anm");
+
+attacking3_sword = addState(attack3_sword, "attacking3_sword");
+attacking3_sword:blendTime(0);
+attacking3_sword:add("attack3_sword_trail.anm");
+
+attacking1_combo_sword = addState(attack_combo1_sword, "attacking1_combo_sword");
+attacking1_combo_sword:blendTime(0);
+attacking1_combo_sword:add("attack1_combo_sword_trail.anm");
+
+attacking2_combo_sword = addState(attack_combo2_sword, "attacking2_combo_sword");
+attacking2_combo_sword:blendTime(0);
+attacking2_combo_sword:add("attack2_combo_sword_trail.anm");
+
+attacking3_combo_sword = addState(attack_combo3_sword, "attacking3_combo_sword");
+attacking3_combo_sword:blendTime(0);
+attacking3_combo_sword:add("attack3_combo_sword_trail.anm");
+
+--}
+
+--}

@@ -1,0 +1,137 @@
+
+idle = addContext("idle", 4)
+walk = addContext("walk", 1)
+swim = addContext("swim", 1)
+levitated = addContext("levitated", 4)
+squashed = addContext("squashed", 1)
+shell = addContext("shell", 4)
+
+
+
+--{ Animation: s_squashed
+s_squashed = addState(squashed, "s_squashed");
+s_squashed:blendTime(0);
+s_squashed:loop(false);
+s_squashed:add("squashed.fbxanim");
+--}
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:restart(true);
+s_idle:blendTime(0);
+s_idle:loop(false);
+s_idle:add("idle.fbxanim");
+--}
+ 
+--{ Animation: s_idle_b
+s_idle_b = addState(idle, "s_idle_b");
+s_idle:restart(true);
+s_idle_b:blendTime(0);
+s_idle_b:loop(false);
+s_idle_b:add("idle_b.fbxanim");
+--}
+
+--{ Animation: s_walk
+s_walk = addState(walk, "s_walk");
+s_walk:blendTime(0);
+s_walk:loop(true);
+s_walk:add("walkcycle.fbxanim");
+--}
+
+--{ Animation: s_shell
+s_shell = addState(shell, "s_shell");
+s_shell:blendTime(0);
+s_shell:loop(true);
+s_shell:add("shell.fbxanim");
+--}
+
+--{ Animation: s_squasout
+s_squasout = addState(shell, "s_squasout");
+s_squasout:blendTime(300);
+s_squasout:from(s_squashed);
+s_squasout:loop(false);
+s_squasout:add("squashout.fbxanim");
+--}
+
+--{ Animation: s_float
+s_float = addState(levitated, "s_float");
+s_float:blendTime(0);
+s_float:loop(true);
+s_float:add("float.fbxanim");
+--}
+
+--{ Animation: s_swim
+s_swim = addState(swim, "s_swim");
+s_swim:blendTime(0);
+s_swim:loop(true);
+s_swim:add("swim.fbxanim");
+--}
+
+--{ Animation: s_shellin
+s_shellin = addState(shell, "s_shellin");
+s_shellin:blendTime(300);
+s_shellin:from(s_walk);
+s_shellin:from(s_idle);
+s_shellin:from(s_idle_b);
+s_shellin:loop(false);
+s_shellin:add("shellin.fbxanim");
+--}
+
+--{ Animation: s_shellout
+s_shellout = addState(idle, "s_shellout");
+s_shellout:blendTime(300);
+s_shellout:from(s_shell);
+s_shellout:loop(false);
+s_shellout:add("shellout.fbxanim");
+--}
+
+
+--{ Animation: s_idlein
+s_idlein = addState(idle, "s_idlein");
+s_idlein:blendTime(300);
+s_idlein:from(s_walk);
+s_idlein:loop(false);
+s_idlein:add("idle_in.fbxanim");
+--}
+
+--{ Animation: s_idleout
+s_idleout = addState(walk, "s_idleout");
+s_idleout:blendTime(300);
+s_idleout:from(s_idle);
+s_idleout:from(s_idle_b);
+s_idleout:loop(false);
+s_idleout:add("idle_out.fbxanim");
+--}
+
+
+--{ Animation: s_swimin
+s_swimin = addState(swim, "s_swimin");
+s_swimin:blendTime(300);
+s_swimin:from(s_float);
+s_swimin:loop(false);
+s_swimin:add("swimin.fbxanim");
+--}
+
+
+--{ Animation: s_floatin
+s_floatin = addState(levitated, "s_floatin");
+s_floatin:blendTime(300);
+s_floatin:from(s_walk);
+s_floatin:from(s_idle);
+s_floatin:from(s_idle_b);
+s_floatin:from(s_swim);
+s_floatin:from(s_swimin);
+s_floatin:loop(false);
+s_floatin:add("floatin.fbxanim");
+--}
+
+--{ Animation: s_floatout
+s_floatout = addState(idle, "s_floatout");
+s_floatout:blendTime(300);
+s_floatout:from(s_float);
+s_floatout:loop(false);
+s_floatout:add("floatout.fbxanim");
+--}
+
+
+

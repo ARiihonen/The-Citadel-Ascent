@@ -1,0 +1,113 @@
+idle = addContext("idle", 1)
+heavy_stomp = addContext("heavy_stomp", 1)
+walk = addContext("walk",1)
+mirror = addContext("mirror",1)
+stand = addContext("stand",1)
+block = addContext("block",1)
+block_turn_l = addContext("block_turn_l",1)
+block_turn_r = addContext("block_turn_r",1)
+
+attack_long  = addContext("attack_long", -1)
+attack = addContext("attack",1)
+
+--params
+target_direction = addParam("target_direction")
+--
+
+--{ Animation: s_walk
+s_walk = addState(walk, "s_walk");
+s_walk:blendTime(300);
+-- s_walk:loopBlendTime(300); 
+s_walk:restart(false);
+s_walk:loop(true);
+s_walk:add(target_direction(-90), "walk1_turn_r_90.fbxanim");
+s_walk:add(target_direction(-45), "walk1_turn_r.fbxanim");
+s_walk:add(target_direction(-22.5), "walk1_turn_r_225.fbxanim");
+s_walk:add(target_direction(0), "walk1.fbxanim");
+s_walk:add(target_direction(22.5), "walk1_turn_l_225.fbxanim");
+s_walk:add(target_direction(45), "walk1_turn_l.fbxanim");
+s_walk:add(target_direction(90), "walk1_turn_l_90.fbxanim");
+
+--}
+
+--{ Animation: s_walk_mirror
+s_walk_mirror = addState(walk+mirror, "s_walk_mirror");
+s_walk_mirror:blendTime(300);
+-- s_walk_mirror:loopBlendTime(300); 
+s_walk_mirror:restart(false);
+s_walk_mirror:loop(true);
+s_walk_mirror:add("walk1.fbxanim");
+--}
+
+--{ Animation: s_stand
+s_stand = addState(stand, "s_stand");
+s_stand:blendTime(300);
+s_stand:loopBlendTime(600); 
+s_stand:restart(false);
+s_stand:loop(true);
+s_stand:add("idle.fbxanim");
+--}
+
+--{ Animation: s_attack
+s_attack = addState(attack_long, "s_attack");
+s_attack:from(s_walk);
+s_attack:blendTime(300);
+s_attack:loopBlendTime(600); 
+s_attack:restart(false);
+s_attack:speedFactor(1);
+s_attack:loop(false);
+s_attack:add("block.fbxanim");
+s_attack:addEnterEvent("EventAnimAttackExecute");
+--s_attack:addFinishedEvent("EventAnimAttackFinished"); 
+--}
+
+--{ Animation: s_block_turn_l
+s_block_turn_l = addState(attack_long, "s_block_turn_l");
+s_block_turn_l:blendTime(0);
+s_block_turn_l:loopBlendTime(300);
+s_block_turn_l:restart(false);
+s_block_turn_l:speedFactor(1);
+s_block_turn_l:loop(true);
+s_block_turn_l:add("block_turn_l.fbxanim");
+s_block_turn_l:addEnterEvent("EventAnimAttackExecute");
+s_block_turn_l:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+
+--{ Animation: s_heavy_stomp
+s_heavy_stomp = addState(heavy_stomp, "s_heavy_stomp");
+s_heavy_stomp:blendTime(600);
+s_heavy_stomp:loopBlendTime(600); 
+s_heavy_stomp:restart(false);
+s_heavy_stomp:loop(false);
+s_heavy_stomp:add("heavy_stomp.fbxanim");
+s_heavy_stomp:addEnterEvent("EventAnimAttackExecute");
+s_heavy_stomp:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+--{ Animation: s_attack_long_r
+s_attack_long_r = addState(attack_long, "s_attack_long_r");
+s_attack_long_r:blendTime(600);
+s_attack_long_r:loopBlendTime(600); 
+s_attack_long_r:restart(false);
+s_attack_long_r:speedFactor(1);
+s_attack_long_r:loop(false);
+s_attack_long_r:add("attack_long_r.fbxanim");
+s_attack_long_r:addEnterEvent("EventAnimAttackExecute");
+s_attack_long_r:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+--{ Animation: s_attack_long_l
+s_attack_long_l = addState(attack_long, "s_attack_long_l");
+s_attack_long_l:blendTime(600);
+s_attack_long_l:loopBlendTime(600); 
+s_attack_long_l:restart(false);
+s_attack_long_l:speedFactor(1);
+s_attack_long_l:loop(false);
+s_attack_long_l:add("attack_long_l.fbxanim");
+s_attack_long_l:addEnterEvent("EventAnimAttackExecute");
+s_attack_long_l:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+
+

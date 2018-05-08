@@ -1,0 +1,59 @@
+test = addContext("test", 1)
+
+inactive = addContext("inactive", 2)
+idle = addContext("idle", 1)
+open = addContext("open", -1)
+open2 = addContext("open2", 1)
+locked = addContext("locked", 2)
+
+
+--{ Animation: s_inactive
+s_inactive = addState(inactive, "s_inactive");
+s_inactive:blendTime(0);
+s_inactive:loop(false);
+s_inactive:add("inactive.fbxanim");
+--}
+
+--{ Animation: s_test
+s_test = addState(test, "s_test");
+s_test:blendTime(300);
+s_test:loop(true);
+s_test:add("test.fbxanim");
+--}
+
+--{ Animation: s_open_start
+s_open_start = addState(idle, "s_open_start");
+s_open_start:blendTime(300);
+s_open_start:loop(false);
+s_open_start:add("open_start.fbxanim");
+--}
+
+	--{ Animation: s_idle
+	s_idle = addState(idle, "s_idle");
+	s_idle:blendTime(0);
+	s_idle:loop(true);
+	s_idle:from(s_open_start);
+	s_idle:add("idle.fbxanim");
+	--}
+
+	--{ Animation: s_open
+	s_open = addState(open, "s_open");
+	s_open:blendTime(0);
+	s_open:loop(false);
+	-- s_open:from(s_open_start);
+	s_open:add("open.fbxanim");
+	--}
+	
+		--{ Animation: s_open2
+	s_open2 = addState(open2, "s_open2");
+	s_open2:blendTime(300);
+	s_open2:loop(false);
+	s_open2:add("open2.fbxanim");
+	--}
+	
+	--{ Animation: s_locked
+	s_locked = addState(locked, "s_locked");
+	s_locked:blendTime(300);
+	s_locked:loop(false);
+	s_locked:add("locked.fbxanim");
+	--}

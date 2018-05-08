@@ -1,0 +1,27 @@
+loading = addContext("loading",1)
+rdy = addContext("rdy",1)
+shoot = addContext("shoot",1)
+
+--{ Animation: s_loading
+s_loading = addState(loading, "s_loading");
+s_loading:blendTime(0);
+s_loading:loop(false);
+--s_loading:restart(true);
+s_loading:add("loading.fbxanim");
+--}
+
+--{ Animation: s_rdy
+s_rdy = addState(rdy, "s_rdy");
+s_rdy:blendTime(0);
+s_rdy:loop(true);
+--s_rdy:restart(false);
+s_rdy:add("rdy.fbxanim");
+--}
+
+--{ Animation: s_shoot
+s_shoot = addState(shoot, "s_shoot");
+s_shoot:blendTime(0);
+s_shoot:loop(false);
+--s_shoot:restart(true);
+s_shoot:add("shoot.fbxanim");
+--}

@@ -1,0 +1,66 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("winch_crane_rotating_prefabInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xD3931BF9','0x72902B64','0x0077020A','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x75B2FD2A','0x73AE24C5','0x007702AC','0x00005500'), "winch_crane_rotating.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x9EC4CC09','0x72912B68','0x0077020A','0x00005500'), "6_winch_crane_rotating_prefab_GameplayEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9A10EB96','0x72912B6C','0x0077020A','0x00005500'), "10_winch_crane_rotating_prefab_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7973739A','0x73B024D1','0x007702AC','0x00005500'), "winch_crane_rotating_platform.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x965B8C7D','0x48494503','0x0077021C','0x00005500'), "14_winch_crane_rotating_prefab_ObjectEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x75B2FD2A','0x73AE24C5','0x007702AC','0x00005500'),  -- winch_crane_rotating.fbxmodel
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x9EC4CC09','0x72912B68','0x0077020A','0x00005500'),  -- 6_winch_crane_rotating_prefab_GameplayEntity
+    GUID('0x9A10EB96','0x72912B6C','0x0077020A','0x00005500'),  -- 10_winch_crane_rotating_prefab_JointEntity
+    GUID('0x7973739A','0x73B024D1','0x007702AC','0x00005500'),  -- winch_crane_rotating_platform.fbxmodel
+    GUID('0x739E273B','0x6900754D','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelper
+    GUID('0x965B8C7D','0x48494503','0x0077021C','0x00005500')}) -- 14_winch_crane_rotating_prefab_ObjectEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(-3.0505, -6.5074, -0.0007), VC3(3.1758, 0.9569, -0.0007), VC3(2.9767, 1.5658, -0.415), VC3(2.9767, 1.5658, 0.4141), VC3(-2.9292, -0.1414, -0.6009), VC3(-2.9266, -0.2372, -0.0007), VC3(-2.9292, -0.1414, 0.6367), VC3(-4.2598, -1.9643, -0.0007), VC3(-4.8715, -5.4131, -0.0007), VC3(-1.316, -0.8491, -2.8739), VC3(-3.0505, 0.7689, -0.0007), VC3(-3.0508, -6.5073, -0.0012), VC3(2.7663, 2.2096, -0.0007), VC3(5.3376, 2.3749, -0.0007)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 1.19209e-007, 0, 1), QUAT(2.98023e-008, 8.9407e-008, -0.157322, 0.987547), QUAT(0.698302, 0.111243, -0.111243, 0.698302), QUAT(0.698302, 0.111243, -0.111243, 0.698302), QUAT(0.707107, 2.98023e-008, 2.98023e-008, 0.707107), QUAT(0, 2.38419e-007, 0, 1), QUAT(0.707107, 2.98023e-008, 2.98023e-008, 0.707107), QUAT(0, 2.38419e-007, 0, 1), QUAT(0, 2.38419e-007, 0, 1), QUAT(0, 1.19209e-007, 0, 1), QUAT(0, 1.19209e-007, 0, 1), QUAT(0, 1.19209e-007, 0, 1), QUAT(2.98023e-008, 0, -0.157322, 0.987548), QUAT(-5.96046e-008, 0, -0.693445, 0.72051)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(1, 1, 1), VC3(0.3625, 0.2, 3.5098), VC3(0.3625, 0.2, 3.5098), VC3(0.3625, 0.2, 3.5098), VC3(0.3625, 0.2, 4.0044), VC3(0.3625, 0.2, 4.0044), VC3(0.3625, 0.2, 4.0044), VC3(0.3625, 0.2, 2.4628), VC3(0.2083, 0.1286, 2.4628), VC3(1, 1, 1), VC3(0.3, 0.3, 0.3), VC3(0.7, 0.7, 0.7), VC3(0.3625, 0.2, 3.5098), VC3(1, 1, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({9, 9, 10}))
+  typeManager:setLastKnownNameForGUID(GUID('0xEB640253','0x72912B6A','0x0077020A','0x00005500'), "4_6_winch_crane_rotating_prefab_GameplayEntityBendyRopeComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xEB640253','0x72912B6A','0x0077020A','0x00005500'), "4_6_winch_crane_rotating_prefab_GameplayEntityBendyRopeComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xF3FDBAAD','0x72912B6E','0x0077020A','0x00005500'), "8_10_winch_crane_rotating_prefab_JointEntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0xEB640253','0x72912B6A','0x0077020A','0x00005500'),  -- 4_6_winch_crane_rotating_prefab_GameplayEntityBendyRopeComponent
+    GUID('0xEB640253','0x72912B6A','0x0077020A','0x00005500'),  -- 4_6_winch_crane_rotating_prefab_GameplayEntityBendyRopeComponent
+    GUID('0xF3FDBAAD','0x72912B6E','0x0077020A','0x00005500')}) -- 8_10_winch_crane_rotating_prefab_JointEntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component0", "Component1", "Component0"}))
+  type:setTargetInstanceIds(IntPropertyArray({8, 13, 0}))
+  typeManager:setLastKnownNameForGUID(GUID('0xCA21D985','0x9B3C754F','0x0077020A','0x00005500'), "KinematicStopMeCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xEB0EBEC4','0x484A4505','0x0077021C','0x00005500'), "2_14_winch_crane_rotating_prefab_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xBDEF3FD0','0x430B0A81','0x0077020A','0x00005500'), "CraneRotatingWoodConvexCompoundPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0xCA21D985','0x9B3C754F','0x0077020A','0x00005500'),  -- KinematicStopMeCollisionHelperBoxPhysicsComponent
+    GUID('0xEB0EBEC4','0x484A4505','0x0077021C','0x00005500'),  -- 2_14_winch_crane_rotating_prefab_ObjectEntityPhysicsComponent
+    GUID('0xBDEF3FD0','0x430B0A81','0x0077020A','0x00005500')}) -- CraneRotatingWoodConvexCompoundPhysicsComponent
+  type:setChildLevels(IntPropertyArray({0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 7}))
+  type:setInstanceCounter(15)
+  type:setPrefabVersion(7)
+end

@@ -1,0 +1,50 @@
+idle1 = addContext("idle1", 1)
+idlevertical = addContext("idlevertical", 1)
+fly1 = addContext("fly1", 1)
+flyaround1 = addContext("flyaround1", 1)
+flyaround2 = addContext("flyaround2", 1)
+liftoff1 = addContext("liftoff1", 1)
+
+
+--{ Animation: butterfly_idle1
+butterfly_idle1 = addState(idle1, "butterfly_idle1");
+butterfly_idle1:blendTime(300);
+butterfly_idle1:loop(true);
+butterfly_idle1:add("idle1.fbxanim");
+--}
+
+--{ Animation: butterfly_idlevertical
+butterfly_idlevertical = addState(idlevertical, "butterfly_idlevertical");
+butterfly_idlevertical:blendTime(300);
+butterfly_idlevertical:loop(true);
+butterfly_idlevertical:add("idlevertical.fbxanim");
+--}
+
+--{ Animation: butterfly_fly1
+butterfly_fly1 = addState(fly1, "butterfly_fly1");
+butterfly_fly1:blendTime(300);
+butterfly_fly1:loop(true);
+butterfly_fly1:add("fly1.fbxanim");
+--}
+
+--{ Animation: butterfly_flyaround1
+butterfly_flyaround1 = addState(flyaround1, "butterfly_flyaround1");
+butterfly_flyaround1:blendTime(300);
+butterfly_flyaround1:loop(true);
+butterfly_flyaround1:add("flyaround1.fbxanim");
+--}
+
+--{ Animation: butterfly_flyaround2
+butterfly_flyaround2 = addState(flyaround2, "butterfly_flyaround2");
+butterfly_flyaround2:blendTime(300);
+butterfly_flyaround2:loop(true);
+butterfly_flyaround2:add("flyaround2.fbxanim");
+--}
+
+--{ Animation: butterfly_liftoff1
+butterfly_liftoff1 = addState(liftoff1, "butterfly_liftoff1");
+butterfly_liftoff1:blendTime(300);
+butterfly_liftoff1:loop(false);
+butterfly_liftoff1:add("liftoff1.fbxanim");
+--}
+

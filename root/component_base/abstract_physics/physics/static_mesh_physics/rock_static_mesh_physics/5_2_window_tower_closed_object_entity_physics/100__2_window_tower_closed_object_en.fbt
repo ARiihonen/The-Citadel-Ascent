@@ -1,0 +1,7 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_physics/physics/static_mesh_physics/static_mesh_physics_component_static.fbt")
+  local type = typeManager:inheritNewTypeByGUID("100__2_window_tower_closed_ObjectEntityStaticMeshPhysicsCollisionComponent", GUID('0xDEAD4F6B','0x432A34E9','0x0077020B','0x00005500')); -- StaticMeshPhysicsComponentStaticMeshPhysicsCollisionComponent
+  type:setGuid(GUID('0x42AEEEF8','0xCE676190','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

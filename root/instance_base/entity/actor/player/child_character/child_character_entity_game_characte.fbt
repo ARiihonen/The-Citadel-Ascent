@@ -1,0 +1,7 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/game_character_under_command/game_character_under_command_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("ChildCharacterEntityGameCharacterUnderCommandComponent", GUID('0x753C4987','0x00000000','0x00770200','0x00005500')); -- GameCharacterUnderCommandComponent
+  type:setGuid(GUID('0xD8DC92B4','0x25C70231','0x00770265','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

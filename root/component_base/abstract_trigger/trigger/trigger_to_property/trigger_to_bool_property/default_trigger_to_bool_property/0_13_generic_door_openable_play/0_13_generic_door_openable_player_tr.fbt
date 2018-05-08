@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/trigger/trigger_to_bool_property/default_trigger_to_bool_property_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("0_13_generic_door_openable_player_TriggerEntityTriggerToBoolPropertyComponent", GUID('0x7FCDEF62','0x363B0444','0x007702C5','0x00005500')); -- DefaultTriggerToBoolPropertyComponent
+  type:setGuid(GUID('0x46D54B41','0x547138F4','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setCurrentValueIndex(0)
+end

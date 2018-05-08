@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/gameplay/pressure_plate/basic_pressure_plate/trigger_other_instances_pressure_plate/basic_trigger_other_instances_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("0_14_generic_door_openable_player_AreaEntityTriggerOtherInstancesComponent", GUID('0x74B7FFA0','0x32307270','0x0077029F','0x00005500')); -- BasicTriggerOtherInstancesComponent
+  type:setGuid(GUID('0x33960C1A','0x547138F8','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setNegateInput(true)
+end

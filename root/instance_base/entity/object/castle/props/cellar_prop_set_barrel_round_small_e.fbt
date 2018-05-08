@@ -1,0 +1,63 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/rewindable_explosion/rewindable_explosion_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cellar_prop_set_barrel_round_small_exploding.fbxmodelRewindableExplosionComponent", GUID('0x6F85C5E0','0x00000000','0x00770200','0x00005500')); -- RewindableExplosionComponent
+  type:setGuid(GUID('0x4403F6CB','0xB0413615','0x00770219','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setExplosiveStatus(game.gameplay.RewindableExplosionComponent.ExplosiveStatusActive)
+  type:setDetonationTime(0.5)
+  type:setLingerTimeAfterDetonation(0)
+  type:setForceToApplyToSurroundingObjects(10)
+  type:setObjectMotionClamp(4.5)
+  type:setAnimationContextNameBeforeDetonation("")
+  type:setAnimationContextNameAfterDetonation("")
+  type:setAllowExplosionForce(true)
+  type:setIgniteFromExplosions(true)
+  typeManager:setLastKnownNameForGUID(GUID('0x6D25EBB4','0x420536B3','0x00770219','0x00005500'), "ExplodingBarrelTriggerArea");
+  type:setPropertyGUID(type.PropertyTriggerAreaTypeUH, GUID('0x6D25EBB4','0x420536B3','0x00770219','0x00005500')) -- ExplodingBarrelTriggerArea
+  typeManager:setLastKnownNameForGUID(GUID('0x6ECDA246','0xBE8F3705','0x00770219','0x00005500'), "ExplodingBarrelExplosionArea");
+  type:setPropertyGUID(type.PropertyExplosionAreaTypeUH, GUID('0x6ECDA246','0xBE8F3705','0x00770219','0x00005500')) -- ExplodingBarrelExplosionArea
+  typeManager:setLastKnownNameForGUID(GUID('0x7BB0C35C','0x3ABA43A9','0x00770219','0x00005500'), "ExplodingBarrelBasicDoEffectComponent");
+  type:setPropertyGUID(type.PropertyDoEffectTypeUH, GUID('0x7BB0C35C','0x3ABA43A9','0x00770219','0x00005500')) -- ExplodingBarrelBasicDoEffectComponent
+  type:setConnectAreaEnter(true)
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/castle/props/cellar_prop_set_barrel_round_small.f.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cellar_prop_set_barrel_round_small_exploding.fbxmodel", GUID('0x92478803','0xBC345193','0x00770269','0x00005500')); -- cellar_prop_set_barrel_round_small_breakable.fbxmodel
+  type:setGuid(GUID('0xD36DC53A','0xE70A35C7','0x00770219','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x3316F921','0x338B24C4','0x0077022D','0x00005500'), "cellar_prop_set_barrel_round_small_breakable.fbxmodelDoEffectOnBreakComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x3316F921','0x338B24C4','0x0077022D','0x00005500')); -- cellar_prop_set_barrel_round_small_breakable.fbxmodelDoEffectOnBreakComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x38162604','0xF69A7F66','0x0077022D','0x00005500'), "cellar_prop_set_barrel_round_small_breakable.fbxmodelBreakableComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x38162604','0xF69A7F66','0x0077022D','0x00005500')); -- cellar_prop_set_barrel_round_small_breakable.fbxmodelBreakableComponent
+  -- inherits 2x2_Jump_Height_CratelAimedRopeTargetGameplayEntityAimedRopeTargetComponent GUID('0x45A9E83D','0x66773594','0x0077020A','0x00005500')
+  -- inherits BarrelPhysicsAudioComponent GUID('0x6CA9516A','0xD1F338F3','0x0077025D','0x00005500')
+  -- inherits BarrelRollingDetectionComponent GUID('0x70D92D8A','0xA2262DCE','0x007702C3','0x00005500')
+  -- inherits BarrelSmallDynamicWoodCylinderCollisionHelperWoodCylinderCollisionHelperCylinderPhysicsComponent GUID('0xA73CDB35','0xB3310D04','0x0077020A','0x00005500')
+  -- inherits BarrelWallInfoComponent GUID('0x37392757','0x76890016','0x0077022D','0x00005500')
+  -- inherits BasicMacbethAudioPropertiesComponent GUID('0x7CA2AC8E','0xCD39613C','0x0077025D','0x00005500')
+  -- inherits BasicReverbAudioReceiverComponent GUID('0x6D014DE1','0xD5900BD3','0x00770288','0x00005500')
+  -- inherits cellar_prop_set_barrel_round_small.fbxmodel_ModCom GUID('0xC7F0DDDF','0xBC345195','0x00770269','0x00005500')
+  -- inherits cellar_prop_set_barrel_round_small.fbxmodelBasicTrineBuoyancyComponent GUID('0x39BB4125','0x1076258A','0x0077022D','0x00005500')
+  -- inherits cellar_prop_set_barrel_round_small_breakable.fbxmodelGameHealthComponent GUID('0x251FDC72','0xA5C709C5','0x0077022D','0x00005500')
+  -- inherits cellar_prop_set_barrel_round_small_breakable.fbxmodelTrinePhysicsContactDamageToSelfComponent GUID('0x9C3B2CEA','0x144343B0','0x0077021C','0x00005500')
+  typeManager:setLastKnownNameForGUID(GUID('0x4403F6CB','0xB0413615','0x00770219','0x00005500'), "cellar_prop_set_barrel_round_small_exploding.fbxmodelRewindableExplosionComponent");
+  type:addComponentTypeGUID(GUID('0x4403F6CB','0xB0413615','0x00770219','0x00005500')); -- cellar_prop_set_barrel_round_small_exploding.fbxmodelRewindableExplosionComponent
+  -- inherits DistractionObjectComponent GUID('0x5A2BAED1','0x00000000','0x00770200','0x00005500')
+  typeManager:setLastKnownNameForGUID(GUID('0x7BB0C35C','0x3ABA43A9','0x00770219','0x00005500'), "ExplodingBarrelBasicDoEffectComponent");
+  type:addComponentTypeGUID(GUID('0x7BB0C35C','0x3ABA43A9','0x00770219','0x00005500')); -- ExplodingBarrelBasicDoEffectComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6ECDA246','0xBE8F3705','0x00770219','0x00005500'), "ExplodingBarrelExplosionArea");
+  type:addComponentTypeGUID(GUID('0x6ECDA246','0xBE8F3705','0x00770219','0x00005500')); -- ExplodingBarrelExplosionArea
+  typeManager:setLastKnownNameForGUID(GUID('0x6D25EBB4','0x420536B3','0x00770219','0x00005500'), "ExplodingBarrelTriggerArea");
+  type:addComponentTypeGUID(GUID('0x6D25EBB4','0x420536B3','0x00770219','0x00005500')); -- ExplodingBarrelTriggerArea
+  -- inherits GenericDoEffectOnWaterContactComponent GUID('0x7C5A9A40','0x9E9E54EB','0x0077025D','0x00005500')
+  -- inherits MediumObjectGenerateSoundOnEventComponent GUID('0xA0AD9E74','0x6D622041','0x00770223','0x00005500')
+  -- inherits ObjectSoundGeneratorComponent GUID('0x735A8393','0x512B2047','0x00770223','0x00005500')
+  -- inherits RoundBarrelSmallAimedRopeTargetGameplayEntityBoxAreaComponent GUID('0xE6F8C595','0xE0307A1B','0x0077020A','0x00005500')
+  -- inherits SmallBarrelPushingInfoComponent GUID('0x6BA67876','0xEB440AA5','0x0077022D','0x00005500')
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+  -- inherits WoodCollisionContactEffectCreatorComponent GUID('0x987D17FF','0xCEAE75D8','0x0077027A','0x00005500')
+  -- inherits WoodenBarrellDoEffectOnContactComponent GUID('0x883FE187','0x8BE908AB','0x0077025D','0x00005500')
+  -- inherits WoodHittableComponent GUID('0x31C2373A','0xFAAC69F2','0x0077025C','0x00005500')
+end

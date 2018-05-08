@@ -1,0 +1,32 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("fortresstower_narrow_stairs_archInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xD3802365','0x9EB0381A','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xCBCDB2AE','0x7DA37883','0x0077021D','0x00005500'), "3_rd_stone_stairs_4x4x8_27_degree_no_base_v2_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'), "RockCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x95AC5496','0xF70F5DFF','0x0077021D','0x00005500'), "stairs_stone_narrow_straight_arch.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'), "RockCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'), "RockCollisionHelper");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0xCBCDB2AE','0x7DA37883','0x0077021D','0x00005500'),  -- 3_rd_stone_stairs_4x4x8_27_degree_no_base_v2_ObjectEntity
+    GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'),  -- RockCollisionHelper
+    GUID('0x95AC5496','0xF70F5DFF','0x0077021D','0x00005500'),  -- stairs_stone_narrow_straight_arch.fbxmodel
+    GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'),  -- RockCollisionHelper
+    GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500')}) -- RockCollisionHelper
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(-0.0027, 0.1784, -0.2323), VC3(0.0031, 0.9861, 1.8663), VC3(-0.0659, 0.3418, -0.1637), VC3(0.0008, -1.8091, -2.8208), VC3(-0.0012, 0.6446, 1.1868)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(-0.199338, 0.678428, -0.199338, -0.678428), QUAT(2.06274e-007, 0.707107, 5.49356e-008, -0.707106), QUAT(1.46159e-007, -8.64267e-007, -1.29618e-007, -1), QUAT(-0.246764, 0.662653, -0.246765, -0.662651), QUAT(-0.0987251, 0.700182, -0.0987253, -0.70018)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(2.9599, 0.3861, 4.4785), VC3(0.5851, 0.4188, 4.3549), VC3(0.5511, 1, 0.7746), VC3(1.197, 0.3201, 4.4563), VC3(0.6242, 0.2791, 4.3588)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 1, 1, 1, 1}))
+  type:setChildParentIDs(IntPropertyArray({-1, 0, 0, 0, 0}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 4, 2, 2}))
+  type:setInstanceCounter(5)
+end

@@ -1,0 +1,15 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_joint/joint/general_joint/general_joint/hinge_joint/y_hinge_joint_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("8_15_sewer_door_openable_JointEntityHingeJointComponent", GUID('0x2B2B7F10','0x6CBF2E61','0x0077025C','0x00005500')); -- YHingeJointComponent
+  type:setGuid(GUID('0xC729C798','0x8CC112BA','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setLocalPosition0(VC3(-0.7488, 0.4497, -0.0363))
+  type:setLocalRotation0(QUAT(-0.5, -0.5, -0.5, 0.5))
+  type:setLocalPosition1(VC3(126.18, 42.302, 143.52))
+  type:setLocalRotation1(QUAT(7.3757e-008, 1.05367e-008, -0.707107, 0.707107))
+  type:setRotationLimitLowAngle(-90)
+  type:setRotationLimitHighAngle(0)
+  type:setRotationDriveVelocity(VC3(3, 3, 3))
+  type:setRotationDriveForce(VC2(200, 200))
+end

@@ -1,0 +1,20 @@
+--{ Contexts
+idle_closed = addContext("idle_closed", 1)
+cutscene_book_sucks = addContext("cutscene_book_sucks", 1)
+
+
+--{ Animation: s_idle
+s_idle = addState(idle_closed, "s_idle");
+s_idle:blendTime(10);
+s_idle:loopBlendTime(300);
+s_idle:loop(true);
+s_idle:add("idle_closed.fbxanim");
+--}
+
+--{ Animation: s_cutscene_book_sucks
+s_cutscene_book_sucks = addState(cutscene_book_sucks, "s_cutscene_book_sucks");
+s_cutscene_book_sucks:blendTime(300);
+s_cutscene_book_sucks:loop(false);
+s_cutscene_book_sucks:add("cutscene_book_sucks.fbxanim");
+--}
+--}

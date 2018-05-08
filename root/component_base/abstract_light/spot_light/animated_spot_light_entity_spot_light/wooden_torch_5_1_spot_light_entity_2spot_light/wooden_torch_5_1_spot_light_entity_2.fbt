@@ -1,0 +1,16 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/light/spot_light/animated_spot_light/animated_spot_light_entity_spot_light_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("wooden_torch_5_1_SpotLightEntity_2SpotLightComponent", GUID('0x8C0678DF','0xFFFB0A64','0x007702A1','0x00005500')); -- AnimatedSpotLightEntitySpotLightComponent
+  type:setGuid(GUID('0xD3B2D6DB','0xE72E0B55','0x00770262','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setRange(10)
+  type:setColor(COL(1, 0.2627, 0))
+  type:setIntensity(15)
+  type:setColorMultiplier(COL(0.502, 0.502, 0.502))
+  type:setFov(89.99885559082)
+  type:setShadows(false)
+  type:setShadowQuality(lighting.SpotLightComponent.ShadowQuality3)
+  type:setShadowFilterScale(5)
+  type:setShadowPCSSDistance(2)
+end

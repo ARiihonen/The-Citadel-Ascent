@@ -1,0 +1,56 @@
+still = addContext("still",6) 
+idle = addContext("idle",5) 
+angry = addContext("angry",4) 
+fall = addContext("fall",3) 
+hit_ground = addContext("hit_ground",2) 
+charged = addContext("charged",1) 
+
+--{ Animation: s_still
+s_still = addState(still, "s_still");
+s_still:blendTime(500);
+s_still:loop(true);
+s_still:restart(false);
+s_still:add("still.fbxanim");
+--}
+
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(1000);
+s_idle:loop(true);
+s_idle:restart(false);
+s_idle:add("idle.fbxanim");
+--}
+
+--{ Animation: s_angry
+s_angry = addState(angry, "s_angry");
+s_angry:blendTime(200);
+s_angry:loop(false);
+s_angry:restart(false);
+s_angry:add("angry.fbxanim");
+--}
+
+--{ Animation: s_fall
+s_fall = addState(fall, "s_fall");
+s_fall:blendTime(200);
+s_fall:loop(false);
+s_fall:restart(false);
+s_fall:add("fall.fbxanim");
+--}
+
+--{ Animation: s_hit_ground
+s_hit_ground = addState(hit_ground, "s_hit_ground");
+s_hit_ground:blendTime(100);
+s_hit_ground:loop(false);
+s_hit_ground:restart(false);
+s_hit_ground:add("hit_ground.fbxanim");
+--}
+
+
+--{ Animation: s_charged
+s_charged = addState(charged, "s_charged");
+s_charged:blendTime(200);
+s_charged:loop(false);
+s_charged:restart(false);
+s_charged:add("charged.fbxanim");
+--}

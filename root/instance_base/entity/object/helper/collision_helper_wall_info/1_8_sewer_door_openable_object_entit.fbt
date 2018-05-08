@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper_wall_info_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("1_8_sewer_door_openable_ObjectEntityWallInfoComponent", GUID('0x5F1733DE','0x7073504D','0x00770265','0x00005500')); -- CollisionHelperWallInfoComponent
+  type:setGuid(GUID('0xCEF369B0','0x8CC112B0','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setGrabEnabled(false)
+  type:setGrabMovementEnabled(false)
+  type:setWallRunEnabled(false)
+  type:setWallSlideEnabled(false)
+  type:setBlocksAIVision(false)
+end

@@ -1,0 +1,32 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/wood_collision_contact_effect_creato.fbt")
+  local type = typeManager:inheritNewTypeByGUID("RopeTargetWoodCollisionHelperWoodCollisionContactEffectCreatorComponent", GUID('0x987D17FF','0xCEAE75D8','0x0077027A','0x00005500')); -- WoodCollisionContactEffectCreatorComponent
+  type:setGuid(GUID('0x2D0799EE','0x42DB4277','0x0077020E','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/wood_collision_helper_hittable_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("RopeTargetWoodCollisionHelperWoodCollisionHelperHittableComponent", GUID('0x7B493C4C','0x2D1D2440','0x00770279','0x00005500')); -- WoodCollisionHelperHittableComponent
+  type:setGuid(GUID('0xF6A01983','0x511F427B','0x0077020E','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/wood_collision_helper_box_physics_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("RopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent", GUID('0x7E22036C','0x50142444','0x00770279','0x00005500')); -- WoodCollisionHelperBoxPhysicsComponent
+  type:setGuid(GUID('0xF5519634','0x4A8C4279','0x0077020E','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  -- inherits CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/wood_collision_helper_model_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("RopeTargetWoodCollisionHelperWoodCollisionHelperModelComponent", GUID('0x71ED70C5','0x3F6E2442','0x00770279','0x00005500')); -- WoodCollisionHelperModelComponent
+  type:setGuid(GUID('0xD8E898A8','0x5631427D','0x0077020E','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setScale(VC3(1, 0.2, 5))
+  type:setVisibleInGame(false)
+  type:setDiffuseColor(COL(1, 0.8235, 0.3922))
+end

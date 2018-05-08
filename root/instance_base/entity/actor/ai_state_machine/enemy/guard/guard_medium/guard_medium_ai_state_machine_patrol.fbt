@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/ai_state_machine_patrol_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumAIStateMachinePatrolComponent", GUID('0x77672FD1','0x3D3B5C47','0x0077027F','0x00005500')); -- AIStateMachinePatrolComponent
+  type:setGuid(GUID('0x7C608AC7','0x3C976CD3','0x00770214','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setEnabled(false)
+end

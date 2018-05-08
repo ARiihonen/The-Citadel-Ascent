@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/metal_collision_helper_model_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("8_1_fortresswall_elevator_ObjectEntityModelComponent", GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500')); -- MetalCollisionHelperModelComponent
+  type:setGuid(GUID('0xE174DBAD','0x9C955AE4','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setVisibleInGame(true)
+end

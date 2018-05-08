@@ -1,0 +1,53 @@
+idle = addContext("idle", 1)
+explode = addContext("explode", 1)
+stagger = addContext("stagger", 0)
+stagger_right = addContext("stagger_right", -1)
+
+--{ Animation: scarecrow_start
+scarecrow_start = addState(idle, "scarecrow_start");
+scarecrow_start:blendTime(0);
+scarecrow_start:loop(false);
+scarecrow_start:add("exploding_scarecrow_start.anm");
+--}
+--{ Animation: scarecrow_stagger
+scarecrow_stagger = addState(stagger+idle, "scarecrow_stagger");
+scarecrow_stagger:blendTime(200);
+scarecrow_stagger:restart(true);
+scarecrow_stagger:loop(false);
+scarecrow_stagger:add("exploding_scarecrow_stagger.anm");
+--}
+--{ Animation: scarecrow_stagger_right
+scarecrow_stagger_right = addState(stagger_right, "scarecrow_stagger_right");
+scarecrow_stagger_right:blendTime(200);
+scarecrow_stagger_right:restart(true);
+scarecrow_stagger_right:loop(false);
+scarecrow_stagger_right:add("exploding_scarecrow_stagger_right.anm");
+--}
+--{ Animation: scarecrow_stagger_exploding
+scarecrow_stagger_exploding = addState(stagger+explode, "scarecrow_stagger_exploding");
+scarecrow_stagger_exploding:blendTime(200);
+scarecrow_stagger_exploding:restart(true);
+scarecrow_stagger_exploding:loop(false);
+scarecrow_stagger_exploding:add("exploding_scarecrow_stagger_exploding.anm");
+--}
+--{ Animation: scarecrow_stagger_right_exploding
+scarecrow_stagger_right_exploding = addState(stagger_right+explode, "scarecrow_stagger_right_exploding");
+scarecrow_stagger_right_exploding:blendTime(200);
+scarecrow_stagger_right_exploding:restart(true);
+scarecrow_stagger_right_exploding:loop(false);
+scarecrow_stagger_right_exploding:add("exploding_scarecrow_stagger_right_exploding.anm");
+--}
+--{ Animation: scarecrow_loop
+scarecrow_loop = addState(idle, "scarecrow_loop");
+scarecrow_loop:from(scarecrow_start);
+scarecrow_loop:blendTime(0);
+scarecrow_loop:loop(true);
+scarecrow_loop:add("exploding_scarecrow_loop.anm");
+--}
+--{ Animation: scarecrow_explode
+scarecrow_explode = addState(explode, "scarecrow_explode");
+scarecrow_explode:blendTime(400);
+scarecrow_explode:loop(false);
+scarecrow_explode:add("exploding_scarecrow_explode.anm");
+--}
+

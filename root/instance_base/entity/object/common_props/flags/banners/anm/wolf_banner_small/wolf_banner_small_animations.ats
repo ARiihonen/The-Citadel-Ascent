@@ -1,0 +1,10 @@
+waving = addContext("waving", 1)
+
+
+--{ Animation: s_waving
+s_waving = addState(waving, "s_waving");
+s_waving:loopBlendTime(1000);
+s_waving:blendTime(300);
+s_waving:loop(true);
+s_waving:add("banner_small_waving_02.fbxanim");
+--}

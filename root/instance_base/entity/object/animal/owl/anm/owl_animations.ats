@@ -1,0 +1,284 @@
+idle = addContext("idle", 1)
+look = addContext("look", 1)
+
+fly_fast = addContext("fly_fast", 1)
+fly_slow = addContext("fly_slow", 1)
+glide = addContext("glide", 1)
+
+lift_off_right = addContext("lift_off_right", 1)
+lift_off_fwd = addContext("lift_off_fwd", 1)
+lift_off_left = addContext("lift_off_left", 1)
+
+land_fwd_a = addContext("land_fwd_a", 1)
+land_fwd_b = addContext("land_fwd_b", 1)
+land_right = addContext("land_right", 1)
+land_left = addContext("land_left", 1)
+
+step_left = addContext("step_left",1)
+step_right = addContext("step_right",1)
+jump_left = addContext("jump_left",1)
+jump_right = addContext("jump_right",1)
+
+look_near = addContext("look_near",1)
+look_near_left = addContext("look_near_left",1)
+look_near_right = addContext("look_near_right",1)
+look_far = addContext("look_far",1)
+look_far_left = addContext("look_far_left",1)
+look_far_right = addContext("look_far_right",1)
+
+--{ Tables
+idle_table = {};
+look_table = {};
+fly_table = {};
+--}
+
+--{ Params
+target_z = addParam("target_z")
+target_x = addParam("target_x")
+--}
+
+--fly
+
+--{ Animation: s_fly_fast
+s_fly_fast = addState(fly_fast, "s_fly_fast");
+s_fly_fast:blendTime(1200);
+s_fly_fast:loopBlendTime(600);
+s_fly_fast:restart(false);
+s_fly_fast:loop(true);
+s_fly_fast:add("fly_fast.fbxanim");
+table.insert(fly_table, s_fly_fast);
+--}
+
+--{ Animation: s_fly_slow
+s_fly_slow = addState(fly_slow, "s_fly_slow");
+s_fly_slow:blendTime(1200);
+s_fly_slow:loopBlendTime(600);
+s_fly_slow:restart(false);
+s_fly_slow:loop(true);
+s_fly_slow:add("fly_slow.fbxanim");
+table.insert(fly_table, s_fly_slow);
+--}
+
+--{ Animation: s_glide
+s_glide = addState(glide, "s_glide");
+s_glide:blendTime(1200);
+s_glide:loopBlendTime(600);
+s_glide:restart(false);
+s_glide:loop(true);
+s_glide:add("glide.fbxanim");
+table.insert(fly_table, s_glide);
+--}
+
+--{ Animation: s_lift_off_fwd
+s_lift_off_fwd = addState(fly_fast, "s_lift_off_fwd");
+
+s_lift_off_fwd:from(idle_table);
+s_lift_off_fwd:from(look_table);
+s_lift_off_fwd:blendTime(400);
+s_lift_off_fwd:restart(false);
+s_lift_off_fwd:loop(false);
+s_lift_off_fwd:add("lift_off_fwd.fbxanim");
+--}
+
+--{ Animation: s_lift_off_left
+s_lift_off_left = addState(lift_off_left, "s_lift_off_left");
+s_lift_off_left:blendTime(600);
+s_lift_off_left:restart(false);
+s_lift_off_left:loop(false);
+s_lift_off_left:add("lift_off_left.fbxanim");
+--}
+
+--{ Animation: s_lift_off_right
+s_lift_off_right = addState(lift_off_right, "s_lift_off_right");
+s_lift_off_right:blendTime(600);
+s_lift_off_right:restart(false);
+s_lift_off_right:loop(false);
+s_lift_off_right:add("lift_off_right.fbxanim");
+--}
+
+--{ Animation: s_land_fwd_a
+s_land_fwd_a = addState(idle, "s_land_fwd_a");
+s_land_fwd_a:from(fly_table);
+s_land_fwd_a:blendTime(600);
+s_land_fwd_a:restart(false);
+s_land_fwd_a:loop(false);
+s_land_fwd_a:add("land_fwd_a.fbxanim");
+--}
+
+--{ Animation: s_land_fwd_b
+s_land_fwd_b = addState(land_fwd_b, "s_land_fwd_b");
+s_land_fwd_b:blendTime(600);
+s_land_fwd_b:restart(false);
+s_land_fwd_b:loop(false);
+s_land_fwd_b:add("land_fwd_b.fbxanim");
+--}
+
+--{ Animation: s_land_left
+s_land_left = addState(land_left, "s_land_left");
+s_land_left:blendTime(600);
+s_land_left:restart(false);
+s_land_left:loop(false);
+s_land_left:add("land_left.fbxanim");
+--}
+
+--{ Animation: s_land_right
+s_land_right = addState(land_right, "s_land_right");
+s_land_right:blendTime(600);
+s_land_right:restart(false);
+s_land_right:loop(false);
+s_land_right:add("land_right.fbxanim");
+--}
+
+
+
+
+
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(300);
+s_idle:restart(true);
+s_idle:loop(false);
+s_idle:selectionWeight(6);
+s_idle:add("idle.fbxanim");
+table.insert(idle_table, s_idle);
+--}
+
+--{ Animation: s_goggle_right
+s_goggle_right = addState(idle, "s_goggle_right");
+s_goggle_right:blendTime(400);
+s_goggle_right:restart(true);
+s_goggle_right:loop(false);
+s_goggle_right:selectionWeight(2);
+s_goggle_right:add("goggle_right.fbxanim");
+table.insert(idle_table, s_goggle_right);
+--}
+
+--{ Animation: s_look_left
+s_look_left = addState(idle, "s_look_left");
+s_look_left:blendTime(400);
+s_look_left:restart(true);
+s_look_left:loop(false);
+s_look_left:selectionWeight(3);
+s_look_left:add("look_left.fbxanim");
+table.insert(idle_table, s_look_left);
+--}
+
+--{ Animation: s_tilt_head_right
+s_tilt_head_right = addState(idle, "s_tilt_head_right");
+s_tilt_head_right:blendTime(1);
+s_tilt_head_right:restart(true);
+s_tilt_head_right:loop(false);
+s_tilt_head_right:selectionWeight(1);
+s_tilt_head_right:add("tilt_head_right.fbxanim");
+table.insert(idle_table, s_tilt_head_right);
+--}
+
+--{ Animation: s_glare_something
+s_glare_something = addState(idle, "s_glare_something");
+s_glare_something:blendTime(1);
+s_glare_something:restart(true);
+s_glare_something:loop(false);
+s_glare_something:selectionWeight(1);
+s_glare_something:add("glare_something.fbxanim");
+table.insert(idle_table, s_glare_something);
+--}
+
+--{ Animation: s_step_left
+s_step_left = addState(step_left, "s_step_left");
+s_step_left:blendTime(1);
+s_step_left:restart(true);
+s_step_left:loop(false);
+s_step_left:selectionWeight(1);
+s_step_left:add("step_left.fbxanim");
+table.insert(idle_table, s_step_left);
+--}
+
+--{ Animation: s_step_right
+s_step_right = addState(step_right, "s_step_right");
+s_step_right:blendTime(1);
+s_step_right:restart(true);
+s_step_right:loop(false);
+s_step_right:selectionWeight(1);
+s_step_right:add("step_right.fbxanim");
+table.insert(idle_table, s_step_right);
+--}
+
+--{ Animation: s_jump_left
+s_jump_left = addState(jump_left, "s_jump_left");
+s_jump_left:blendTime(1);
+s_jump_left:restart(true);
+s_jump_left:loop(false);
+s_jump_left:selectionWeight(1);
+s_jump_left:add("jump_left.fbxanim");
+table.insert(idle_table, s_jump_left);
+--}
+
+--{ Animation: s_jump_right
+s_jump_right = addState(jump_right, "s_jump_right");
+s_jump_right:blendTime(1);
+s_jump_right:restart(true);
+s_jump_right:loop(false);
+s_jump_right:selectionWeight(1);
+s_jump_right:add("jump_right.fbxanim");
+table.insert(idle_table, s_jump_right);
+--}
+
+--} look at player
+
+--{ Animation: s_look_basic
+s_look_basic = addState(look, "s_look_basic");
+s_look_basic:blendTime(300);
+s_look_basic:restart(true);
+s_look_basic:rootMotionScaleWeight(0.0);
+
+s_look_basic:add(target_z(2), target_x(10), "look_near_right_basic.fbxanim");
+s_look_basic:add(target_z(2), target_x(0), "look_near_right_basic.fbxanim");
+s_look_basic:add(target_z(2), target_x(-10), "look_near_left_basic.fbxanim");
+s_look_basic:add(target_z(6), target_x(10), "look_far_right_basic.fbxanim");
+s_look_basic:add(target_z(6), target_x(0), "look_far_right_basic.fbxanim"); 
+s_look_basic:add(target_z(6), target_x(-10), "look_far_left_basic.fbxanim");
+s_look_basic:loop(true);
+table.insert(look_table, s_look_basic);
+--}
+
+--{ Animation: s_look_tilt 
+s_look_tilt = addState(look, "s_look_tilt");
+s_look_tilt:blendTime(300);
+s_look_tilt:restart(true);
+s_look_tilt:rootMotionScaleWeight(0.0);
+
+s_look_tilt:add(target_z(2), target_x(10), "look_near_right_tilt.fbxanim");
+s_look_tilt:add(target_z(2), target_x(0), "look_near_tilt_right.fbxanim");
+s_look_tilt:add(target_z(2), target_x(-10), "look_near_left_tilt.fbxanim");
+s_look_tilt:add(target_z(6), target_x(10), "look_far_right_tilt.fbxanim");
+s_look_tilt:add(target_z(6), target_x(0), "look_far_tilt_right.fbxanim");
+s_look_tilt:add(target_z(6), target_x(-10), "look_far_left_tilt.fbxanim");
+s_look_tilt:loop(true);
+table.insert(look_table, s_look_tilt);
+--}
+
+--{ Animation: s_look_jump
+s_look_jump = addState(look, "s_look_jump");
+s_look_jump:from(idle_table);
+s_look_jump:blendTime(300);
+s_look_jump:rootMotionScaleWeight(0.0);
+
+s_look_jump:add(target_z(2), target_x(10), "look_near_right_jump.fbxanim");
+s_look_jump:add(target_z(2), target_x(0), "look_near_jump.fbxanim");
+s_look_jump:add(target_z(2), target_x(-10), "look_near_left_jump.fbxanim");
+s_look_jump:add(target_z(6), target_x(10), "look_far_right_jump.fbxanim");
+s_look_jump:add(target_z(6), target_x(0), "look_far_jump.fbxanim");
+s_look_jump:add(target_z(6), target_x(-10), "look_far_left_jump.fbxanim");
+table.insert(look_table, s_look_jump);
+--}
+
+--{ Animation: s_idle_jump
+s_idle_jump = addState(idle, "s_idle_jump");
+s_idle_jump:from(look_table);
+s_idle_jump:blendTime(1);
+--s_idle_jump:restart(true);
+s_idle_jump:loop(false);
+s_idle_jump:selectionWeight(1);
+s_idle_jump:add("look_far_jump.fbxanim");
+--}

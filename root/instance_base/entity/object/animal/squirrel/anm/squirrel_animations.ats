@@ -1,0 +1,32 @@
+idle1 = addContext("idle1", 1)
+idle2 = addContext("idle2", 1)
+tree_escape = addContext("tree_escape", 1)
+peekaboo = addContext("peekaboo", 1)
+
+--{ Animation: squirrel_idle1
+squirrel_idle1 = addState(idle1, "squirrel_idle1");
+squirrel_idle1:blendTime(300);
+squirrel_idle1:loop(true);
+squirrel_idle1:add("squirrel_idle1.fbxanim");
+--}
+
+--{ Animation: squirrel_idle2
+squirrel_idle2 = addState(idle2, "squirrel_idle2");
+squirrel_idle2:blendTime(100);
+squirrel_idle2:loop(true);
+squirrel_idle2:add("squirrel_idle2.fbxanim");
+--}
+
+--{ Animation: squirrel_tree_escape
+squirrel_tree_escape = addState(tree_escape, "squirrel_tree_escape");
+squirrel_tree_escape:blendTime(300);
+squirrel_tree_escape:loop(false);
+squirrel_tree_escape:add("squirrel_tree_escape.fbxanim");
+--}
+
+--{ Animation: squirrel_peekaboo
+squirrel_peekaboo = addState(peekaboo, "squirrel_peekaboo");
+squirrel_peekaboo:blendTime(300);
+squirrel_peekaboo:loop(true);
+squirrel_peekaboo:add("squirrel_peekaboo.fbxanim");
+--}

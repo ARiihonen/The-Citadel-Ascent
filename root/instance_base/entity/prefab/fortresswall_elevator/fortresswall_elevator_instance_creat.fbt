@@ -1,0 +1,202 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("fortresswall_elevatorInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0x9FE6AAF2','0x9C945AD4','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x792C0CD4','0x9C945AD8','0x0077024F','0x00005500'), "0_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x792C0CE2','0x9C945ADE','0x0077024F','0x00005500'), "1_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x792C0CF0','0x9C955AE6','0x0077024F','0x00005500'), "2_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x792C0CFE','0x9C955AEE','0x0077024F','0x00005500'), "3_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x792C0D0C','0x9C965AF6','0x0077024F','0x00005500'), "4_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7AF9A852','0x9C965AFE','0x0077024F','0x00005500'), "5_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7AF9A860','0x9C975B02','0x0077024F','0x00005500'), "6_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7AF9A86E','0x9C975B06','0x0077024F','0x00005500'), "7_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x792C0D44','0x9C975B0A','0x0077024F','0x00005500'), "8_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7AF9A88A','0x9C975B12','0x0077024F','0x00005500'), "9_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x878137D4','0x9C985B16','0x0077024F','0x00005500'), "10_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x878137F2','0x9C985B1A','0x0077024F','0x00005500'), "11_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x85A68FA3','0x9C985B1E','0x0077024F','0x00005500'), "12_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x85A69075','0x9C9A5B40','0x0077024F','0x00005500'), "19_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x85A68FC1','0x9C995B28','0x0077024F','0x00005500'), "13_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x8781384C','0x9C995B2C','0x0077024F','0x00005500'), "14_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x8781386A','0x9C995B30','0x0077024F','0x00005500'), "15_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6A908767','0x933601C5','0x0077022E','0x00005500'), "door_n_window_set_3.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x85A6901B','0x9C995B34','0x0077024F','0x00005500'), "16_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x878138A6','0x9C995B38','0x0077024F','0x00005500'), "17_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x878138C4','0x9C995B3C','0x0077024F','0x00005500'), "18_fortresswall_elevator_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6A908767','0x933601C5','0x0077022E','0x00005500'), "door_n_window_set_3.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x85A68FB1','0xD8303EC7','0x0077024F','0x00005500'), "22_fortresswall_elevator_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x77DA6E74','0xD8303ECD','0x0077024F','0x00005500'), "23_fortresswall_elevator_Entity");
+  typeManager:setLastKnownNameForGUID(GUID('0x8717C739','0xAE2B1748','0x0077024F','0x00005500'), "24_fortresswall_elevator_TriggerEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x8761F53B','0xAE2B174C','0x0077024F','0x00005500'), "25_fortresswall_elevator_AreaEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x792C0CD4','0x9C945AD8','0x0077024F','0x00005500'),  -- 0_fortresswall_elevator_ObjectEntity
+    GUID('0x792C0CE2','0x9C945ADE','0x0077024F','0x00005500'),  -- 1_fortresswall_elevator_ObjectEntity
+    GUID('0x792C0CF0','0x9C955AE6','0x0077024F','0x00005500'),  -- 2_fortresswall_elevator_ObjectEntity
+    GUID('0x792C0CFE','0x9C955AEE','0x0077024F','0x00005500'),  -- 3_fortresswall_elevator_ObjectEntity
+    GUID('0x792C0D0C','0x9C965AF6','0x0077024F','0x00005500'),  -- 4_fortresswall_elevator_ObjectEntity
+    GUID('0x7AF9A852','0x9C965AFE','0x0077024F','0x00005500'),  -- 5_fortresswall_elevator_JointEntity
+    GUID('0x7AF9A860','0x9C975B02','0x0077024F','0x00005500'),  -- 6_fortresswall_elevator_JointEntity
+    GUID('0x7AF9A86E','0x9C975B06','0x0077024F','0x00005500'),  -- 7_fortresswall_elevator_JointEntity
+    GUID('0x792C0D44','0x9C975B0A','0x0077024F','0x00005500'),  -- 8_fortresswall_elevator_ObjectEntity
+    GUID('0x7AF9A88A','0x9C975B12','0x0077024F','0x00005500'),  -- 9_fortresswall_elevator_JointEntity
+    GUID('0x878137D4','0x9C985B16','0x0077024F','0x00005500'),  -- 10_fortresswall_elevator_JointEntity
+    GUID('0x878137F2','0x9C985B1A','0x0077024F','0x00005500'),  -- 11_fortresswall_elevator_JointEntity
+    GUID('0x85A68FA3','0x9C985B1E','0x0077024F','0x00005500'),  -- 12_fortresswall_elevator_ObjectEntity
+    GUID('0x85A69075','0x9C9A5B40','0x0077024F','0x00005500'),  -- 19_fortresswall_elevator_ObjectEntity
+    GUID('0x85A68FC1','0x9C995B28','0x0077024F','0x00005500'),  -- 13_fortresswall_elevator_ObjectEntity
+    GUID('0x8781384C','0x9C995B2C','0x0077024F','0x00005500'),  -- 14_fortresswall_elevator_JointEntity
+    GUID('0x8781386A','0x9C995B30','0x0077024F','0x00005500'),  -- 15_fortresswall_elevator_JointEntity
+    GUID('0x6A908767','0x933601C5','0x0077022E','0x00005500'),  -- door_n_window_set_3.fbxmodel
+    GUID('0x85A6901B','0x9C995B34','0x0077024F','0x00005500'),  -- 16_fortresswall_elevator_ObjectEntity
+    GUID('0x878138A6','0x9C995B38','0x0077024F','0x00005500'),  -- 17_fortresswall_elevator_JointEntity
+    GUID('0x878138C4','0x9C995B3C','0x0077024F','0x00005500'),  -- 18_fortresswall_elevator_JointEntity
+    GUID('0x6A908767','0x933601C5','0x0077022E','0x00005500'),  -- door_n_window_set_3.fbxmodel
+    GUID('0x85A68FB1','0xD8303EC7','0x0077024F','0x00005500'),  -- 22_fortresswall_elevator_ObjectEntity
+    GUID('0x77DA6E74','0xD8303ECD','0x0077024F','0x00005500'),  -- 23_fortresswall_elevator_Entity
+    GUID('0x8717C739','0xAE2B1748','0x0077024F','0x00005500'),  -- 24_fortresswall_elevator_TriggerEntity
+    GUID('0x8761F53B','0xAE2B174C','0x0077024F','0x00005500')}) -- 25_fortresswall_elevator_AreaEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(-1.8834, 2.7391, 0.0674), VC3(1.5091, 0.1141, -2.2687), VC3(1.5091, 1.4915, -0.0758), VC3(1.5092, 0.1141, 2.2522), VC3(-1.8835, 0.1141, -3.0695), VC3(-1.6916, 0.4338, -3.2669), VC3(-1.5282, 2.9391, 0.2), VC3(-2.0117, 0.6426, 3.5381), VC3(-1.8834, 0.1141, 3.1894), VC3(1.7066, 0.5014, 2.3297), VC3(1.7065, 0.7278, -2.339), VC3(1.7065, 0.6401, -0.1102), VC3(-1.884, -2.6358, 0.06), VC3(1.7233, 1.6394, 0.0031), VC3(1.5015, -1.0257, -0.8387), VC3(1.5271, -0.3552, -1.5784), VC3(1.5271, -1.9928, -1.5788), VC3(1.5258, -0.7303, -0.8168), VC3(1.5056, -1.0257, 0.6838), VC3(1.5312, -0.3867, 1.426), VC3(1.5316, -1.9766, 1.4264), VC3(1.4803, -0.7303, 0.6594), VC3(-1.8277, -3.0105, 0.2491), VC3(-1.7706, -3.1074, 0.2326), VC3(1.974, 1.3827, -0.1422), VC3(-1.5659, -3.2491, 0.1302)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0.5, 0.5, -0.5, 0.5), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0.707107, 0, 0.707107), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0.707107, 0, 0.707107), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0.707107, 0, 0.707107), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.1, 2.5976, 14.07), VC3(0.1, 2, 2.7027), VC3(0.1, 0.8981, 6.0688), VC3(0.1, 2, 3.2485), VC3(0.1, 2, 14.07), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(0.1, 2, 14.07), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(2.8145, 0.2, 13.018), VC3(1, 1, 1), VC3(0.0183, 1.0868, 2.9736), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(1, 1, 1), VC3(0.0183, 1.0868, 2.9736), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(1, 1, 1), VC3(0.5, 0.0612, 2.5), VC3(0.3, 0.3, 0.3), VC3(1, 1, 1), VC3(1, 1, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(12)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({0, 1, 2, 3, 4, 5, 5, 6, 6, 7, 7, 8, 9, 9, 10, 10, 11, 11, 12, 15, 15, 16, 16, 19, 19, 20, 20, 23, 23, 25, 25}))
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3625','0x9C965B00','0x0077024F','0x00005500'), "8_5_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3625','0x9C965B00','0x0077024F','0x00005500'), "8_5_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3734','0x9C975B04','0x0077024F','0x00005500'), "8_6_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3734','0x9C975B04','0x0077024F','0x00005500'), "8_6_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3843','0x9C975B08','0x0077024F','0x00005500'), "8_7_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3843','0x9C975B08','0x0077024F','0x00005500'), "8_7_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3A61','0x9C975B14','0x0077024F','0x00005500'), "8_9_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE2AD3A61','0x9C975B14','0x0077024F','0x00005500'), "8_9_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D0181','0x9C985B18','0x0077024F','0x00005500'), "8_10_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D0181','0x9C985B18','0x0077024F','0x00005500'), "8_10_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D1191','0x9C985B1C','0x0077024F','0x00005500'), "8_11_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D1191','0x9C985B1C','0x0077024F','0x00005500'), "8_11_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x349C2435','0x00000000','0x00770200','0x00005500'), "LockJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D41C1','0x9C995B2E','0x0077024F','0x00005500'), "8_14_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D41C1','0x9C995B2E','0x0077024F','0x00005500'), "8_14_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D51D1','0x9C995B32','0x0077024F','0x00005500'), "8_15_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D51D1','0x9C995B32','0x0077024F','0x00005500'), "8_15_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D71F1','0x9C995B3A','0x0077024F','0x00005500'), "8_17_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D71F1','0x9C995B3A','0x0077024F','0x00005500'), "8_17_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D8201','0x9C995B3E','0x0077024F','0x00005500'), "8_18_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE39D8201','0x9C995B3E','0x0077024F','0x00005500'), "8_18_fortresswall_elevator_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE12418CE','0xD8303ECF','0x0077024F','0x00005500'), "0_23_fortresswall_elevator_EntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE12418CE','0xD8303ECF','0x0077024F','0x00005500'), "0_23_fortresswall_elevator_EntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x09D697DB','0xAE2B174E','0x0077024F','0x00005500'), "0_25_fortresswall_elevator_AreaEntityTriggerOtherInstancesComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x707AF3CB','0x9BA10788','0x0077025C','0x00005500'), "OtherTriggerWhenCollectedComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0xE2AD3625','0x9C965B00','0x0077024F','0x00005500'),  -- 8_5_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE2AD3625','0x9C965B00','0x0077024F','0x00005500'),  -- 8_5_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE2AD3734','0x9C975B04','0x0077024F','0x00005500'),  -- 8_6_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE2AD3734','0x9C975B04','0x0077024F','0x00005500'),  -- 8_6_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE2AD3843','0x9C975B08','0x0077024F','0x00005500'),  -- 8_7_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE2AD3843','0x9C975B08','0x0077024F','0x00005500'),  -- 8_7_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0xE2AD3A61','0x9C975B14','0x0077024F','0x00005500'),  -- 8_9_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE2AD3A61','0x9C975B14','0x0077024F','0x00005500'),  -- 8_9_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D0181','0x9C985B18','0x0077024F','0x00005500'),  -- 8_10_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D0181','0x9C985B18','0x0077024F','0x00005500'),  -- 8_10_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D1191','0x9C985B1C','0x0077024F','0x00005500'),  -- 8_11_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D1191','0x9C985B1C','0x0077024F','0x00005500'),  -- 8_11_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0x349C2435','0x00000000','0x00770200','0x00005500'),  -- LockJointComponent
+    GUID('0xE39D41C1','0x9C995B2E','0x0077024F','0x00005500'),  -- 8_14_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D41C1','0x9C995B2E','0x0077024F','0x00005500'),  -- 8_14_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D51D1','0x9C995B32','0x0077024F','0x00005500'),  -- 8_15_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D51D1','0x9C995B32','0x0077024F','0x00005500'),  -- 8_15_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D71F1','0x9C995B3A','0x0077024F','0x00005500'),  -- 8_17_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D71F1','0x9C995B3A','0x0077024F','0x00005500'),  -- 8_17_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D8201','0x9C995B3E','0x0077024F','0x00005500'),  -- 8_18_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE39D8201','0x9C995B3E','0x0077024F','0x00005500'),  -- 8_18_fortresswall_elevator_JointEntityHingeJointComponent
+    GUID('0xE12418CE','0xD8303ECF','0x0077024F','0x00005500'),  -- 0_23_fortresswall_elevator_EntityHingeJointComponent
+    GUID('0xE12418CE','0xD8303ECF','0x0077024F','0x00005500'),  -- 0_23_fortresswall_elevator_EntityHingeJointComponent
+    GUID('0x09D697DB','0xAE2B174E','0x0077024F','0x00005500'),  -- 0_25_fortresswall_elevator_AreaEntityTriggerOtherInstancesComponent
+    GUID('0x707AF3CB','0x9BA10788','0x0077025C','0x00005500')}) -- OtherTriggerWhenCollectedComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component1", "Component1", "Component1", "Component1", "Component1", "Component0", "Component1", "Component0", "Component1", "Component0", "Component1", "Component1", "Component0", "Component1", "Component0", "Component1", "Component0", "Component1", "Component1", "Component0", "Component1", "Component0", "Component1", "Component0", "Component1", "Component0", "Component1", "Component0", "Component1", "OtherInstances", "RestrictToInstances"}))
+  type:setTargetInstanceIds(IntPropertyArray({0, 1, 2, 3, 4, 12, 4, 12, 0, 12, 8, 8, 12, 3, 12, 1, 12, 2, 12, 14, 1, 14, 1, 18, 3, 18, 3, 12, 22, 24, 12}))
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD86F4','0x9C945ADA','0x0077024F','0x00005500'), "2_0_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'), "2_1_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8912','0x9C955AEA','0x0077024F','0x00005500'), "2_2_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'), "2_3_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8B30','0x9C965AFA','0x0077024F','0x00005500'), "2_4_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8B30','0x9C965AFA','0x0077024F','0x00005500'), "2_4_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD86F4','0x9C945ADA','0x0077024F','0x00005500'), "2_0_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8F6C','0x9C975B0E','0x0077024F','0x00005500'), "2_8_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8F6C','0x9C975B0E','0x0077024F','0x00005500'), "2_8_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'), "2_3_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'), "2_1_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8912','0x9C955AEA','0x0077024F','0x00005500'), "2_2_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A57CBA','0x9C995B2A','0x0077024F','0x00005500'), "2_13_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'), "2_1_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A57CBA','0x9C995B2A','0x0077024F','0x00005500'), "2_13_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'), "2_1_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A5ACEA','0x9C995B36','0x0077024F','0x00005500'), "2_16_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'), "2_3_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A5ACEA','0x9C995B36','0x0077024F','0x00005500'), "2_16_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'), "2_3_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'), "2_12_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC9A56DB9','0xD8303EC9','0x0077024F','0x00005500'), "2_22_fortresswall_elevator_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x9FE6AAF2','0x9C945AD4','0x0077024F','0x00005500'), "fortresswall_elevatorInstanceCreatorComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x9FE6AAF2','0x9C945AD4','0x0077024F','0x00005500'), "fortresswall_elevatorInstanceCreatorComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0xE3DD86F4','0x9C945ADA','0x0077024F','0x00005500'),  -- 2_0_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'),  -- 2_1_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8912','0x9C955AEA','0x0077024F','0x00005500'),  -- 2_2_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'),  -- 2_3_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8B30','0x9C965AFA','0x0077024F','0x00005500'),  -- 2_4_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8B30','0x9C965AFA','0x0077024F','0x00005500'),  -- 2_4_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD86F4','0x9C945ADA','0x0077024F','0x00005500'),  -- 2_0_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8F6C','0x9C975B0E','0x0077024F','0x00005500'),  -- 2_8_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8F6C','0x9C975B0E','0x0077024F','0x00005500'),  -- 2_8_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'),  -- 2_3_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'),  -- 2_1_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8912','0x9C955AEA','0x0077024F','0x00005500'),  -- 2_2_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A57CBA','0x9C995B2A','0x0077024F','0x00005500'),  -- 2_13_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'),  -- 2_1_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A57CBA','0x9C995B2A','0x0077024F','0x00005500'),  -- 2_13_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8803','0x9C945AE2','0x0077024F','0x00005500'),  -- 2_1_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A5ACEA','0x9C995B36','0x0077024F','0x00005500'),  -- 2_16_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'),  -- 2_3_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A5ACEA','0x9C995B36','0x0077024F','0x00005500'),  -- 2_16_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xE3DD8A21','0x9C965AF2','0x0077024F','0x00005500'),  -- 2_3_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56CAA','0x9C985B22','0x0077024F','0x00005500'),  -- 2_12_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0xC9A56DB9','0xD8303EC9','0x0077024F','0x00005500'),  -- 2_22_fortresswall_elevator_ObjectEntityPhysicsComponent
+    GUID('0x9FE6AAF2','0x9C945AD4','0x0077024F','0x00005500'),  -- fortresswall_elevatorInstanceCreatorComponent
+    GUID('0x9FE6AAF2','0x9C945AD4','0x0077024F','0x00005500')}) -- fortresswall_elevatorInstanceCreatorComponent
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 12, -1, 14, 14, 14, -1, 18, 18, 18, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 4, 2, 2, 2, 4, 2, 2, 8, 8}))
+  type:setInstanceCounter(26)
+  type:setPrefabVersion(7)
+end

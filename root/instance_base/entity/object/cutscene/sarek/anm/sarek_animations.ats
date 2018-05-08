@@ -1,0 +1,69 @@
+--{ Contexts
+idle = addContext("idle", 1)
+trine_destroyed = addContext("trine_destroyed", 4)
+trine_destroyed_wait = addContext("trine_destroyed_wait", 4)
+cutscene_meet = addContext("cutscene_meet", 1)
+cutscene_meet_wait = addContext("cutscene_meet_wait", 1)
+summon_wait = addContext("summon_wait", 1)
+summon = addContext("summon", 1)
+summon_idle = addContext("summon_idle", 1)
+
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(300);
+s_idle:loop(true);
+s_idle:add("idle.fbxanim");
+--}
+
+--{ Animation: s_trine_destroyed
+s_trine_destroyed = addState(trine_destroyed, "s_trine_destroyed");
+s_trine_destroyed:blendTime(0);
+s_trine_destroyed:loopBlendTime(0);
+-- s_trine_destroyed:speedFactor(0.2);
+s_trine_destroyed:loop(false);
+s_trine_destroyed:add("trine_destroyed.fbxanim");
+--}
+
+--{ Animation: s_trine_destroyed_wait
+s_trine_destroyed_wait = addState(trine_destroyed_wait, "s_trine_destroyed_wait");
+s_trine_destroyed_wait:blendTime(0);
+s_trine_destroyed_wait:loopBlendTime(0);
+-- s_trine_destroyed_wait:speedFactor(0.2);
+s_trine_destroyed_wait:loop(false);
+s_trine_destroyed_wait:add("trine_destroyed_wait.fbxanim");
+--}
+
+--{ Animation: s_cutscene_meet_wait
+s_cutscene_meet_wait = addState(cutscene_meet_wait, "s_cutscene_meet_wait");
+s_cutscene_meet_wait:blendTime(0);
+s_cutscene_meet_wait:loop(false);
+s_cutscene_meet_wait:add("cutscene_meet_wait.fbxanim");
+--}
+--{ Animation: s_cutscene_meet
+s_cutscene_meet = addState(cutscene_meet, "s_cutscene_meet");
+s_cutscene_meet:blendTime(0);
+s_cutscene_meet:loop(false);
+s_cutscene_meet:add("cutscene_meet.fbxanim");
+--}
+
+--{ Animation: s_summon_wait
+s_summon_wait = addState(summon_wait, "s_summon_wait");
+s_summon_wait:blendTime(300);
+s_summon_wait:loop(false);
+s_summon_wait:add("summon_wait.fbxanim");
+--}
+
+--{ Animation: s_summon
+s_summon = addState(summon, "s_summon");
+s_summon:blendTime(300);
+s_summon:loop(false);
+s_summon:add("summon.fbxanim");
+--}
+
+--{ Animation: s_summon_idle
+s_summon_idle = addState(summon_idle, "s_summon_idle");
+s_summon_idle:blendTime(0);
+s_summon_idle:loop(true);
+s_summon_idle:add("summon_idle.fbxanim");
+--}

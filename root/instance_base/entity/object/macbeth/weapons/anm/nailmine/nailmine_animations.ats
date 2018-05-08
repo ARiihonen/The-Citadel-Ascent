@@ -1,0 +1,17 @@
+explosion = addContext("explosion",1)
+rdy = addContext("rdy",1)
+
+--{ Animation: s_rdy
+s_rdy = addState(rdy, "s_rdy");
+s_rdy:blendTime(0);
+s_rdy:loop(true); 
+s_rdy:add("rdy.fbxanim"); 
+--}
+
+--{ Animation: s_explosion
+s_explosion = addState(explosion, "s_explosion");
+s_explosion:blendTime(0);
+--s_explosion:restart(true); 
+s_explosion:loop(false);
+s_explosion:add("explosion.fbxanim");
+--}

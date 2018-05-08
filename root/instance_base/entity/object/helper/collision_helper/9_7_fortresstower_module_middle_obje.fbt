@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/rock_wall_rock_collision_helper_wall.fbt")
+  local type = typeManager:inheritNewTypeByGUID("9_7_fortresstower_module_middle_ObjectEntityWallInfoComponent", GUID('0x9EFC1D54','0xB71B00AA','0x00770223','0x00005500')); -- RockWallRockCollisionHelperWallInfoComponent
+  type:setGuid(GUID('0xE93D5D8C','0x8EAE7460','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setGrabMovementEnabled(false)
+end

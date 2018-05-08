@@ -1,0 +1,124 @@
+--[[
+
+Global methods:
+	newJoint()
+	newBoxShape(dimX, dimY, dimZ)
+	newCapsuleShape(radius, height)
+	
+	addBone(boneName, parentName, jointTable, collisionTable)
+		boneName: string
+		parentName: string or nil
+	  jointTable: joint, nil, or table of joints
+	  collisionTable: shape, nil, or table of shapes
+	  
+Collision shape methods:
+	setPositionOffset(VC3)
+	setRotationOffset(QUAT)
+
+Joint methods:
+	setConnectedToParentBone(bool)
+	setOrientation(VC3 axis, VC3 normal)
+	setRotationLimitLowAngle(float)
+	setRotationLimitSpring(float)
+	setRotationLimitDamping(float)
+	setRotationLimitLowRestitution(float)
+	setRotationLimitHighAngle(float)
+	setRotationLimitSpring(float)
+	setRotationLimitDamping(float)
+	setRotationLimitHighRestitution(float)
+	setRotationLimitYAngle(float)
+	setRotationLimitYSpring(float)
+	setRotationLimitYDamping(float)
+	setRotationLimitYRestitution(float)
+	setRotationLimitZAngle(float)
+	setRotationLimitZSpring(float)
+	setRotationLimitZDamping(float)
+	setRotationLimitZRestitution(float)
+	setPositionLimitDistance(float)
+	setPositionLimitSpring(float)
+	setPositionLimitDamping(float)
+	setPositionLimitRestitution(float)
+	
+--]]
+
+headJointX = newJoint()
+headJointX:setOrientation(VC3(1,0,0), VC3(0,1,0))
+headJointX:setRotationLimitLowAngle(-30.0)
+headJointX:setRotationLimitHighAngle(30.0)
+headJointX:setRotationLimitYAngle(180.0)
+headJointX:setRotationLimitZAngle(180.0)
+
+headJointY = newJoint()
+headJointY:setOrientation(VC3(0,1,0), VC3(1,0,0))
+headJointY:setRotationLimitLowAngle(-30.0)
+headJointY:setRotationLimitHighAngle(30.0)
+headJointY:setRotationLimitYAngle(180.0)
+headJointY:setRotationLimitZAngle(180.0)
+
+headJointZ = newJoint()
+headJointZ:setOrientation(VC3(0,0,1), VC3(0,1,0))
+headJointZ:setRotationLimitLowAngle(-30.0)
+headJointZ:setRotationLimitHighAngle(30.0)
+headJointZ:setRotationLimitYAngle(180.0)
+headJointZ:setRotationLimitZAngle(180.0)
+
+
+defaultJoint = newJoint()
+defaultJoint:setRotationLimitLowAngle(-10.0)
+defaultJoint:setRotationLimitHighAngle(10.0)
+defaultJoint:setRotationLimitYAngle(10.0)
+defaultJoint:setRotationLimitZAngle(10.0)
+
+robeJoint = newJoint()
+robeJoint:setRotationLimitLowAngle(-15.0)
+robeJoint:setRotationLimitHighAngle(15.0)
+robeJoint:setRotationLimitYAngle(15.0)
+robeJoint:setRotationLimitZAngle(15.0)
+
+defaultShape = newBoxShape(0.1,0.1,0.25)
+defaultShape:setPositionOffset(VC3(0,0,0))
+
+robeShape = newBoxShape(0.1,0.1,0.25)
+robeShape2 = newBoxShape(0.1,0.1,0.5)
+robeShape3 = newBoxShape(0.1,0.1,0.4)
+robeShape3:setPositionOffset(VC3(0,0,-0.1))
+
+bowShape = newBoxShape(1.5,0.1,0.25)
+bowShape:setPositionOffset(VC3(0,0,-0.15))
+
+addBone("spine1", nil, nil, defaultShape)
+addBone("hip", "spine1", defaultJoint, defaultShape)
+
+addBone("head", "spine1", {headJointX,headJointY,headJointZ}, defaultShape)
+
+addBone("foot_R", "lowerleg_R", defaultJoint, defaultShape)
+addBone("lowerleg_R", "upperleg_R", defaultJoint, defaultShape)
+addBone("upperleg_R", "hip", defaultJoint, defaultShape)
+	
+addBone("foot_L", "lowerleg_L", defaultJoint, defaultShape)
+addBone("lowerleg_L", "upperleg_L", defaultJoint, defaultShape)
+addBone("upperleg_L", "hip", defaultJoint, defaultShape)
+	
+addBone("wrist_R", "forearm_R", defaultJoint, defaultShape)
+addBone("forearm_R", "upperarm_R", defaultJoint, defaultShape)
+addBone("upperarm_R", "spine1", defaultJoint, defaultShape)
+	
+addBone("wrist_L", "forearm_L", defaultJoint, defaultShape)
+addBone("forearm_L", "upperarm_L", defaultJoint, defaultShape)
+addBone("upperarm_L", "spine1", defaultJoint, defaultShape)
+	
+addBone("robe1_F", "hip", defaultJoint, defaultShape)
+addBone("robe1_R", "hip", defaultJoint, defaultShape)
+
+addBone("bow_handle", nil, nil, bowShape)
+
+addBone("robe1_F", "hip", defaultJoint, robeShape)
+addBone("robe1_R", "hip", defaultJoint, robeShape)
+
+addBone("robe3_F", "robe1_F", robeJoint, robeShape2)
+addBone("robe3_R", "robe1_R", robeJoint, robeShape2)
+
+addBone("robe6_F", "robe3_F", robeJoint, robeShape3)
+addBone("robe6_R", "robe3_R", robeJoint, robeShape3)
+
+setTransformBone("hip")

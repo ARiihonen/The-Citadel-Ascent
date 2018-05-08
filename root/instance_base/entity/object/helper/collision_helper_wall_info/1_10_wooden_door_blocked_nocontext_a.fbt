@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper_wall_info_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("1_10_wooden_door_blocked_nocontext_ambi_params_ObjectEntityWallInfoComponent", GUID('0x5F1733DE','0x7073504D','0x00770265','0x00005500')); -- CollisionHelperWallInfoComponent
+  type:setGuid(GUID('0x34AC5A35','0x3E686CC6','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setBlocksSound(true)
+end

@@ -1,0 +1,8 @@
+test1 = addContext("test1", 1)
+
+--{ Animation: smooth_test1
+smooth_test1 = addState(test1, "smooth_test1");
+smooth_test1:blendTime(300);
+smooth_test1:loop(true);
+smooth_test1:add("smooth_test1.fbxanim");
+--}

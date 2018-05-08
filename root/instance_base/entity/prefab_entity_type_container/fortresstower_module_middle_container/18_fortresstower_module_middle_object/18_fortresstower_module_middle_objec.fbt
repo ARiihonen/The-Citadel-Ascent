@@ -1,0 +1,18 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/fortresstower_module_middle_container/fortresstower_module_middle_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("18_fortresstower_module_middle_ObjectEntity", GUID('0x7D9B46C1','0x8EAC7432','0x0077024F','0x00005500')); -- fortresstower_module_middleContainer
+  type:setGuid(GUID('0x97A1EC2D','0x8EB2749A','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xEE59EB22','0x8EB2749C','0x0077024F','0x00005500'), "6_18_fortresstower_module_middle_ObjectEntityModelComponent");
+  type:addComponentTypeGUID(GUID('0xEE59EB22','0x8EB2749C','0x0077024F','0x00005500')); -- 6_18_fortresstower_module_middle_ObjectEntityModelComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xE797C44D','0x8EB2749E','0x0077024F','0x00005500'), "9_18_fortresstower_module_middle_ObjectEntityWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0xE797C44D','0x8EB2749E','0x0077024F','0x00005500')); -- 9_18_fortresstower_module_middle_ObjectEntityWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x987D7B75','0xF9B679D0','0x0077027A','0x00005500'), "RockCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x987D7B75','0xF9B679D0','0x0077027A','0x00005500')); -- RockCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7E2266E2','0xAB7A594B','0x00770279','0x00005500'), "RockCollisionHelperBoxPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0x7E2266E2','0xAB7A594B','0x00770279','0x00005500')); -- RockCollisionHelperBoxPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7B499FC2','0xDFBD2420','0x00770279','0x00005500'), "RockCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x7B499FC2','0xDFBD2420','0x00770279','0x00005500')); -- RockCollisionHelperHittableComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

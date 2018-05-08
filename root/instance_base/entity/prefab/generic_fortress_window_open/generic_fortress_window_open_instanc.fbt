@@ -1,0 +1,42 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("generic_fortress_window_openInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xDD8FC902','0x70E45525','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x9F76A9F8','0x1A385011','0x0077024F','0x00005500'), "6_generic_fortress_window_open_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9F76AA06','0x1A395015','0x0077024F','0x00005500'), "7_generic_fortress_window_open_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9F76AA14','0x1A395019','0x0077024F','0x00005500'), "8_generic_fortress_window_open_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9F76AA22','0x1A39501D','0x0077024F','0x00005500'), "9_generic_fortress_window_open_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x9F76A9EA','0xE59E25F5','0x0077024F','0x00005500'), "5_generic_fortress_window_open_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6CFFB1E5','0x2E277022','0x00770288','0x00005500'), "LedgeGrabCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x6CFFB1E5','0x2E277022','0x00770288','0x00005500'), "LedgeGrabCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x6CFFB1E5','0x2E277022','0x00770288','0x00005500'), "LedgeGrabCollisionHelper");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x9F76A9F8','0x1A385011','0x0077024F','0x00005500'),  -- 6_generic_fortress_window_open_ObjectEntity
+    GUID('0x9F76AA06','0x1A395015','0x0077024F','0x00005500'),  -- 7_generic_fortress_window_open_ObjectEntity
+    GUID('0x9F76AA14','0x1A395019','0x0077024F','0x00005500'),  -- 8_generic_fortress_window_open_ObjectEntity
+    GUID('0x9F76AA22','0x1A39501D','0x0077024F','0x00005500'),  -- 9_generic_fortress_window_open_ObjectEntity
+    GUID('0x9F76A9EA','0xE59E25F5','0x0077024F','0x00005500'),  -- 5_generic_fortress_window_open_ObjectEntity
+    GUID('0x6CFFB1E5','0x2E277022','0x00770288','0x00005500'),  -- LedgeGrabCollisionHelper
+    GUID('0x6CFFB1E5','0x2E277022','0x00770288','0x00005500'),  -- LedgeGrabCollisionHelper
+    GUID('0x6CFFB1E5','0x2E277022','0x00770288','0x00005500')}) -- LedgeGrabCollisionHelper
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(1.0016, 0.4465, 0.0141), VC3(-0.0088, 1.4974, 0.0141), VC3(-1.0168, 0.4465, 0.0141), VC3(-0.0089, -1.042, 0.0256), VC3(-0.0118, 0.27, -0.0116), VC3(-0.0087, -0.9442, -0.0881), VC3(-0.9621, 1.0547, -0.0507), VC3(0.9698, 1.0547, -0.0507)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 1.49012e-007, 0, 1), QUAT(0, 1.49012e-007, 0, 1), QUAT(0, 1.49012e-007, 0, 1), QUAT(0, 1.49012e-007, 0, 1), QUAT(0, 1.19209e-007, 0, 1), QUAT(0, -0.707107, 0, 0.707107), QUAT(0, -0.707107, 0, -0.707107), QUAT(0, -0.707107, 0, -0.707107)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.3189, 0.9908, 0.7865), VC3(0.4893, 0.1501, 0.7865), VC3(0.3189, 0.9908, 0.7865), VC3(1.1273, 0.2, 0.8327), VC3(2.2922, 1.2133, 1), VC3(0.1635, 0.2, 5.6477), VC3(0.1635, 0.2, 1.6955), VC3(0.1635, 0.2, 1.6711)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 2, 4, 2, 2, 2}))
+  type:setInstanceCounter(10)
+  type:setPrefabVersion(10)
+end

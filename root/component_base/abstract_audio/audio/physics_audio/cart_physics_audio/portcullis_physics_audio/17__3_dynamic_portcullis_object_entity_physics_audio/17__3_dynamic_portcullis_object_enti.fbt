@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/dynamic_portcullis_container/3_dynamic_portcullis_object/portcullis_physics_audio_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("17__3_DynamicPortcullis_ObjectEntityPhysicsAudioComponent", GUID('0x682A54C1','0x66C6129B','0x0077024F','0x00005500')); -- PortcullisPhysicsAudioComponent
+  type:setGuid(GUID('0xD4A37019','0xA36C12AF','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  -- inherits PointAudioPointAreaComponent GUID('0x69EAD002','0x1B0A15A8','0x007702C3','0x00005500')
+end

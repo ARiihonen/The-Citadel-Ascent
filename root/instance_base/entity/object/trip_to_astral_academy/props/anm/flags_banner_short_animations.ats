@@ -1,0 +1,550 @@
+banner_slow = addContext("banner_slow", 1)
+banner_fast = addContext("banner_fast", 1)
+banner_wall_col_slow = addContext("banner_wall_col_slow", 1)
+banner_gap_col_fast = addContext("banner_gap_col_fast", 1)
+banner_wall_col_fast = addContext("banner_wall_col_fast", 1)
+banner_angled_slow = addContext("banner_angled_slow", 1)
+banner_angled_fast = addContext("banner_angled_fast", 1)
+
+banner_gust_zp = addContext("banner_gust_zp", 1)
+banner_gust_zn = addContext("banner_gust_zn", 1)
+banner_gust_xp = addContext("banner_gust_xp", 1)
+banner_gust_xn = addContext("banner_gust_xn", 1)
+
+banner_gust_wall_slow_zp = addContext("banner_gust_wall_slow_zp", 1)
+banner_gust_wall_slow_zn = addContext("banner_gust_wall_slow_zn", 1)
+banner_gust_wall_slow_xp = addContext("banner_gust_wall_slow_xp", 1)
+banner_gust_wall_slow_xn = addContext("banner_gust_wall_slow_xn", 1)
+
+banner_gust_wall_fast_zp = addContext("banner_gust_wall_fast_zp", 1)
+banner_gust_wall_fast_zn = addContext("banner_gust_wall_fast_zn", 1)
+banner_gust_wall_fast_xp = addContext("banner_gust_wall_fast_xp", 1)
+banner_gust_wall_fast_xn = addContext("banner_gust_wall_fast_xn", 1)
+
+banner_gust_fast_zp = addContext("banner_gust_fast_zp", 1)
+banner_gust_fast_zn = addContext("banner_gust_fast_zn", 1)
+banner_gust_fast_xp = addContext("banner_gust_fast_xp", 1)
+banner_gust_fast_xn = addContext("banner_gust_fast_xn", 1)
+
+banner_gust_gap_zp = addContext("banner_gust_gap_zp", 1)
+banner_gust_gap_zn = addContext("banner_gust_gap_zn", 1)
+banner_gust_gap_xp = addContext("banner_gust_gap_xp", 1)
+banner_gust_gap_xn = addContext("banner_gust_gap_xn", 1)
+
+banner_gust_angled_slow_zp = addContext("banner_gust_angled_slow_zp", 1)
+banner_gust_angled_slow_zn = addContext("banner_gust_angled_slow_zn", 1)
+banner_gust_angled_slow_xp = addContext("banner_gust_angled_slow_xp", 1)
+banner_gust_angled_slow_xn = addContext("banner_gust_angled_slow_xn", 1)
+
+banner_gust_angled_slow_wall_zp = addContext("banner_gust_angled_slow_wall_zp", 1)
+banner_gust_angled_slow_wall_zn = addContext("banner_gust_angled_slow_wall_zn", 1)
+banner_gust_angled_slow_wall_xp = addContext("banner_gust_angled_slow_wall_xp", 1)
+banner_gust_angled_slow_wall_xn = addContext("banner_gust_angled_slow_wall_xn", 1)
+
+banner_gust_angled_fast_zp = addContext("banner_gust_angled_fast_zp", 1)
+banner_gust_angled_fast_zn = addContext("banner_gust_angled_fast_zn", 1)
+banner_gust_angled_fast_xp = addContext("banner_gust_angled_fast_xp", 1)
+banner_gust_angled_fast_xn = addContext("banner_gust_angled_fast_xn", 1)
+banner_gust_angled_fast_wall_xn = addContext("banner_gust_angled_fast_wall_xn", 1)
+
+flag_slow = addContext("flag_slow", 1)
+flag_slow_b = addContext("flag_slow_b", 1)
+flag_slow_c = addContext("flag_slow_c", 1)
+flag_fast = addContext("flag_fast", 1)
+
+flag_slow_gust_zp = addContext("flag_slow_gust_zp", 1)
+flag_slow_gust_zn = addContext("flag_slow_gust_zn", 1)
+flag_slow_gust_xp = addContext("flag_slow_gust_xp", 1)
+flag_slow_gust_xn = addContext("flag_slow_gust_xn", 1)
+
+flag_fast_gust_zp = addContext("flag_fast_gust_zp", 1)
+flag_fast_gust_zn = addContext("flag_fast_gust_zn", 1)
+flag_fast_gust_xp = addContext("flag_fast_gust_xp", 1)
+flag_fast_gust_xn = addContext("flag_fast_gust_xn", 1)
+
+
+
+--{ Animation: s_flag_fast_gust_zp
+s_flag_fast_gust_zp = addState(flag_fast_gust_zp, "s_flag_fast_gust_zp");
+s_flag_fast_gust_zp:blendTime(300);
+s_flag_fast_gust_zp:restart(false);
+s_flag_fast_gust_zp:loopBlendTime(1000); 
+s_flag_fast_gust_zp:loop(false);
+s_flag_fast_gust_zp:add("flags_short_idle_fast_gust_zp.fbxanim");  
+--} 
+
+--{ Animation: s_flag_fast_gust_zn
+s_flag_fast_gust_zn = addState(flag_fast_gust_zn, "s_flag_fast_gust_zn");
+s_flag_fast_gust_zn:blendTime(300);
+s_flag_fast_gust_zn:restart(false);
+s_flag_fast_gust_zn:loopBlendTime(1000); 
+s_flag_fast_gust_zn:loop(false);
+s_flag_fast_gust_zn:add("flags_short_idle_fast_gust_zn.fbxanim");  
+--} 
+
+--{ Animation: s_flag_fast_gust_xp
+s_flag_fast_gust_xp = addState(flag_fast_gust_xp, "s_flag_fast_gust_xp");
+s_flag_fast_gust_xp:blendTime(300);
+s_flag_fast_gust_xp:restart(false);
+s_flag_fast_gust_xp:loopBlendTime(1000); 
+s_flag_fast_gust_xp:loop(false);
+s_flag_fast_gust_xp:add("flags_short_idle_fast_gust_xp.fbxanim");  
+--} 
+
+--{ Animation: s_flag_fast_gust_xn
+s_flag_fast_gust_xn = addState(flag_fast_gust_xn, "s_flag_fast_gust_xn");
+s_flag_fast_gust_xn:blendTime(300);
+s_flag_fast_gust_xn:restart(false);
+s_flag_fast_gust_xn:loopBlendTime(1000); 
+s_flag_fast_gust_xn:loop(false);
+s_flag_fast_gust_xn:add("flags_short_idle_fast_gust_xn.fbxanim");  
+--} 
+
+
+
+--{ Animation: s_flag_slow_gust_zp
+s_flag_slow_gust_zp = addState(flag_slow_gust_zp, "s_flag_slow_gust_zp");
+s_flag_slow_gust_zp:blendTime(300);
+s_flag_slow_gust_zp:restart(false);
+s_flag_slow_gust_zp:loopBlendTime(1000); 
+s_flag_slow_gust_zp:loop(false);
+s_flag_slow_gust_zp:add("flags_short_idle_slow_gust_zp.fbxanim");  
+--} 
+
+--{ Animation: s_flag_slow_gust_zn
+s_flag_slow_gust_zn = addState(flag_slow_gust_zn, "s_flag_slow_gust_zn");
+s_flag_slow_gust_zn:blendTime(300);
+s_flag_slow_gust_zn:restart(false);
+s_flag_slow_gust_zn:loopBlendTime(1000); 
+s_flag_slow_gust_zn:loop(false);
+s_flag_slow_gust_zn:add("flags_short_idle_slow_gust_zn.fbxanim");  
+--} 
+
+--{ Animation: s_flag_slow_gust_xp
+s_flag_slow_gust_xp = addState(flag_slow_gust_xp, "s_flag_slow_gust_xp");
+s_flag_slow_gust_xp:blendTime(300);
+s_flag_slow_gust_xp:restart(false);
+s_flag_slow_gust_xp:loopBlendTime(1000); 
+s_flag_slow_gust_xp:loop(false);
+s_flag_slow_gust_xp:add("flags_short_idle_slow_gust_xp.fbxanim");  
+--} 
+
+--{ Animation: s_flag_slow_gust_xn
+s_flag_slow_gust_xn = addState(flag_slow_gust_xn, "s_flag_slow_gust_xn");
+s_flag_slow_gust_xn:blendTime(300);
+s_flag_slow_gust_xn:restart(false);
+s_flag_slow_gust_xn:loopBlendTime(1000); 
+s_flag_slow_gust_xn:loop(false);
+s_flag_slow_gust_xn:add("flags_short_idle_slow_gust_xn.fbxanim");  
+--} 
+
+
+
+--{ Animation: s_banner_gust_fast_zp
+s_banner_gust_fast_zp = addState(banner_gust_fast_zp, "s_banner_gust_fast_zp");
+s_banner_gust_fast_zp:blendTime(300);
+s_banner_gust_fast_zp:restart(false);
+s_banner_gust_fast_zp:loopBlendTime(1000); 
+s_banner_gust_fast_zp:loop(false);
+s_banner_gust_fast_zp:add("flags_banner_short_gust_fast_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_fast_zn
+s_banner_gust_fast_zn = addState(banner_gust_fast_zn, "s_banner_gust_fast_zn");
+s_banner_gust_fast_zn:blendTime(300);
+s_banner_gust_fast_zn:restart(false);
+s_banner_gust_fast_zn:loopBlendTime(1000); 
+s_banner_gust_fast_zn:loop(false);
+s_banner_gust_fast_zn:add("flags_banner_short_gust_fast_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_fast_xp
+s_banner_gust_fast_xp = addState(banner_gust_fast_xp, "s_banner_gust_fast_xp");
+s_banner_gust_fast_xp:blendTime(300);
+s_banner_gust_fast_xp:restart(false);
+s_banner_gust_fast_xp:loopBlendTime(1000); 
+s_banner_gust_fast_xp:loop(false);
+s_banner_gust_fast_xp:add("flags_banner_short_gust_fast_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_fast_xn
+s_banner_gust_fast_xn = addState(banner_gust_fast_xn, "s_banner_gust_fast_xn");
+s_banner_gust_fast_xn:blendTime(300);
+s_banner_gust_fast_xn:restart(false);
+s_banner_gust_fast_xn:loopBlendTime(1000); 
+s_banner_gust_fast_xn:loop(false);
+s_banner_gust_fast_xn:add("flags_banner_short_gust_fast_xn.fbxanim");  
+--} 
+
+
+
+--{ Animation: s_banner_gust_zp
+s_banner_gust_zp = addState(banner_gust_zp, "s_banner_gust_zp");
+s_banner_gust_zp:blendTime(300);
+s_banner_gust_zp:restart(false);
+s_banner_gust_zp:loopBlendTime(1000); 
+s_banner_gust_zp:loop(false);
+s_banner_gust_zp:add("flags_banner_short_gust_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_zn
+s_banner_gust_zn = addState(banner_gust_zn, "s_banner_gust_zn");
+s_banner_gust_zn:blendTime(300);
+s_banner_gust_zn:restart(false);
+s_banner_gust_zn:loopBlendTime(1000); 
+s_banner_gust_zn:loop(false);
+s_banner_gust_zn:add("flags_banner_short_gust_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_xp
+s_banner_gust_xp = addState(banner_gust_xp, "s_banner_gust_xp");
+s_banner_gust_xp:blendTime(300);
+s_banner_gust_xp:restart(false);
+s_banner_gust_xp:loopBlendTime(1000); 
+s_banner_gust_xp:loop(false);
+s_banner_gust_xp:add("flags_banner_short_gust_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_xn
+s_banner_gust_xn = addState(banner_gust_xn, "s_banner_gust_xn");
+s_banner_gust_xn:blendTime(300);
+s_banner_gust_xn:restart(false);
+s_banner_gust_xn:loopBlendTime(1000); 
+s_banner_gust_xn:loop(false);
+s_banner_gust_xn:add("flags_banner_short_gust_xn.fbxanim");  
+--} 
+
+
+--{ Animation: s_banner_gust_angled_slow_zp
+s_banner_gust_angled_slow_zp = addState(banner_gust_angled_slow_zp, "s_banner_gust_angled_slow_zp");
+s_banner_gust_angled_slow_zp:blendTime(300);
+s_banner_gust_angled_slow_zp:restart(false);
+s_banner_gust_angled_slow_zp:loopBlendTime(1000); 
+s_banner_gust_angled_slow_zp:loop(false);
+s_banner_gust_angled_slow_zp:add("flags_banner_short_gust_slow_angled_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_slow_zn
+s_banner_gust_angled_slow_zn = addState(banner_gust_angled_slow_zn, "s_banner_gust_angled_slow_zn");
+s_banner_gust_angled_slow_zn:blendTime(300);
+s_banner_gust_angled_slow_zn:restart(false);
+s_banner_gust_angled_slow_zn:loopBlendTime(1000); 
+s_banner_gust_angled_slow_zn:loop(false);
+s_banner_gust_angled_slow_zn:add("flags_banner_short_gust_slow_angled_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_slow_xp
+s_banner_gust_angled_slow_xp = addState(banner_gust_angled_slow_xp, "s_banner_gust_angled_slow_xp");
+s_banner_gust_angled_slow_xp:blendTime(300);
+s_banner_gust_angled_slow_xp:restart(false);
+s_banner_gust_angled_slow_xp:loopBlendTime(1000); 
+s_banner_gust_angled_slow_xp:loop(false);
+s_banner_gust_angled_slow_xp:add("flags_banner_short_gust_slow_angled_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_slow_xn
+s_banner_gust_angled_slow_xn = addState(banner_gust_angled_slow_xn, "s_banner_gust_angled_slow_xn");
+s_banner_gust_angled_slow_xn:blendTime(300);
+s_banner_gust_angled_slow_xn:restart(false);
+s_banner_gust_angled_slow_xn:loopBlendTime(1000); 
+s_banner_gust_angled_slow_xn:loop(false);
+s_banner_gust_angled_slow_xn:add("flags_banner_short_gust_slow_angled_xn.fbxanim");  
+--} 
+
+
+--{ Animation: s_banner_gust_angled_slow_wall_zp
+s_banner_gust_angled_slow_wall_zp = addState(banner_gust_angled_slow_wall_zp, "s_banner_gust_angled_slow_wall_zp");
+s_banner_gust_angled_slow_wall_zp:blendTime(300);
+s_banner_gust_angled_slow_wall_zp:restart(false);
+s_banner_gust_angled_slow_wall_zp:loopBlendTime(1000); 
+s_banner_gust_angled_slow_wall_zp:loop(false);
+s_banner_gust_angled_slow_wall_zp:add("flags_banner_short_gust_slow_angled_wall_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_slow_wall_zn
+s_banner_gust_angled_slow_wall_zn = addState(banner_gust_angled_slow_wall_zn, "s_banner_gust_angled_slow_wall_zn");
+s_banner_gust_angled_slow_wall_zn:blendTime(300);
+s_banner_gust_angled_slow_wall_zn:restart(false);
+s_banner_gust_angled_slow_wall_zn:loopBlendTime(1000); 
+s_banner_gust_angled_slow_wall_zn:loop(false);
+s_banner_gust_angled_slow_wall_zn:add("flags_banner_short_gust_slow_angled_wall_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_slow_wall_xp
+s_banner_gust_angled_slow_wall_xp = addState(banner_gust_angled_slow_wall_xp, "s_banner_gust_angled_slow_wall_xp");
+s_banner_gust_angled_slow_wall_xp:blendTime(300);
+s_banner_gust_angled_slow_wall_xp:restart(false);
+s_banner_gust_angled_slow_wall_xp:loopBlendTime(1000); 
+s_banner_gust_angled_slow_wall_xp:loop(false);
+s_banner_gust_angled_slow_wall_xp:add("flags_banner_short_gust_slow_angled_wall_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_slow_wall_xn
+s_banner_gust_angled_slow_wall_xn = addState(banner_gust_angled_slow_wall_xn, "s_banner_gust_angled_slow_wall_xn");
+s_banner_gust_angled_slow_wall_xn:blendTime(300);
+s_banner_gust_angled_slow_wall_xn:restart(false);
+s_banner_gust_angled_slow_wall_xn:loopBlendTime(1000); 
+s_banner_gust_angled_slow_wall_xn:loop(false);
+s_banner_gust_angled_slow_wall_xn:add("flags_banner_short_gust_slow_angled_wall_xn.fbxanim");  
+--} 
+
+
+--{ Animation: s_banner_gust_angled_fast_zp
+s_banner_gust_angled_fast_zp = addState(banner_gust_angled_fast_zp, "s_banner_gust_angled_fast_zp");
+s_banner_gust_angled_fast_zp:blendTime(300);
+s_banner_gust_angled_fast_zp:restart(false);
+s_banner_gust_angled_fast_zp:loopBlendTime(1000); 
+s_banner_gust_angled_fast_zp:loop(false);
+s_banner_gust_angled_fast_zp:add("flags_banner_short_gust_fast_angled_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_fast_zn
+s_banner_gust_angled_fast_zn = addState(banner_gust_angled_fast_zn, "s_banner_gust_angled_fast_zn");
+s_banner_gust_angled_fast_zn:blendTime(300);
+s_banner_gust_angled_fast_zn:restart(false);
+s_banner_gust_angled_fast_zn:loopBlendTime(1000); 
+s_banner_gust_angled_fast_zn:loop(false);
+s_banner_gust_angled_fast_zn:add("flags_banner_short_gust_fast_angled_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_fast_xp
+s_banner_gust_angled_fast_xp = addState(banner_gust_angled_fast_xp, "s_banner_gust_angled_fast_xp");
+s_banner_gust_angled_fast_xp:blendTime(300);
+s_banner_gust_angled_fast_xp:restart(false);
+s_banner_gust_angled_fast_xp:loopBlendTime(1000); 
+s_banner_gust_angled_fast_xp:loop(false);
+s_banner_gust_angled_fast_xp:add("flags_banner_short_gust_fast_angled_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_fast_xn
+s_banner_gust_angled_fast_xn = addState(banner_gust_angled_fast_xn, "s_banner_gust_angled_fast_xn");
+s_banner_gust_angled_fast_xn:blendTime(300);
+s_banner_gust_angled_fast_xn:restart(false);
+s_banner_gust_angled_fast_xn:loopBlendTime(1000); 
+s_banner_gust_angled_fast_xn:loop(false);
+s_banner_gust_angled_fast_xn:add("flags_banner_short_gust_fast_angled_xn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_angled_fast_wall_xn
+s_banner_gust_angled_fast_wall_xn = addState(banner_gust_angled_fast_wall_xn, "s_banner_gust_angled_fast_wall_xn");
+s_banner_gust_angled_fast_wall_xn:blendTime(300);
+s_banner_gust_angled_fast_wall_xn:restart(false);
+s_banner_gust_angled_fast_wall_xn:loopBlendTime(1000); 
+s_banner_gust_angled_fast_wall_xn:loop(false);
+s_banner_gust_angled_fast_wall_xn:add("flags_banner_short_gust_fast_angled_wall_xn.fbxanim");  
+--} 
+
+
+--{ Animation: s_banner_gust_gap_zp
+s_banner_gust_gap_zp = addState(banner_gust_gap_zp, "s_banner_gust_gap_zp");
+s_banner_gust_gap_zp:blendTime(300);
+s_banner_gust_gap_zp:restart(false);
+s_banner_gust_gap_zp:loopBlendTime(1000); 
+s_banner_gust_gap_zp:loop(false);
+s_banner_gust_gap_zp:add("flags_banner_short_gust_gap_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_gap_zn
+s_banner_gust_gap_zn = addState(banner_gust_gap_zn, "s_banner_gust_gap_zn");
+s_banner_gust_gap_zn:blendTime(300);
+s_banner_gust_gap_zn:restart(false);
+s_banner_gust_gap_zn:loopBlendTime(1000); 
+s_banner_gust_gap_zn:loop(false);
+s_banner_gust_gap_zn:add("flags_banner_short_gust_gap_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_gap_xp
+s_banner_gust_gap_xp = addState(banner_gust_gap_xp, "s_banner_gust_gap_xp");
+s_banner_gust_gap_xp:blendTime(300);
+s_banner_gust_gap_xp:restart(false);
+s_banner_gust_gap_xp:loopBlendTime(1000); 
+s_banner_gust_gap_xp:loop(false);
+s_banner_gust_gap_xp:add("flags_banner_short_gust_gap_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_gap_xn
+s_banner_gust_gap_xn = addState(banner_gust_gap_xn, "s_banner_gust_gap_xn");
+s_banner_gust_gap_xn:blendTime(300);
+s_banner_gust_gap_xn:restart(false);
+s_banner_gust_gap_xn:loopBlendTime(1000); 
+s_banner_gust_gap_xn:loop(false);
+s_banner_gust_gap_xn:add("flags_banner_short_gust_gap_xn.fbxanim");  
+--} 
+
+
+
+
+--{ Animation: s_banner_gust_wall_slow_zp
+s_banner_gust_wall_slow_zp = addState(banner_gust_wall_slow_zp, "s_banner_gust_wall_slow_zp");
+s_banner_gust_wall_slow_zp:blendTime(300);
+s_banner_gust_wall_slow_zp:restart(false);
+s_banner_gust_wall_slow_zp:loopBlendTime(1000); 
+s_banner_gust_wall_slow_zp:loop(false);
+s_banner_gust_wall_slow_zp:add("flags_banner_short_gust_slow_wall_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_wall_slow_zn
+s_banner_gust_wall_slow_zn = addState(banner_gust_wall_slow_zn, "s_banner_gust_wall_slow_zn");
+s_banner_gust_wall_slow_zn:blendTime(300);
+s_banner_gust_wall_slow_zn:restart(false);
+s_banner_gust_wall_slow_zn:loopBlendTime(1000); 
+s_banner_gust_wall_slow_zn:loop(false);
+s_banner_gust_wall_slow_zn:add("flags_banner_short_gust_slow_wall_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_wall_slow_xp
+s_banner_gust_wall_slow_xp = addState(banner_gust_wall_slow_xp, "s_banner_gust_wall_slow_xp");
+s_banner_gust_wall_slow_xp:blendTime(300);
+s_banner_gust_wall_slow_xp:restart(false);
+s_banner_gust_wall_slow_xp:loopBlendTime(1000); 
+s_banner_gust_wall_slow_xp:loop(false);
+s_banner_gust_wall_slow_xp:add("flags_banner_short_gust_slow_wall_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_wall_slow_xn
+s_banner_gust_wall_slow_xn = addState(banner_gust_wall_slow_xn, "s_banner_gust_wall_slow_xn");
+s_banner_gust_wall_slow_xn:blendTime(300);
+s_banner_gust_wall_slow_xn:restart(false);
+s_banner_gust_wall_slow_xn:loopBlendTime(1000); 
+s_banner_gust_wall_slow_xn:loop(false);
+s_banner_gust_wall_slow_xn:add("flags_banner_short_gust_slow_wall_xn.fbxanim");  
+--} 
+
+
+
+--{ Animation: s_banner_gust_wall_fast_zp
+s_banner_gust_wall_fast_zp = addState(banner_gust_wall_fast_zp, "s_banner_gust_wall_fast_zp");
+s_banner_gust_wall_fast_zp:blendTime(300);
+s_banner_gust_wall_fast_zp:restart(false);
+s_banner_gust_wall_fast_zp:loopBlendTime(1000); 
+s_banner_gust_wall_fast_zp:loop(false);
+s_banner_gust_wall_fast_zp:add("flags_banner_short_gust_fast_wall_zp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_wall_fast_zn
+s_banner_gust_wall_fast_zn = addState(banner_gust_wall_fast_zn, "s_banner_gust_wall_fast_zn");
+s_banner_gust_wall_fast_zn:blendTime(300);
+s_banner_gust_wall_fast_zn:restart(false);
+s_banner_gust_wall_fast_zn:loopBlendTime(1000); 
+s_banner_gust_wall_fast_zn:loop(false);
+s_banner_gust_wall_fast_zn:add("flags_banner_short_gust_fast_wall_zn.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_wall_fast_xp
+s_banner_gust_wall_fast_xp = addState(banner_gust_wall_fast_xp, "s_banner_gust_wall_fast_xp");
+s_banner_gust_wall_fast_xp:blendTime(300);
+s_banner_gust_wall_fast_xp:restart(false);
+s_banner_gust_wall_fast_xp:loopBlendTime(1000); 
+s_banner_gust_wall_fast_xp:loop(false);
+s_banner_gust_wall_fast_xp:add("flags_banner_short_gust_fast_wall_xp.fbxanim");  
+--} 
+
+--{ Animation: s_banner_gust_wall_fast_xn
+s_banner_gust_wall_fast_xn = addState(banner_gust_wall_fast_xn, "s_banner_gust_wall_fast_xn");
+s_banner_gust_wall_fast_xn:blendTime(300);
+s_banner_gust_wall_fast_xn:restart(false);
+s_banner_gust_wall_fast_xn:loopBlendTime(1000); 
+s_banner_gust_wall_fast_xn:loop(false);
+s_banner_gust_wall_fast_xn:add("flags_banner_short_gust_fast_wall_xn.fbxanim");  
+--} 
+
+
+
+--{ Animation: s_banner_slow
+s_banner_slow = addState(banner_slow, "s_banner_slow");
+s_banner_slow:blendTime(2000);
+s_banner_slow:restart(false);
+s_banner_slow:loopBlendTime(1000); 
+s_banner_slow:loop(true);
+s_banner_slow:add("flags_banner_short_idle.fbxanim");  
+--} 
+
+--{ Animation: s_banner_fast
+s_banner_fast = addState(banner_fast, "s_banner_fast");
+s_banner_fast:blendTime(2000);
+s_banner_fast:restart(false);
+s_banner_fast:loopBlendTime(1000); 
+s_banner_fast:loop(true);
+s_banner_fast:add("flags_banner_short_idle_fast.fbxanim");  
+--} 
+
+--{ Animation: s_banner_wall_col_slow
+s_banner_wall_col_slow = addState(banner_wall_col_slow, "s_banner_wall_col_slow");
+s_banner_wall_col_slow:blendTime(2000);
+s_banner_wall_col_slow:restart(false);
+s_banner_wall_col_slow:loopBlendTime(1000); 
+s_banner_wall_col_slow:loop(true);
+s_banner_wall_col_slow:add("flags_banner_short_idle_wall_col_slow.fbxanim"); 
+--} 
+
+--{ Animation: s_banner_gap_col_fast
+s_banner_gap_col_fast = addState(banner_gap_col_fast, "s_banner_gap_col_fast");
+s_banner_gap_col_fast:blendTime(2000);
+s_banner_gap_col_fast:restart(false);
+s_banner_gap_col_fast:loopBlendTime(1000); 
+s_banner_gap_col_fast:loop(true);
+s_banner_gap_col_fast:add("flags_banner_short_idle_gap_col_fast.fbxanim");  
+--} 
+
+--{ Animation: s_banner_wall_col_fast
+s_banner_wall_col_fast = addState(banner_wall_col_fast, "s_banner_wall_col_fast");
+s_banner_wall_col_fast:blendTime(2000);
+s_banner_wall_col_fast:restart(false);
+s_banner_wall_col_fast:loopBlendTime(1000); 
+s_banner_wall_col_fast:loop(true);
+s_banner_wall_col_fast:add("flags_banner_short_idle_wall_col_fast.fbxanim");  
+--} 
+
+--{ Animation: s_banner_angled_slow
+s_banner_angled_slow = addState(banner_angled_slow, "s_banner_angled_slow"); 
+s_banner_angled_slow:blendTime(2000);
+s_banner_angled_slow:restart(false);
+s_banner_angled_slow:loopBlendTime(1000); 
+s_banner_angled_slow:loop(true);
+s_banner_angled_slow:add("flags_banner_short_idle_angled_slow.fbxanim");  
+--} 
+
+--{ Animation: s_banner_angled_fast
+s_banner_angled_fast = addState(banner_angled_fast, "s_banner_angled_fast");
+s_banner_angled_fast:blendTime(2000);
+s_banner_angled_fast:restart(false);
+s_banner_angled_fast:loopBlendTime(1000); 
+s_banner_angled_fast:loop(true);
+s_banner_angled_fast:add("flags_banner_short_idle_angled_fast.fbxanim");  
+--} 
+
+--{ Animation: s_flag_slow
+s_flag_slow = addState(flag_slow, "s_flag_slow");
+s_flag_slow:blendTime(2000);
+s_flag_slow:restart(false);
+s_flag_slow:loopBlendTime(1000); 
+s_flag_slow:loop(true);
+s_flag_slow:add("flags_short_idle_slow.fbxanim");  
+--}
+
+--{ Animation: s_flag_slow_b
+s_flag_slow_b = addState(flag_slow_b, "s_flag_slow_b");
+s_flag_slow_b:blendTime(2000);
+s_flag_slow_b:restart(false);
+s_flag_slow_b:loopBlendTime(1000); 
+s_flag_slow_b:loop(true);
+s_flag_slow_b:add("flags_short_idle_slow_b.fbxanim");  
+--}  
+
+--{ Animation: s_flag_slow_c
+s_flag_slow_c = addState(flag_slow_c, "s_flag_slow_c");
+s_flag_slow_c:blendTime(2000);
+s_flag_slow_c:restart(false);
+s_flag_slow_c:loopBlendTime(1000); 
+s_flag_slow_c:loop(true);
+s_flag_slow_c:add("flags_short_idle_slow_c.fbxanim");  
+--}  
+
+--{ Animation: s_flag_fast
+s_flag_fast = addState(flag_fast, "s_flag_fast");
+s_flag_fast:blendTime(2000);
+s_flag_fast:restart(false);
+s_flag_fast:loopBlendTime(1000); 
+s_flag_fast:loop(true);
+s_flag_fast:add("flags_short_idle_fast.fbxanim");  
+--}  

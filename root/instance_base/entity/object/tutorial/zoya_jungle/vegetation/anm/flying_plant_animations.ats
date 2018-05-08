@@ -1,0 +1,18 @@
+fly1 = addContext("fly1", 1)
+plant2_fly1 = addContext("plant2_fly1", 1)
+
+
+
+--{ Animation: s_fly1
+s_fly1 = addState(fly1, "s_fly1");
+s_fly1:blendTime(300);
+s_fly1:loop(true);
+s_fly1:add("fly1.fbxanim");
+--}
+
+--{ Animation: s_plant2_fly1
+s_plant2_fly1 = addState(plant2_fly1, "s_plant2_fly1");
+s_plant2_fly1:blendTime(300);
+s_plant2_fly1:loop(true);
+s_plant2_fly1:add("plant2_fly1.fbxanim");
+--}

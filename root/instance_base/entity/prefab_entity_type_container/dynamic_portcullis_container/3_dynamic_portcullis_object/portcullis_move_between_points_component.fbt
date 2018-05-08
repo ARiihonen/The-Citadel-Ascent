@@ -1,0 +1,11 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/move_between_points/trine_move_between_points/trine_move_between_points_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("PortcullisMoveBetweenPointsComponent", GUID('0x7248CCEC','0x00000000','0x00770200','0x00005500')); -- TrineMoveBetweenPointsComponent
+  type:setGuid(GUID('0x83E71F95','0x2AC063E9','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setMoveDirection(VC3(0, 8, 0))
+  type:setSpeedTowardsRestPosition(5)
+  type:setSpeedTowardsMoveToPosition(1.5)
+  type:setBlockable(true)
+end

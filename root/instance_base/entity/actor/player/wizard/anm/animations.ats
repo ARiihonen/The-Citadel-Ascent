@@ -1,0 +1,2949 @@
+-----------------------------------------------------
+-- Contexts
+
+slide = addContext("slide", -1) 
+jump = addContext("jump", 0)
+wall_jump = addContext("wall_jump", 1)
+breaking = addContext("breaking", -2)
+fall = addContext("fall", 2)
+stand = addContext("stand", 3)
+run = addContext("run", 4)
+fast = addContext("fast", 5)
+conjure = addContext("conjure", -1)
+backward = addContext("backward", 7)
+float = addContext("float", 8)
+turn = addContext("turn", 9)
+pull_lever = addContext("pull_lever", 10)
+drop = addContext("drop", 11)
+wind = addContext("wind", 50)
+env_wind = addContext("env_wind", 52)
+env_wind2 = addContext("env_wind2", 52)
+slippery = addContext("slippery", 51)
+out_of_balance = addContext("out_of_balance", 53)
+out_of_balance2 = addContext("out_of_balance2", 9)
+dazzled = addContext("dazzled", 54)
+left = addContext("left", 10000)
+bubble = addContext("bubble", 100)
+push = addContext("push", 13)
+stumble = addContext("stumble", 15)
+
+grabbed = addContext("grabbed", -20)
+
+switch = addContext("switch", 0)
+turn_right = addContext("turn_right", 1)
+turn_left = addContext("turn_left", 1)
+
+surface = addContext("surface", 100)
+
+swim = addContext("swim", 1)
+water = addContext("water", 2)
+
+pushed_up = addContext("pushed_up", 20)
+stagger = addContext("stagger", 100)
+
+interested = addContext("interested", 80)
+right = addContext("right", 1000)
+
+
+open_chest = addContext("open_chest", 1)
+
+cabin_sleeping = addContext("cabin_sleeping", -100)
+cabin_winding = addContext("cabin_winding", -100)
+cabin_looking = addContext("cabin_looking", -100)
+cabin_jumping = addContext("cabin_jumping", -100)
+meet_pontius_talking1 = addContext("meet_pontius_talking1", -100)
+meet_pontius_talking2 = addContext("meet_pontius_talking2", -100)
+meet_pontius_talking2_new = addContext("meet_pontius_talking2_new", -100)
+meet_pontius_talking3 = addContext("meet_pontius_talking3", -100)
+meet_pontius_talking4 = addContext("meet_pontius_talking4", -100)
+meet_pontius_talking5 = addContext("meet_pontius_talking5", -100)
+meet_pontius_looking = addContext("meet_pontius_looking", -100)
+
+meet_zoya = addContext("meet_zoya", -100)
+meet_zoya_talking = addContext("meet_zoya_talking", -100)
+
+comfort = addContext("comfort", -100)
+hidden = addContext("hidden", -200)
+
+trampoline = addContext("trampoline", -1)
+die = addContext("die", -10)
+impact = addContext("impact", 100)
+back = addContext("back", 99)
+drown = addContext("drown", 97)
+down = addContext("down", 98)
+
+captured = addContext("captured", -200)
+
+look_foreground = addContext("look_foreground", 200)
+wizard_talk = addContext("wizard_talk", 199)
+wizard_talk2 = addContext("wizard_talk2", 198)
+
+tavern = addContext("tavern", 1)
+ground = addContext("ground", 1)
+
+fallen = addContext("fallen", -200)
+fallen_rise = addContext("fallen_rise", -200)
+hat = addContext("hat", -25)
+outro_test = addContext("outro_test", 1)
+stairs_run = addContext("stairs_run", 1)
+-----------------------------------------------------
+-- Params
+
+slope = addParam("slope")
+aim = addParam("aim")
+wind_direction = addParam("wind_direction")
+swim_direction = addParam("swim_direction")
+curvature = addParam("curvature")
+speed = addParam("speed")
+interested_distance = addParam("interested_distance")
+interested_angle = addParam("interested_angle")
+switch_angle = addParam("switch_angle")
+
+--{ Animation: outro_test
+outro_test = addState(outro_test, "outro_test");
+outro_test:blendTime(0);
+outro_test:loop(false);
+outro_test:add("outro_test.anm");
+--}
+
+--{ Animation_set: Mountains goblin encounter
+--{ Animation: lie_on_ground
+lie_on_ground = addState(ground, "lie_on_ground");
+lie_on_ground:blendTime(0);
+lie_on_ground:loop(true);
+lie_on_ground:add("lie_on_ground.anm");
+--}
+--}
+
+--{ Animation_set: Captured by Rosabel
+--{ Animation: captured_start
+-- captured_start = addState(captured, "captured_start");
+-- captured_start:blendTime(0);
+-- captured_start:loop(true);
+-- captured_start:add("captured_start.anm");
+--}
+--{ Animation: captured_talk1
+-- captured_talk1 = addState(wizard_talk, "captured_talk1");
+-- captured_talk1:blendTime(300);
+-- captured_talk1:loop(false);
+-- captured_talk1:add("captured_talk1.anm");
+--}
+--{ Animation: captured_talk2
+-- captured_talk2 = addState(wizard_talk2, "captured_talk2");
+-- captured_talk2:blendTime(300);
+-- captured_talk2:loop(false);
+-- captured_talk2:add("captured_talk2.anm");
+--}
+--{ Animation: captured_talk_loop
+-- captured_talk_loop = addState(wizard_talk, "captured_talk_loop");
+-- captured_talk_loop:from(captured_talk1);
+-- captured_talk_loop:blendTime(300);
+-- captured_talk_loop:loop(true);
+-- captured_talk_loop:add("captured_talk1_loop.anm");
+--}
+--}
+--{ Animation_set: Fallen
+--{ Animation: fallen_start
+fallen_start = addState(fallen, "fallen_start");
+fallen_start:blendTime(300);
+fallen_start:loop(false);
+fallen_start:add("fallen_start.anm");
+--}
+--{ Animation: fallen_loop
+fallen_loop = addState(fallen, "fallen_loop");
+fallen_loop:from(fallen_start);
+fallen_loop:blendTime(000);
+fallen_loop:loop(true);
+fallen_loop:add("fallen_loop.anm");
+--}
+--{ Animation: fallen_rise
+s_fallen_rise = addState(fallen_rise, "s_fallen_rise");
+s_fallen_rise:blendTime(300);
+s_fallen_rise:loop(false);
+s_fallen_rise:add("fallen_rise.anm");
+--}
+--{ Animation: fallen_rise_end
+fallen_rise_end = addState(stand, "fallen_rise_end");
+fallen_rise_end:from(s_fallen_rise);
+fallen_rise_end:blendTime(300);
+fallen_rise_end:loop(false);
+fallen_rise_end:add("fallen_rise_end.anm");
+--}
+--{ Animation: fallen_rise_hat
+s_fallen_rise_hat = addState(fallen_rise+hat, "s_fallen_rise_hat");
+s_fallen_rise_hat:blendTime(300);
+s_fallen_rise_hat:loop(false);
+s_fallen_rise_hat:add("fallen_rise_hat.anm");
+--}
+--{ Animation: fallen_rise_end_hat
+fallen_rise_end_hat = addState(stand, "fallen_rise_end_hat");
+fallen_rise_end_hat:from(s_fallen_rise_hat);
+fallen_rise_end_hat:blendTime(300);
+fallen_rise_end_hat:loop(false);
+fallen_rise_end_hat:add("fallen_rise_end_hat.anm");
+--}
+--}
+--{ Animation_set: Tavern scene
+--{ Animation: tavern_sit
+tavern_sit = addState(tavern, "tavern_sit");
+tavern_sit:blendTime(000);
+tavern_sit:loop(true);
+tavern_sit:add("tavern_sit.anm");
+--}
+--}
+--{ Cabin scene
+--{ Animation: cabin_sleep
+cabin_sleep = addState(cabin_sleeping, "cabin_sleep");
+cabin_sleep:blendTime(300);
+cabin_sleep:loop(true);
+cabin_sleep:add("cabin_sleep.anm");
+--}
+--{ Animation: cabin_wind
+cabin_wind = addState(cabin_winding, "cabin_wind");
+cabin_wind:blendTime(500);
+cabin_wind:loop(true);
+cabin_wind:add("cabin_wind.anm");
+--}
+--{ Animation: cabin_look
+cabin_look = addState(cabin_looking, "cabin_look");
+cabin_look:blendTime(300);
+cabin_look:loop(false);
+cabin_look:add("cabin_look.anm");
+--}
+--{ Animation: cabin_jump
+cabin_jump = addState(stand+dazzled, "cabin_jump");
+cabin_jump:from(cabin_look);
+cabin_jump:blendTime(300);
+cabin_jump:loop(false);
+cabin_jump:add("cabin_jump.anm");
+--}
+--{ Animation: cabin_jump2
+cabin_jump2 = addState(cabin_jumping, "cabin_jump2");
+cabin_jump2:blendTime(300);
+cabin_jump2:loop(false);
+cabin_jump2:add("cabin_jump.anm");
+--}
+--}
+--{ Animation_set: Meet Pontius
+--{ Animation: meet_pontius_talk1
+meet_pontius_talk1 = addState(meet_pontius_talking1, "meet_pontius_talk1");
+meet_pontius_talk1:blendTime(300);
+meet_pontius_talk1:loop(false);
+meet_pontius_talk1:add("meet_pontius_talk1.anm");
+--}
+--{ Animation: meet_pontius_talk2
+meet_pontius_talk2 = addState(meet_pontius_talking2, "meet_pontius_talk2");
+meet_pontius_talk2:blendTime(200);
+meet_pontius_talk2:loop(false);
+meet_pontius_talk2:add("meet_pontius_talk2.anm");
+--}
+--{ Animation: meet_pontius_talk2_new
+meet_pontius_talk2_new = addState(meet_pontius_talking2_new, "meet_pontius_talk2_new");
+meet_pontius_talk2_new:blendTime(200);
+meet_pontius_talk2_new:loop(false);
+meet_pontius_talk2_new:add("meet_pontius_talk2_new.anm");
+--}
+
+--{ Animation: meet_pontius_talk3
+meet_pontius_talk3 = addState(meet_pontius_talking3, "meet_pontius_talk3");
+meet_pontius_talk3:blendTime(200);
+meet_pontius_talk3:loop(false);
+meet_pontius_talk3:add("meet_pontius_talk3.anm");
+--}
+--{ Animation: meet_pontius_talk4
+meet_pontius_talk4 = addState(meet_pontius_talking4, "meet_pontius_talk4");
+meet_pontius_talk4:blendTime(200);
+meet_pontius_talk4:loop(false);
+meet_pontius_talk4:add("meet_pontius_talk4.anm");
+--}
+--{ Animation: meet_pontius_talk5
+meet_pontius_talk5 = addState(meet_pontius_talking5, "meet_pontius_talk5");
+meet_pontius_talk5:blendTime(200);
+meet_pontius_talk5:loop(false);
+meet_pontius_talk5:add("meet_pontius_talk5.anm");
+--}
+--{ Animation: meet_pontius_look
+meet_pontius_look = addState(meet_pontius_looking, "meet_pontius_look");
+meet_pontius_look:blendTime(200);
+meet_pontius_look:loop(false);
+meet_pontius_look:add("stand_start_interested.anm");
+--}
+--}
+--{ Animation_set: Meet Zoya
+--{ Animation: meet_zoya_start
+meet_zoya_start = addState(meet_zoya, "meet_zoya_start");
+meet_zoya_start:blendTime(0);
+meet_zoya_start:loop(false);
+meet_zoya_start:add("meet_zoya_start.anm");
+--}
+--{ Animation: meet_zoya_loop
+meet_zoya_loop = addState(meet_zoya, "meet_zoya_loop");
+meet_zoya_loop:from(meet_zoya_start);
+meet_zoya_loop:blendTime(300);
+meet_zoya_loop:loop(true);
+meet_zoya_loop:add("meet_zoya_loop.anm");
+--}
+--{ Animation: meet_zoya_talk
+meet_zoya_talk = addState(meet_zoya_talking, "meet_zoya_talk");
+meet_zoya_talk:blendTime(300);
+meet_zoya_talk:loop(false);
+meet_zoya_talk:add("meet_zoya_talk.anm");
+--}
+--}
+
+--{ Animation_set: Stagger and die
+--{ Animation: stagger_standing
+stagger_standing = addState(stagger+stand, "stagger_standing");
+stagger_standing:blendTime(200);
+stagger_standing:restart(true);
+stagger_standing:loop(false);
+stagger_standing:add("stand_pushed_up.anm");
+--}
+--{ Animation: die_front
+die_front = addState(die, "die_front");
+die_front:blendTime(200);
+die_front:loop(false);
+die_front:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_front:add("die_front.anm");
+--}
+--{ Animation: die_back
+die_back = addState(die+back, "die_back");
+die_back:blendTime(200);
+die_back:loop(false);
+die_back:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_back:add("die_back.anm");
+--}
+--{ Animation: die_down
+die_down = addState(die+down, "die_down");
+die_down:blendTime(200);
+die_down:loop(false);
+die_down:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_down:add("die_down.anm");
+--}
+--{ Animation: die_impact_front
+die_impact_front = addState(die+impact, "die_impact_front");
+die_impact_front:blendTime(200);
+die_impact_front:loop(false);
+die_impact_front:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_impact_front:add("die_impact_front.anm");
+--}
+--{ Animation: die_impact_back
+die_impact_back = addState(die+impact+back, "die_impact_back");
+die_impact_back:blendTime(200);
+die_impact_back:loop(false);
+die_impact_back:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_impact_back:add("die_impact_back.anm");
+--}
+--{ Animation: die_drown
+die_drown = addState(die+drown, "die_drown");
+die_drown:blendTime(2000);
+die_drown:loop(false);
+die_drown:addGlobalEnterEvent("EventAnimCreateRagdoll");
+die_drown:add("die_front.anm");
+--}
+--}
+--{ Animation: s_grabbed
+s_grabbed = addState(grabbed, "s_grabbed");
+s_grabbed:blendTime(200);
+s_grabbed:loop(false);
+s_grabbed:add("grabbed.anm");
+--}
+--{ Basic animations
+
+--{ Animation: run_end_idle
+run_end_idle = addState(stand, "run_end_idle");
+run_end_idle:blendTime(300);
+run_end_idle:loop(false);
+run_end_idle:add(slope(-1.0), "run_end_idle_downhill.anm");
+run_end_idle:add(slope(0.0), "run_end_idle.anm");
+run_end_idle:add(slope(1.0), "run_end_idle_uphill.anm");
+--}
+
+--{ Animation: stand_idle
+stand_idle = addState(stand, "stand_idle");
+stand_idle:from(run_end_idle);
+stand_idle:from(fallen_rise_end);
+stand_idle:from(fallen_rise_end_hat);
+stand_idle:blendTime(0);
+stand_idle:loop(true);
+stand_idle:add(slope(-1.0), "stand_idle_downhill.anm");
+stand_idle:add(slope(0.0), "stand_idle.anm");
+stand_idle:add(slope(1.0), "stand_idle_uphill.anm");
+--}
+
+--{ Animation: run_start_idle
+run_start_idle = addState(run, "run_start_idle");
+run_start_idle:blendTime(300);
+run_start_idle:loop(false);
+run_start_idle:add(slope(-1.0), "run_start_idle_downhill.anm");
+run_start_idle:add(slope(0.0), "run_start_idle.anm");
+run_start_idle:add(slope(1.0), "run_start_idle_uphill.anm");
+--}
+
+--{ Animation: run_start_turning_idle
+run_start_turning_idle = addState(run+turn, "run_start_turning_idle");
+run_start_turning_idle:restart(true);
+run_start_turning_idle:blendTime(0);
+run_start_turning_idle:loop(false);
+run_start_turning_idle:add(slope(-1.0), "run_start_turning_idle_downhill.anm");
+run_start_turning_idle:add(slope(0.0), "run_start_turning_idle.anm");
+run_start_turning_idle:add(slope(1.0), "run_start_turning_idle_uphill.anm");
+--}
+
+--{ Animation: run_idle
+run_idle = addState(run, "run_idle");
+run_idle:from(run_start_idle);
+run_idle:from(run_start_turning_idle);
+run_idle:blendTime(0);
+run_idle:loop(true);
+run_idle:add(slope(-1.0), "run_idle_downhill.anm");
+run_idle:add(slope(0.0), "run_idle.anm");
+run_idle:add(slope(1.0), "run_idle_uphill.anm");
+--}
+
+--{ Animation: jump_idle
+jump_idle = addState(jump, "jump_idle");
+jump_idle:blendTime(200);
+jump_idle:loop(false);
+jump_idle:restart(true);
+jump_idle:add("jump_idle.anm");
+--}
+
+--{ Animation: jump_fast_idle
+jump_fast_idle = addState(jump, "jump_fast_idle");
+-- Hack for lacking fast jump support
+jump_fast_idle:restart(true);
+jump_fast_idle:from(jump_fast_idle);
+jump_fast_idle:from(run_idle);
+jump_fast_idle:from(run_start_idle);
+jump_fast_idle:from(run_start_turning_idle);
+jump_fast_idle:blendTime(200);
+jump_fast_idle:loop(false);
+jump_fast_idle:add("jump_fast_idle.anm");
+--}
+
+--{ Animation: drop_start_breaking_idle
+drop_start_breaking_idle = addState(jump+breaking, "drop_start_breaking_idle");
+drop_start_breaking_idle:blendTime(200);
+drop_start_breaking_idle:loop(false);
+drop_start_breaking_idle:add("drop_start_breaking_idle.anm");
+--}
+
+--{ Animation: drop_start_idle
+drop_start_idle = addState(fall, "drop_start_idle");
+drop_start_idle:from(jump_idle);
+drop_start_idle:blendTime(200);
+drop_start_idle:loop(false);
+drop_start_idle:add("drop_start_idle.anm");
+--}
+
+--{ Animation: drop_idle
+drop_idle = addState(fall, "drop_idle");
+drop_idle:blendTime(300);
+drop_idle:delay(100);
+drop_idle:loop(true);
+drop_idle:add("drop_idle.anm");
+--}
+
+--{ Animation: drop_fast_start_idle
+drop_fast_start_idle = addState(fall+fast, "drop_fast_start_idle");
+drop_fast_start_idle:from(jump_fast_idle);
+drop_fast_start_idle:from(jump_idle);
+drop_fast_start_idle:blendTime(200);
+drop_fast_start_idle:loop(false);
+drop_fast_start_idle:add("drop_fast_start_idle.anm");
+--}
+
+--{ Animation: drop_fast_idle
+drop_fast_idle = addState(fall+fast, "drop_fast_idle");
+drop_fast_idle:blendTime(300);
+drop_fast_idle:loop(true);
+drop_fast_idle:delay(100);
+drop_fast_idle:add("drop_fast_idle.anm");
+--}
+
+--{ Animation: drop_fast_start_turning_idle
+drop_fast_start_turning_idle = addState(fall+turn, "drop_fast_start_turning_idle");
+drop_fast_start_turning_idle:restart(true);
+drop_fast_start_turning_idle:blendTime(0);
+drop_fast_start_turning_idle:loop(false);
+drop_fast_start_turning_idle:add("drop_fast_start_turning_idle.anm");
+--}
+
+--{ Animation: land_idle
+land_idle = addState(stand, "land_idle");
+land_idle:from(jump_idle);
+land_idle:from(drop_start_idle);
+land_idle:from(drop_idle);
+land_idle:from(jump_fast_idle);
+land_idle:from(drop_fast_start_idle);
+land_idle:from(drop_fast_idle);
+land_idle:from(drop_fast_start_turning_idle);
+land_idle:from(drop_start_breaking_idle);
+land_idle:blendTime(200);
+land_idle:loop(false);
+land_idle:add(slope(-1.0), "land_idle_downhill.anm");
+land_idle:add(slope(0.0), "land_idle.anm");
+land_idle:add(slope(1.0), "land_idle_uphill.anm");
+--}
+
+--{ Animation: land_running_idle
+land_running_idle = addState(run, "land_running_idle");
+land_running_idle:from(jump_idle);
+land_running_idle:from(drop_start_idle);
+land_running_idle:from(drop_idle);
+land_running_idle:from(jump_fast_idle);
+land_running_idle:from(drop_fast_start_idle);
+land_running_idle:from(drop_fast_idle);
+land_running_idle:from(drop_fast_start_turning_idle);
+land_running_idle:from(drop_start_breaking_idle);
+land_running_idle:blendTime(200);
+land_running_idle:loop(false);
+land_running_idle:add(slope(-1.0), "land_running_idle_downhill.anm");
+land_running_idle:add(slope(0.0), "land_running_idle.anm");
+land_running_idle:add(slope(1.0), "land_running_idle_uphill.anm");
+--}
+
+--{ Animation: run_turning_idle
+run_turning_idle = addState(run+turn, "run_turning_idle");
+run_turning_idle:from(run_turning_idle);
+run_turning_idle:from(run_idle);
+run_turning_idle:from(land_running_idle);
+run_turning_idle:from(run_start_turning_idle);
+run_turning_idle:from(run_start_idle);
+run_turning_idle:restart(true);
+run_turning_idle:blendTime(0);
+run_turning_idle:loop(false);
+run_turning_idle:add(slope(-1.0), "run_start_turning_idle_downhill.anm");
+run_turning_idle:add(slope(0.0), "run_start_turning_idle.anm");
+run_turning_idle:add(slope(1.0), "run_start_turning_idle_uphill.anm");
+--}
+
+stand_idle:from(land_idle);
+run_idle:from(land_running_idle);
+jump_fast_idle:from(land_running_idle);
+
+--}
+
+--{ Animation_set: Open chest
+--{ Animation: chest
+chest = addState(open_chest, "chest");
+chest:blendTime(200);
+chest:loop(false);
+chest:add("chest.anm");
+chest:addEnterEvent("EventAnimChestEntered");
+--}
+--}
+
+--{ Animation_set: Trampoline
+--{ Animation: jump_trampoline
+jump_trampoline = addState(trampoline, "jump_trampoline");
+jump_trampoline:blendTime(200);
+jump_trampoline:loop(false);
+jump_trampoline:restart(true);
+jump_trampoline:add("trampoline.anm");
+--}
+--{ Animation: jump_trampoline2
+jump_trampoline2 = addState(trampoline, "jump_trampoline2");
+jump_trampoline2:blendTime(200);
+jump_trampoline2:loop(false);
+jump_trampoline2:restart(true);
+jump_trampoline2:add("jump_idle.anm");
+--}
+--{ Animation: jump_trampoline3
+jump_trampoline3 = addState(trampoline, "jump_trampoline3");
+jump_trampoline3:blendTime(200);
+jump_trampoline3:loop(false);
+jump_trampoline3:restart(true);
+jump_trampoline3:add("trampoline3.anm");
+--}
+--{ Animation: jump_trampoline_turning
+jump_trampoline_turning = addState(trampoline+turn, "jump_trampoline_turning");
+jump_trampoline_turning:blendTime(200);
+jump_trampoline_turning:loop(false);
+jump_trampoline_turning:restart(true);
+jump_trampoline_turning:add("drop_fast_start_turning_idle.anm");
+--}
+land_idle:from(jump_trampoline);
+land_idle:from(jump_trampoline2);
+land_idle:from(jump_trampoline3);
+land_idle:from(jump_trampoline_turning);
+
+land_running_idle:from(jump_trampoline);
+land_running_idle:from(jump_trampoline2);
+land_running_idle:from(jump_trampoline3);
+land_running_idle:from(jump_trampoline_turning);
+--}
+
+--{ Floating
+
+-----------------------------------------------------
+-- Floating
+
+floating_start = addState(stand+float, "floating_start");
+floating_start:blendTime(300);
+floating_start:add(aim(-90.0), "stand_floating_start_down.anm");
+floating_start:add(aim(0.0), "stand_floating_start.anm");
+floating_start:add(aim(90.0), "stand_floating_start_up.anm");
+
+floating = addState(stand+float, "floating");
+floating:from(floating_start)
+floating:blendTime(300);
+floating:loop(true)
+floating:add(aim(-90.0), "stand_floating_down.anm");
+floating:add(aim(0.0), "stand_floating.anm");
+floating:add(aim(90.0), "stand_floating_up.anm");
+
+floating_start_turning = addState(stand+float+turn, "floating_start_turning");
+floating_start_turning:blendTime(0);
+floating_start_turning:add(aim(-90.0), "stand_floating_start_turning_down.anm");
+floating_start_turning:add(aim(0.0), "stand_floating_start_turning.anm");
+floating_start_turning:add(aim(90.0), "stand_floating_start_turning_up.anm");
+floating:from(floating_start_turning)
+
+floating_turning = addState(stand+float+turn, "floating_turning");
+floating_turning:from(floating)
+floating_turning:from(floating_turning)
+floating_turning:from(floating_start)
+floating_turning:restart(true)
+floating_turning:blendTime(0);
+floating_turning:add(aim(-90.0), "stand_floating_turning_down.anm");
+floating_turning:add(aim(0.0), "stand_floating_turning.anm");
+floating_turning:add(aim(90.0), "stand_floating_turning_up.anm");
+floating:from(floating_turning)
+
+--}
+
+--{ Drawing
+
+--{ Animation: draw_start
+draw_start = addState(stand+conjure, "draw_start");
+draw_start:blendTime(300);
+draw_start:loop(false);
+draw_start:add(aim(0.0), "draw_start.anm");
+draw_start:add(aim(90.0), "draw_start_up.anm");
+--}
+
+--{ Animation: draw
+draw = addState(stand+conjure, "draw");
+draw:blendTime(0);
+draw:from(draw_start);
+draw:loop(true);
+draw:add(aim(0.0), "draw.anm");
+draw:add(aim(90.0), "draw_up.anm");
+--}
+
+--{ Animation: draw_start_turning_part1
+draw_start_turning_part1 = addState(stand+conjure+turn, "draw_start_turning_part1");
+draw_start_turning_part1:blendTime(0);
+draw_start_turning_part1:loop(false);
+draw_start_turning_part1:add(aim(0.0), "draw_start_turning_part1.anm");
+draw_start_turning_part1:add(aim(90.0), "draw_start_turning_part1_up.anm");
+--}
+
+--{ Animation: draw_turning_part1
+draw_turning_part1 = addState(stand+conjure+turn, "draw_turning_part1");
+draw_turning_part1:from(draw_start);
+draw_turning_part1:from(draw);
+draw_turning_part1:blendTime(0);
+draw_turning_part1:loop(false);
+draw_turning_part1:add(aim(0.0), "draw_turning_part1.anm");
+draw_turning_part1:add(aim(90.0), "draw_turning_part1_up.anm");
+--}
+
+--{ Animation: draw_start_turning_part2
+draw_start_turning_part2 = addState(stand+conjure, "draw_start_turning_part2");
+draw_start_turning_part2:blendTime(0);
+draw_start_turning_part2:from(draw_start_turning_part1);
+draw_start_turning_part2:from(draw_turning_part1);
+draw_start_turning_part2:loop(false);
+draw_start_turning_part2:add(aim(0.0), "draw_start_turning_part2.anm");
+draw_start_turning_part2:add(aim(90.0), "draw_start_turning_part2_up.anm");
+--}
+
+--{ Animation: draw2
+draw2 = addState(stand+conjure+turn, "draw2");
+draw2:from(draw_start_turning_part1);
+draw2:from(draw_turning_part1);
+draw2:blendTime(0);
+draw2:loop(false);
+draw2:add(aim(0.0), "draw.anm");
+draw2:add(aim(90.0), "draw_up.anm");
+--}
+
+draw_turning_part1:from(draw_start_turning_part2);
+draw_turning_part1:from(draw2);
+
+--} Drawing end
+
+--{ Animation_set: Look_foreground
+
+--{ Animation: stand_look_foreground
+stand_look_foreground = addState(stand+look_foreground, "stand_look_foreground");
+stand_look_foreground:blendTime(300);
+stand_look_foreground:loop(true);
+stand_look_foreground:add("captured_talk1_loop.anm");
+--}
+--{ Animation: stand_look_foregound_rotated
+stand_look_foregound_rotated = addState(stand+look_foreground+left, "stand_look_foregound_rotated");
+stand_look_foregound_rotated:blendTime(300);
+stand_look_foregound_rotated:loop(true);
+stand_look_foregound_rotated:add("captured_talk1_loop_rotated.anm");
+--}
+--}
+--{ Animation_set: Wizard talk1
+--{ Animation: stand_wizard_talk1
+stand_wizard_talk1 = addState(stand+wizard_talk, "stand_wizard_talk1");
+stand_wizard_talk1:blendTime(200);
+stand_wizard_talk1:loop(false);
+stand_wizard_talk1:add("captured_talk1.anm");
+--}
+--{ Animation: stand_wizard_talk1_rotated
+stand_wizard_talk1_rotated = addState(stand+wizard_talk+left, "stand_wizard_talk1_rotated");
+stand_wizard_talk1_rotated:blendTime(200);
+stand_wizard_talk1_rotated:loop(false);
+stand_wizard_talk1_rotated:add("captured_talk1_rotated.anm");
+--}
+--}
+--{ Animation_set: Wizard talk2
+--{ Animation: stand_wizard_talk2
+stand_wizard_talk2 = addState(stand+wizard_talk2, "stand_wizard_talk2");
+stand_wizard_talk2:blendTime(200);
+stand_wizard_talk2:loop(false);
+stand_wizard_talk2:add("captured_talk2.anm");
+--}
+--{ Animation: stand_wizard_talk2_rotated
+stand_wizard_talk2_rotated = addState(stand+wizard_talk2+left, "stand_wizard_talk2_rotated");
+stand_wizard_talk2_rotated:blendTime(200);
+stand_wizard_talk2_rotated:loop(false);
+stand_wizard_talk2_rotated:add("captured_talk2_rotated.anm");
+--}
+--}
+
+--{ Animation_set: Wind
+
+--{ Animation: run_end_wind
+run_end_wind = addState(wind+stand, "run_end_wind");
+run_end_wind:blendTime(300);
+run_end_wind:loop(false);
+run_end_wind:add(wind_direction(-2.0), "run_end_wind_back.anm");
+run_end_wind:add(wind_direction(-1.0), "run_end_wind_up.anm");
+run_end_wind:add(wind_direction(0.0), "run_end_wind_front.anm");
+run_end_wind:add(wind_direction(1.0), "run_end_wind_up.anm");
+run_end_wind:add(wind_direction(2.0), "run_end_wind_back.anm");
+--}
+
+--{ Animation: stand_wind
+stand_wind = addState(wind+stand, "stand_wind");
+stand_wind:from(run_end_wind);
+stand_wind:blendTime(0);
+stand_wind:loop(true);
+stand_wind:add(wind_direction(-2.0), "stand_wind_back.anm");
+stand_wind:add(wind_direction(-1.0), "stand_wind_up.anm");
+stand_wind:add(wind_direction(0.0), "stand_wind_front.anm");
+stand_wind:add(wind_direction(1.0), "stand_wind_up.anm");
+stand_wind:add(wind_direction(2.0), "stand_wind_back.anm");
+--}
+
+--{ Animation: run_start_wind
+run_start_wind = addState(wind+run, "run_start_wind");
+run_start_wind:blendTime(300);
+run_start_wind:loop(false);
+run_start_wind:add(wind_direction(-2.0), "run_start_wind_back.anm");
+run_start_wind:add(wind_direction(-1.0), "run_start_wind_up.anm");
+run_start_wind:add(wind_direction(0.0), "run_start_wind_front.anm");
+run_start_wind:add(wind_direction(1.0), "run_start_wind_up.anm");
+run_start_wind:add(wind_direction(2.0), "run_start_wind_back.anm");
+--}
+
+--{ Animation: run_start_turning_wind
+run_start_turning_wind = addState(wind+run+turn, "run_start_turning_wind");
+run_start_turning_wind:blendTime(0);
+run_start_turning_wind:loop(false);
+run_start_turning_wind:add(wind_direction(-2.0), "run_start_turning_wind_back.anm");
+run_start_turning_wind:add(wind_direction(-1.0), "run_start_turning_wind_up.anm");
+run_start_turning_wind:add(wind_direction(0.0), "run_start_turning_wind_front.anm");
+run_start_turning_wind:add(wind_direction(1.0), "run_start_turning_wind_up.anm");
+run_start_turning_wind:add(wind_direction(2.0), "run_start_turning_wind_back.anm");
+--}
+
+--{ Animation: run_wind
+run_wind = addState(wind+run, "run_wind");
+run_wind:from(run_start_wind);
+run_wind:from(run_start_turning_wind);
+run_wind:blendTime(0);
+run_wind:loop(true);
+run_wind:add(wind_direction(-2.0), "run_wind_back.anm");
+run_wind:add(wind_direction(-1.0), "run_wind_up.anm");
+run_wind:add(wind_direction(0.0), "run_wind_front.anm");
+run_wind:add(wind_direction(1.0), "run_wind_up.anm");
+run_wind:add(wind_direction(2.0), "run_wind_back.anm");
+--}
+
+--{ Animation: jump_wind
+jump_wind = addState(wind+jump, "jump_wind");
+jump_wind:blendTime(200);
+jump_wind:loop(false);
+jump_wind:add(wind_direction(-2.0), "jump_wind_back.anm");
+jump_wind:add(wind_direction(-1.0), "jump_wind_up.anm");
+jump_wind:add(wind_direction(0.0), "jump_wind_front.anm");
+jump_wind:add(wind_direction(1.0), "jump_wind_up.anm");
+jump_wind:add(wind_direction(2.0), "jump_wind_back.anm");
+--}
+
+--{ Animation: jump_fast_wind
+jump_fast_wind = addState(wind+jump, "jump_fast_wind");
+-- Hack for lacking fast jump support
+jump_fast_wind:from(run_wind);
+jump_fast_wind:from(run_start_wind);
+jump_fast_wind:from(run_start_turning_wind);
+jump_fast_wind:blendTime(200);
+jump_fast_wind:loop(false);
+jump_fast_wind:add(wind_direction(-2.0), "jump_fast_wind_back.anm");
+jump_fast_wind:add(wind_direction(-1.0), "jump_fast_wind_up.anm");
+jump_fast_wind:add(wind_direction(0.0), "jump_fast_wind_front.anm");
+jump_fast_wind:add(wind_direction(1.0), "jump_fast_wind_up.anm");
+jump_fast_wind:add(wind_direction(2.0), "jump_fast_wind_back.anm");
+--}
+
+--{ Animation: drop_start_wind
+drop_start_wind = addState(wind+fall, "drop_start_wind");
+drop_start_wind:from(jump_wind);
+drop_start_wind:blendTime(200);
+drop_start_wind:loop(false);
+drop_start_wind:add(wind_direction(-2.0), "drop_start_wind_back.anm");
+drop_start_wind:add(wind_direction(-1.0), "drop_start_wind_up.anm");
+drop_start_wind:add(wind_direction(0.0), "drop_start_wind_front.anm");
+drop_start_wind:add(wind_direction(1.0), "drop_start_wind_up.anm");
+drop_start_wind:add(wind_direction(2.0), "drop_start_wind_back.anm");
+--}
+
+--{ Animation: float_in_wind_turning
+float_in_wind_turning = addState(wind+fall+turn, "float_in_wind_turning");
+float_in_wind_turning:blendTime(0);
+float_in_wind_turning:restart(true);
+float_in_wind_turning:loop(false);
+float_in_wind_turning:add("float_in_wind_turning.anm");
+--}
+
+--{ Animation: drop_wind
+drop_wind = addState(wind+fall, "drop_wind");
+drop_wind:blendTime(500);
+drop_wind:delay(100);
+drop_wind:loop(true);
+drop_wind:add(wind_direction(-2.0), "drop_wind_back.anm");
+drop_wind:add(wind_direction(-1.0), "drop_wind_up.anm");
+drop_wind:add(wind_direction(0.0), "drop_wind_front.anm");
+drop_wind:add(wind_direction(1.0), "drop_wind_down.anm");
+drop_wind:add(wind_direction(2.0), "drop_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_start_wind
+drop_fast_start_wind = addState(wind+fall+fast, "drop_fast_start_wind");
+drop_fast_start_wind:from(jump_fast_wind);
+drop_fast_start_wind:from(jump_wind);
+drop_fast_start_wind:blendTime(200);
+drop_fast_start_wind:loop(false);
+drop_fast_start_wind:add(wind_direction(-2.0), "drop_fast_start_wind_back.anm");
+drop_fast_start_wind:add(wind_direction(-1.0), "drop_fast_start_wind_up.anm");
+drop_fast_start_wind:add(wind_direction(0.0), "drop_fast_start_wind_front.anm");
+drop_fast_start_wind:add(wind_direction(1.0), "drop_fast_start_wind_up.anm");
+drop_fast_start_wind:add(wind_direction(2.0), "drop_fast_start_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_wind
+drop_fast_wind = addState(wind+fall+fast, "drop_fast_wind");
+drop_fast_wind:blendTime(300);
+drop_fast_wind:loop(true);
+drop_fast_wind:delay(100);
+drop_fast_wind:add(wind_direction(-2.0), "drop_fast_wind_back.anm");
+drop_fast_wind:add(wind_direction(-1.0), "drop_fast_wind_up.anm");
+drop_fast_wind:add(wind_direction(0.0), "drop_fast_wind_front.anm");
+drop_fast_wind:add(wind_direction(1.0), "drop_fast_wind_up.anm");
+drop_fast_wind:add(wind_direction(2.0), "drop_fast_wind_back.anm");
+--}
+
+-- --{ Animation: drop_fast_start_turning_wind
+-- drop_fast_start_turning_wind = addState(wind+jump+turn, "drop_fast_start_turning_wind");
+-- drop_fast_start_turning_wind:blendTime(0);
+-- drop_fast_start_turning_wind:loop(false);
+-- drop_fast_start_turning_wind:add("drop_fast_start_turning_wind_front.anm");
+-- --}
+
+--{ Animation: land_wind
+land_wind = addState(wind+stand, "land_wind");
+land_wind:from(jump_wind);
+land_wind:from(drop_start_wind);
+land_wind:from(drop_wind);
+land_wind:from(jump_fast_wind);
+land_wind:from(drop_fast_start_wind);
+land_wind:from(drop_fast_wind);
+-- land_wind:from(drop_fast_start_turning_wind);
+land_wind:blendTime(200);
+land_wind:loop(false);
+land_wind:add(wind_direction(-2.0), "land_wind_back.anm");
+land_wind:add(wind_direction(-1.0), "land_wind_up.anm");
+land_wind:add(wind_direction(0.0), "land_wind_front.anm");
+land_wind:add(wind_direction(1.0), "land_wind_up.anm");
+land_wind:add(wind_direction(2.0), "land_wind_back.anm");
+--}
+
+--{ Animation: land_running_wind
+land_running_wind = addState(wind+run, "land_running_wind");
+land_running_wind:from(jump_wind);
+land_running_wind:from(drop_start_wind);
+land_running_wind:from(drop_wind);
+land_running_wind:from(jump_fast_wind);
+land_running_wind:from(drop_fast_start_wind);
+land_running_wind:from(drop_fast_wind);
+-- land_running_wind:from(drop_fast_start_turning_wind);
+land_running_wind:blendTime(200);
+land_running_wind:loop(false);
+land_running_wind:add(wind_direction(-2.0), "land_running_wind_back.anm");
+land_running_wind:add(wind_direction(-1.0), "land_running_wind_up.anm");
+land_running_wind:add(wind_direction(0.0), "land_running_wind_front.anm");
+land_running_wind:add(wind_direction(1.0), "land_running_wind_up.anm");
+land_running_wind:add(wind_direction(2.0), "land_running_wind_back.anm");
+--}
+
+--{ Animation: run_start2_wind
+run_start2_wind = addState(wind+run, "run_start2_wind");
+run_start2_wind:from(run_idle);
+run_start2_wind:from(land_running_idle);
+run_start2_wind:from(run_start_idle);
+run_start2_wind:from(run_start_turning_idle);
+run_start2_wind:blendTime(300);
+run_start2_wind:loop(false);
+run_start2_wind:add(wind_direction(-2.0), "run_start2_wind_back.anm");
+run_start2_wind:add(wind_direction(-1.0), "run_start2_wind_up.anm");
+run_start2_wind:add(wind_direction(0.0), "run_start2_wind_front.anm");
+run_start2_wind:add(wind_direction(1.0), "run_start2_wind_up.anm");
+run_start2_wind:add(wind_direction(2.0), "run_start2_wind_back.anm");
+--}
+
+--{ Animation: stand_start_wind
+stand_start_wind = addState(wind+stand, "stand_start_wind");
+stand_start_wind:from(stand_idle);
+stand_start_wind:from(run_end_idle);
+stand_start_wind:from(land_idle);
+stand_start_wind:blendTime(300);
+stand_start_wind:loop(false);
+stand_start_wind:add(wind_direction(-2.0), "stand_start_wind_back.anm");
+stand_start_wind:add(wind_direction(-1.0), "stand_start_wind_up.anm");
+stand_start_wind:add(wind_direction(0.0), "stand_start_wind_front.anm");
+stand_start_wind:add(wind_direction(1.0), "stand_start_wind_up.anm");
+stand_start_wind:add(wind_direction(2.0), "stand_start_wind_back.anm");
+--}
+
+--{ Animation: stand_end_wind
+stand_end_wind = addState(stand, "stand_end_wind");
+stand_end_wind:from(stand_wind);
+stand_end_wind:from(run_end_wind);
+stand_end_wind:from(land_wind);
+stand_end_wind:blendTime(300);
+stand_end_wind:loop(false);
+stand_end_wind:add(wind_direction(-2.0), "stand_end_wind_back.anm");
+stand_end_wind:add(wind_direction(-1.0), "stand_end_wind_up.anm");
+stand_end_wind:add(wind_direction(0.0), "stand_end_wind_front.anm");
+stand_end_wind:add(wind_direction(1.0), "stand_end_wind_up.anm");
+stand_end_wind:add(wind_direction(2.0), "stand_end_wind_back.anm");
+--}
+stand_idle:from(stand_end_wind);
+stand_wind:from(land_wind);
+stand_wind:from(stand_start_wind);
+run_wind:from(land_running_wind);
+jump_fast_wind:from(land_running_wind);
+
+--{ Animation: conjure_wind
+conjure_wind = addState(wind+conjure+stand, "conjure_wind");
+conjure_wind:blendTime(300);
+conjure_wind:loop(true);
+conjure_wind:add(aim(-90.0), "magic_wind_down.anm");
+conjure_wind:add(aim(0.0), "magic_wind_front.anm");
+conjure_wind:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float_wind
+float_wind = addState(wind+float+stand, "float_wind");
+float_wind:blendTime(300);
+float_wind:loop(true);
+float_wind:add(aim(-90.0), "magic_wind_down.anm");
+float_wind:add(aim(0.0), "magic_wind_front.anm");
+float_wind:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: conjure_wind_turning
+conjure_wind_turning = addState(wind+turn+conjure+stand, "conjure_wind_turning");
+conjure_wind_turning:blendTime(0);
+conjure_wind_turning:restart(true);
+conjure_wind_turning:loop(true);
+conjure_wind_turning:add(aim(-90.0), "magic_wind_down.anm");
+conjure_wind_turning:add(aim(0.0), "magic_wind_front.anm");
+conjure_wind_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float_wind_turning
+float_wind_turning = addState(wind+turn+float+stand, "float_wind_turning");
+float_wind_turning:blendTime(0);
+float_wind_turning:restart(true);
+float_wind_turning:loop(true);
+float_wind_turning:add(aim(-90.0), "magic_wind_down.anm");
+float_wind_turning:add(aim(0.0), "magic_wind_front.anm");
+float_wind_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+
+--{ Animation: conjure2_wind
+conjure2_wind = addState(wind+conjure, "conjure2_wind");
+conjure2_wind:blendTime(300);
+conjure2_wind:loop(true);
+conjure2_wind:add(aim(-90.0), "magic_wind_down.anm");
+conjure2_wind:add(aim(0.0), "magic_wind_front.anm");
+conjure2_wind:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float2_wind
+float2_wind = addState(wind+float, "float2_wind");
+float2_wind:blendTime(300);
+float2_wind:loop(true);
+float2_wind:add(aim(-90.0), "magic_wind_down.anm");
+float2_wind:add(aim(0.0), "magic_wind_front.anm");
+float2_wind:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: conjure2_wind_turning
+conjure2_wind_turning = addState(wind+turn+conjure, "conjure2_wind_turning");
+conjure2_wind_turning:blendTime(300);
+conjure2_wind_turning:loop(true);
+conjure2_wind_turning:restart(true);
+conjure2_wind_turning:add(aim(-90.0), "magic_wind_down.anm");
+conjure2_wind_turning:add(aim(0.0), "magic_wind_front.anm");
+conjure2_wind_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float2_wind_turning
+float2_wind_turning = addState(wind+turn+float, "float2_wind_turning");
+float2_wind_turning:blendTime(300);
+float2_wind_turning:loop(true);
+float2_wind_turning:restart(true);
+float2_wind_turning:add(aim(-90.0), "magic_wind_down.anm");
+float2_wind_turning:add(aim(0.0), "magic_wind_front.anm");
+float2_wind_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+
+--}
+--{ Animation_set: Environment_wind
+
+--{ Animation: run_end_env_wind
+run_end_env_wind = addState(env_wind+stand, "run_end_env_wind");
+run_end_env_wind:blendTime(300);
+run_end_env_wind:loop(false);
+run_end_env_wind:add(wind_direction(0.0), "run_end_wind_front.anm");
+--}
+
+--{ Animation: stand_env_wind
+stand_env_wind = addState(env_wind+stand, "stand_env_wind");
+stand_env_wind:from(run_end_env_wind);
+stand_env_wind:blendTime(0);
+stand_env_wind:loop(true);
+stand_env_wind:add(wind_direction(0.0), "stand_wind_front.anm");
+--}
+
+--{ Animation: run_start_env_wind
+run_start_env_wind = addState(env_wind+run, "run_start_env_wind");
+run_start_env_wind:blendTime(300);
+run_start_env_wind:loop(false);
+run_start_env_wind:add(wind_direction(0.0), "run_start_wind_front.anm");
+
+--}
+
+--{ Animation: run_start_turning_env_wind
+run_start_turning_env_wind = addState(env_wind+run+turn, "run_start_turning_env_wind");
+run_start_turning_env_wind:blendTime(0);
+run_start_turning_env_wind:loop(false);
+run_start_turning_env_wind:add(wind_direction(0.0), "run_start_turning_wind_front.anm");
+--}
+
+--{ Animation: run_env_wind
+run_env_wind = addState(env_wind+run, "run_env_wind");
+run_env_wind:from(run_start_env_wind);
+run_env_wind:from(run_start_turning_env_wind);
+run_env_wind:blendTime(0);
+run_env_wind:loop(true);
+run_env_wind:add(wind_direction(0.0), "run_wind_front.anm");
+--}
+
+--{ Animation: jump_env_wind
+jump_env_wind = addState(env_wind+jump, "jump_env_wind");
+jump_env_wind:blendTime(200);
+jump_env_wind:loop(false);
+jump_env_wind:add(wind_direction(0.0), "jump_wind_front.anm");
+--}
+
+--{ Animation: jump_fast_env_wind
+jump_fast_env_wind = addState(env_wind+jump, "jump_fast_env_wind");
+-- Hack for lacking fast jump support
+jump_fast_env_wind:from(run_env_wind);
+jump_fast_env_wind:from(run_start_env_wind);
+jump_fast_env_wind:from(run_start_turning_env_wind);
+jump_fast_env_wind:blendTime(200);
+jump_fast_env_wind:loop(false);
+jump_fast_env_wind:add(wind_direction(0.0), "jump_fast_wind_front.anm");
+--}
+
+--{ Animation: drop_start_env_wind
+drop_start_env_wind = addState(env_wind+fall, "drop_start_env_wind");
+drop_start_env_wind:from(jump_env_wind);
+drop_start_env_wind:blendTime(200);
+drop_start_env_wind:loop(false);
+drop_start_env_wind:add(wind_direction(0.0), "drop_start_wind_front.anm");
+--}
+
+--{ Animation: drop_env_wind
+drop_env_wind = addState(env_wind+fall, "drop_env_wind");
+drop_env_wind:blendTime(300);
+drop_env_wind:delay(100);
+drop_env_wind:loop(true);
+drop_env_wind:add("drop_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_start_env_wind
+drop_fast_start_env_wind = addState(env_wind+fall+fast, "drop_fast_start_env_wind");
+drop_fast_start_env_wind:from(jump_fast_env_wind);
+drop_fast_start_env_wind:from(jump_env_wind);
+drop_fast_start_env_wind:blendTime(200);
+drop_fast_start_env_wind:loop(false);
+drop_fast_start_env_wind:add("drop_fast_start_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_env_wind
+drop_fast_env_wind = addState(env_wind+fall+fast, "drop_fast_env_wind");
+drop_fast_env_wind:blendTime(300);
+drop_fast_env_wind:loop(true);
+drop_fast_env_wind:delay(100);
+drop_fast_env_wind:add("drop_fast_wind_front.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_env_wind
+-- drop_fast_start_turning_env_wind = addState(env_wind+jump+turn, "drop_fast_start_turning_env_wind");
+-- drop_fast_start_turning_env_wind:blendTime(0);
+-- drop_fast_start_turning_env_wind:loop(false);
+-- drop_fast_start_turning_env_wind:add("drop_fast_start_turning_env_wind_front.anm");
+-- --}
+
+--{ Animation: land_env_wind
+land_env_wind = addState(env_wind+stand, "land_env_wind");
+land_env_wind:from(jump_env_wind);
+land_env_wind:from(drop_start_env_wind);
+land_env_wind:from(drop_env_wind);
+land_env_wind:from(jump_fast_env_wind);
+land_env_wind:from(drop_fast_start_env_wind);
+land_env_wind:from(drop_fast_env_wind);
+-- land_env_wind:from(drop_fast_start_turning_env_wind);
+land_env_wind:blendTime(200);
+land_env_wind:loop(false);
+land_env_wind:add("land_wind_front.anm");
+--}
+
+--{ Animation: land_running_env_wind
+land_running_env_wind = addState(env_wind+run, "land_running_env_wind");
+land_running_env_wind:from(jump_env_wind);
+land_running_env_wind:from(drop_start_env_wind);
+land_running_env_wind:from(drop_env_wind);
+land_running_env_wind:from(jump_fast_env_wind);
+land_running_env_wind:from(drop_fast_start_env_wind);
+land_running_env_wind:from(drop_fast_env_wind);
+-- land_running_env_wind:from(drop_fast_start_turning_env_wind);
+land_running_env_wind:blendTime(200);
+land_running_env_wind:loop(false);
+land_running_env_wind:add("land_running_wind_front.anm");
+--}
+
+--{ Animation: run_start2_env_wind
+run_start2_env_wind = addState(env_wind+run, "run_start2_env_wind");
+run_start2_env_wind:from(run_idle);
+run_start2_env_wind:from(land_running_idle);
+run_start2_env_wind:from(run_start_idle);
+run_start2_env_wind:from(run_start_turning_idle);
+run_start2_env_wind:blendTime(300);
+run_start2_env_wind:loop(false);
+run_start2_env_wind:add("run_start2_wind_front.anm");
+
+--}
+
+--{ Animation: stand_start_env_wind
+stand_start_env_wind = addState(env_wind+stand, "stand_start_env_wind");
+stand_start_env_wind:from(stand_idle);
+stand_start_env_wind:from(run_end_idle);
+stand_start_env_wind:from(land_idle);
+stand_start_env_wind:blendTime(300);
+stand_start_env_wind:loop(false);
+stand_start_env_wind:add("stand_start_wind_front.anm");
+
+--}
+
+--{ Animation: stand_end_env_wind
+stand_end_env_wind = addState(stand, "stand_end_env_wind");
+stand_end_env_wind:from(stand_env_wind);
+stand_end_env_wind:from(run_end_env_wind);
+stand_end_env_wind:from(land_env_wind);
+stand_end_env_wind:blendTime(300);
+stand_end_env_wind:loop(false);
+stand_end_env_wind:add("stand_end_wind_front.anm");
+--}
+
+stand_env_wind:from(land_env_wind);
+stand_env_wind:from(stand_start_env_wind);
+run_env_wind:from(land_running_env_wind);
+jump_fast_env_wind:from(land_running_env_wind);
+
+--{ Animation: conjure_env_wind
+conjure_env_wind = addState(env_wind+conjure+stand, "conjure_env_wind");
+conjure_env_wind:blendTime(300);
+conjure_env_wind:loop(true);
+conjure_env_wind:add(aim(-90.0), "magic_wind_down.anm");
+conjure_env_wind:add(aim(0.0), "magic_wind_front.anm");
+conjure_env_wind:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float_env_wind
+float_env_wind = addState(env_wind+float+stand, "float_env_wind");
+float_env_wind:blendTime(300);
+float_env_wind:loop(true);
+float_env_wind:add(aim(-90.0), "magic_wind_down.anm");
+float_env_wind:add(aim(0.0), "magic_wind_front.anm");
+float_env_wind:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: conjure_env_wind_turning
+conjure_env_wind_turning = addState(env_wind+turn+conjure+stand, "conjure_env_wind_turning");
+conjure_env_wind_turning:blendTime(0);
+conjure_env_wind_turning:loop(true);
+conjure_env_wind_turning:restart(true);
+conjure_env_wind_turning:add(aim(-90.0), "magic_wind_down.anm");
+conjure_env_wind_turning:add(aim(0.0), "magic_wind_front.anm");
+conjure_env_wind_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float_env_wind_turning
+float_env_wind_turning = addState(env_wind+turn+float+stand, "float_env_wind_turning");
+float_env_wind_turning:blendTime(0);
+float_env_wind_turning:loop(true);
+float_env_wind_turning:restart(true);
+float_env_wind_turning:add(aim(-90.0), "magic_wind_down.anm");
+float_env_wind_turning:add(aim(0.0), "magic_wind_front.anm");
+float_env_wind_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation_set: Left
+
+--{ Animation: run_end_env_wind_left
+run_end_env_wind_left = addState(env_wind+left+stand, "run_end_env_wind_left");
+run_end_env_wind_left:blendTime(300);
+run_end_env_wind_left:loop(false);
+run_end_env_wind_left:add(wind_direction(0.0), "run_end_wind_back.anm");
+--}
+
+--{ Animation: stand_env_wind_left
+stand_env_wind_left = addState(env_wind+left+stand, "stand_env_wind_left");
+stand_env_wind_left:from(run_end_env_wind_left);
+stand_env_wind_left:blendTime(0);
+stand_env_wind_left:loop(true);
+stand_env_wind_left:add(wind_direction(0.0), "stand_wind_back.anm");
+--}
+
+--{ Animation: run_start_env_wind_left
+run_start_env_wind_left = addState(env_wind+left+run, "run_start_env_wind_left");
+run_start_env_wind_left:blendTime(300);
+run_start_env_wind_left:loop(false);
+run_start_env_wind_left:add(wind_direction(0.0), "run_start_wind_back.anm");
+
+--}
+
+--{ Animation: run_start_turning_env_wind_left
+run_start_turning_env_wind_left = addState(env_wind+left+run+turn, "run_start_turning_env_wind_left");
+run_start_turning_env_wind_left:blendTime(0);
+run_start_turning_env_wind_left:loop(false);
+run_start_turning_env_wind_left:add(wind_direction(0.0), "run_start_turning_wind_back.anm");
+--}
+
+--{ Animation: run_env_wind_left
+run_env_wind_left = addState(env_wind+left+run, "run_env_wind_left");
+run_env_wind_left:from(run_start_env_wind_left);
+run_env_wind_left:from(run_start_turning_env_wind_left);
+run_env_wind_left:blendTime(0);
+run_env_wind_left:loop(true);
+run_env_wind_left:add(wind_direction(0.0), "run_wind_back.anm");
+--}
+
+--{ Animation: jump_env_wind_left
+jump_env_wind_left = addState(env_wind+left+jump, "jump_env_wind_left");
+jump_env_wind_left:blendTime(200);
+jump_env_wind_left:loop(false);
+jump_env_wind_left:add(wind_direction(0.0), "jump_wind_back.anm");
+--}
+
+--{ Animation: jump_fast_env_wind_left
+jump_fast_env_wind_left = addState(env_wind+left+jump, "jump_fast_env_wind_left");
+-- Hack for lacking fast jump support
+jump_fast_env_wind_left:from(run_env_wind_left);
+jump_fast_env_wind_left:from(run_start_env_wind_left);
+jump_fast_env_wind_left:from(run_start_turning_env_wind_left);
+jump_fast_env_wind_left:blendTime(200);
+jump_fast_env_wind_left:loop(false);
+jump_fast_env_wind_left:add(wind_direction(0.0), "jump_fast_wind_back.anm");
+--}
+
+--{ Animation: drop_start_env_wind_left
+drop_start_env_wind_left = addState(env_wind+left+fall, "drop_start_env_wind_left");
+drop_start_env_wind_left:from(jump_env_wind_left);
+drop_start_env_wind_left:blendTime(200);
+drop_start_env_wind_left:loop(false);
+drop_start_env_wind_left:add(wind_direction(0.0), "drop_start_wind_back.anm");
+--}
+
+--{ Animation: drop_env_wind_left
+drop_env_wind_left = addState(env_wind+left+fall, "drop_env_wind_left");
+drop_env_wind_left:blendTime(300);
+drop_env_wind_left:delay(100);
+drop_env_wind_left:loop(true);
+drop_env_wind_left:add("drop_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_start_env_wind_left
+drop_fast_start_env_wind_left = addState(env_wind+left+fall+fast, "drop_fast_start_env_wind_left");
+drop_fast_start_env_wind_left:from(jump_fast_env_wind_left);
+drop_fast_start_env_wind_left:from(jump_env_wind_left);
+drop_fast_start_env_wind_left:blendTime(200);
+drop_fast_start_env_wind_left:loop(false);
+drop_fast_start_env_wind_left:add("drop_fast_start_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_env_wind_left
+drop_fast_env_wind_left = addState(env_wind+left+fall+fast, "drop_fast_env_wind_left");
+drop_fast_env_wind_left:blendTime(300);
+drop_fast_env_wind_left:loop(true);
+drop_fast_env_wind_left:delay(100);
+drop_fast_env_wind_left:add("drop_fast_wind_back.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_env_wind_left
+-- drop_fast_start_turning_env_wind_left = addState(env_wind+left+jump+turn, "drop_fast_start_turning_env_wind_left");
+-- drop_fast_start_turning_env_wind_left:blendTime(0);
+-- drop_fast_start_turning_env_wind_left:loop(false);
+-- drop_fast_start_turning_env_wind_left:add("drop_fast_start_turning_env_wind_left_back.anm");
+-- --}
+
+--{ Animation: land_env_wind_left
+land_env_wind_left = addState(env_wind+left+stand, "land_env_wind_left");
+land_env_wind_left:from(jump_env_wind_left);
+land_env_wind_left:from(drop_start_env_wind_left);
+land_env_wind_left:from(drop_env_wind_left);
+land_env_wind_left:from(jump_fast_env_wind_left);
+land_env_wind_left:from(drop_fast_start_env_wind_left);
+land_env_wind_left:from(drop_fast_env_wind_left);
+-- land_env_wind_left:from(drop_fast_start_turning_env_wind_left);
+land_env_wind_left:blendTime(200);
+land_env_wind_left:loop(false);
+land_env_wind_left:add("land_wind_back.anm");
+--}
+
+--{ Animation: land_running_env_wind_left
+land_running_env_wind_left = addState(env_wind+left+run, "land_running_env_wind_left");
+land_running_env_wind_left:from(jump_env_wind_left);
+land_running_env_wind_left:from(drop_start_env_wind_left);
+land_running_env_wind_left:from(drop_env_wind_left);
+land_running_env_wind_left:from(jump_fast_env_wind_left);
+land_running_env_wind_left:from(drop_fast_start_env_wind_left);
+land_running_env_wind_left:from(drop_fast_env_wind_left);
+-- land_running_env_wind_left:from(drop_fast_start_turning_env_wind_left);
+land_running_env_wind_left:blendTime(200);
+land_running_env_wind_left:loop(false);
+land_running_env_wind_left:add("land_running_wind_back.anm");
+--}
+
+--{ Animation: run_start2_env_wind_left
+run_start2_env_wind_left = addState(env_wind+left+run, "run_start2_env_wind_left");
+run_start2_env_wind_left:from(run_idle);
+run_start2_env_wind_left:from(land_running_idle);
+run_start2_env_wind_left:from(run_start_idle);
+run_start2_env_wind_left:from(run_start_turning_idle);
+run_start2_env_wind_left:blendTime(300);
+run_start2_env_wind_left:loop(false);
+run_start2_env_wind_left:add("run_start2_wind_back.anm");
+
+--}
+
+--{ Animation: stand_start_env_wind_left
+stand_start_env_wind_left = addState(env_wind+left+stand, "stand_start_env_wind_left");
+stand_start_env_wind_left:from(stand_idle);
+stand_start_env_wind_left:from(run_end_idle);
+stand_start_env_wind_left:from(land_idle);
+stand_start_env_wind_left:blendTime(300);
+stand_start_env_wind_left:loop(false);
+stand_start_env_wind_left:add("stand_start_wind_back.anm");
+
+--}
+
+--{ Animation: stand_end_env_wind_left
+stand_end_env_wind_left = addState(stand, "stand_end_env_wind_left");
+stand_end_env_wind_left:from(stand_env_wind_left);
+stand_end_env_wind_left:from(run_end_env_wind_left);
+stand_end_env_wind_left:from(land_env_wind_left);
+stand_end_env_wind_left:blendTime(300);
+stand_end_env_wind_left:loop(false);
+stand_end_env_wind_left:add("stand_end_wind_back.anm");
+--}
+
+stand_env_wind_left:from(land_env_wind_left);
+stand_env_wind_left:from(stand_start_env_wind_left);
+run_env_wind_left:from(land_running_env_wind_left);
+jump_fast_env_wind_left:from(land_running_env_wind_left);
+
+--}
+--}
+--{ Animation_set: Environment_wind_left
+
+--{ Animation: run_end_env_wind2
+run_end_env_wind2 = addState(env_wind2+stand, "run_end_env_wind2");
+run_end_env_wind2:blendTime(300);
+run_end_env_wind2:loop(false);
+run_end_env_wind2:add(wind_direction(0.0), "run_end_wind_front.anm");
+--}
+
+--{ Animation: stand_env_wind2
+stand_env_wind2 = addState(env_wind2+stand, "stand_env_wind2");
+stand_env_wind2:from(run_end_env_wind2);
+stand_env_wind2:blendTime(0);
+stand_env_wind2:loop(true);
+stand_env_wind2:add(wind_direction(0.0), "stand_wind_front.anm");
+--}
+
+--{ Animation: run_start_env_wind2
+run_start_env_wind2 = addState(env_wind2+run, "run_start_env_wind2");
+run_start_env_wind2:blendTime(300);
+run_start_env_wind2:loop(false);
+run_start_env_wind2:add(wind_direction(0.0), "run_start_wind_front.anm");
+
+--}
+
+--{ Animation: run_start_turning_env_wind2
+run_start_turning_env_wind2 = addState(env_wind2+run+turn, "run_start_turning_env_wind2");
+run_start_turning_env_wind2:blendTime(0);
+run_start_turning_env_wind2:loop(false);
+run_start_turning_env_wind2:add(wind_direction(0.0), "run_start_turning_wind_front.anm");
+--}
+
+--{ Animation: run_env_wind2
+run_env_wind2 = addState(env_wind2+run, "run_env_wind2");
+run_env_wind2:from(run_start_env_wind2);
+run_env_wind2:from(run_start_turning_env_wind2);
+run_env_wind2:blendTime(0);
+run_env_wind2:loop(true);
+run_env_wind2:add(wind_direction(0.0), "run_wind_front.anm");
+--}
+
+--{ Animation: jump_env_wind2
+jump_env_wind2 = addState(env_wind2+jump, "jump_env_wind2");
+jump_env_wind2:blendTime(200);
+jump_env_wind2:loop(false);
+jump_env_wind2:add(wind_direction(0.0), "jump_wind_front.anm");
+--}
+
+--{ Animation: jump_fast_env_wind2
+jump_fast_env_wind2 = addState(env_wind2+jump, "jump_fast_env_wind2");
+-- Hack for lacking fast jump support
+jump_fast_env_wind2:from(run_env_wind2);
+jump_fast_env_wind2:from(run_start_env_wind2);
+jump_fast_env_wind2:from(run_start_turning_env_wind2);
+jump_fast_env_wind2:blendTime(200);
+jump_fast_env_wind2:loop(false);
+jump_fast_env_wind2:add(wind_direction(0.0), "jump_fast_wind_front.anm");
+--}
+
+--{ Animation: drop_start_env_wind2
+drop_start_env_wind2 = addState(env_wind2+fall, "drop_start_env_wind2");
+drop_start_env_wind2:from(jump_env_wind2);
+drop_start_env_wind2:blendTime(200);
+drop_start_env_wind2:loop(false);
+drop_start_env_wind2:add(wind_direction(0.0), "drop_start_wind_front.anm");
+--}
+
+--{ Animation: drop_env_wind2
+drop_env_wind2 = addState(env_wind2+fall, "drop_env_wind2");
+drop_env_wind2:blendTime(300);
+drop_env_wind2:delay(100);
+drop_env_wind2:loop(true);
+drop_env_wind2:add("drop_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_start_env_wind2
+drop_fast_start_env_wind2 = addState(env_wind2+fall+fast, "drop_fast_start_env_wind2");
+drop_fast_start_env_wind2:from(jump_fast_env_wind2);
+drop_fast_start_env_wind2:from(jump_env_wind2);
+drop_fast_start_env_wind2:blendTime(200);
+drop_fast_start_env_wind2:loop(false);
+drop_fast_start_env_wind2:add("drop_fast_start_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_env_wind2
+drop_fast_env_wind2 = addState(env_wind2+fall+fast, "drop_fast_env_wind2");
+drop_fast_env_wind2:blendTime(300);
+drop_fast_env_wind2:loop(true);
+drop_fast_env_wind2:delay(100);
+drop_fast_env_wind2:add("drop_fast_wind_front.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_env_wind2
+-- drop_fast_start_turning_env_wind2 = addState(env_wind2+jump+turn, "drop_fast_start_turning_env_wind2");
+-- drop_fast_start_turning_env_wind2:blendTime(0);
+-- drop_fast_start_turning_env_wind2:loop(false);
+-- drop_fast_start_turning_env_wind2:add("drop_fast_start_turning_env_wind2_front.anm");
+-- --}
+
+--{ Animation: land_env_wind2
+land_env_wind2 = addState(env_wind2+stand, "land_env_wind2");
+land_env_wind2:from(jump_env_wind2);
+land_env_wind2:from(drop_start_env_wind2);
+land_env_wind2:from(drop_env_wind2);
+land_env_wind2:from(jump_fast_env_wind2);
+land_env_wind2:from(drop_fast_start_env_wind2);
+land_env_wind2:from(drop_fast_env_wind2);
+-- land_env_wind2:from(drop_fast_start_turning_env_wind2);
+land_env_wind2:blendTime(200);
+land_env_wind2:loop(false);
+land_env_wind2:add("land_wind_front.anm");
+--}
+
+--{ Animation: land_running_env_wind2
+land_running_env_wind2 = addState(env_wind2+run, "land_running_env_wind2");
+land_running_env_wind2:from(jump_env_wind2);
+land_running_env_wind2:from(drop_start_env_wind2);
+land_running_env_wind2:from(drop_env_wind2);
+land_running_env_wind2:from(jump_fast_env_wind2);
+land_running_env_wind2:from(drop_fast_start_env_wind2);
+land_running_env_wind2:from(drop_fast_env_wind2);
+-- land_running_env_wind2:from(drop_fast_start_turning_env_wind2);
+land_running_env_wind2:blendTime(200);
+land_running_env_wind2:loop(false);
+land_running_env_wind2:add("land_running_wind_front.anm");
+--}
+
+--{ Animation: run_start2_env_wind2
+run_start2_env_wind2 = addState(env_wind2+run, "run_start2_env_wind2");
+run_start2_env_wind2:from(run_idle);
+run_start2_env_wind2:from(land_running_idle);
+run_start2_env_wind2:from(run_start_idle);
+run_start2_env_wind2:from(run_start_turning_idle);
+run_start2_env_wind2:blendTime(300);
+run_start2_env_wind2:loop(false);
+run_start2_env_wind2:add("run_start2_wind_front.anm");
+
+--}
+
+--{ Animation: stand_start_env_wind2
+stand_start_env_wind2 = addState(env_wind2+stand, "stand_start_env_wind2");
+stand_start_env_wind2:from(stand_idle);
+stand_start_env_wind2:from(run_end_idle);
+stand_start_env_wind2:from(land_idle);
+stand_start_env_wind2:blendTime(300);
+stand_start_env_wind2:loop(false);
+stand_start_env_wind2:add("stand_start_wind_front.anm");
+
+--}
+
+--{ Animation: stand_end_env_wind2
+stand_end_env_wind2 = addState(stand, "stand_end_env_wind2");
+stand_end_env_wind2:from(stand_env_wind2);
+stand_end_env_wind2:from(run_end_env_wind2);
+stand_end_env_wind2:from(land_env_wind2);
+stand_end_env_wind2:blendTime(300);
+stand_end_env_wind2:loop(false);
+stand_end_env_wind2:add("stand_end_wind_front.anm");
+--}
+
+stand_env_wind2:from(land_env_wind2);
+stand_env_wind2:from(stand_start_env_wind2);
+run_env_wind2:from(land_running_env_wind2);
+jump_fast_env_wind2:from(land_running_env_wind2);
+
+--{ Animation: conjure_env_wind2
+conjure_env_wind2 = addState(env_wind2+conjure+stand, "conjure_env_wind2");
+conjure_env_wind2:blendTime(300);
+conjure_env_wind2:loop(true);
+conjure_env_wind2:add(aim(-90.0), "magic_wind_down.anm");
+conjure_env_wind2:add(aim(0.0), "magic_wind_front.anm");
+conjure_env_wind2:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float_env_wind2
+float_env_wind2 = addState(env_wind2+float+stand, "float_env_wind2");
+float_env_wind2:blendTime(300);
+float_env_wind2:loop(true);
+float_env_wind2:add(aim(-90.0), "magic_wind_down.anm");
+float_env_wind2:add(aim(0.0), "magic_wind_front.anm");
+float_env_wind2:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: conjure_env_wind2_turning
+conjure_env_wind2_turning = addState(env_wind2+turn+conjure+stand, "conjure_env_wind2_turning");
+conjure_env_wind2_turning:blendTime(300);
+conjure_env_wind2_turning:loop(true);
+conjure_env_wind2_turning:restart(true);
+conjure_env_wind2_turning:add(aim(-90.0), "magic_wind_down.anm");
+conjure_env_wind2_turning:add(aim(0.0), "magic_wind_front.anm");
+conjure_env_wind2_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation: float_env_wind2_turning
+float_env_wind2_turning = addState(env_wind2+turn+float+stand, "float_env_wind2_turning");
+float_env_wind2_turning:blendTime(300);
+float_env_wind2_turning:loop(true);
+float_env_wind2_turning:restart(true);
+float_env_wind2_turning:add(aim(-90.0), "magic_wind_down.anm");
+float_env_wind2_turning:add(aim(0.0), "magic_wind_front.anm");
+float_env_wind2_turning:add(aim(90.0), "magic_wind_up.anm");
+--}
+--{ Animation_set: right
+
+--{ Animation: run_end_env_wind2_right
+run_end_env_wind2_right = addState(env_wind2+right+stand, "run_end_env_wind2_right");
+run_end_env_wind2_right:blendTime(300);
+run_end_env_wind2_right:loop(false);
+run_end_env_wind2_right:add(wind_direction(0.0), "run_end_wind_back.anm");
+--}
+
+--{ Animation: stand_env_wind2_right
+stand_env_wind2_right = addState(env_wind2+right+stand, "stand_env_wind2_right");
+stand_env_wind2_right:from(run_end_env_wind2_right);
+stand_env_wind2_right:blendTime(0);
+stand_env_wind2_right:loop(true);
+stand_env_wind2_right:add(wind_direction(0.0), "stand_wind_back.anm");
+--}
+
+--{ Animation: run_start_env_wind2_right
+run_start_env_wind2_right = addState(env_wind2+right+run, "run_start_env_wind2_right");
+run_start_env_wind2_right:blendTime(300);
+run_start_env_wind2_right:loop(false);
+run_start_env_wind2_right:add(wind_direction(0.0), "run_start_wind_back.anm");
+
+--}
+
+--{ Animation: run_start_turning_env_wind2_right
+run_start_turning_env_wind2_right = addState(env_wind2+right+run+turn, "run_start_turning_env_wind2_right");
+run_start_turning_env_wind2_right:blendTime(0);
+run_start_turning_env_wind2_right:loop(false);
+run_start_turning_env_wind2_right:add(wind_direction(0.0), "run_start_turning_wind_back.anm");
+--}
+
+--{ Animation: run_env_wind2_right
+run_env_wind2_right = addState(env_wind2+right+run, "run_env_wind2_right");
+run_env_wind2_right:from(run_start_env_wind2_right);
+run_env_wind2_right:from(run_start_turning_env_wind2_right);
+run_env_wind2_right:blendTime(0);
+run_env_wind2_right:loop(true);
+run_env_wind2_right:add(wind_direction(0.0), "run_wind_back.anm");
+--}
+
+--{ Animation: jump_env_wind2_right
+jump_env_wind2_right = addState(env_wind2+right+jump, "jump_env_wind2_right");
+jump_env_wind2_right:blendTime(200);
+jump_env_wind2_right:loop(false);
+jump_env_wind2_right:add(wind_direction(0.0), "jump_wind_back.anm");
+--}
+
+--{ Animation: jump_fast_env_wind2_right
+jump_fast_env_wind2_right = addState(env_wind2+right+jump, "jump_fast_env_wind2_right");
+-- Hack for lacking fast jump support
+jump_fast_env_wind2_right:from(run_env_wind2_right);
+jump_fast_env_wind2_right:from(run_start_env_wind2_right);
+jump_fast_env_wind2_right:from(run_start_turning_env_wind2_right);
+jump_fast_env_wind2_right:blendTime(200);
+jump_fast_env_wind2_right:loop(false);
+jump_fast_env_wind2_right:add(wind_direction(0.0), "jump_fast_wind_back.anm");
+--}
+
+--{ Animation: drop_start_env_wind2_right
+drop_start_env_wind2_right = addState(env_wind2+right+fall, "drop_start_env_wind2_right");
+drop_start_env_wind2_right:from(jump_env_wind2_right);
+drop_start_env_wind2_right:blendTime(200);
+drop_start_env_wind2_right:loop(false);
+drop_start_env_wind2_right:add(wind_direction(0.0), "drop_start_wind_back.anm");
+--}
+
+--{ Animation: drop_env_wind2_right
+drop_env_wind2_right = addState(env_wind2+right+fall, "drop_env_wind2_right");
+drop_env_wind2_right:blendTime(300);
+drop_env_wind2_right:delay(100);
+drop_env_wind2_right:loop(true);
+drop_env_wind2_right:add("drop_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_start_env_wind2_right
+drop_fast_start_env_wind2_right = addState(env_wind2+right+fall+fast, "drop_fast_start_env_wind2_right");
+drop_fast_start_env_wind2_right:from(jump_fast_env_wind2_right);
+drop_fast_start_env_wind2_right:from(jump_env_wind2_right);
+drop_fast_start_env_wind2_right:blendTime(200);
+drop_fast_start_env_wind2_right:loop(false);
+drop_fast_start_env_wind2_right:add("drop_fast_start_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_env_wind2_right
+drop_fast_env_wind2_right = addState(env_wind2+right+fall+fast, "drop_fast_env_wind2_right");
+drop_fast_env_wind2_right:blendTime(300);
+drop_fast_env_wind2_right:loop(true);
+drop_fast_env_wind2_right:delay(100);
+drop_fast_env_wind2_right:add("drop_fast_wind_back.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_env_wind2_right
+-- drop_fast_start_turning_env_wind2_right = addState(env_wind2+right+jump+turn, "drop_fast_start_turning_env_wind2_right");
+-- drop_fast_start_turning_env_wind2_right:blendTime(0);
+-- drop_fast_start_turning_env_wind2_right:loop(false);
+-- drop_fast_start_turning_env_wind2_right:add("drop_fast_start_turning_env_wind2_right_back.anm");
+-- --}
+
+--{ Animation: land_env_wind2_right
+land_env_wind2_right = addState(env_wind2+right+stand, "land_env_wind2_right");
+land_env_wind2_right:from(jump_env_wind2_right);
+land_env_wind2_right:from(drop_start_env_wind2_right);
+land_env_wind2_right:from(drop_env_wind2_right);
+land_env_wind2_right:from(jump_fast_env_wind2_right);
+land_env_wind2_right:from(drop_fast_start_env_wind2_right);
+land_env_wind2_right:from(drop_fast_env_wind2_right);
+-- land_env_wind2_right:from(drop_fast_start_turning_env_wind2_right);
+land_env_wind2_right:blendTime(200);
+land_env_wind2_right:loop(false);
+land_env_wind2_right:add("land_wind_back.anm");
+--}
+
+--{ Animation: land_running_env_wind2_right
+land_running_env_wind2_right = addState(env_wind2+right+run, "land_running_env_wind2_right");
+land_running_env_wind2_right:from(jump_env_wind2_right);
+land_running_env_wind2_right:from(drop_start_env_wind2_right);
+land_running_env_wind2_right:from(drop_env_wind2_right);
+land_running_env_wind2_right:from(jump_fast_env_wind2_right);
+land_running_env_wind2_right:from(drop_fast_start_env_wind2_right);
+land_running_env_wind2_right:from(drop_fast_env_wind2_right);
+-- land_running_env_wind2_right:from(drop_fast_start_turning_env_wind2_right);
+land_running_env_wind2_right:blendTime(200);
+land_running_env_wind2_right:loop(false);
+land_running_env_wind2_right:add("land_running_wind_back.anm");
+--}
+
+--{ Animation: run_start2_env_wind2_right
+run_start2_env_wind2_right = addState(env_wind2+right+run, "run_start2_env_wind2_right");
+run_start2_env_wind2_right:from(run_idle);
+run_start2_env_wind2_right:from(land_running_idle);
+run_start2_env_wind2_right:from(run_start_idle);
+run_start2_env_wind2_right:from(run_start_turning_idle);
+run_start2_env_wind2_right:blendTime(300);
+run_start2_env_wind2_right:loop(false);
+run_start2_env_wind2_right:add("run_start2_wind_back.anm");
+
+--}
+
+--{ Animation: stand_start_env_wind2_right
+stand_start_env_wind2_right = addState(env_wind2+right+stand, "stand_start_env_wind2_right");
+stand_start_env_wind2_right:from(stand_idle);
+stand_start_env_wind2_right:from(run_end_idle);
+stand_start_env_wind2_right:from(land_idle);
+stand_start_env_wind2_right:blendTime(300);
+stand_start_env_wind2_right:loop(false);
+stand_start_env_wind2_right:add("stand_start_wind_back.anm");
+
+--}
+
+--{ Animation: stand_end_env_wind2_right
+stand_end_env_wind2_right = addState(stand, "stand_end_env_wind2_right");
+stand_end_env_wind2_right:from(stand_env_wind2_right);
+stand_end_env_wind2_right:from(run_end_env_wind2_right);
+stand_end_env_wind2_right:from(land_env_wind2_right);
+stand_end_env_wind2_right:blendTime(300);
+stand_end_env_wind2_right:loop(false);
+stand_end_env_wind2_right:add("stand_end_wind_back.anm");
+--}
+
+stand_env_wind2_right:from(land_env_wind2_right);
+stand_env_wind2_right:from(stand_start_env_wind2_right);
+run_env_wind2_right:from(land_running_env_wind2_right);
+jump_fast_env_wind2_right:from(land_running_env_wind2_right);
+
+--}
+--}
+-- Env wind left:end
+--{ Animation_set: Slippery
+
+--{ Animation: stand_start_slippery_fast
+stand_start_slippery_fast = addState(slide, "stand_start_slippery_fast");
+stand_start_slippery_fast:blendTime(300);
+stand_start_slippery_fast:loop(false);
+stand_start_slippery_fast:add("stand_start_slippery_fast.anm");
+--}
+
+--{ Animation: stand_slippery_fast
+ stand_slippery_fast = addState(slide, "stand_slippery_fast");
+ stand_slippery_fast:blendTime(0);
+ stand_slippery_fast:from(stand_start_slippery_fast);
+ stand_slippery_fast:loop(true);
+ stand_slippery_fast:add("stand_slippery_fast.anm");
+--}
+
+--{ Animation: drop_slippery_fast
+drop_slippery_fast = addState(fall, "drop_slippery_fast");
+drop_slippery_fast:from(stand_start_slippery_fast);
+drop_slippery_fast:blendTime(300);
+drop_slippery_fast:loop(false);
+drop_slippery_fast:add("drop_idle.anm");
+--}
+
+--{ Animation: stand_end_slippery_fast
+stand_end_slippery_fast = addState(stand, "stand_end_slippery_fast");
+stand_end_slippery_fast:from(stand_start_slippery_fast);
+stand_end_slippery_fast:from(drop_slippery_fast);
+stand_end_slippery_fast:blendTime(100);
+stand_end_slippery_fast:loop(false);
+-- stand_end_slippery_fast:add("stand_end_slippery_fast.anm");
+stand_end_slippery_fast:add(slope(-1.0), "stand_end_out_of_balance_downhill.anm");
+stand_end_slippery_fast:add(slope(0.0), "stand_end_out_of_balance.anm");
+stand_end_slippery_fast:add(slope(1.0), "stand_end_out_of_balance_uphill.anm");
+--}
+stand_idle:from(stand_end_slippery_fast);
+
+--{ Animation: run_end_slippery
+run_end_slippery = addState(slippery+stand, "run_end_slippery");
+run_end_slippery:blendTime(300);
+run_end_slippery:loop(false);
+run_end_slippery:add(slope(-1.0), "run_end_slippery_downhill.anm");
+run_end_slippery:add(slope(0.0), "run_end_slippery.anm");
+run_end_slippery:add(slope(1.0), "run_end_slippery_uphill.anm");
+--}
+
+--{ Animation: stand_slippery
+stand_slippery = addState(slippery+stand, "stand_slippery");
+stand_slippery:from(run_end_slippery);
+stand_slippery:blendTime(0);
+stand_slippery:loop(true);
+stand_slippery:add(slope(-1.0), "stand_slippery_downhill.anm");
+stand_slippery:add(slope(0.0), "stand_slippery.anm");
+stand_slippery:add(slope(1.0), "stand_slippery_uphill.anm");
+--}
+
+--{ Animation: run_start_slippery
+run_start_slippery = addState(slippery+run, "run_start_slippery");
+run_start_slippery:blendTime(100);
+run_start_slippery:loop(false);
+run_start_slippery:add(slope(0.0), "run_start_slippery.anm");
+run_start_slippery:add(slope(1.0), "run_start_slippery_uphill.anm");
+--}
+
+--{ Animation: run_slippery
+run_slippery = addState(slippery+run, "run_slippery");
+run_slippery:blendTime(0);
+run_slippery:from(run_start_slippery);
+run_slippery:loop(true);
+run_slippery:add(slope(0.0), "run_slippery.anm");
+run_slippery:add(slope(1.0), "run_slippery_uphill.anm");
+--}
+jump_fast_idle:from(run_slippery)
+jump_fast_idle:from(run_start_slippery)
+jump_fast_idle:from(stand_start_slippery_fast)
+jump_fast_idle:from(stand_slippery_fast)
+jump_fast_idle:from(drop_slippery_fast)
+jump_fast_idle:from(stand_slippery)
+jump_fast_idle:from(run_end_slippery)
+--}
+--{ Animation_set: Out of balance
+--{ Animation: stand_start_out_of_balance
+stand_start_out_of_balance = addState(stand+out_of_balance, "stand_start_out_of_balance");
+stand_start_out_of_balance:blendTime(300);
+stand_start_out_of_balance:loop(false);
+stand_start_out_of_balance:add(slope(-1.0), "stand_start_out_of_balance_downhill.anm");
+stand_start_out_of_balance:add(slope(0.0), "stand_start_out_of_balance.anm");
+stand_start_out_of_balance:add(slope(1.0), "stand_start_out_of_balance_uphill.anm");
+--}
+--{ Animation: stand_out_of_balance
+stand_out_of_balance = addState(stand+out_of_balance+slippery, "stand_out_of_balance");
+stand_out_of_balance:from(stand_start_out_of_balance);
+stand_out_of_balance:blendTime(000);
+stand_out_of_balance:loop(false);
+stand_out_of_balance:add(slope(-1.0), "stand_out_of_balance_downhill.anm");
+stand_out_of_balance:add(slope(0.0), "stand_out_of_balance.anm");
+stand_out_of_balance:add(slope(1.0), "stand_out_of_balance_uphill.anm");
+--}
+--{ Animation: stand2_out_of_balance
+stand2_out_of_balance = addState(stand+out_of_balance, "stand2_out_of_balance");
+stand2_out_of_balance:from(stand_start_out_of_balance);
+stand2_out_of_balance:blendTime(000);
+stand2_out_of_balance:loop(false);
+stand2_out_of_balance:add(slope(-1.0), "stand2_out_of_balance_downhill.anm");
+stand2_out_of_balance:add(slope(0.0), "stand2_out_of_balance.anm");
+stand2_out_of_balance:add(slope(1.0), "stand2_out_of_balance_uphill.anm");
+--}
+stand2_out_of_balance:from(stand_out_of_balance)
+stand_out_of_balance:from(stand2_out_of_balance)
+--{ Animation: stand_end_out_of_balance
+stand_end_out_of_balance = addState(stand, "stand_end_out_of_balance");
+stand_end_out_of_balance:from(stand_start_out_of_balance);
+stand_end_out_of_balance:from(stand_out_of_balance);
+stand_end_out_of_balance:from(stand2_out_of_balance);
+stand_end_out_of_balance:blendTime(300);
+stand_end_out_of_balance:loop(false);
+stand_end_out_of_balance:add(slope(-1.0), "stand_end_out_of_balance_downhill.anm");
+stand_end_out_of_balance:add(slope(0.0), "stand_end_out_of_balance.anm");
+stand_end_out_of_balance:add(slope(1.0), "stand_end_out_of_balance_uphill.anm");
+--}
+--{ Animation: run_start_out_of_balance
+-- run_start_out_of_balance = addState(run+out_of_balance, "run_start_out_of_balance");
+-- run_start_out_of_balance:blendTime(300);
+-- run_start_out_of_balance:loop(true);
+-- run_start_out_of_balance:add("run_start_out_of_balance.anm");
+--}
+stand_idle:from(stand_end_out_of_balance);
+--}
+
+--{ Animation_set: Out of balance2
+--{ Animation: stand_start_out_of_balance2
+stand_start_out_of_balance2 = addState(stand+out_of_balance2, "stand_start_out_of_balance2");
+stand_start_out_of_balance2:blendTime(300);
+stand_start_out_of_balance2:loop(false);
+stand_start_out_of_balance2:add(slope(-1.0), "stand_start_out_of_balance_downhill.anm");
+stand_start_out_of_balance2:add(slope(0.0), "stand_start_out_of_balance.anm");
+stand_start_out_of_balance2:add(slope(1.0), "stand_start_out_of_balance_uphill.anm");
+--}
+--{ Animation: stand_out_of_balance2
+stand_out_of_balance2 = addState(stand+out_of_balance2+slippery, "stand_out_of_balance2");
+stand_out_of_balance2:from(stand_start_out_of_balance2);
+stand_out_of_balance2:blendTime(000);
+stand_out_of_balance2:loop(false);
+stand_out_of_balance2:add(slope(-1.0), "stand_out_of_balance_downhill.anm");
+stand_out_of_balance2:add(slope(0.0), "stand_out_of_balance.anm");
+stand_out_of_balance2:add(slope(1.0), "stand_out_of_balance_uphill.anm");
+--}
+--{ Animation: stand2_out_of_balance2
+stand2_out_of_balance2 = addState(stand+out_of_balance2, "stand2_out_of_balance2");
+stand2_out_of_balance2:from(stand_start_out_of_balance2);
+stand2_out_of_balance2:blendTime(000);
+stand2_out_of_balance2:loop(false);
+stand2_out_of_balance2:add(slope(-1.0), "stand2_out_of_balance_downhill.anm");
+stand2_out_of_balance2:add(slope(0.0), "stand2_out_of_balance.anm");
+stand2_out_of_balance2:add(slope(1.0), "stand2_out_of_balance_uphill.anm");
+--}
+stand2_out_of_balance2:from(stand_out_of_balance2)
+stand_out_of_balance2:from(stand2_out_of_balance2)
+--{ Animation: stand_end_out_of_balance2
+stand_end_out_of_balance2 = addState(stand, "stand_end_out_of_balance2");
+stand_end_out_of_balance2:from(stand_start_out_of_balance2);
+stand_end_out_of_balance2:from(stand_out_of_balance2);
+stand_end_out_of_balance2:from(stand2_out_of_balance2);
+stand_end_out_of_balance2:blendTime(300);
+stand_end_out_of_balance2:loop(false);
+stand_end_out_of_balance2:add(slope(-1.0), "stand_end_out_of_balance_downhill.anm");
+stand_end_out_of_balance2:add(slope(0.0), "stand_end_out_of_balance.anm");
+stand_end_out_of_balance2:add(slope(1.0), "stand_end_out_of_balance_uphill.anm");
+--}
+--{ Animation: run_start_out_of_balance2
+-- run_start_out_of_balance2 = addState(run+out_of_balance2, "run_start_out_of_balance2");
+-- run_start_out_of_balance2:blendTime(300);
+-- run_start_out_of_balance2:loop(true);
+-- run_start_out_of_balance2:add("run_start_out_of_balance2.anm");
+--}
+stand_idle:from(stand_end_out_of_balance2);
+--}
+
+
+--{ Animation_set: bubble
+--{ Animation: land_bubble
+land_bubble = addState(stand+bubble, "land_bubble");
+land_bubble:blendTime(200);
+land_bubble:loop(false);
+land_bubble:add(slope(-1.0), "land_bubble_downhill.anm");
+land_bubble:add(slope(0.0), "land_bubble.anm");
+land_bubble:add(slope(1.0), "land_bubble_uphill.anm");
+--}
+--{ Animation: stand_bubble
+stand_bubble = addState(stand+bubble, "stand_bubble");
+stand_bubble:from(land_bubble);
+stand_bubble:blendTime(0);
+stand_bubble:loop(true);
+stand_bubble:add(slope(-1.0), "stand_bubble_downhill.anm");
+stand_bubble:add(slope(0.0), "stand_bubble.anm");
+stand_bubble:add(slope(1.0), "stand_bubble_uphill.anm");
+--}
+--}
+--{ Animation_set: Dazzled
+ --{ Right
+--{ Animation: run_end_dazzled
+run_end_dazzled = addState(dazzled+stand, "run_end_dazzled");
+run_end_dazzled:blendTime(300);
+run_end_dazzled:loop(false);
+run_end_dazzled:add("run_end_dazzled.anm");
+--}
+
+--{ Animation: stand_dazzled
+stand_dazzled = addState(dazzled+stand, "stand_dazzled");
+stand_dazzled:from(run_end_dazzled);
+stand_dazzled:blendTime(0);
+stand_dazzled:loop(true);
+stand_dazzled:add("stand_dazzled.anm");
+--}
+--{ Animation: stand_dazzled2
+stand_dazzled2 = addState(dazzled, "stand_dazzled2");
+-- stand_dazzled2:from(run_end_dazzled2);
+stand_dazzled2:blendTime(0);
+stand_dazzled2:loop(true);
+stand_dazzled2:add("stand_dazzled.anm");
+--}
+
+
+--{ Animation: run_start_dazzled
+run_start_dazzled = addState(dazzled+run, "run_start_dazzled");
+run_start_dazzled:blendTime(300);
+run_start_dazzled:loop(false);
+run_start_dazzled:add("run_start_dazzled.anm");
+--}
+
+--{ Animation: run_start_turning_dazzled
+run_start_turning_dazzled = addState(dazzled+run+turn, "run_start_turning_dazzled");
+run_start_turning_dazzled:blendTime(0);
+run_start_turning_dazzled:loop(false);
+run_start_turning_dazzled:add("run_start_turning_dazzled.anm");
+--}
+
+--{ Animation: run_dazzled
+run_dazzled = addState(dazzled+run, "run_dazzled");
+run_dazzled:from(run_start_dazzled);
+run_dazzled:from(run_start_turning_dazzled);
+run_dazzled:blendTime(0);
+run_dazzled:loop(true);
+run_dazzled:add(slope(1.0), "run_dazzled.anm");
+--}
+
+--{ Animation: jump_dazzled
+jump_dazzled = addState(dazzled+jump, "jump_dazzled");
+jump_dazzled:blendTime(200);
+jump_dazzled:loop(false);
+jump_dazzled:add("jump_dazzled.anm");
+--}
+
+--{ Animation: jump_fast_dazzled
+jump_fast_dazzled = addState(dazzled+jump, "jump_fast_dazzled");
+-- Hack for lacking fast jump support
+jump_fast_dazzled:from(run_dazzled);
+jump_fast_dazzled:from(run_start_dazzled);
+jump_fast_dazzled:from(run_start_turning_dazzled);
+jump_fast_dazzled:blendTime(200);
+jump_fast_dazzled:loop(false);
+jump_fast_dazzled:add("jump_fast_dazzled.anm");
+--}
+
+
+
+--{ Animation: drop_start_dazzled
+drop_start_dazzled = addState(dazzled+fall, "drop_start_dazzled");
+drop_start_dazzled:from(jump_dazzled);
+drop_start_dazzled:blendTime(200);
+drop_start_dazzled:loop(false);
+drop_start_dazzled:add("drop_start_dazzled.anm");
+--}
+
+--{ Animation: drop_dazzled
+drop_dazzled = addState(dazzled+fall, "drop_dazzled");
+drop_dazzled:blendTime(300);
+drop_dazzled:delay(100);
+drop_dazzled:loop(true);
+drop_dazzled:add("drop_dazzled.anm");
+--}
+
+--{ Animation: drop_fast_start_dazzled
+drop_fast_start_dazzled = addState(dazzled+fall+fast, "drop_fast_start_dazzled");
+drop_fast_start_dazzled:from(jump_fast_dazzled);
+drop_fast_start_dazzled:from(jump_dazzled);
+drop_fast_start_dazzled:blendTime(200);
+drop_fast_start_dazzled:loop(false);
+drop_fast_start_dazzled:add("drop_fast_start_dazzled.anm");
+--}
+
+--{ Animation: drop_fast_dazzled
+drop_fast_dazzled = addState(dazzled+fall+fast, "drop_fast_dazzled");
+drop_fast_dazzled:blendTime(300);
+drop_fast_dazzled:loop(true);
+drop_fast_dazzled:delay(100);
+drop_fast_dazzled:add("drop_fast_dazzled.anm");
+--}
+
+--{ Animation: drop_fast_start_turning_dazzled
+drop_fast_start_turning_dazzled = addState(dazzled+jump+turn, "drop_fast_start_turning_dazzled");
+drop_fast_start_turning_dazzled:blendTime(0);
+drop_fast_start_turning_dazzled:loop(false);
+drop_fast_start_turning_dazzled:add("drop_fast_start_turning_dazzled.anm");
+--}
+
+--{ Animation: land_dazzled
+land_dazzled = addState(dazzled+stand, "land_dazzled");
+land_dazzled:from(jump_dazzled);
+land_dazzled:from(drop_start_dazzled);
+land_dazzled:from(drop_dazzled);
+land_dazzled:from(jump_fast_dazzled);
+land_dazzled:from(drop_fast_start_dazzled);
+land_dazzled:from(drop_fast_dazzled);
+land_dazzled:from(drop_fast_start_turning_dazzled);
+land_dazzled:blendTime(200);
+land_dazzled:loop(false);
+land_dazzled:add("land_dazzled.anm");
+--}
+
+--{ Animation: land_running_dazzled
+land_running_dazzled = addState(dazzled+run, "land_running_dazzled");
+land_running_dazzled:from(jump_dazzled);
+land_running_dazzled:from(drop_start_dazzled);
+land_running_dazzled:from(drop_dazzled);
+land_running_dazzled:from(jump_fast_dazzled);
+land_running_dazzled:from(drop_fast_start_dazzled);
+land_running_dazzled:from(drop_fast_dazzled);
+land_running_dazzled:from(drop_fast_start_turning_dazzled);
+land_running_dazzled:blendTime(200);
+land_running_dazzled:loop(false);
+land_running_dazzled:add("land_running_dazzled.anm");
+--}
+
+stand_dazzled:from(land_dazzled);
+stand_dazzled:from(cabin_jump);
+run_dazzled:from(land_running_dazzled);
+jump_fast_dazzled:from(land_running_dazzled);
+
+ --}
+ --{ Left
+--{ Animation: run_end_dazzled_left
+run_end_dazzled_left = addState(left+dazzled+stand, "run_end_dazzled_left");
+run_end_dazzled_left:blendTime(300);
+run_end_dazzled_left:loop(false);
+run_end_dazzled_left:add("run_end_dazzled_left.anm");
+--}
+
+--{ Animation: stand_dazzled_left
+stand_dazzled_left = addState(left+dazzled+stand, "stand_dazzled_left");
+stand_dazzled_left:from(run_end_dazzled_left);
+stand_dazzled_left:blendTime(0);
+stand_dazzled_left:loop(true);
+stand_dazzled_left:add("stand_dazzled_left.anm");
+--}
+
+--{ Animation: run_start_dazzled_left
+run_start_dazzled_left = addState(left+dazzled+run, "run_start_dazzled_left");
+run_start_dazzled_left:blendTime(300);
+run_start_dazzled_left:loop(false);
+run_start_dazzled_left:add("run_start_dazzled_left.anm");
+--}
+
+--{ Animation: run_start_turning_dazzled_left
+run_start_turning_dazzled_left = addState(left+dazzled+run+turn, "run_start_turning_dazzled_left");
+run_start_turning_dazzled_left:blendTime(0);
+run_start_turning_dazzled_left:loop(false);
+run_start_turning_dazzled_left:add("run_start_dazzled_left.anm");
+--}
+
+--{ Animation: run_dazzled_left
+run_dazzled_left = addState(left+dazzled+run, "run_dazzled_left");
+run_dazzled_left:from(run_start_dazzled_left);
+run_dazzled_left:from(run_start_turning_dazzled_left);
+run_dazzled_left:blendTime(0);
+run_dazzled_left:loop(true);
+run_dazzled_left:add(slope(1.0), "run_dazzled_left.anm");
+--}
+
+--{ Animation: jump_dazzled_left
+jump_dazzled_left = addState(left+dazzled+jump, "jump_dazzled_left");
+jump_dazzled_left:blendTime(200);
+jump_dazzled_left:loop(false);
+jump_dazzled_left:add("jump_fast_dazzled_left.anm");
+--}
+
+--{ Animation: jump_fast_dazzled_left
+jump_fast_dazzled_left = addState(left+dazzled+jump, "jump_fast_dazzled_left");
+-- Hack for lacking fast jump support
+jump_fast_dazzled_left:from(run_dazzled_left);
+jump_fast_dazzled_left:from(run_start_dazzled_left);
+jump_fast_dazzled_left:from(run_start_turning_dazzled_left);
+jump_fast_dazzled_left:blendTime(200);
+jump_fast_dazzled_left:loop(false);
+jump_fast_dazzled_left:add("jump_fast_dazzled_left.anm");
+--}
+
+
+
+--{ Animation: drop_start_dazzled_left
+drop_start_dazzled_left = addState(left+dazzled+fall, "drop_start_dazzled_left");
+drop_start_dazzled_left:from(jump_dazzled_left);
+drop_start_dazzled_left:blendTime(200);
+drop_start_dazzled_left:loop(false);
+drop_start_dazzled_left:add("drop_start_dazzled_left.anm");
+--}
+
+--{ Animation: drop_dazzled_left
+drop_dazzled_left = addState(left+dazzled+fall, "drop_dazzled_left");
+drop_dazzled_left:blendTime(300);
+drop_dazzled_left:delay(100);
+drop_dazzled_left:loop(true);
+drop_dazzled_left:add("drop_dazzled_left.anm");
+--}
+
+--{ Animation: drop_fast_start_dazzled_left
+drop_fast_start_dazzled_left = addState(left+dazzled+fall+fast, "drop_fast_start_dazzled_left");
+drop_fast_start_dazzled_left:from(jump_fast_dazzled_left);
+drop_fast_start_dazzled_left:from(jump_dazzled_left);
+drop_fast_start_dazzled_left:blendTime(200);
+drop_fast_start_dazzled_left:loop(false);
+drop_fast_start_dazzled_left:add("drop_fast_start_dazzled_left.anm");
+--}
+
+--{ Animation: drop_fast_dazzled_left
+drop_fast_dazzled_left = addState(left+dazzled+fall+fast, "drop_fast_dazzled_left");
+drop_fast_dazzled_left:blendTime(300);
+drop_fast_dazzled_left:loop(true);
+drop_fast_dazzled_left:delay(100);
+drop_fast_dazzled_left:add("drop_fast_dazzled_left.anm");
+--}
+
+--{ Animation: drop_fast_start_turning_dazzled_left
+drop_fast_start_turning_dazzled_left = addState(left+dazzled+jump+turn, "drop_fast_start_turning_dazzled_left");
+drop_fast_start_turning_dazzled_left:blendTime(0);
+drop_fast_start_turning_dazzled_left:loop(false);
+drop_fast_start_turning_dazzled_left:add("drop_fast_start_turning_dazzled_left.anm");
+--}
+
+--{ Animation: land_dazzled_left
+land_dazzled_left = addState(left+dazzled+stand, "land_dazzled_left");
+land_dazzled_left:from(jump_dazzled_left);
+land_dazzled_left:from(drop_start_dazzled_left);
+land_dazzled_left:from(drop_dazzled_left);
+land_dazzled_left:from(jump_fast_dazzled_left);
+land_dazzled_left:from(drop_fast_start_dazzled_left);
+land_dazzled_left:from(drop_fast_dazzled_left);
+land_dazzled_left:from(drop_fast_start_turning_dazzled_left);
+land_dazzled_left:blendTime(200);
+land_dazzled_left:loop(false);
+land_dazzled_left:add("land_dazzled_left.anm");
+--}
+
+--{ Animation: land_running_dazzled_left
+land_running_dazzled_left = addState(left+dazzled+run, "land_running_dazzled_left");
+land_running_dazzled_left:from(jump_dazzled_left);
+land_running_dazzled_left:from(drop_start_dazzled_left);
+land_running_dazzled_left:from(drop_dazzled_left);
+land_running_dazzled_left:from(jump_fast_dazzled_left);
+land_running_dazzled_left:from(drop_fast_start_dazzled_left);
+land_running_dazzled_left:from(drop_fast_dazzled_left);
+land_running_dazzled_left:from(drop_fast_start_turning_dazzled_left);
+land_running_dazzled_left:blendTime(200);
+land_running_dazzled_left:loop(false);
+land_running_dazzled_left:add("run_start_dazzled_left.anm");
+--}
+
+stand_dazzled_left:from(land_dazzled_left);
+run_dazzled_left:from(land_running_dazzled_left);
+jump_fast_dazzled_left:from(land_running_dazzled_left);
+
+ --}
+ --}
+--{ Animation_set: pushed
+--{ Animation: stand_pushed_up
+stand_pushed_up = addState(stand+pushed_up, "stand_pushed_up");
+stand_pushed_up:blendTime(100);
+stand_pushed_up:loop(false);
+stand_pushed_up:add("stand_pushed_up.anm");
+--}
+--}
+--{ Animation_set: Interested
+--{ Animation: run_end_interested
+run_end_interested = addState(interested+stand+right, "run_end_interested");
+run_end_interested:blendTime(300);
+run_end_interested:loop(false);
+run_end_interested:add(interested_angle(-2), slope(-1), "run_end_interested_downhill.anm");
+run_end_interested:add(interested_angle(-1.5), slope(-1), "run_end_interested_down_45_downhill.anm");
+run_end_interested:add(interested_angle(-0.5), slope(-1), "run_end_interested_down_45_downhill.anm");
+run_end_interested:add(interested_angle(0), slope(-1), "run_end_interested_downhill.anm");
+run_end_interested:add(interested_angle(0.5), slope(-1), "run_end_interested_up_45_downhill.anm");
+run_end_interested:add(interested_angle(1.0), slope(-1), "run_end_interested_up_downhill.anm");
+run_end_interested:add(interested_angle(1.5), slope(-1), "run_end_interested_up_45_downhill.anm");
+run_end_interested:add(interested_angle(2), slope(-1), "run_end_interested_downhill.anm");
+
+run_end_interested:add(interested_angle(-2), slope(0), "run_end_interested.anm");
+run_end_interested:add(interested_angle(-1.5), slope(0), "run_end_interested_down_45.anm");
+run_end_interested:add(interested_angle(-0.5), slope(0), "run_end_interested_down_45.anm");
+run_end_interested:add(interested_angle(0), slope(0), "run_end_interested.anm");
+run_end_interested:add(interested_angle(0.5), slope(0), "run_end_interested_up_45.anm");
+run_end_interested:add(interested_angle(1.0), slope(0), "run_end_interested_up.anm");
+run_end_interested:add(interested_angle(1.5), slope(0), "run_end_interested_up_45.anm");
+run_end_interested:add(interested_angle(2), slope(0), "run_end_interested.anm");
+
+run_end_interested:add(interested_angle(-2), slope(1), "run_end_interested_uphill.anm");
+run_end_interested:add(interested_angle(-1.5), slope(1), "run_end_interested_down_45_uphill.anm");
+run_end_interested:add(interested_angle(-0.5), slope(1), "run_end_interested_down_45_uphill.anm");
+run_end_interested:add(interested_angle(0), slope(1), "run_end_interested_uphill.anm");
+run_end_interested:add(interested_angle(0.5), slope(1), "run_end_interested_up_45_uphill.anm");
+run_end_interested:add(interested_angle(1.0), slope(1), "run_end_interested_up_uphill.anm");
+run_end_interested:add(interested_angle(1.5), slope(1), "run_end_interested_up_45_uphill.anm");
+run_end_interested:add(interested_angle(2), slope(1), "run_end_interested_uphill.anm");
+--}
+--{ Animation: run_start_interested
+run_start_interested = addState(interested+run+right, "run_start_interested");
+run_start_interested:blendTime(300);
+run_start_interested:loop(false);
+run_start_interested:add(interested_angle(-2), slope(-1), "run_start_interested_downhill.anm");
+run_start_interested:add(interested_angle(-1.5), slope(-1), "run_start_interested_down_45_downhill.anm");
+run_start_interested:add(interested_angle(-0.5), slope(-1), "run_start_interested_down_45_downhill.anm");
+run_start_interested:add(interested_angle(0), slope(-1), "run_start_interested_downhill.anm");
+run_start_interested:add(interested_angle(0.5), slope(-1), "run_start_interested_up_45_downhill.anm");
+run_start_interested:add(interested_angle(1.0), slope(-1), "run_start_interested_up_downhill.anm");
+run_start_interested:add(interested_angle(1.5), slope(-1), "run_start_interested_up_45_downhill.anm");
+run_start_interested:add(interested_angle(2), slope(-1), "run_start_interested_downhill.anm");
+
+run_start_interested:add(interested_angle(-2), slope(0), "run_start_interested.anm");
+run_start_interested:add(interested_angle(-1.5), slope(0), "run_start_interested_down_45.anm");
+run_start_interested:add(interested_angle(-0.5), slope(0), "run_start_interested_down_45.anm");
+run_start_interested:add(interested_angle(0), slope(0), "run_start_interested.anm");
+run_start_interested:add(interested_angle(0.5), slope(0), "run_start_interested_up_45.anm");
+run_start_interested:add(interested_angle(1.0), slope(0), "run_start_interested_up.anm");
+run_start_interested:add(interested_angle(1.5), slope(0), "run_start_interested_up_45.anm");
+run_start_interested:add(interested_angle(2), slope(0), "run_start_interested.anm");
+
+run_start_interested:add(interested_angle(-2), slope(1), "run_start_interested_uphill.anm");
+run_start_interested:add(interested_angle(-1.5), slope(1), "run_start_interested_down_45_uphill.anm");
+run_start_interested:add(interested_angle(-0.5), slope(1), "run_start_interested_down_45_uphill.anm");
+run_start_interested:add(interested_angle(0), slope(1), "run_start_interested_uphill.anm");
+run_start_interested:add(interested_angle(0.5), slope(1), "run_start_interested_up_45_uphill.anm");
+run_start_interested:add(interested_angle(1.0), slope(1), "run_start_interested_up_uphill.anm");
+run_start_interested:add(interested_angle(1.5), slope(1), "run_start_interested_up_45_uphill.anm");
+run_start_interested:add(interested_angle(2), slope(1), "run_start_interested_uphill.anm");
+--}
+--{ Animation: run_start3_interested
+run_start3_interested = addState(interested+run+right, "run_start3_interested");
+run_start3_interested:blendTime(400);
+run_start3_interested:loop(false);
+run_start3_interested:synchronizedStartTime();
+run_start3_interested:add(interested_angle(-2), slope(-1), "run_start_interested_downhill.anm");
+run_start3_interested:add(interested_angle(-1.5), slope(-1), "run_start_interested_down_45_downhill.anm");
+run_start3_interested:add(interested_angle(-0.5), slope(-1), "run_start_interested_down_45_downhill.anm");
+run_start3_interested:add(interested_angle(0), slope(-1), "run_start_interested_downhill.anm");
+run_start3_interested:add(interested_angle(0.5), slope(-1), "run_start_interested_up_45_downhill.anm");
+run_start3_interested:add(interested_angle(1.0), slope(-1), "run_start_interested_up_downhill.anm");
+run_start3_interested:add(interested_angle(1.5), slope(-1), "run_start_interested_up_45_downhill.anm");
+run_start3_interested:add(interested_angle(2), slope(-1), "run_start_interested_downhill.anm");
+
+run_start3_interested:add(interested_angle(-2), slope(0), "run_start_interested.anm");
+run_start3_interested:add(interested_angle(-1.5), slope(0), "run_start_interested_down_45.anm");
+run_start3_interested:add(interested_angle(-0.5), slope(0), "run_start_interested_down_45.anm");
+run_start3_interested:add(interested_angle(0), slope(0), "run_start_interested.anm");
+run_start3_interested:add(interested_angle(0.5), slope(0), "run_start_interested_up_45.anm");
+run_start3_interested:add(interested_angle(1.0), slope(0), "run_start_interested_up.anm");
+run_start3_interested:add(interested_angle(1.5), slope(0), "run_start_interested_up_45.anm");
+run_start3_interested:add(interested_angle(2), slope(0), "run_start_interested.anm");
+
+run_start3_interested:add(interested_angle(-2), slope(1), "run_start_interested_uphill.anm");
+run_start3_interested:add(interested_angle(-1.5), slope(1), "run_start_interested_down_45_uphill.anm");
+run_start3_interested:add(interested_angle(-0.5), slope(1), "run_start_interested_down_45_uphill.anm");
+run_start3_interested:add(interested_angle(0), slope(1), "run_start_interested_uphill.anm");
+run_start3_interested:add(interested_angle(0.5), slope(1), "run_start_interested_up_45_uphill.anm");
+run_start3_interested:add(interested_angle(1.0), slope(1), "run_start_interested_up_uphill.anm");
+run_start3_interested:add(interested_angle(1.5), slope(1), "run_start_interested_up_45_uphill.anm");
+run_start3_interested:add(interested_angle(2), slope(1), "run_start_interested_uphill.anm");
+--}
+--{ Animation: run_start_turning_interested
+run_start_turning_interested = addState(interested+run+turn+right, "run_start_turning_interested");
+run_start_turning_interested:blendTime(0);
+run_start_turning_interested:loop(false);
+
+run_start_turning_interested:add(interested_angle(-2), slope(-1), "run_start_turning_interested_downhill.anm");
+run_start_turning_interested:add(interested_angle(-1.5), slope(-1), "run_start_turning_interested_down_45_downhill.anm");
+run_start_turning_interested:add(interested_angle(-0.5), slope(-1), "run_start_turning_interested_down_45_downhill.anm");
+run_start_turning_interested:add(interested_angle(0), slope(-1), "run_start_turning_interested_downhill.anm");
+run_start_turning_interested:add(interested_angle(0.5), slope(-1), "run_start_turning_interested_up_45_downhill.anm");
+run_start_turning_interested:add(interested_angle(1.0), slope(-1), "run_start_turning_interested_up_downhill.anm");
+run_start_turning_interested:add(interested_angle(1.5), slope(-1), "run_start_turning_interested_up_45_downhill.anm");
+run_start_turning_interested:add(interested_angle(2), slope(-1), "run_start_turning_interested_downhill.anm");
+
+run_start_turning_interested:add(interested_angle(-2), slope(0), "run_start_turning_interested.anm");
+run_start_turning_interested:add(interested_angle(-1.5), slope(0), "run_start_turning_interested_down_45.anm");
+run_start_turning_interested:add(interested_angle(-0.5), slope(0), "run_start_turning_interested_down_45.anm");
+run_start_turning_interested:add(interested_angle(0), slope(0), "run_start_turning_interested.anm");
+run_start_turning_interested:add(interested_angle(0.5), slope(0), "run_start_turning_interested_up_45.anm");
+run_start_turning_interested:add(interested_angle(1.0), slope(0), "run_start_turning_interested_up.anm");
+run_start_turning_interested:add(interested_angle(1.5), slope(0), "run_start_turning_interested_up_45.anm");
+run_start_turning_interested:add(interested_angle(2), slope(0), "run_start_turning_interested.anm");
+
+run_start_turning_interested:add(interested_angle(-2), slope(1), "run_start_turning_interested_uphill.anm");
+run_start_turning_interested:add(interested_angle(-1.5), slope(1), "run_start_turning_interested_down_45_uphill.anm");
+run_start_turning_interested:add(interested_angle(-0.5), slope(1), "run_start_turning_interested_down_45_uphill.anm");
+run_start_turning_interested:add(interested_angle(0), slope(1), "run_start_turning_interested_uphill.anm");
+run_start_turning_interested:add(interested_angle(0.5), slope(1), "run_start_turning_interested_up_45_uphill.anm");
+run_start_turning_interested:add(interested_angle(1.0), slope(1), "run_start_turning_interested_up_uphill.anm");
+run_start_turning_interested:add(interested_angle(1.5), slope(1), "run_start_turning_interested_up_45_uphill.anm");
+run_start_turning_interested:add(interested_angle(2), slope(1), "run_start_turning_interested_uphill.anm");
+--}
+--{ Animation: run_start2_interested
+run_start2_interested = addState(interested+run+right, "run_start2_interested");
+run_start2_interested:from(run_idle);
+run_start2_interested:blendTime(400);
+run_start2_interested:synchronizedStartTime();
+run_start2_interested:loop(true);
+run_start2_interested:add(interested_angle(-2), slope(-1), "run_interested_downhill.anm");
+run_start2_interested:add(interested_angle(-1.5), slope(-1), "run_interested_down_45_downhill.anm");
+run_start2_interested:add(interested_angle(-0.5), slope(-1), "run_interested_down_45_downhill.anm");
+run_start2_interested:add(interested_angle(0), slope(-1), "run_interested_downhill.anm");
+run_start2_interested:add(interested_angle(0.5), slope(-1), "run_interested_up_45_downhill.anm");
+run_start2_interested:add(interested_angle(1.0), slope(-1), "run_interested_up_downhill.anm");
+run_start2_interested:add(interested_angle(1.5), slope(-1), "run_interested_up_45_downhill.anm");
+run_start2_interested:add(interested_angle(2), slope(-1), "run_interested_downhill.anm");
+
+run_start2_interested:add(interested_angle(-2), slope(0), "run_interested.anm");
+run_start2_interested:add(interested_angle(-1.5), slope(0), "run_interested_down_45.anm");
+run_start2_interested:add(interested_angle(-0.5), slope(0), "run_interested_down_45.anm");
+run_start2_interested:add(interested_angle(0), slope(0), "run_interested.anm");
+run_start2_interested:add(interested_angle(0.5), slope(0), "run_interested_up_45.anm");
+run_start2_interested:add(interested_angle(1.0), slope(0), "run_interested_up.anm");
+run_start2_interested:add(interested_angle(1.5), slope(0), "run_interested_up_45.anm");
+run_start2_interested:add(interested_angle(2), slope(0), "run_interested.anm");
+
+run_start2_interested:add(interested_angle(-2), slope(1), "run_interested_uphill.anm");
+run_start2_interested:add(interested_angle(-1.5), slope(1), "run_interested_down_45_uphill.anm");
+run_start2_interested:add(interested_angle(-0.5), slope(1), "run_interested_down_45_uphill.anm");
+run_start2_interested:add(interested_angle(0), slope(1), "run_interested_uphill.anm");
+run_start2_interested:add(interested_angle(0.5), slope(1), "run_interested_up_45_uphill.anm");
+run_start2_interested:add(interested_angle(1.0), slope(1), "run_interested_up_uphill.anm");
+run_start2_interested:add(interested_angle(1.5), slope(1), "run_interested_up_45_uphill.anm");
+run_start2_interested:add(interested_angle(2), slope(1), "run_interested_uphill.anm");
+--}
+--{ Animation: run_interested
+run_interested = addState(interested+run+right, "run_interested");
+run_interested:from(run_start_interested);
+run_interested:from(run_start2_interested);
+run_interested:from(run_start3_interested);
+run_interested:from(run_start_turning_interested);
+run_interested:blendTime(0);
+run_interested:loop(true);
+run_interested:add(interested_angle(-2), slope(-1), "run_interested_downhill.anm");
+run_interested:add(interested_angle(-1.5), slope(-1), "run_interested_down_45_downhill.anm");
+run_interested:add(interested_angle(-0.5), slope(-1), "run_interested_down_45_downhill.anm");
+run_interested:add(interested_angle(0), slope(-1), "run_interested_downhill.anm");
+run_interested:add(interested_angle(0.5), slope(-1), "run_interested_up_45_downhill.anm");
+run_interested:add(interested_angle(1.0), slope(-1), "run_interested_up_downhill.anm");
+run_interested:add(interested_angle(1.5), slope(-1), "run_interested_up_45_downhill.anm");
+run_interested:add(interested_angle(2), slope(-1), "run_interested_downhill.anm");
+
+run_interested:add(interested_angle(-2), slope(0), "run_interested.anm");
+run_interested:add(interested_angle(-1.5), slope(0), "run_interested_down_45.anm");
+run_interested:add(interested_angle(-0.5), slope(0), "run_interested_down_45.anm");
+run_interested:add(interested_angle(0), slope(0), "run_interested.anm");
+run_interested:add(interested_angle(0.5), slope(0), "run_interested_up_45.anm");
+run_interested:add(interested_angle(1.0), slope(0), "run_interested_up.anm");
+run_interested:add(interested_angle(1.5), slope(0), "run_interested_up_45.anm");
+run_interested:add(interested_angle(2), slope(0), "run_interested.anm");
+
+run_interested:add(interested_angle(-2), slope(1), "run_interested_uphill.anm");
+run_interested:add(interested_angle(-1.5), slope(1), "run_interested_down_45_uphill.anm");
+run_interested:add(interested_angle(-0.5), slope(1), "run_interested_down_45_uphill.anm");
+run_interested:add(interested_angle(0), slope(1), "run_interested_uphill.anm");
+run_interested:add(interested_angle(0.5), slope(1), "run_interested_up_45_uphill.anm");
+run_interested:add(interested_angle(1.0), slope(1), "run_interested_up_uphill.anm");
+run_interested:add(interested_angle(1.5), slope(1), "run_interested_up_45_uphill.anm");
+run_interested:add(interested_angle(2), slope(1), "run_interested_uphill.anm");
+--}
+--{ Animation: land_interested
+land_interested = addState(interested+stand+right, "land_interested");
+land_interested:from(jump_idle);
+land_interested:from(drop_start_idle);
+land_interested:from(drop_idle);
+land_interested:from(jump_fast_idle);
+land_interested:from(drop_fast_start_idle);
+land_interested:from(drop_fast_idle);
+land_interested:from(drop_fast_start_turning_idle);
+land_interested:from(drop_start_breaking_idle);
+land_interested:blendTime(200);
+land_interested:loop(false);
+land_interested:add(interested_angle(-2), slope(-1), "land_interested_downhill.anm");
+land_interested:add(interested_angle(-1.5), slope(-1), "land_interested_down_45_downhill.anm");
+land_interested:add(interested_angle(-0.5), slope(-1), "land_interested_down_45_downhill.anm");
+land_interested:add(interested_angle(0), slope(-1), "land_interested_downhill.anm");
+land_interested:add(interested_angle(0.5), slope(-1), "land_interested_up_45_downhill.anm");
+land_interested:add(interested_angle(1.0), slope(-1), "land_interested_up_downhill.anm");
+land_interested:add(interested_angle(1.5), slope(-1), "land_interested_up_45_downhill.anm");
+land_interested:add(interested_angle(2), slope(-1), "land_interested_downhill.anm");
+
+land_interested:add(interested_angle(-2), slope(0), "land_interested.anm");
+land_interested:add(interested_angle(-1.5), slope(0), "land_interested_down_45.anm");
+land_interested:add(interested_angle(-0.5), slope(0), "land_interested_down_45.anm");
+land_interested:add(interested_angle(0), slope(0), "land_interested.anm");
+land_interested:add(interested_angle(0.5), slope(0), "land_interested_up_45.anm");
+land_interested:add(interested_angle(1.0), slope(0), "land_interested_up.anm");
+land_interested:add(interested_angle(1.5), slope(0), "land_interested_up_45.anm");
+land_interested:add(interested_angle(2), slope(0), "land_interested.anm");
+
+land_interested:add(interested_angle(-2), slope(1), "land_interested_uphill.anm");
+land_interested:add(interested_angle(-1.5), slope(1), "land_interested_down_45_uphill.anm");
+land_interested:add(interested_angle(-0.5), slope(1), "land_interested_down_45_uphill.anm");
+land_interested:add(interested_angle(0), slope(1), "land_interested_uphill.anm");
+land_interested:add(interested_angle(0.5), slope(1), "land_interested_up_45_uphill.anm");
+land_interested:add(interested_angle(1.0), slope(1), "land_interested_up_uphill.anm");
+land_interested:add(interested_angle(1.5), slope(1), "land_interested_up_45_uphill.anm");
+land_interested:add(interested_angle(2), slope(1), "land_interested_uphill.anm");
+--}
+--{ Animation: land_running_interested
+land_running_interested = addState(interested+run+right, "land_running_interested");
+land_running_interested:from(jump_idle);
+land_running_interested:from(drop_start_idle);
+land_running_interested:from(drop_idle);
+land_running_interested:from(jump_fast_idle);
+land_running_interested:from(drop_fast_start_idle);
+land_running_interested:from(drop_fast_idle);
+land_running_interested:from(drop_fast_start_turning_idle);
+land_running_interested:from(drop_start_breaking_idle);
+land_running_interested:blendTime(200);
+land_running_interested:loop(false);
+land_running_interested:add(interested_angle(-2), slope(-1), "land_running_interested_downhill.anm");
+land_running_interested:add(interested_angle(-1.5), slope(-1), "land_running_interested_down_45_downhill.anm");
+land_running_interested:add(interested_angle(-0.5), slope(-1), "land_running_interested_down_45_downhill.anm");
+land_running_interested:add(interested_angle(0), slope(-1), "land_running_interested_downhill.anm");
+land_running_interested:add(interested_angle(0.5), slope(-1), "land_running_interested_up_45_downhill.anm");
+land_running_interested:add(interested_angle(1.0), slope(-1), "land_running_interested_up_downhill.anm");
+land_running_interested:add(interested_angle(1.5), slope(-1), "land_running_interested_up_45_downhill.anm");
+land_running_interested:add(interested_angle(2), slope(-1), "land_running_interested_downhill.anm");
+
+land_running_interested:add(interested_angle(-2), slope(0), "land_running_interested.anm");
+land_running_interested:add(interested_angle(-1.5), slope(0), "land_running_interested_down_45.anm");
+land_running_interested:add(interested_angle(-0.5), slope(0), "land_running_interested_down_45.anm");
+land_running_interested:add(interested_angle(0), slope(0), "land_running_interested.anm");
+land_running_interested:add(interested_angle(0.5), slope(0), "land_running_interested_up_45.anm");
+land_running_interested:add(interested_angle(1.0), slope(0), "land_running_interested_up.anm");
+land_running_interested:add(interested_angle(1.5), slope(0), "land_running_interested_up_45.anm");
+land_running_interested:add(interested_angle(2), slope(0), "land_running_interested.anm");
+
+land_running_interested:add(interested_angle(-2), slope(1), "land_running_interested_uphill.anm");
+land_running_interested:add(interested_angle(-1.5), slope(1), "land_running_interested_down_45_uphill.anm");
+land_running_interested:add(interested_angle(-0.5), slope(1), "land_running_interested_down_45_uphill.anm");
+land_running_interested:add(interested_angle(0), slope(1), "land_running_interested_uphill.anm");
+land_running_interested:add(interested_angle(0.5), slope(1), "land_running_interested_up_45_uphill.anm");
+land_running_interested:add(interested_angle(1.0), slope(1), "land_running_interested_up_uphill.anm");
+land_running_interested:add(interested_angle(1.5), slope(1), "land_running_interested_up_45_uphill.anm");
+land_running_interested:add(interested_angle(2), slope(1), "land_running_interested_uphill.anm");
+--}
+--{ Animation: stand_start_interested
+stand_start_interested = addState(stand+interested+right, "stand_start_interested");
+stand_start_interested:blendTime(300);
+stand_start_interested:loop(false);
+stand_start_interested:add(interested_angle(-2), slope(-1), "stand_start_interested_downhill.anm");
+stand_start_interested:add(interested_angle(-1.5), slope(-1), "stand_start_interested_down_45_downhill.anm");
+stand_start_interested:add(interested_angle(-0.5), slope(-1), "stand_start_interested_down_45_downhill.anm");
+stand_start_interested:add(interested_angle(0), slope(-1), "stand_start_interested_downhill.anm");
+stand_start_interested:add(interested_angle(0.5), slope(-1), "stand_start_interested_up_45_downhill.anm");
+stand_start_interested:add(interested_angle(1.0), slope(-1), "stand_start_interested_up_downhill.anm");
+stand_start_interested:add(interested_angle(1.5), slope(-1), "stand_start_interested_up_45_downhill.anm");
+stand_start_interested:add(interested_angle(2), slope(-1), "stand_start_interested_downhill.anm");
+
+stand_start_interested:add(interested_angle(-2), slope(0), "stand_start_interested.anm");
+stand_start_interested:add(interested_angle(-1.5), slope(0), "stand_start_interested_down_45.anm");
+stand_start_interested:add(interested_angle(-0.5), slope(0), "stand_start_interested_down_45.anm");
+stand_start_interested:add(interested_angle(0), slope(0), "stand_start_interested.anm");
+stand_start_interested:add(interested_angle(0.5), slope(0), "stand_start_interested_up_45.anm");
+stand_start_interested:add(interested_angle(1.0), slope(0), "stand_start_interested_up.anm");
+stand_start_interested:add(interested_angle(1.5), slope(0), "stand_start_interested_up_45.anm");
+stand_start_interested:add(interested_angle(2), slope(0), "stand_start_interested.anm");
+
+stand_start_interested:add(interested_angle(-2), slope(1), "stand_start_interested_uphill.anm");
+stand_start_interested:add(interested_angle(-1.5), slope(1), "stand_start_interested_down_45_uphill.anm");
+stand_start_interested:add(interested_angle(-0.5), slope(1), "stand_start_interested_down_45_uphill.anm");
+stand_start_interested:add(interested_angle(0), slope(1), "stand_start_interested_uphill.anm");
+stand_start_interested:add(interested_angle(0.5), slope(1), "stand_start_interested_up_45_uphill.anm");
+stand_start_interested:add(interested_angle(1.0), slope(1), "stand_start_interested_up_uphill.anm");
+stand_start_interested:add(interested_angle(1.5), slope(1), "stand_start_interested_up_45_uphill.anm");
+stand_start_interested:add(interested_angle(2), slope(1), "stand_start_interested_uphill.anm");
+
+--}
+--{ Animation: stand_interested
+stand_interested = addState(stand+interested+right, "stand_interested");
+stand_interested:blendTime(100);
+stand_interested:from(stand_start_interested);
+stand_interested:loop(true);
+
+stand_interested:add(interested_angle(-2), slope(-1), "stand_interested_downhill.anm");
+stand_interested:add(interested_angle(-1.5), slope(-1), "stand_interested_down_45_downhill.anm");
+stand_interested:add(interested_angle(-0.5), slope(-1), "stand_interested_down_45_downhill.anm");
+stand_interested:add(interested_angle(0), slope(-1), "stand_interested_downhill.anm");
+stand_interested:add(interested_angle(0.5), slope(-1), "stand_interested_up_45_downhill.anm");
+stand_interested:add(interested_angle(1.0), slope(-1), "stand_interested_up_downhill.anm");
+stand_interested:add(interested_angle(1.5), slope(-1), "stand_interested_up_45_downhill.anm");
+stand_interested:add(interested_angle(2), slope(-1), "stand_interested_downhill.anm");
+
+stand_interested:add(interested_angle(-2), slope(0), "stand_interested.anm");
+stand_interested:add(interested_angle(-1.5), slope(0), "stand_interested_down_45.anm");
+stand_interested:add(interested_angle(-0.5), slope(0), "stand_interested_down_45.anm");
+stand_interested:add(interested_angle(0), slope(0), "stand_interested.anm");
+stand_interested:add(interested_angle(0.5), slope(0), "stand_interested_up_45.anm");
+stand_interested:add(interested_angle(1.0), slope(0), "stand_interested_up.anm");
+stand_interested:add(interested_angle(1.5), slope(0), "stand_interested_up_45.anm");
+stand_interested:add(interested_angle(2), slope(0), "stand_interested.anm");
+
+stand_interested:add(interested_angle(-2), slope(1), "stand_interested_uphill.anm");
+stand_interested:add(interested_angle(-1.5), slope(1), "stand_interested_down_45_uphill.anm");
+stand_interested:add(interested_angle(-0.5), slope(1), "stand_interested_down_45_uphill.anm");
+stand_interested:add(interested_angle(0), slope(1), "stand_interested_uphill.anm");
+stand_interested:add(interested_angle(0.5), slope(1), "stand_interested_up_45_uphill.anm");
+stand_interested:add(interested_angle(1.0), slope(1), "stand_interested_up_uphill.anm");
+stand_interested:add(interested_angle(1.5), slope(1), "stand_interested_up_45_uphill.anm");
+stand_interested:add(interested_angle(2), slope(1), "stand_interested_uphill.anm");
+--}
+--{ Animation: stand_end_interested
+stand_end_interested = addState(stand+right, "stand_end_interested");
+stand_end_interested:from(stand_interested);
+stand_end_interested:from(stand_start_interested);
+stand_end_interested:blendTime(300);
+stand_end_interested:loop(false);
+
+stand_end_interested:add(interested_angle(-2), slope(-1), "stand_end_interested_downhill.anm");
+stand_end_interested:add(interested_angle(-1.5), slope(-1), "stand_end_interested_down_45_downhill.anm");
+stand_end_interested:add(interested_angle(-0.5), slope(-1), "stand_end_interested_down_45_downhill.anm");
+stand_end_interested:add(interested_angle(0), slope(-1), "stand_end_interested_downhill.anm");
+stand_end_interested:add(interested_angle(0.5), slope(-1), "stand_end_interested_up_45_downhill.anm");
+stand_end_interested:add(interested_angle(1.0), slope(-1), "stand_end_interested_up_downhill.anm");
+stand_end_interested:add(interested_angle(1.5), slope(-1), "stand_end_interested_up_45_downhill.anm");
+stand_end_interested:add(interested_angle(2), slope(-1), "stand_end_interested_downhill.anm");
+
+stand_end_interested:add(interested_angle(-2), slope(0), "stand_end_interested.anm");
+stand_end_interested:add(interested_angle(-1.5), slope(0), "stand_end_interested_down_45.anm");
+stand_end_interested:add(interested_angle(-0.5), slope(0), "stand_end_interested_down_45.anm");
+stand_end_interested:add(interested_angle(0), slope(0), "stand_end_interested.anm");
+stand_end_interested:add(interested_angle(0.5), slope(0), "stand_end_interested_up_45.anm");
+stand_end_interested:add(interested_angle(1.0), slope(0), "stand_end_interested_up.anm");
+stand_end_interested:add(interested_angle(1.5), slope(0), "stand_end_interested_up_45.anm");
+stand_end_interested:add(interested_angle(2), slope(0), "stand_end_interested.anm");
+
+stand_end_interested:add(interested_angle(-2), slope(1), "stand_end_interested_uphill.anm");
+stand_end_interested:add(interested_angle(-1.5), slope(1), "stand_end_interested_down_45_uphill.anm");
+stand_end_interested:add(interested_angle(-0.5), slope(1), "stand_end_interested_down_45_uphill.anm");
+stand_end_interested:add(interested_angle(0), slope(1), "stand_end_interested_uphill.anm");
+stand_end_interested:add(interested_angle(0.5), slope(1), "stand_end_interested_up_45_uphill.anm");
+stand_end_interested:add(interested_angle(1.0), slope(1), "stand_end_interested_up_uphill.anm");
+stand_end_interested:add(interested_angle(1.5), slope(1), "stand_end_interested_up_45_uphill.anm");
+stand_end_interested:add(interested_angle(2), slope(1), "stand_end_interested_uphill.anm");
+--}
+stand_interested:from(land_interested);
+stand_interested:from(run_end_interested);
+run_interested:from(land_running_interested);
+stand_idle:from(stand_end_interested);
+jump_fast_idle:from(run_start_interested);
+jump_fast_idle:from(run_start3_interested);
+jump_fast_idle:from(run_start_turning_interested);
+jump_fast_idle:from(run_start2_interested);
+jump_fast_idle:from(run_interested);
+jump_fast_idle:from(land_running_interested);
+--}
+--{ Animation_set: Push
+--{ Animation: push_start_idle
+push_start_idle = addState(push+run, "push_start_idle");
+push_start_idle:blendTime(300);
+push_start_idle:loop(false);
+push_start_idle:add("push_start_idle.anm");
+--}
+--{ Animation: push_idle
+push_idle = addState(push+run, "push_idle");
+push_idle:from(push_start_idle);
+push_idle:blendTime(0);
+push_idle:loop(true);
+push_idle:add(speed(0.0), 0.75, "push_idle.anm");
+push_idle:add(speed(0.546675), 0.75, "push_idle.anm");
+push_idle:add(speed(0.7289), 1, "push_idle.anm");
+--}
+--}
+--{ Animation_set: Water
+--{ Animation: swim_start
+swim_start = addState(swim, "swim_start");
+swim_start:blendTime(500);
+swim_start:loop(false);
+swim_start:add(swim_direction(180), curvature(-2), "swim_start_left_down.anm");
+swim_start:add(swim_direction(90), curvature(-2), "swim_start_up_up.anm");
+swim_start:add(swim_direction(0), curvature(-2), "swim_start_right_up.anm");
+swim_start:add(swim_direction(-90), curvature(-2), "swim_start_down_up.anm");
+swim_start:add(swim_direction(-180), curvature(-2), "swim_start_left_down.anm");
+
+swim_start:add(swim_direction(180), curvature(-1), "swim_start_left_down.anm");
+swim_start:add(swim_direction(90), curvature(-1), "swim_start_up_up.anm");
+swim_start:add(swim_direction(0), curvature(-1), "swim_start_right_up.anm");
+swim_start:add(swim_direction(-90), curvature(-1), "swim_start_down_up.anm");
+swim_start:add(swim_direction(-180), curvature(-1), "swim_start_left_down.anm");
+
+swim_start:add(swim_direction(180), curvature(0), "swim_start_left.anm");
+swim_start:add(swim_direction(90), curvature(0), "swim_start_up.anm");
+swim_start:add(swim_direction(0), curvature(0), "swim_start_right.anm");
+swim_start:add(swim_direction(-90), curvature(0), "swim_start_down.anm");
+swim_start:add(swim_direction(-180), curvature(0), "swim_start_left.anm");
+
+swim_start:add(swim_direction(180), curvature(1), "swim_start_left_up.anm");
+swim_start:add(swim_direction(90), curvature(1), "swim_start_up_down.anm");
+swim_start:add(swim_direction(0), curvature(1), "swim_start_right_down.anm");
+swim_start:add(swim_direction(-90), curvature(1), "swim_start_down_down.anm");
+swim_start:add(swim_direction(-180), curvature(1), "swim_start_left_up.anm");
+
+swim_start:add(swim_direction(180), curvature(2), "swim_start_left_up.anm");
+swim_start:add(swim_direction(90), curvature(2), "swim_start_up_down.anm");
+swim_start:add(swim_direction(0), curvature(2), "swim_start_right_down.anm");
+swim_start:add(swim_direction(-90), curvature(2), "swim_start_down_down.anm");
+swim_start:add(swim_direction(-180), curvature(2), "swim_start_left_up.anm");
+--}
+--{ Animation: swimming
+swimming = addState(swim, "swimming");
+swimming:blendTime(300);
+swimming:from(swim_start);
+swimming:loop(true);
+
+swimming:add(swim_direction(180), curvature(-2), "swim_left_down.anm");
+swimming:add(swim_direction(90), curvature(-2), "swim_up_up.anm");
+swimming:add(swim_direction(0), curvature(-2), "swim_right_up.anm");
+swimming:add(swim_direction(-90), curvature(-2), "swim_down_up.anm");
+swimming:add(swim_direction(-180), curvature(-2), "swim_left_down.anm");
+
+swimming:add(swim_direction(180), curvature(-1), "swim_left_down.anm");
+swimming:add(swim_direction(90), curvature(-1), "swim_up_up.anm");
+swimming:add(swim_direction(0), curvature(-1), "swim_right_up.anm");
+swimming:add(swim_direction(-90), curvature(-1), "swim_down_up.anm");
+swimming:add(swim_direction(-180), curvature(-1), "swim_left_down.anm");
+
+swimming:add(swim_direction(180), curvature(0), "swim_left.anm");
+swimming:add(swim_direction(90), curvature(0), "swim_up.anm");
+swimming:add(swim_direction(0), curvature(0), "swim_right.anm");
+swimming:add(swim_direction(-90), curvature(0), "swim_down.anm");
+swimming:add(swim_direction(-180), curvature(0), "swim_left.anm");
+
+swimming:add(swim_direction(180), curvature(1), "swim_left_up.anm");
+swimming:add(swim_direction(90), curvature(1), "swim_up_down.anm");
+swimming:add(swim_direction(0), curvature(1), "swim_right_down.anm");
+swimming:add(swim_direction(-90), curvature(1), "swim_down_down.anm");
+swimming:add(swim_direction(-180), curvature(1), "swim_left_up.anm");
+
+swimming:add(swim_direction(180), curvature(2), "swim_left_up.anm");
+swimming:add(swim_direction(90), curvature(2), "swim_up_down.anm");
+swimming:add(swim_direction(0), curvature(2), "swim_right_down.anm");
+swimming:add(swim_direction(-90), curvature(2), "swim_down_down.anm");
+swimming:add(swim_direction(-180), curvature(2), "swim_left_up.anm");
+
+--}
+--{ Animation: swim_push
+-- swim_push = addState(swim+push, "swim_push");
+-- swim_push:blendTime(300);
+-- swim_push:loop(true);
+-- swim_push:add("swim_push_right.anm");
+--}
+--{ Animation: swim_end
+swim_end = addState(water, "swim_end");
+swim_end:from(swim_start);
+swim_end:from(swimming);
+swim_end:blendTime(500);
+swim_end:loop(false);
+-- swim_end:add(swim_direction(180), curvature(-1), "swim_end_left_up.anm");
+-- swim_end:add(swim_direction(90), curvature(-1), "swim_end_up_up.anm");
+-- swim_end:add(swim_direction(0), curvature(-1), "swim_end_right_up.anm");
+-- swim_end:add(swim_direction(-90), curvature(-1), "swim_end_down_up.anm");
+-- swim_end:add(swim_direction(-180), curvature(-1), "swim_end_left_up.anm");
+
+swim_end:add(swim_direction(180), curvature(0), "swim_end_left.anm");
+swim_end:add(swim_direction(90), curvature(0), "swim_end_up.anm");
+swim_end:add(swim_direction(0), curvature(0), "swim_end_right.anm");
+swim_end:add(swim_direction(-90), curvature(0), "swim_end_down.anm");
+swim_end:add(swim_direction(-180), curvature(0), "swim_end_left.anm");
+
+-- swim_end:add(swim_direction(180), curvature(1), "swim_end_left_down.anm");
+-- swim_end:add(swim_direction(90), curvature(1), "swim_end_up_down.anm");
+-- swim_end:add(swim_direction(0), curvature(1), "swim_end_right_down.anm");
+-- swim_end:add(swim_direction(-90), curvature(1), "swim_end_down_down.anm");
+-- swim_end:add(swim_direction(-180), curvature(1), "swim_end_left_down.anm");--}
+--}
+--{ Animation: water_float
+water_float = addState(water, "water_float");
+water_float:blendTime(500);
+water_float:loop(true);
+water_float:add("water_float.anm");
+--}
+--{ Animation: swim_start_surface
+swim_start_surface = addState(swim+surface, "swim_start_surface");
+swim_start_surface:blendTime(300);
+swim_start_surface:loop(false);
+swim_start_surface:add(swim_direction(-180), "swim_start_surface_left.anm");
+swim_start_surface:add(swim_direction(0), "swim_start_surface_right.anm");
+swim_start_surface:add(swim_direction(180), "swim_start_surface_left.anm");
+--}
+--{ Animation: swim_surface_landing
+-- swim_surface_landing = addState(swim+surface, "swim_surface_landing");
+-- swim_surface_landing:from(water_float);
+-- swim_surface_landing:from(swim_start);
+-- swim_surface_landing:from(swimming);
+-- swim_surface_landing:from(swim_end);
+-- swim_surface_landing:from(water_float);
+-- swim_surface_landing:from(water_float);
+-- swim_surface_landing:from(jump_idle);
+-- swim_surface_landing:from(drop_start_idle);
+-- swim_surface_landing:from(drop_idle);
+-- swim_surface_landing:from(jump_fast_idle);
+-- swim_surface_landing:from(drop_fast_start_idle);
+-- swim_surface_landing:from(drop_fast_idle);
+-- swim_surface_landing:from(drop_fast_start_turning_idle);
+-- swim_surface_landing:from(drop_start_breaking_idle);
+-- swim_surface_landing:blendTime(200);
+-- swim_surface_landing:loop(false);
+-- swim_surface_landing:add("swim_surface_left_landing.anm");
+--}
+--{ Animation: swim_surface
+swim_surface = addState(swim+surface, "swim_surface");
+swim_surface:from(swim_start_surface);
+swim_surface:blendTime(300);
+swim_surface:loop(true);
+swim_surface:add(swim_direction(-180), "swim_surface_left.anm");
+swim_surface:add(swim_direction(0), "swim_surface_right.anm");
+swim_surface:add(swim_direction(180), "swim_surface_left.anm");
+--}
+--{ Animation: swim_end_surface
+swim_end_surface = addState(water+surface, "swim_end_surface");
+swim_end_surface:from(swim_surface);
+swim_end_surface:from(swim_start_surface);
+swim_end_surface:blendTime(300);
+swim_end_surface:loop(false);
+swim_end_surface:add(swim_direction(-180), "swim_end_surface_left.anm");
+swim_end_surface:add(swim_direction(0), "swim_end_surface_right.anm");
+swim_end_surface:add(swim_direction(180), "swim_end_surface_left.anm");
+--}
+--{ Animation: water_float_surface
+water_float_surface = addState(water+surface, "water_float_surface");
+water_float_surface:blendTime(300);
+water_float_surface:loop(true);
+water_float_surface:add("water_float_surface.anm");
+--}
+
+--{ Animation: float_surface_land
+float_surface_land = addState(water+surface, "float_surface_land");
+float_surface_land:from(water_float);
+float_surface_land:from(jump_idle);
+float_surface_land:from(drop_start_idle);
+float_surface_land:from(drop_idle);
+float_surface_land:from(jump_fast_idle);
+float_surface_land:from(drop_fast_start_idle);
+float_surface_land:from(drop_fast_idle);
+float_surface_land:from(drop_fast_start_turning_idle);
+float_surface_land:from(drop_start_breaking_idle);
+float_surface_land:blendTime(200);
+float_surface_land:loop(false);
+float_surface_land:add("float_surface_land.anm");
+--}
+
+--{ Animation: float_surface_land_rotated
+float_surface_land_rotated = addState(water+surface+turn, "float_surface_land_rotated");
+float_surface_land_rotated:from(water_float);
+float_surface_land_rotated:from(jump_idle);
+float_surface_land_rotated:from(drop_start_idle);
+float_surface_land_rotated:from(drop_idle);
+float_surface_land_rotated:from(jump_fast_idle);
+float_surface_land_rotated:from(drop_fast_start_idle);
+float_surface_land_rotated:from(drop_fast_idle);
+float_surface_land_rotated:from(drop_fast_start_turning_idle);
+float_surface_land_rotated:from(drop_start_breaking_idle);
+float_surface_land_rotated:blendTime(200);
+float_surface_land_rotated:loop(false);
+float_surface_land_rotated:add("float_surface_land_rotated.anm");
+--}
+
+--{ Animation: float_surface_start
+float_surface_start = addState(water+surface, "float_surface_start");
+float_surface_start:from(swim_start);
+float_surface_start:from(swimming);
+float_surface_start:from(swim_end);
+float_surface_start:from(float_surface_land);
+float_surface_start:blendTime(300);
+float_surface_start:loop(false);
+float_surface_start:add("float_surface_start.anm");
+--}
+
+--{ Animation: jump_from_water
+jump_from_water = addState(fall, "jump_from_water");
+jump_from_water:from(swim_start);
+jump_from_water:from(swimming);
+jump_from_water:from(swim_end);
+jump_from_water:from(swim_start_surface);
+jump_from_water:from(swim_surface);
+jump_from_water:from(water_float_surface);
+jump_from_water:from(float_surface_land);
+jump_from_water:from(swim_end_surface);
+jump_from_water:blendTime(0);
+jump_from_water:loop(false);
+jump_from_water:add("jump_fast_idle.anm");
+--}
+float_surface_land:from(jump_from_water);
+
+--}
+--{ Animation_set: Switch
+--{ Animation: switch_start
+switch_start = addState(switch, "switch_start");
+switch_start:blendTime(300);
+switch_start:loop(false);
+switch_start:add(switch_angle(-45), "switch_start_left.anm");
+switch_start:add(switch_angle(0), "switch_start_up.anm");
+switch_start:add(switch_angle(45), "switch_start_right.anm");
+--}
+--{ Animation: switch_turn_right
+switch_turn_right = addState(switch+turn_right, "switch_turn_right");
+switch_turn_right:blendTime(200);
+switch_turn_right:loop(false);
+switch_turn_right:add(switch_angle(-45), "switch_turn_right_left.anm");
+switch_turn_right:add(switch_angle(0), "switch_turn_right_up.anm");
+switch_turn_right:add(switch_angle(22.5), "switch_turn_right_right_up.anm");
+switch_turn_right:add(switch_angle(45), "switch_turn_right_right.anm");
+--}
+--{ Animation: switch_turn_left
+switch_turn_left = addState(switch+turn_left, "switch_turn_left");
+switch_turn_left:blendTime(200);
+switch_turn_left:loop(false);
+switch_turn_left:add(switch_angle(-45), "switch_turn_left_left.anm");
+switch_turn_left:add(switch_angle(0), "switch_turn_left_up.anm");
+switch_turn_left:add(switch_angle(22.5), "switch_turn_left_right_up.anm");
+switch_turn_left:add(switch_angle(45), "switch_turn_left_right.anm");
+--}
+--{ Animation: s_stairs_run
+s_stairs_run = addState(stairs_run, "s_stairs_run");
+s_stairs_run:blendTime(300);
+s_stairs_run:loop(true);
+s_stairs_run:add("stairs_run.anm");
+--}
+--{ Animation: switch_idle
+switch_idle = addState(switch, "switch_idle");
+switch_idle:from(switch_turn_left);
+switch_idle:from(switch_turn_right);
+switch_idle:from(switch_start);
+switch_idle:blendTime(400);
+switch_idle:loop(true);
+switch_idle:add(switch_angle(-45), "switch_idle_left.anm");
+switch_idle:add(switch_angle(0), "switch_idle_up.anm");
+switch_idle:add(switch_angle(45), "switch_idle_right.anm");
+--}
+
+--}
+
+--{ Animation: wall_jump_idle
+wall_jump_idle = addState(wall_jump, "wall_jump_idle");
+wall_jump_idle:blendTime(100);
+wall_jump_idle:loop(false);
+wall_jump_idle:add("wall_jump_idle.anm");
+--}
+
+--{ Animation: run_start2_stumbling
+run_start2_stumbling = addState(run+stumble, "run_start2_stumbling");
+run_start2_stumbling:from(run_idle);
+run_start2_stumbling:from(run_start_idle);
+run_start2_stumbling:from(land_running_idle);
+run_start2_stumbling:blendTime(200);
+run_start2_stumbling:loop(false);
+run_start2_stumbling:add("land_running_out_of_balance.anm");
+--}
+
+--{ Animation: land_running_out_of_balance
+land_running_out_of_balance = addState(run, "land_running_out_of_balance");
+land_running_out_of_balance:from(wall_jump_idle);
+land_running_out_of_balance:from(stand_start_slippery_fast);
+land_running_out_of_balance:from(stand_slippery_fast);
+land_running_out_of_balance:from(drop_slippery_fast);
+land_running_out_of_balance:blendTime(150);
+land_running_out_of_balance:loop(false);
+land_running_out_of_balance:add("land_running_out_of_balance.anm");
+--}
+
+--{ Animation: down
+down = addState(hidden, "down");
+down:blendTime(300);
+down:loop(false);
+down:add("down.anm");
+--}

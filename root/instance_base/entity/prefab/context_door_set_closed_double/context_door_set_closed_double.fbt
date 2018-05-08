@@ -1,0 +1,13 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity.fbt")
+  local type = typeManager:inheritNewTypeByGUID("ContextDoorSet_Closed_Double", GUID('0x169E3CAB','0x00000000','0x00770200','0x00005500')); -- PrefabEntity
+  type:setGuid(GUID('0x6B01FC62','0x85A63181','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500'), "PrefabEntityInstanceCreatorComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xDED2C7BF','0x85A63183','0x0077021C','0x00005500'), "ContextDoorSet_Closed_DoubleInstanceCreatorComponent");
+  type:addComponentTypeGUID(GUID('0xDED2C7BF','0x85A63183','0x0077021C','0x00005500')); -- ContextDoorSet_Closed_DoubleInstanceCreatorComponent
+  -- inherits prefab.fbxmodel_ModCom GUID('0x329A0D65','0xB0642E6E','0x0077020B','0x00005500')
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

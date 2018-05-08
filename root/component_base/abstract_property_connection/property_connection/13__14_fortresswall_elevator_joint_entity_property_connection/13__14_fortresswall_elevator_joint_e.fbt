@@ -1,0 +1,8 @@
+do
+  local type = typeManager:inheritNewTypeByGUID("13__14_fortresswall_elevator_JointEntityPropertyConnectionComponent", GUID('0x6E4B8FC7','0x00000000','0x00770200','0x00005500')); -- PropertyConnectionComponent
+  type:setGuid(GUID('0x04E07507','0xA430172C','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setInputPropertyName("OutBool")
+  type:setOutputPropertyName("InBool")
+end

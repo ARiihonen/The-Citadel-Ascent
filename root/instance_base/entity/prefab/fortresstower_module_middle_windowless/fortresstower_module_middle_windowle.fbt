@@ -1,0 +1,42 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("fortresstower_module_middle_windowlessInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xD8EDC2EA','0xB0307153','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB79','0x8EB07478','0x0077024F','0x00005500'), "12_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EC4B','0x8EB274A0','0x0077024F','0x00005500'), "19_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'), "11_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xA08C3695','0x8EAC7434','0x0077024F','0x00005500'), "0_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB4B','0x8EB374A4','0x0077024F','0x00005500'), "20_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB69','0x8EB374A8','0x0077024F','0x00005500'), "21_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EC2D','0x8EB2749A','0x0077024F','0x00005500'), "18_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x97A1EB87','0x8EB374AC','0x0077024F','0x00005500'), "22_fortresstower_module_middle_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6DAE5ABD','0x8BA1372E','0x0077024F','0x00005500'), "fortresstower_narrow_stairs_base");
+  typeManager:setLastKnownNameForGUID(GUID('0x6D9E5F54','0x9EB03818','0x0077024F','0x00005500'), "fortresstower_narrow_stairs_arch");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x97A1EB79','0x8EB07478','0x0077024F','0x00005500'),  -- 12_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EC4B','0x8EB274A0','0x0077024F','0x00005500'),  -- 19_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB5B','0x8EAF7472','0x0077024F','0x00005500'),  -- 11_fortresstower_module_middle_ObjectEntity
+    GUID('0xA08C3695','0x8EAC7434','0x0077024F','0x00005500'),  -- 0_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB4B','0x8EB374A4','0x0077024F','0x00005500'),  -- 20_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB69','0x8EB374A8','0x0077024F','0x00005500'),  -- 21_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EC2D','0x8EB2749A','0x0077024F','0x00005500'),  -- 18_fortresstower_module_middle_ObjectEntity
+    GUID('0x97A1EB87','0x8EB374AC','0x0077024F','0x00005500'),  -- 22_fortresstower_module_middle_ObjectEntity
+    GUID('0x6DAE5ABD','0x8BA1372E','0x0077024F','0x00005500'),  -- fortresstower_narrow_stairs_base
+    GUID('0x6D9E5F54','0x9EB03818','0x0077024F','0x00005500')}) -- fortresstower_narrow_stairs_arch
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0.8084, 1.0134, 5.8695), VC3(-3.1178, 3.9373, 4.5808), VC3(-4.6592, 1.0066, 0.3193), VC3(0.8466, 1.0031, -5.2312), VC3(-3.047, -0.9929, -3.6216), VC3(1.9452, -3.4834, 1.4071), VC3(6.3463, 0.9993, 0.3164), VC3(0.8777, -3.4834, -3.6402), VC3(0.1892, -1.7539, -3.6206), VC3(-3.0961, 2.4147, 0.5399)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, -1, 0, 1.19209e-007), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(0, -1, 0, 1.19209e-007), QUAT(0, -7.54979e-008, 0, -1), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(0, -0.707107, 0, -0.707107), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(4.0303, 3.1908, 2.001), VC3(0.8805, 0.8506, 5.6902), VC3(0.4, 3.1949, 24.202), VC3(4.0047, 3.1966, 2), VC3(0.8927, 1.5924, 4.4902), VC3(3.1463, 0.4, 15.889), VC3(4.8368, 3.2039, 2), VC3(4.0044, 0.4, 4.4157), VC3(1, 1, 1), VC3(1, 1, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 0, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, -1, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 2, 2, 2, 2, 2, 1, 1}))
+  type:setInstanceCounter(10)
+end

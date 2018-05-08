@@ -1,0 +1,89 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel", GUID('0x0668DEA7','0x60CB1711','0x0077026C','0x00005500')); -- basic_room
+  type:setGuid(GUID('0xC97F9530','0x60D81755','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel")
+  typeManager:setLastKnownNameForGUID(GUID('0xD2B6ECE4','0x60D81757','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0xD2B6ECE4','0x60D81757','0x0077026C','0x00005500')); -- handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel_ModCom
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel", GUID('0x0668DEA7','0x60CB1711','0x0077026C','0x00005500')); -- basic_room
+  type:setGuid(GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel")
+  typeManager:setLastKnownNameForGUID(GUID('0xD2B6F51C','0x60CC1717','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0xD2B6F51C','0x60CC1717','0x0077026C','0x00005500')); -- handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel_ModCom
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel", GUID('0x0668DEA7','0x60CB1711','0x0077026C','0x00005500')); -- basic_room
+  type:setGuid(GUID('0xC9BF9565','0x60D51745','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel")
+  typeManager:setLastKnownNameForGUID(GUID('0xD2F6ED19','0x60D51747','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0xD2F6ED19','0x60D51747','0x0077026C','0x00005500')); -- handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel_ModCom
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel", GUID('0x0668DEA7','0x60CB1711','0x0077026C','0x00005500')); -- basic_room
+  type:setGuid(GUID('0xC9BF9D9D','0x60D51749','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel")
+  typeManager:setLastKnownNameForGUID(GUID('0xD2F6F551','0x60D6174B','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0xD2F6F551','0x60D6174B','0x0077026C','0x00005500')); -- handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel_ModCom
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel_ModCom", GUID('0x129809B1','0x60CC1715','0x0077026C','0x00005500')); -- basic_room_ModCom
+  type:setGuid(GUID('0xD2B6ECE4','0x60D81757','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel_ModCom")
+  resourceManager:setLastKnownNameForGUID(GUID('0xCB757905','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel");
+  resourceManager:setLastKnownFilenameForGUID(GUID('0xCB757905','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel");
+  type:setPropertyGUID(type.PropertyModel, GUID('0xCB757905','0x00000000','0x00770100','0x00004400')) -- data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_1.fbxmodel
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel_ModCom", GUID('0x129809B1','0x60CC1715','0x0077026C','0x00005500')); -- basic_room_ModCom
+  type:setGuid(GUID('0xD2B6F51C','0x60CC1717','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel_ModCom")
+  resourceManager:setLastKnownNameForGUID(GUID('0xCB7579BB','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  resourceManager:setLastKnownFilenameForGUID(GUID('0xCB7579BB','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  type:setPropertyGUID(type.PropertyModel, GUID('0xCB7579BB','0x00000000','0x00770100','0x00004400')) -- data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel
+  type:setSelfIllumination(COL(0.3974, 0.3401, 0.2306))
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel_ModCom", GUID('0x129809B1','0x60CC1715','0x0077026C','0x00005500')); -- basic_room_ModCom
+  type:setGuid(GUID('0xD2F6ED19','0x60D51747','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel_ModCom")
+  resourceManager:setLastKnownNameForGUID(GUID('0xCB777978','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel");
+  resourceManager:setLastKnownFilenameForGUID(GUID('0xCB777978','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel");
+  type:setPropertyGUID(type.PropertyModel, GUID('0xCB777978','0x00000000','0x00770100','0x00004400')) -- data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_1.fbxmodel
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_room_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel_ModCom", GUID('0x129809B1','0x60CC1715','0x0077026C','0x00005500')); -- basic_room_ModCom
+  type:setGuid(GUID('0xD2F6F551','0x60D6174B','0x0077026C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setTypeFileName("object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel_ModCom")
+  resourceManager:setLastKnownNameForGUID(GUID('0xCB777A2E','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel");
+  resourceManager:setLastKnownFilenameForGUID(GUID('0xCB777A2E','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel");
+  type:setPropertyGUID(type.PropertyModel, GUID('0xCB777A2E','0x00000000','0x00770100','0x00004400')) -- data/root/instance_base/entity/object/prefab_props/basic_room/handrail_wooden_basic_room_bottom_plank_2m_2.fbxmodel
+end

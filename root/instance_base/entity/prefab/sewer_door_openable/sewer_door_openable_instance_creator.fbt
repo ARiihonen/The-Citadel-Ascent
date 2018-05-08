@@ -1,0 +1,96 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("sewer_door_openableInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0x91E9E371','0x8CBF128A','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x714ECC3A','0x8CBF128E','0x0077024F','0x00005500'), "1_sewer_door_openable_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x69860E5C','0x8CC01292','0x0077024F','0x00005500'), "2_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x76494556','0x19847416','0x0077024F','0x00005500'), "18_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x69860E6A','0x8CC01298','0x0077024F','0x00005500'), "3_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x69860E78','0x8CC0129C','0x0077024F','0x00005500'), "4_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6A908767','0x933601C5','0x0077022E','0x00005500'), "door_n_window_set_3.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x69860E86','0x8CC012A2','0x0077024F','0x00005500'), "5_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x69860E94','0x8CC012A6','0x0077024F','0x00005500'), "6_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x69860EA2','0x8CC112AA','0x0077024F','0x00005500'), "7_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x69860EB0','0x8CC112AE','0x0077024F','0x00005500'), "8_sewer_door_openable_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x68707D41','0x5C7438C5','0x00770247','0x00005500'), "mine_pump_metal.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'), "wall_set_ascetic_hallway_lock.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'), "wall_set_ascetic_hallway_lock.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x6B59B6E5','0x934E01FD','0x0077022E','0x00005500'), "door_n_window_set_frame_3.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x61D60FBD','0x8CC112B4','0x0077024F','0x00005500'), "14_sewer_door_openable_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x61D60FDB','0x8CC112B8','0x0077024F','0x00005500'), "15_sewer_door_openable_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x61D60FF9','0x8CC112BC','0x0077024F','0x00005500'), "16_sewer_door_openable_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x61D61017','0x8CC212C0','0x0077024F','0x00005500'), "17_sewer_door_openable_JointEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'),  -- NavMeshHoleCreatorDynamicCollisionHelper
+    GUID('0x714ECC3A','0x8CBF128E','0x0077024F','0x00005500'),  -- 1_sewer_door_openable_JointEntity
+    GUID('0x69860E5C','0x8CC01292','0x0077024F','0x00005500'),  -- 2_sewer_door_openable_ObjectEntity
+    GUID('0x76494556','0x19847416','0x0077024F','0x00005500'),  -- 18_sewer_door_openable_ObjectEntity
+    GUID('0x69860E6A','0x8CC01298','0x0077024F','0x00005500'),  -- 3_sewer_door_openable_ObjectEntity
+    GUID('0x69860E78','0x8CC0129C','0x0077024F','0x00005500'),  -- 4_sewer_door_openable_ObjectEntity
+    GUID('0x6A908767','0x933601C5','0x0077022E','0x00005500'),  -- door_n_window_set_3.fbxmodel
+    GUID('0x69860E86','0x8CC012A2','0x0077024F','0x00005500'),  -- 5_sewer_door_openable_ObjectEntity
+    GUID('0x69860E94','0x8CC012A6','0x0077024F','0x00005500'),  -- 6_sewer_door_openable_ObjectEntity
+    GUID('0x69860EA2','0x8CC112AA','0x0077024F','0x00005500'),  -- 7_sewer_door_openable_ObjectEntity
+    GUID('0x69860EB0','0x8CC112AE','0x0077024F','0x00005500'),  -- 8_sewer_door_openable_ObjectEntity
+    GUID('0x68707D41','0x5C7438C5','0x00770247','0x00005500'),  -- mine_pump_metal.fbxmodel
+    GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'),  -- wall_set_ascetic_hallway_lock.fbxmodel
+    GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'),  -- wall_set_ascetic_hallway_lock.fbxmodel
+    GUID('0x6B59B6E5','0x934E01FD','0x0077022E','0x00005500'),  -- door_n_window_set_frame_3.fbxmodel
+    GUID('0x61D60FBD','0x8CC112B4','0x0077024F','0x00005500'),  -- 14_sewer_door_openable_JointEntity
+    GUID('0x61D60FDB','0x8CC112B8','0x0077024F','0x00005500'),  -- 15_sewer_door_openable_JointEntity
+    GUID('0x61D60FF9','0x8CC112BC','0x0077024F','0x00005500'),  -- 16_sewer_door_openable_JointEntity
+    GUID('0x61D61017','0x8CC212C0','0x0077024F','0x00005500')}) -- 17_sewer_door_openable_JointEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0.285, -1.2866, -0.0092), VC3(0.0766, -0.6759, 0.0428), VC3(0.1871, 0.2299, 0.0151), VC3(0.2276, 0.2344, 0.0138), VC3(-0.16, -0.2698, 1.0732), VC3(0.0215, -0.5113, 0.0053), VC3(0.0512, -0.2945, 0.018), VC3(-0.16, 0.7524, -0.0049), VC3(-0.16, 1.1247, 0.0017), VC3(-0.16, -0.2698, -1.0815), VC3(0.1465, 0.2306, 0.0004), VC3(0.1467, 0.2297, -0.0011), VC3(0.129, 0.2304, -0.9423), VC3(0.129, 0.2304, 0.9578), VC3(-0.1182, -0.2996, 0.0228), VC3(0.1551, 0.1683, -0.9359), VC3(0.0578, -0.0616, -0.7435), VC3(0.1773, 0.2255, 0.0428), VC3(0.1551, 0.1683, 0.9214)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(0, 0.707107, 0, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(0, 0.707107, 0, 0.707107), QUAT(0, 0.707107, 0, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(-0.707107, 5.96046e-008, -2.10734e-008, -0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(0, 0.707107, 0, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107), QUAT(1.05367e-007, 0.707107, 4.21468e-008, 0.707107)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.6569, 0.4325, 0.9723), VC3(0.3, 0.3, 0.3), VC3(0.2284, 0.0488, 0.1449), VC3(0.1439, 0.5666, 1), VC3(0.2552, 0.9932, 0.8405), VC3(0.5992, 0.8, 0.1626), VC3(1, 0.7393, 1), VC3(0.6073, 0.1754, 0.8405), VC3(0.7891, 0.1225, 0.8405), VC3(0.2552, 0.9932, 0.8405), VC3(0.6383, 0.0677, 0.0528), VC3(0.2445, 0.4929, 1), VC3(1, 1, 1), VC3(1, 1, 1), VC3(1, 0.7422, 1), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3), VC3(0.3, 0.3, 0.3)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({1, 1, 15, 15, 16, 17, 17, 18}))
+  typeManager:setLastKnownNameForGUID(GUID('0xD015BFBD','0x8CBF1290','0x0077024F','0x00005500'), "8_1_sewer_door_openable_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xD015BFBD','0x8CBF1290','0x0077024F','0x00005500'), "8_1_sewer_door_openable_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC729B788','0x8CC112B6','0x0077024F','0x00005500'), "8_14_sewer_door_openable_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC729B788','0x8CC112B6','0x0077024F','0x00005500'), "8_14_sewer_door_openable_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC729C798','0x8CC112BA','0x0077024F','0x00005500'), "8_15_sewer_door_openable_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC729D7A8','0x8CC112BE','0x0077024F','0x00005500'), "8_16_sewer_door_openable_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC729D7A8','0x8CC112BE','0x0077024F','0x00005500'), "8_16_sewer_door_openable_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xC729E7B8','0x8CC212C2','0x0077024F','0x00005500'), "8_17_sewer_door_openable_JointEntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0xD015BFBD','0x8CBF1290','0x0077024F','0x00005500'),  -- 8_1_sewer_door_openable_JointEntityHingeJointComponent
+    GUID('0xD015BFBD','0x8CBF1290','0x0077024F','0x00005500'),  -- 8_1_sewer_door_openable_JointEntityHingeJointComponent
+    GUID('0xC729B788','0x8CC112B6','0x0077024F','0x00005500'),  -- 8_14_sewer_door_openable_JointEntityHingeJointComponent
+    GUID('0xC729B788','0x8CC112B6','0x0077024F','0x00005500'),  -- 8_14_sewer_door_openable_JointEntityHingeJointComponent
+    GUID('0xC729C798','0x8CC112BA','0x0077024F','0x00005500'),  -- 8_15_sewer_door_openable_JointEntityHingeJointComponent
+    GUID('0xC729D7A8','0x8CC112BE','0x0077024F','0x00005500'),  -- 8_16_sewer_door_openable_JointEntityHingeJointComponent
+    GUID('0xC729D7A8','0x8CC112BE','0x0077024F','0x00005500'),  -- 8_16_sewer_door_openable_JointEntityHingeJointComponent
+    GUID('0xC729E7B8','0x8CC212C2','0x0077024F','0x00005500')}) -- 8_17_sewer_door_openable_JointEntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component0", "Component1", "Component0", "Component1", "Component0", "Component0", "Component1", "Component0"}))
+  type:setTargetInstanceIds(IntPropertyArray({5, 0, 10, 5, 5, 2, 10, 10}))
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC31A','0x8CC0129E','0x0077024F','0x00005500'), "2_4_sewer_door_openable_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500'), "2_8_sewer_door_openable_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC31A','0x8CC0129E','0x0077024F','0x00005500'), "2_4_sewer_door_openable_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC31A','0x8CC0129E','0x0077024F','0x00005500'), "2_4_sewer_door_openable_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC0EE','0x8CC01294','0x0077024F','0x00005500'), "1_2_sewer_door_openable_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500'), "2_8_sewer_door_openable_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500'), "2_8_sewer_door_openable_ObjectEntityPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0xD8FFC31A','0x8CC0129E','0x0077024F','0x00005500'),  -- 2_4_sewer_door_openable_ObjectEntityPhysicsComponent
+    GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500'),  -- NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent
+    GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500'),  -- 2_8_sewer_door_openable_ObjectEntityPhysicsComponent
+    GUID('0xD8FFC31A','0x8CC0129E','0x0077024F','0x00005500'),  -- 2_4_sewer_door_openable_ObjectEntityPhysicsComponent
+    GUID('0xD8FFC31A','0x8CC0129E','0x0077024F','0x00005500'),  -- 2_4_sewer_door_openable_ObjectEntityPhysicsComponent
+    GUID('0xD8FFC0EE','0x8CC01294','0x0077024F','0x00005500'),  -- 1_2_sewer_door_openable_ObjectEntityPhysicsComponent
+    GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500'),  -- 2_8_sewer_door_openable_ObjectEntityPhysicsComponent
+    GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500')}) -- 2_8_sewer_door_openable_ObjectEntityPhysicsComponent
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, 2, -1, -1, 5, -1, -1, -1, -1, 10, -1, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 4, 2, 2, 4, 2, 2, 2, 2, 4, 4, 4, 4, 8, 8, 8, 8}))
+  type:setInstanceCounter(19)
+  type:setPrefabVersion(1)
+end

@@ -1,0 +1,134 @@
+
+--OLD
+
+idle1 = addContext("idle1", 1)
+idle2 = addContext("idle2", 1)
+
+liftoff = addContext("liftoff", 1)
+land = addContext("land", 1)
+fly1 = addContext("fly1", 1)
+glide1 = addContext("glide1", 1)
+
+fire1 = addContext("fire1", 1)
+
+
+--NEW
+
+fly_2 = addContext("fly_2",1)
+glide_2	= addContext("glide_2",1)
+idle_2 = addContext("idle_2",1)
+
+
+--{ Animation: s_idle_2
+s_idle_2 = addState(idle_2, "s_idle_2");
+s_idle_2:blendTime(300);
+s_idle_2:loop(true);
+s_idle_2:add("idle_3.fbxanim");
+--}
+
+--{ Animation: s_fly_2
+s_fly_2 = addState(fly_2, "s_fly_2");
+s_fly_2:blendTime(300);
+s_fly_2:loop(true);
+s_fly_2:add("fly_new_a.fbxanim");
+--}
+
+--{ Animation: s_glide_2
+s_glide_2 = addState(glide_2, "s_glide_2");
+s_glide_2:blendTime(1200);
+s_glide_2:loop(true);
+s_glide_2:add("glide_2.fbxanim");
+--}
+
+--{ Animation: s_land_2
+s_land_2 = addState(idle_2, "s_land_2");
+s_land_2:blendTime(1200);
+s_land_2:from(s_fly_2);
+s_land_2:from(s_glide_2);
+s_land_2:loop(false);
+s_land_2:add("land_to_idle.fbxanim");
+--}
+
+--{ Animation: s_liftoff_2
+s_liftoff_2 = addState(fly_2, "s_liftoff_2");
+s_liftoff_2:blendTime(300);
+s_liftoff_2:from(s_idle_2);
+s_liftoff_2:loop(false);
+s_liftoff_2:add("liftoff_new.fbxanim");
+--}
+
+--{ Animation: s_liftoff_glide
+s_liftoff_glide = addState(glide_2, "s_liftoff_glide");
+s_liftoff_glide:blendTime(300);
+s_liftoff_glide:from(s_idle_2);
+s_liftoff_glide:loop(false);
+s_liftoff_glide:add("liftoff_new.fbxanim");
+--}
+
+
+
+
+
+
+
+
+
+
+
+
+--OLD
+
+
+
+--{ Animation: minidragon_idle1
+minidragon_idle1 = addState(idle1, "minidragon_idle1");
+minidragon_idle1:blendTime(300);
+minidragon_idle1:loop(true);
+minidragon_idle1:add("idle1.fbxanim");
+--}
+
+--{ Animation: minidragon_idle2
+minidragon_idle2 = addState(idle2, "minidragon_idle2");
+minidragon_idle2:blendTime(300);
+minidragon_idle2:loop(true);
+minidragon_idle2:add("idle2.fbxanim");
+--}
+
+
+--{ Animation: minidragon_liftoff
+minidragon_liftoff = addState(liftoff, "minidragon_liftoff");
+minidragon_liftoff:blendTime(300);
+minidragon_liftoff:loop(true);
+minidragon_liftoff:add("liftoff.fbxanim");
+--}
+
+--{ Animation: minidragon_land
+minidragon_land = addState(land, "minidragon_land");
+minidragon_land:blendTime(300);
+minidragon_land:loop(true);
+minidragon_land:add("land.fbxanim");
+--}
+
+--{ Animation: minidragon_fly1
+minidragon_fly1 = addState(fly1, "minidragon_fly1");
+minidragon_fly1:blendTime(500);
+minidragon_fly1:loop(true);
+minidragon_fly1:add("fly1.fbxanim");
+--}
+
+--{ Animation: minidragon_glide
+minidragon_glide = addState(glide1, "minidragon_glide");
+minidragon_glide:blendTime(1200);
+minidragon_glide:loop(true);
+minidragon_glide:add("glide1.fbxanim");
+--}
+
+--{ Animation: minidragon_fire1
+minidragon_fire1 = addState(fire1, "minidragon_fire1");
+minidragon_fire1:blendTime(300);
+minidragon_fire1:loop(true);
+minidragon_fire1:add("fire1.fbxanim");
+--}
+
+
+

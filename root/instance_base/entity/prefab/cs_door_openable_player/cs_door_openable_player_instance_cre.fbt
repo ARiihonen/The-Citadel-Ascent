@@ -1,0 +1,60 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cs_door_openable_playerInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xCAD528BA','0x883C0B47','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x7E74F397','0xF36B08AB','0x0077027A','0x00005500'), "wall_set_rough_dungeon_8x8x2_door_1.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7C33FB41','0x883C0B4B','0x0077024F','0x00005500'), "1_cs_door_openable_player_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'), "wall_set_ascetic_hallway_lock.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x9295BF71','0x883C0B4F','0x0077024F','0x00005500'), "3_cs_door_openable_player_PrismaticJointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7D887AD7','0x883C0B53','0x0077024F','0x00005500'), "5_cs_door_openable_player_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7D887AE5','0x883D0B59','0x0077024F','0x00005500'), "6_cs_door_openable_player_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7D887AF3','0x883D0B5D','0x0077024F','0x00005500'), "7_cs_door_openable_player_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'), "wall_set_ascetic_hallway_lock.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7C33FBB1','0x883D0B61','0x0077024F','0x00005500'), "9_cs_door_openable_player_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x866B62C7','0x883D0B65','0x0077024F','0x00005500'), "10_cs_door_openable_player_ObjectEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x7E74F397','0xF36B08AB','0x0077027A','0x00005500'),  -- wall_set_rough_dungeon_8x8x2_door_1.fbxmodel
+    GUID('0x7C33FB41','0x883C0B4B','0x0077024F','0x00005500'),  -- 1_cs_door_openable_player_JointEntity
+    GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'),  -- wall_set_ascetic_hallway_lock.fbxmodel
+    GUID('0x9295BF71','0x883C0B4F','0x0077024F','0x00005500'),  -- 3_cs_door_openable_player_PrismaticJointEntity
+    GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'),  -- handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel
+    GUID('0x7D887AD7','0x883C0B53','0x0077024F','0x00005500'),  -- 5_cs_door_openable_player_ObjectEntity
+    GUID('0x7D887AE5','0x883D0B59','0x0077024F','0x00005500'),  -- 6_cs_door_openable_player_ObjectEntity
+    GUID('0x7D887AF3','0x883D0B5D','0x0077024F','0x00005500'),  -- 7_cs_door_openable_player_ObjectEntity
+    GUID('0x862E9D30','0xBCF81FCB','0x0077021D','0x00005500'),  -- wall_set_ascetic_hallway_lock.fbxmodel
+    GUID('0x7C33FBB1','0x883D0B61','0x0077024F','0x00005500'),  -- 9_cs_door_openable_player_JointEntity
+    GUID('0x866B62C7','0x883D0B65','0x0077024F','0x00005500')}) -- 10_cs_door_openable_player_ObjectEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(1.1613, -0.1422, -0.091), VC3(2.384, 0.997, -0.0053), VC3(0.1025, 0.0382, 0.0043), VC3(0.1475, 0.0549, 0.0396), VC3(-0.1135, 0.0515, 0.0416), VC3(-0.1124, 0.0511, 0.0395), VC3(-0.4993, 0.0493, 0.0895), VC3(-0.4993, 0.0493, -0.0415), VC3(-0.4985, 0.0382, 0.0043), VC3(-0.7435, 0.0482, 0.0573), VC3(1.111, -0.1498, -0.0875)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 1, 0, -5.3545e-007), QUAT(0, 1, 0, 1.58933e-008), QUAT(0, 1, 0, -4.37114e-008), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 1, 0, 0), QUAT(0, 0, 0, 1), QUAT(0, -4.37114e-008, 0, 1)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(1, 1, 1), VC3(0.3, 0.3, 0.3), VC3(1, 1, 1.4804), VC3(0.3037, 1, 1), VC3(1, 0.6568, 0.2498), VC3(0.4469, 0.0434, 0.0745), VC3(0.1203, 0.13, 0.0549), VC3(0.1203, 0.13, 0.0549), VC3(1, 1, 1.4804), VC3(0.3, 0.3, 0.3), VC3(0.9747, 1.5941, 0.3057)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setParentIds(IntPropertyArray({1, 3, 3, 9}))
+  typeManager:setLastKnownNameForGUID(GUID('0xE059D6B6','0x883C0B4D','0x0077024F','0x00005500'), "8_1_cs_door_openable_player_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x3B2D9502','0x883C0B51','0x0077024F','0x00005500'), "3_3_cs_door_openable_player_PrismaticJointEntityPrismaticJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x3B2D9502','0x883C0B51','0x0077024F','0x00005500'), "3_3_cs_door_openable_player_PrismaticJointEntityPrismaticJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE059DF2E','0x883D0B63','0x0077024F','0x00005500'), "8_9_cs_door_openable_player_JointEntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0xE059D6B6','0x883C0B4D','0x0077024F','0x00005500'),  -- 8_1_cs_door_openable_player_JointEntityHingeJointComponent
+    GUID('0x3B2D9502','0x883C0B51','0x0077024F','0x00005500'),  -- 3_3_cs_door_openable_player_PrismaticJointEntityPrismaticJointComponent
+    GUID('0x3B2D9502','0x883C0B51','0x0077024F','0x00005500'),  -- 3_3_cs_door_openable_player_PrismaticJointEntityPrismaticJointComponent
+    GUID('0xE059DF2E','0x883D0B63','0x0077024F','0x00005500')}) -- 8_9_cs_door_openable_player_JointEntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component0", "Component0", "Component1", "Component0"}))
+  type:setTargetInstanceIds(IntPropertyArray({10, 10, 5, 5}))
+  typeManager:setLastKnownNameForGUID(GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'), "DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'), "DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xCBE17C44','0x883C0B55','0x0077024F','0x00005500'), "1_5_cs_door_openable_player_ObjectEntityPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xCBE17C44','0x883C0B55','0x0077024F','0x00005500'), "1_5_cs_door_openable_player_ObjectEntityPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'),  -- DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent
+    GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'),  -- DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent
+    GUID('0xCBE17C44','0x883C0B55','0x0077024F','0x00005500'),  -- 1_5_cs_door_openable_player_ObjectEntityPhysicsComponent
+    GUID('0xCBE17C44','0x883C0B55','0x0077024F','0x00005500')}) -- 1_5_cs_door_openable_player_ObjectEntityPhysicsComponent
+  type:setChildLevels(IntPropertyArray({1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({10, 10, 10, -1, 5, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({4, 8, 4, 8, 4, 2, 2, 2, 4, 8, 2}))
+  type:setInstanceCounter(11)
+end

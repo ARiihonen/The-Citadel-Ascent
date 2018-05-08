@@ -1,0 +1,8 @@
+idle = addContext("idle", 1)
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(0);
+s_idle:loop(false);
+s_idle:add("exp_statue.fbxanim");
+--}

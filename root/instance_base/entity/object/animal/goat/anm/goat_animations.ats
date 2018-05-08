@@ -1,0 +1,18 @@
+idle = addContext("idle", 1)
+idle_in_place = addContext("idle_in_place", 1)
+
+--{ Animation: goat_idle
+goat_idle = addState(idle, "goat_idle");
+goat_idle:blendTime(300);
+goat_idle:loop(true);
+goat_idle:randomizedStartTime();
+goat_idle:add("goat_idle.fbxanim");
+--}
+
+--{ Animation: goat_idle_in_place
+goat_idle_in_place = addState(idle_in_place, "goat_idle_in_place");
+goat_idle_in_place:blendTime(300);
+goat_idle_in_place:loop(true);
+goat_idle_in_place:randomizedStartTime();
+goat_idle_in_place:add("goat_idle_in_place_take_001.fbxanim");
+--}

@@ -1,0 +1,8 @@
+explosion = addContext("explosion",1)
+
+--{ Animation: s_explosion
+s_explosion = addState(explosion, "s_explosion");
+s_explosion:loop(false);
+s_explosion:speedFactor(1.0);
+s_explosion:add("flower_explosion.fbxanim");
+--}

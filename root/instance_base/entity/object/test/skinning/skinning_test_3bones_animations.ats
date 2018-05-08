@@ -1,0 +1,16 @@
+test1 = addContext("test1", 1)
+test2 = addContext("test2", 1)
+
+--{ Animation: s_test1
+s_test1 = addState(test1, "s_test1");
+s_test1:blendTime(0);
+s_test1:loop(true);
+s_test1:add("skinning_test_3bones_test1.fbxanim");
+--}
+
+--{ Animation: s_test2
+s_test2 = addState(test2, "s_test2");
+s_test2:blendTime(0);
+s_test2:loop(true);
+s_test2:add("skinning_test_3bones_test2.fbxanim");
+--}

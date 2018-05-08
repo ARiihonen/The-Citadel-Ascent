@@ -1,0 +1,34 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("generic_door_openInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0x9345EE20','0x51031AE1','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x6E4FB21B','0x51041AE9','0x0077024F','0x00005500'), "1_generic_door_open_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x72256BC9','0x51041AE5','0x0077024F','0x00005500'), "0_generic_door_open_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7E74F397','0xF36B08AB','0x0077027A','0x00005500'), "wall_set_rough_dungeon_8x8x2_door_1.fbxmodel");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x6E4FB21B','0x51041AE9','0x0077024F','0x00005500'),  -- 1_generic_door_open_ObjectEntity
+    GUID('0x72256BC9','0x51041AE5','0x0077024F','0x00005500'),  -- 0_generic_door_open_JointEntity
+    GUID('0x7E74F397','0xF36B08AB','0x0077027A','0x00005500')}) -- wall_set_rough_dungeon_8x8x2_door_1.fbxmodel
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0, 0, 0), VC3(1.2643, 1.1469, 0.0815), VC3(0.0472, 0.0062, 0.002)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 1, 0, -1.49012e-007), QUAT(0, 1, 0, 5.96046e-008), QUAT(0, -1, 0, 0)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.9747, 1.5941, 0.5376), VC3(0.3, 0.3, 0.3), VC3(1, 1, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({1}))
+  typeManager:setLastKnownNameForGUID(GUID('0xDF257391','0x51041AE7','0x0077024F','0x00005500'), "8_0_generic_door_open_JointEntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {GUID('0xDF257391','0x51041AE7','0x0077024F','0x00005500')}) -- 8_0_generic_door_open_JointEntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component0"}))
+  type:setTargetInstanceIds(IntPropertyArray({0}))
+  typeManager:setLastKnownNameForGUID(GUID('0xC66698C5','0xCEF3650D','0x0077024F','0x00005500'), "5__1_generic_door_open_ObjectEntityPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {GUID('0xC66698C5','0xCEF3650D','0x0077024F','0x00005500')}) -- 5__1_generic_door_open_ObjectEntityPhysicsComponent
+  type:setChildLevels(IntPropertyArray({0, 1, 1}))
+  type:setChildParentIDs(IntPropertyArray({-1, 0, 0}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 4}))
+  type:setInstanceCounter(3)
+  type:setPrefabVersion(2)
+end

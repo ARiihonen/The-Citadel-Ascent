@@ -1,0 +1,52 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("ConstructionTowerInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0x93684DA0','0x669E494C','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA913','0x669E4950','0x0077024F','0x00005500'), "0_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA921','0x669E4954','0x0077024F','0x00005500'), "1_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA92F','0x669F4958','0x0077024F','0x00005500'), "2_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA93D','0x669F495C','0x0077024F','0x00005500'), "3_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA94B','0x669F4960','0x0077024F','0x00005500'), "4_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA959','0x66A04964','0x0077024F','0x00005500'), "5_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA967','0x66A04968','0x0077024F','0x00005500'), "6_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA975','0x66A1496C','0x0077024F','0x00005500'), "7_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA983','0x66A14970','0x0077024F','0x00005500'), "8_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x6EACA991','0x66A14974','0x0077024F','0x00005500'), "9_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x75B4F0D3','0x66A24978','0x0077024F','0x00005500'), "10_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x75B4F0F1','0x66A2497C','0x0077024F','0x00005500'), "11_ConstructionTower_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x75B4F10F','0x66A24980','0x0077024F','0x00005500'), "12_ConstructionTower_ObjectEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x6EACA913','0x669E4950','0x0077024F','0x00005500'),  -- 0_ConstructionTower_ObjectEntity
+    GUID('0x6EACA921','0x669E4954','0x0077024F','0x00005500'),  -- 1_ConstructionTower_ObjectEntity
+    GUID('0x6EACA92F','0x669F4958','0x0077024F','0x00005500'),  -- 2_ConstructionTower_ObjectEntity
+    GUID('0x6EACA93D','0x669F495C','0x0077024F','0x00005500'),  -- 3_ConstructionTower_ObjectEntity
+    GUID('0x6EACA94B','0x669F4960','0x0077024F','0x00005500'),  -- 4_ConstructionTower_ObjectEntity
+    GUID('0x6EACA959','0x66A04964','0x0077024F','0x00005500'),  -- 5_ConstructionTower_ObjectEntity
+    GUID('0x6EACA967','0x66A04968','0x0077024F','0x00005500'),  -- 6_ConstructionTower_ObjectEntity
+    GUID('0x6EACA975','0x66A1496C','0x0077024F','0x00005500'),  -- 7_ConstructionTower_ObjectEntity
+    GUID('0x6EACA983','0x66A14970','0x0077024F','0x00005500'),  -- 8_ConstructionTower_ObjectEntity
+    GUID('0x6EACA991','0x66A14974','0x0077024F','0x00005500'),  -- 9_ConstructionTower_ObjectEntity
+    GUID('0x75B4F0D3','0x66A24978','0x0077024F','0x00005500'),  -- 10_ConstructionTower_ObjectEntity
+    GUID('0x75B4F0F1','0x66A2497C','0x0077024F','0x00005500'),  -- 11_ConstructionTower_ObjectEntity
+    GUID('0x75B4F10F','0x66A24980','0x0077024F','0x00005500')}) -- 12_ConstructionTower_ObjectEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(-0.75, -5.5062, 0), VC3(-1.25, -0.4994, 1.25), VC3(0.7713, -2.3745, 1.25), VC3(0.7713, -2.3746, -1.25), VC3(-1.25, -0.4994, -1.25), VC3(1.25, -0.4994, -1.25), VC3(-0.7713, 1.6255, -1.25), VC3(1.25, -0.4994, 1.25), VC3(0, 3.7506, 0), VC3(-2.25, 3.7506, 0), VC3(0, -0.2494, 0), VC3(2.5, -0.2494, 0), VC3(-0.7713, 1.6255, 1.25)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(3.72529e-009, 3.72529e-008, 0.382684, 0.92388), QUAT(3.72529e-009, 3.72529e-008, 0.382684, 0.92388), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(4.84288e-008, 6.70552e-008, -0.382683, 0.92388), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(0, 2.98023e-008, 0, 1), QUAT(4.84288e-008, 6.70552e-008, -0.382683, 0.92388)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(1.8, 0.8054, 6), VC3(0.2, 3.2, 1), VC3(0.2, 2.3214, 1), VC3(0.2, 2.3214, 1), VC3(0.2, 3.2, 1), VC3(0.2, 3.2, 1), VC3(0.2, 2.3214, 1), VC3(0.2, 3.2, 1), VC3(1.2, 0.2, 6), VC3(0.6, 0.2, 6), VC3(1.2, 0.2, 6), VC3(0.8, 0.2, 6), VC3(0.2, 2.3214, 1)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 0, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}))
+  type:setChildParentIDs(IntPropertyArray({-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}))
+  type:setInstanceCounter(13)
+  type:setPrefabVersion(3)
+end

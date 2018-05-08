@@ -1,0 +1,97 @@
+
+climb_big = addContext("climb_big", 1)
+
+walk_big_look_fwd = addContext("walk_big_look_fwd", 1)
+walk_big_look_fwd_wait = addContext("walk_big_look_fwd_wait", 1)
+walk_big_look_left = addContext("walk_big_look_left", 1)
+walk_big_look_child = addContext("walk_big_look_child", 1)
+
+
+climb_small = addContext("climb_small", 1)
+
+walk_small_look_fwd = addContext("walk_small_look_fwd", 1)
+walk_small_look_fwd_wait = addContext("walk_small_look_fwd_wait", 1)
+walk_small_look_right = addContext("walk_small_look_right", 1)
+walk_small_look_parent = addContext("walk_small_look_parent", 1)
+
+--		<<small animations>>
+
+--{ Animation: s_climb_big
+s_climb_big = addState(climb_big, "s_climb_big");
+s_climb_big:blendTime(0);
+s_climb_big:loop(false);
+s_climb_big:add("climb_big_2.fbxanim");
+--}
+
+--{ Animation: s_walk_big_look_fwd
+s_walk_big_look_fwd = addState(walk_big_look_fwd, "s_walk_big_look_fwd");
+s_walk_big_look_fwd:blendTime(0);
+s_walk_big_look_fwd:synchronizedStartTimeGroup(4);
+s_walk_big_look_fwd:loop(true);
+s_walk_big_look_fwd:add("walk_big_look_fwd.fbxanim");
+--}
+
+--{ Animation: s_walk_big_look_fwd_wait
+s_walk_big_look_fwd_wait = addState(walk_big_look_fwd_wait, "s_walk_big_look_fwd_wait");
+s_walk_big_look_fwd_wait:blendTime(800);
+s_walk_big_look_fwd_wait:synchronizedStartTimeGroup(4);
+s_walk_big_look_fwd_wait:loop(true);
+s_walk_big_look_fwd_wait:add("walk_big_look_fwd_2_wait.fbxanim");
+--}
+
+--{ Animation: s_walk_big_look_left
+s_walk_big_look_left = addState(walk_big_look_left, "s_walk_big_look_left");
+s_walk_big_look_left:blendTime(800);
+s_walk_big_look_left:synchronizedStartTimeGroup(4);
+s_walk_big_look_left:loop(true);
+s_walk_big_look_left:add("walk_big_look_left.fbxanim");
+--}
+
+--{ Animation: s_walk_big_look_child
+s_walk_big_look_child = addState(walk_big_look_child, "s_walk_big_look_child");
+s_walk_big_look_child:blendTime(800);
+s_walk_big_look_child:synchronizedStartTimeGroup(4);
+s_walk_big_look_child:loop(true);
+s_walk_big_look_child:add("walk_big_look_child.fbxanim");
+--}
+ 
+--		<<small animations>>
+
+--{ Animation: s_climb_small
+s_climb_small = addState(climb_small, "s_climb_small");
+s_climb_small:blendTime(0);
+s_climb_small:loop(false);
+s_climb_small:add("climb_small_2.fbxanim");
+--}
+
+--{ Animation: s_walk_small_look_fwd
+s_walk_small_look_fwd = addState(walk_small_look_fwd, "s_walk_small_look_fwd");
+s_walk_small_look_fwd:blendTime(0);
+s_walk_small_look_fwd:synchronizedStartTimeGroup(4);
+s_walk_small_look_fwd:loop(true);
+s_walk_small_look_fwd:add("walk_small_look_fwd.fbxanim");
+--}
+
+--{ Animation: s_walk_small_look_fwd_wait
+s_walk_small_look_fwd_wait = addState(walk_small_look_fwd_wait, "s_walk_small_look_fwd_wait");
+s_walk_small_look_fwd_wait:blendTime(800);
+s_walk_small_look_fwd_wait:synchronizedStartTimeGroup(4);
+s_walk_small_look_fwd_wait:loop(true);
+s_walk_small_look_fwd_wait:add("walk_small_look_fwd_wait.fbxanim");
+--}
+
+--{ Animation: s_walk_small_look_right
+s_walk_small_look_right = addState(walk_small_look_right, "s_walk_small_look_right");
+s_walk_small_look_right:blendTime(800);
+s_walk_small_look_right:synchronizedStartTimeGroup(4);
+s_walk_small_look_right:loop(true);
+s_walk_small_look_right:add("walk_small_look_right.fbxanim");
+--}
+
+--{ Animation: s_walk_small_look_parent
+s_walk_small_look_parent = addState(walk_small_look_parent, "s_walk_small_look_parent");
+s_walk_small_look_parent:blendTime(800);
+s_walk_small_look_parent:synchronizedStartTimeGroup(4);
+s_walk_small_look_parent:loop(true);
+s_walk_small_look_parent:add("walk_small_look_parent.fbxanim");
+--}

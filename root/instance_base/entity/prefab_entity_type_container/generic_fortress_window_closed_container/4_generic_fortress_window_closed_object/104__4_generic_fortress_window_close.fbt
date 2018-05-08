@@ -1,0 +1,9 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper_box_physics_component_box_physics_collision_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("104__4_generic_fortress_window_closed_ObjectEntityBoxPhysicsCollisionComponent", GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')); -- CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent
+  type:setGuid(GUID('0x336AC784','0x42040FF6','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setDimensions(VC3(0.5866, 9.3768, 0.0019))
+  type:setScaleDimensionsUsingModelScale(true)
+end

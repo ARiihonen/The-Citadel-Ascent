@@ -1,0 +1,17 @@
+ring_Joint = newJoint()
+ring_Joint:setOrientation(VC3(0,1,0), VC3(1,0,0))
+ring_Joint:setPositionOffset(VC3(0.00,0.00,0.00))
+ring_Joint:setRotationLimitLowAngle(0.00)
+ring_Joint:setRotationLimitHighAngle(0.00)
+ring_Joint:setRotationLimitYAngle(0.00)
+ring_Joint:setRotationLimitZAngle(0.00)
+ring_Joint:setRotationLimitSpring(0.0)
+ring_Joint:setRotationLimitDamping(0.0)
+ring_Joint:setRotationLimitYSpring(0.0)
+ring_Joint:setRotationLimitYDamping(0.0)
+ring_Shape = newBoxShape(0.1000,0.1000,0.1000)
+ring_Shape:setPositionOffset(VC3(0.0000,0.0000,0.0000))
+ring_Shape:setRotationOffset(QUAT(0.0000,1.0000,0.0000,0.0000))
+addBone("ring", nil, ring_Joint, ring_Shape)
+
+

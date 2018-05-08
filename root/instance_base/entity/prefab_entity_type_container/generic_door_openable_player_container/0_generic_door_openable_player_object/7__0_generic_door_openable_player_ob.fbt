@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/gameplay/rope_target_gameplay/ninja_rope_target_gameplay/ninja_rope_target_gameplay_entity_bo.fbt")
+  local type = typeManager:inheritNewTypeByGUID("7__0_generic_door_openable_player_ObjectEntityBoxAreaComponent", GUID('0x8B5E898D','0x10F61C76','0x00770223','0x00005500')); -- NinjaRopeTargetGameplayEntityBoxAreaComponent
+  type:setGuid(GUID('0xC1C704B9','0x8ED66723','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setListenMask(BitSet("AreaGroupGameplay{ default = 1, usableItem = 0, pressurePlate = 0, distractionObject = 0, ActorPlayerPoint = 0, ActorPlayerBox = 0, ActorAiPoint = 0, ActorAiBox = 0, RareGameplayElement = 0, DynamicObject = 1, SwimPoint = 0, OxygenPoint = 0, ActorPlayerShadwen = 0, AreaFlow = 0, RagdollObject = 0, Lantern = 0, Magnetism = 0, Sunray = 0, Projectile = 0, Wind = 0, WindReceiver = 0, Rope = 0, ExperienceTracker = 0, GameplaySound = 0, InventoryArea = 0 }"))
+  type:setNotifyMask(BitSet("AreaGroupGameplay{ default = 1, usableItem = 0, pressurePlate = 0, distractionObject = 0, ActorPlayerPoint = 0, ActorPlayerBox = 0, ActorAiPoint = 0, ActorAiBox = 0, RareGameplayElement = 0, DynamicObject = 1, SwimPoint = 0, OxygenPoint = 0, ActorPlayerShadwen = 0, AreaFlow = 0, RagdollObject = 0, Lantern = 0, Magnetism = 0, Sunray = 0, Projectile = 0, Wind = 0, WindReceiver = 0, Rope = 0, ExperienceTracker = 0, GameplaySound = 0, InventoryArea = 0 }"))
+  type:setDimensions(VC3(2.4368, 3.9853, 0.1529))
+end

@@ -1,0 +1,17 @@
+
+idle1 = addContext("idle1", 4)
+idle2 = addContext("idle2", 4)
+
+--{ Animation: s_idle1
+s_idle1 = addState(idle1, "s_idle1");
+s_idle1:blendTime(0);
+s_idle1:loop(true);
+s_idle1:add("model/zoya_face1.fbxanim");
+--}
+
+--{ Animation: s_idle2
+s_idle2 = addState(idle2, "s_idle2");
+s_idle2:blendTime(0);
+s_idle2:loop(true);
+s_idle2:add("model/zoya_face1_speech.fbxanim");
+--}

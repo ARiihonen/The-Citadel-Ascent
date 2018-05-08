@@ -1,0 +1,198 @@
+walk = addContext("walk", 1)
+attack = addContext("attack", -3)
+walk_back = addContext("walk_back", 1)
+stagger = addContext("stagger", -5)
+die = addContext("die",-10)
+jump = addContext("jump", -2)
+shelf_idle = addContext("shelf_idle", 1)
+ground_idle = addContext("ground_idle", 1)
+stand = addContext("stand",2)
+blocked = addContext("blocked",-4)
+
+shelf_spawn = addContext("shelf_spawn", 1)
+spawn = addContext("spawn",1) 
+
+turn_left = addContext("turn_left", 0)
+turn_right = addContext("turn_right", 0)
+
+walk_right = addContext("walk_right", 2)
+walk_left = addContext("walk_left", 2)
+
+jump_z = addParam("jump_z")
+jump_y = addParam("jump_y")
+
+shelf_drop_y = addParam("shelf_drop_y")
+
+--{ Animation: s_jump
+s_jump = addState(jump, "s_jump");
+s_jump:blendTime(300);
+--s_jump:restart(true);
+s_jump:rootMotionScaleWeight(0.0);
+
+s_jump:add(jump_z(4), jump_y(-15), "offmesh_jump_n15up_4fwd.fbxanim");
+s_jump:add(jump_z(4), jump_y(-10), "offmesh_jump_n10up_4fwd.fbxanim");
+s_jump:add(jump_z(4), jump_y(0), "offmesh_jump_p0up_4fwd.fbxanim");
+s_jump:add(jump_z(4), jump_y(6), "offmesh_jump_p6up_4fwd.fbxanim");
+s_jump:add(jump_z(6), jump_y(-15), "offmesh_jump_n15up_6fwd.fbxanim");
+s_jump:add(jump_z(6), jump_y(-10), "offmesh_jump_n10up_6fwd.fbxanim");
+s_jump:add(jump_z(6), jump_y(0), "offmesh_jump_p0up_6fwd.fbxanim");
+s_jump:add(jump_z(6), jump_y(6), "offmesh_jump_p6up_6fwd.fbxanim");
+s_jump:loop(false);
+s_jump:absoluteRootMotionPosition(true);
+s_jump:absoluteRootMotionRotation(true);
+s_jump:addFinishedEvent("EventAnimHelperFinished");
+--}
+
+--{ Animation: s_turn_around_left
+s_turn_around_left = addState(turn_left, "s_turn_around_left");
+s_turn_around_left:blendTime(200);
+s_turn_around_left:loop(false);
+s_turn_around_left:addFinishedEvent("EventAnimTurnComplete");
+s_turn_around_left:add("turn_around_left.fbxanim");
+--}
+
+--{ Animation: s_turn_around_right
+s_turn_around_right = addState(turn_right, "s_turn_around_right");
+s_turn_around_right:blendTime(200);
+s_turn_around_right:loop(false);
+s_turn_around_right:addFinishedEvent("EventAnimTurnComplete");
+s_turn_around_right:add("turn_around_right.fbxanim");
+--}
+
+--{ Animation: s_shelf_idle
+s_shelf_idle = addState(shelf_idle, "s_shelf_idle");
+s_shelf_idle:blendTime(0);
+s_shelf_idle:loop(true);
+s_shelf_idle:add("shelf_idle.fbxanim");
+--}
+
+--{ Animation: s_shelf_drop
+s_shelf_drop = addState(shelf_spawn, "s_shelf_drop");
+s_shelf_drop:blendTime(0);
+--s_shelf_drop:restart(true);
+s_shelf_drop:rootMotionScaleWeight(0.0);
+s_shelf_drop:add(shelf_drop_y(-10), "shelf_drop_n10.fbxanim");
+s_shelf_drop:add(shelf_drop_y(-6), "shelf_drop_n6.fbxanim");
+s_shelf_drop:add(shelf_drop_y(-2), "shelf_drop_n2.fbxanim");
+s_shelf_drop:loop(false);
+--s_shelf_drop:absoluteRootMotionPosition(true);
+--s_shelf_drop:absoluteRootMotionRotation(true);
+s_shelf_drop:addFinishedEvent("EventAnimSpawnAIReady");
+--}
+
+--{ Animation: s_ground_idle
+s_ground_idle = addState(ground_idle, "s_ground_idle"); 
+s_ground_idle:blendTime(0);
+s_ground_idle:loop(true);
+s_ground_idle:add("idle_ground.fbxanim"); --sleep anim
+--}
+
+--{ Animation: s_ground_idle_wake_up
+s_ground_idle_wake_up = addState(walk, "s_ground_idle_wake_up");
+s_ground_idle_wake_up:from(s_ground_idle);
+s_ground_idle_wake_up:blendTime(0);
+s_ground_idle_wake_up:loop(false);
+s_ground_idle_wake_up:add("idle_ground_wake_up.fbxanim"); --spawn anim
+--}
+
+--{ Animation: s_jump
+s_jump_on_place = addState(stand, "s_jump_on_place");
+s_jump_on_place:blendTime(300);
+s_jump_on_place:loopBlendTime(300); 
+s_jump_on_place:loop(true);
+s_jump_on_place:synchronizedStartTimeGroup(1);
+s_jump_on_place:synchronizedStartTimeRange(0,1);
+s_jump_on_place:add("jump.fbxanim");
+--}
+
+--{ Animation: s_walk_right
+s_walk_right = addState(walk_right, "s_walk_right");
+s_walk_right:blendTime(300);
+--s_walk_right:loopBlendTime(300);
+s_walk_right:loop(true);
+s_walk_right:synchronizedStartTimeGroup(1);
+s_walk_right:synchronizedStartTimeRange(0,1);
+-- s_walk_right:speedFactor(1.5);
+s_walk_right:add("jump_r.fbxanim");
+--}
+
+--{ Animation: s_walk_left
+s_walk_left = addState(walk_left, "s_walk_left");
+s_walk_left:blendTime(300);
+--s_walk_left:loopBlendTime(300);
+s_walk_left:loop(true);
+s_walk_left:synchronizedStartTimeGroup(1);
+s_walk_left:synchronizedStartTimeRange(0,1);
+-- s_walk_left:speedFactor(1.5);
+s_walk_left:add("jump_l.fbxanim");
+--}
+
+
+--{ Animation: s_walk
+s_walk = addState(walk, "s_walk");
+s_walk:blendTime(200);
+s_walk:loop(true);
+s_walk:synchronizedStartTimeGroup(1);
+s_walk:synchronizedStartTimeRange(0,6);
+s_walk:add("jump_fwd.fbxanim");
+--}
+
+--{ Animation: s_attack
+s_attack = addState(attack, "s_attack");
+s_attack:blendTime(200);
+s_attack:loop(false);
+s_attack:add("attack_a.fbxanim");
+s_attack:addFinishedEvent("EventAnimAttackFinished");
+--s_attack:addEnterEvent("EventAnimAttackExecute");
+s_attack:restart(true);
+--}
+
+--{ Animation: s_attack_blocked
+s_attack_blocked = addState(blocked, "s_attack_blocked");
+s_attack_blocked:blendTime(200);
+s_attack_blocked:loop(false);
+s_attack_blocked:add("attack_blocked.fbxanim");
+s_attack_blocked:addFinishedEvent("EventAnimStaggerFinished");
+--s_attack_blocked:addEnterEvent("EventAnimattackExecute");
+s_attack_blocked:restart(true);
+--}
+
+--{ Animation: s_jump_back
+s_jump_back = addState(walk_back, "s_jump_back");
+s_jump_back:blendTime(200);
+s_jump_back:loop(true);
+s_jump_back:synchronizedStartTimeGroup(1);
+s_jump_back:synchronizedStartTimeRange(0,1);
+s_jump_back:add("attack_jump_back.fbxanim");
+--}
+
+--{ Animation: s_stagger
+s_stagger = addState(stagger, "s_stagger");
+s_stagger:blendTime(200);
+s_stagger:loop(false);
+s_stagger:add("stagger_a.fbxanim");
+s_stagger:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_stagger_b
+s_stagger_b = addState(stagger, "s_stagger_b");
+s_stagger_b:blendTime(200);
+s_stagger_b:loop(false);
+s_stagger_b:add("stagger_b.fbxanim");
+s_stagger_b:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_stagger_c
+s_stagger_c = addState(stagger, "s_stagger_c");
+s_stagger_c:blendTime(200);
+s_stagger_c:loop(false);
+s_stagger_c:add("stagger_c.fbxanim");
+s_stagger_c:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+--{ Animation: s_die_c
+s_die_c = addState(die, "s_die_c");
+s_die_c:blendTime(200);
+s_die_c:loop(false);
+s_die_c:add("die_b.fbxanim");
+--}

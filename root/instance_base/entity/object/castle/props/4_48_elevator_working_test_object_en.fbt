@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/castle/props/elevator_ropes.fbxmodel_mod_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_48_elevator_working_test_ObjectEntityModelComponent", GUID('0x7089067B','0x7F152310','0x0077022E','0x00005500')); -- elevator_ropes.fbxmodel_ModCom
+  type:setGuid(GUID('0xDBD0173D','0x3D331193','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setVisibleInGame(false)
+  type:setEnableTextureScroll(true)
+  type:setTextureScrollSpeed(VC2(0.75, 0))
+end

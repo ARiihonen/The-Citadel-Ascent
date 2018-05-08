@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/castle/base/wood_panel_floor_border_4m.fbxmodel_.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_18_sewer_door_openable_ObjectEntityModelComponent", GUID('0x941BFC29','0x178C5B90','0x0077022E','0x00005500')); -- wood_panel_floor_border_4m.fbxmodel_ModCom
+  type:setGuid(GUID('0xD4460CB9','0x19857418','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setDiffuseColor(COL(1, 1, 1))
+  type:setGlowAmountColor(COL(0, 0, 0))
+  type:setGlowAmount(1)
+end

@@ -1,0 +1,8 @@
+effect = addContext("effect",1)
+
+--{ Animation: s_spike
+s_spike = addState(effect, "s_spike");
+s_spike:blendTime(0);
+s_spike:loop(false);
+s_spike:add("spiky_trunk_anim.fbxanim"); 
+--}

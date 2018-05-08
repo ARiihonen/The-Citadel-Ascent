@@ -1,0 +1,8 @@
+test = addContext("test", 1)
+
+--{ Animation: exact_frames_test
+exact_frames_test = addState(test, "exact_frames_test");
+exact_frames_test:blendTime(300);
+exact_frames_test:loop(true);
+exact_frames_test:add("exact_frames_test.fbxanim");
+--}

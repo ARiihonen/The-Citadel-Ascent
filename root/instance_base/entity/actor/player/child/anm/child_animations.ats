@@ -1,0 +1,375 @@
+stand = addContext("stand", 11)
+run = addContext("run", 12) -- All player characters use "run" context to move.
+fast = addContext("fast", 42)
+startle = addContext("startle", 6)
+point = addContext("point", 6)
+crouch = addContext("crouch", 45)
+push = addContext("push", 32)
+
+jump = addContext("jump", 10)
+fall = addContext("fall", 11)
+
+turn_left = addContext("turn_left", 12)
+turn_right = addContext("turn_right", 12)
+run_direction = addParam("run_direction")
+
+lever_idle = addContext("lever_idle", 4)
+open_gate = addContext("open_gate", 3)
+
+--{ Tables
+running = {};
+standing = {};
+crouching = {};
+jumping = {};
+falling = {};
+turning = {};
+pushing = {};
+--}
+
+--{ Params
+
+turn_angle = addParam("turn_angle")
+run_direction = addParam("run_direction")
+angle_around_up = addParam("angle_around_up")
+angle_axis = addParam("angle_axis")
+push_speed = addParam("push_speed")
+--}
+
+
+
+
+
+--{ Animation: s_stand
+s_stand = addState(stand, "s_stand");
+s_stand:loopBlendTime(300);
+s_stand:blendTime(300);
+s_stand:loop(true);
+s_stand:add("stand.fbxanim");
+table.insert(standing, s_stand);
+s_stand:randomizedStartTime();
+--}
+
+--{ Animation: s_crouch_start
+s_crouch_start = addState(stand+crouch, "s_crouch_start");
+s_crouch_start:speedFactor(1.2);
+s_crouch_start:blendTime(200);
+s_crouch_start:loop(false);
+s_crouch_start:add("crouchdown.fbxanim");
+table.insert(crouching, s_crouch_start);
+--}
+
+
+--{ Animation: s_crouch
+s_crouch = addState(stand+crouch, "s_crouch");
+s_crouch:loopBlendTime(100);
+s_crouch:from(crouching);
+s_crouch:blendTime(600);
+s_crouch:loop(true);
+s_crouch:add("stand_crouch.fbxanim");
+table.insert(crouching, s_crouch);
+s_crouch:randomizedStartTime();
+--}
+
+--{ Animation: s_push_stand
+s_push_stand = addState(stand+push, "s_push_stand");
+-- s_push_stand:loopBlendTime(300);
+s_push_stand:blendTime(500);
+s_push_stand:loop(true);
+s_push_stand:add("push_stand.fbxanim");
+table.insert(standing, s_push_stand);
+--}
+
+	--{ Animation: s_walk_start
+	s_walk_start = addState(run, "s_walk_start");
+	s_walk_start:from(standing);
+	s_walk_start:from(pushing);
+	-- s_walk_start:absoluteRootMotionPosition(true);
+	s_walk_start:blendTime(350);
+	s_walk_start:loop(false);
+	s_walk_start:add("walk_start.fbxanim");
+	table.insert(running, s_walk_start);
+	--}
+
+	
+--{ Animation: s_turn_left
+s_turn_left = addState(run+turn_left, "s_turn_left");
+-- s_turn_left:from(standing);
+-- s_turn_left:from(running);
+-- s_turn_left:absoluteRootMotionPosition(true);
+-- s_turn_left:absoluteRootMotionRotation(true);
+s_turn_left:blendTime(200);
+s_turn_left:loop(false);
+s_turn_left:restart(true);
+s_turn_left:add("turn_fromstand_m180.fbxanim");
+-- s_turn_left:add(run_direction(0), "turn_fromstand_0.fbxanim");
+-- s_turn_left:add(run_direction(-180), "turn_fromstand_m180.fbxanim");
+s_turn_left:addExitEvent("EventAnimTurnComplete");
+s_turn_left:addFinishedEvent("EventAnimTurnComplete");
+table.insert(turning, s_turn_left);
+--}
+
+--{ Animation: s_turn_right
+s_turn_right = addState(run+turn_right, "s_turn_right");
+-- s_turn_right:from(standing);
+-- s_turn_right:from(running);
+-- s_turn_right:absoluteRootMotionPosition(true);
+-- s_turn_right:absoluteRootMotionRotation(true);
+s_turn_right:blendTime(200);
+s_turn_right:loop(false);
+s_turn_right:restart(true);
+s_turn_right:add("turn_fromstand_180.fbxanim");
+-- s_turn_right:add(run_direction(0), "turn_fromstand_0.fbxanim");
+-- s_turn_right:add(run_direction(180), "turn_fromstand_180.fbxanim");
+s_turn_right:addExitEvent("EventAnimTurnComplete");
+s_turn_right:addFinishedEvent("EventAnimTurnComplete");
+table.insert(turning, s_turn_right);
+--}
+
+--{ Animation: s_crouch_turn_left
+s_crouch_turn_left = addState(run+turn_left+crouch, "s_crouch_turn_left");
+-- s_crouch_turn_left:from(standing);
+-- s_crouch_turn_left:absoluteRootMotionPosition(true);
+-- s_crouch_turn_left:absoluteRootMotionRotation(true);
+s_crouch_turn_left:blendTime(400);
+s_crouch_turn_left:loop(false);
+s_crouch_turn_left:restart(true);
+s_crouch_turn_left:add("crouch_turn_m180.fbxanim");
+-- s_crouch_turn_left:add(run_direction(0), "crouch_turn_0.fbxanim");
+-- s_crouch_turn_left:add(run_direction(-180), "crouch_turn_m180.fbxanim");
+s_crouch_turn_left:addExitEvent("EventAnimTurnComplete");
+s_crouch_turn_left:addFinishedEvent("EventAnimTurnComplete");
+table.insert(crouching, s_crouch_turn_left);
+--}
+
+--{ Animation: s_crouch_turn_right
+s_crouch_turn_right = addState(run+turn_right+crouch, "s_crouch_turn_right");
+-- s_crouch_turn_right:from(standing);
+-- s_crouch_turn_right:absoluteRootMotionPosition(true);
+-- s_crouch_turn_right:absoluteRootMotionRotation(true);
+s_crouch_turn_right:blendTime(400);
+s_crouch_turn_right:loop(false);
+s_crouch_turn_right:restart(true);
+s_crouch_turn_right:add("crouch_turn_180.fbxanim");
+-- s_crouch_turn_right:add(run_direction(0), "crouch_turn_0.fbxanim");
+-- s_crouch_turn_right:add(run_direction(180), "crouch_turn_180.fbxanim");
+s_crouch_turn_right:addExitEvent("EventAnimTurnComplete");
+s_crouch_turn_right:addFinishedEvent("EventAnimTurnComplete");
+table.insert(crouching, s_crouch_turn_right);
+--}
+
+
+	
+--{ Animation: s_walk
+s_walk = addState(run, "s_walk");
+-- s_walk:speedFactor(0.95);
+s_walk:from(s_walk_start);
+s_walk:from(running);
+s_walk:from(crouching);
+-- s_walk:from(pushing);
+s_walk:blendTime(100);
+s_walk:loop(true);
+s_walk:add("walk.fbxanim");
+table.insert(running, s_walk);
+--}
+
+--{ Animation: s_walk_fromturn
+s_walk_fromturn = addState(run, "s_walk_fromturn");
+-- s_walk_fromturn:speedFactor(0.95);
+s_walk_fromturn:from(turning);
+s_walk_fromturn:blendTime(200);
+s_walk_fromturn:loop(false);
+s_walk_fromturn:add("walk.fbxanim");
+table.insert(running, s_walk_fromturn);
+--}
+
+	--{ Animation: s_walk_end
+	s_walk_end = addState(stand, "s_walk_end");
+	s_walk_end:from(running);
+	s_walk_end:from(turning);
+	-- s_walk_end:absoluteRootMotionPosition(true);
+	s_walk_end:blendTime(300);
+	s_walk_end:loop(false);
+	s_walk_end:add("walk_end.fbxanim");
+	table.insert(standing, s_walk_end);
+	--}
+
+--{ Animation: s_crouchwalk_start
+s_crouchwalk_start = addState(run+crouch, "s_crouchwalk_start");
+s_crouchwalk_start:speedFactor(1.2);
+-- s_crouchwalk_start:absoluteRootMotionPosition(true);
+s_crouchwalk_start:blendTime(300);
+s_crouchwalk_start:loop(false);
+s_crouchwalk_start:add("crouch_walk_start.fbxanim");
+table.insert(crouching, s_crouchwalk_start);
+--}	
+	
+		--{ Animation: s_crouchwalk
+		s_crouchwalk = addState(run+crouch, "s_crouchwalk");
+		s_crouchwalk:speedFactor(1.1);
+		s_crouchwalk:from(crouching);
+		s_crouchwalk:from(pushing);
+		s_crouchwalk:blendTime(100);
+		s_crouchwalk:loop(true);
+		s_crouchwalk:add("walk_crouch.fbxanim");
+		table.insert(crouching, s_crouchwalk);
+		--}
+
+		--{ Animation: s_crouchwalk_fromrunning
+		s_crouchwalk_fromrunning = addState(run+crouch, "s_crouchwalk_fromrunning");
+		s_crouchwalk_fromrunning:speedFactor(1.1);
+		s_crouchwalk_fromrunning:from(running);
+		s_crouchwalk_fromrunning:blendTime(300);
+		s_crouchwalk_fromrunning:loop(true);
+		s_crouchwalk_fromrunning:add("walk_crouch.fbxanim");
+		table.insert(crouching, s_crouchwalk_fromrunning);
+		--}
+		
+--{ Animation: s_push
+-- s_push = addState(push+run, "s_push");
+-- s_push:blendTime(300);
+-- s_push:loop(true);
+-- s_push:add("push.fbxanim");
+--}
+
+--{ Animation: s_push
+s_push = addState(run+push, "s_push");
+s_push:blendTime(300);
+s_push:loop(true);
+-- s_push:from(s_push_stand);
+-- s_push:add("push.fbxanim");
+s_push:add(push_speed(0.0), 0.5, "push.fbxanim");
+s_push:add(push_speed(0.5), 0.5, "push.fbxanim");
+s_push:add(push_speed(1.0), 1.0, "push.fbxanim");
+s_push:add(push_speed(2.0), 2.0, "push.fbxanim"); 
+s_push:add(push_speed(3.0), 2.0, "push.fbxanim");
+table.insert(pushing, s_push);
+--}
+	
+--{ Animation: s_run
+s_run = addState(run+fast, "s_run");
+s_run:blendTime(300);
+s_run:loop(true);
+s_run:add("run.fbxanim");
+--}
+
+
+
+--{ Animation: s_jump
+s_jump = addState(jump, "s_jump");
+s_jump:from(running);
+s_jump:from(crouching);
+s_jump:from(pushing);
+s_jump:from(turning);
+s_jump:speedFactor(1.1);
+s_jump:blendTime(150);
+s_jump:loop(false);
+s_jump:add("jump.fbxanim");
+table.insert(jumping, s_jump);
+table.insert(falling, s_jump);
+--}
+
+--{ Animation: s_jump_inplace
+s_jump_inplace = addState(jump, "s_jump_inplace");
+s_jump_inplace:from(standing);
+s_jump_inplace:blendTime(150);
+s_jump_inplace:loop(false);
+s_jump_inplace:add("jump_inplace.fbxanim");
+table.insert(jumping, s_jump_inplace);
+table.insert(falling, s_jump_inplace);
+--}
+
+--{ Animation: s_fall
+s_fall = addState(fall, "s_fall");
+-- s_fall:from(crouching);
+s_fall:blendTime(400);
+s_fall:loop(true);
+s_fall:add("fall.fbxanim");
+table.insert(falling, s_fall);
+--}
+
+--{ Animation: s_falldown_standing
+s_falldown_standing = addState(stand, "s_falldown_standing");
+s_falldown_standing:from(falling, -10000);
+s_falldown_standing:blendTime(50);
+s_falldown_standing:loop(false);
+s_falldown_standing:add("falldown_standing.fbxanim");
+--s_falldown_standing:add("jump_end_standing.fbxanim");
+table.insert(standing, s_falldown_standing);
+--}
+
+-- --{ Animation: s_jump_end_standing
+-- s_jump_end_standing = addState(stand, "s_jump_end_standing");
+-- s_jump_end_standing:from(s_falldown_standing);
+-- -- s_jump_end_standing:from(falling);
+-- s_jump_end_standing:blendTime(300);
+-- s_jump_end_standing:loop(false);
+-- s_jump_end_standing:add("jump_end_standing.fbxanim");
+-- table.insert(standing, s_jump_end_standing);
+-- --}
+
+--{ Animation: s_jump_end_running
+s_jump_end_running = addState(run, "s_jump_end_running");
+s_jump_end_running:from(jumping);
+s_jump_end_running:from(falling);
+s_jump_end_running:blendTime(100);
+s_jump_end_running:loop(false);
+s_jump_end_running:add("jump_end_running.fbxanim");
+table.insert(running, s_jump_end_running);
+--}
+
+--{ Animation: s_jump_end_crouching
+s_jump_end_crouching = addState(run+crouch, "s_jump_end_crouching");
+s_jump_end_crouching:from(jumping);
+s_jump_end_crouching:from(falling);
+s_jump_end_crouching:blendTime(100);
+s_jump_end_crouching:loop(false);
+s_jump_end_crouching:add("jump_end_crouching.fbxanim");
+table.insert(crouching, s_jump_end_crouching);
+--}
+
+
+--{ Animation: s_startle
+s_startle = addState(startle, "s_startle");
+s_startle:blendTime(50);
+s_startle:loop(false);
+s_startle:add(turn_angle(0), "startle_0.fbxanim");
+s_startle:add(turn_angle(180), "startle_right.fbxanim");
+s_startle:add(turn_angle(-180), "startle_left.fbxanim");
+--}
+
+--{ Animation: s_point
+s_point = addState(point, "s_point");
+s_point:blendTime(200);
+s_point:loop(false);
+s_point:add(turn_angle(0), "point_0.fbxanim");
+s_point:add(turn_angle(180), "point_right.fbxanim");
+s_point:add(turn_angle(-180), "point_left.fbxanim");
+--}
+
+--{ Lever switching
+
+--{ Animation: s_flip_switch_start
+s_flip_switch_start = addState(lever_idle, "s_flip_switch_start");
+s_flip_switch_start:blendTime(300);
+s_flip_switch_start:loop(false);
+s_flip_switch_start:add("flip_switch_start.fbxanim");
+--}
+
+	--{ Animation: s_flip_switch
+	s_flip_switch = addState(open_gate, "s_flip_switch");
+	s_flip_switch:blendTime(300);
+	s_flip_switch:loop(false);
+	-- s_flip_switch:from(s_flip_switch_start);
+	s_flip_switch:add("flip_switch.fbxanim");
+	-- table.insert(standing, s_flip_switch);
+	--}
+
+	--{ Animation: s_switch_idle
+	s_switch_idle = addState(lever_idle, "s_switch_idle");
+	s_switch_idle:blendTime(0);
+	s_switch_idle:loop(true);
+	s_switch_idle:from(s_flip_switch_start);
+	s_switch_idle:add("switch_idle.fbxanim");
+	-- table.insert(standing, s_switch_idle);
+	--}
+--}

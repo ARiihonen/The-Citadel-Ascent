@@ -1,0 +1,26 @@
+drop = addContext("drop",1)
+idle = addContext("idle",2)
+base = addContext("base",3)
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(300);
+s_idle:loop(true);
+s_idle:add("thistle_dropper_idle.fbxanim"); 
+--}
+
+--{ Animation: s_drop
+s_drop = addState(drop, "s_drop");
+s_drop:blendTime(300);
+s_drop:loop(false);
+s_drop:add("thistle_dropper_drop.fbxanim"); 
+s_drop:addEnterEvent("AnimEventThistleDropStart");
+s_drop:addFinishedEvent("AnimEventThistleDropFinished");
+--}
+
+--{ Animation: s_base
+s_base = addState(base, "s_base");
+s_base:blendTime(300);
+s_base:loop(true);
+s_base:add("thistle_droppper_base.fbxanim"); 
+--}

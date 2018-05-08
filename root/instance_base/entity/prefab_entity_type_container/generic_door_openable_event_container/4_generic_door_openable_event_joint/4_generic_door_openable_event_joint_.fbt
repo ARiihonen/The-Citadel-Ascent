@@ -1,0 +1,16 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/generic_door_openable_event_container/generic_door_openable_event_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_generic_door_openable_event_JointEntity", GUID('0x8369E095','0xE5B818F6','0x0077024F','0x00005500')); -- generic_door_openable_eventContainer
+  type:setGuid(GUID('0x9AC537E4','0xE5B91902','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xE87A0E38','0xE5B91904','0x0077024F','0x00005500'), "8_4_generic_door_openable_event_JointEntityHingeJointComponent");
+  type:addComponentTypeGUID(GUID('0xE87A0E38','0xE5B91904','0x0077024F','0x00005500')); -- 8_4_generic_door_openable_event_JointEntityHingeJointComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x9E56559F','0x0E43550D','0x0077027A','0x00005500'), "HingeJointBasicActivationAreaHolderComponent");
+  type:addComponentTypeGUID(GUID('0x9E56559F','0x0E43550D','0x0077027A','0x00005500')); -- HingeJointBasicActivationAreaHolderComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x2D83B7F2','0xBDE07EB5','0x0077020B','0x00005500'), "joint_y.fbxmodel_ModCom");
+  type:addComponentTypeGUID(GUID('0x2D83B7F2','0xBDE07EB5','0x0077020B','0x00005500')); -- joint_y.fbxmodel_ModCom
+  typeManager:setLastKnownNameForGUID(GUID('0x787ABE5F','0x6BFC548D','0x007702C3','0x00005500'), "JointEntityDoEffectOnJointBreakComponent");
+  type:addComponentTypeGUID(GUID('0x787ABE5F','0x6BFC548D','0x007702C3','0x00005500')); -- JointEntityDoEffectOnJointBreakComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

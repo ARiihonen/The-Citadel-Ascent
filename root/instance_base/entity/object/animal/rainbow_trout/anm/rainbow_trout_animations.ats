@@ -1,0 +1,27 @@
+struggle_1 = addContext("struggle_1", 1)
+struggle_2 = addContext("struggle_2", 1)
+dead = addContext("dead",1)
+
+--{ Animation: s_struggle_1
+s_struggle_1 = addState(struggle_1, "s_struggle_1");
+s_struggle_1:loopBlendTime(0);
+s_struggle_1:blendTime(0);
+s_struggle_1:loop(true);
+s_struggle_1:add("struggle_1.fbxanim");
+--}
+
+--{ Animation: s_struggle_2
+s_struggle_2 = addState(struggle_2, "s_struggle_2");
+s_struggle_2:loopBlendTime(600);
+s_struggle_2:blendTime(600);
+s_struggle_2:loop(true);
+s_struggle_2:add("struggle_2.fbxanim");
+--}
+
+--{ Animation: s_dead
+s_dead = addState(dead, "s_dead");
+s_dead:loopBlendTime(600);
+s_dead:blendTime(300);
+s_dead:loop(false);
+s_dead:add("dead.fbxanim"); 
+--}

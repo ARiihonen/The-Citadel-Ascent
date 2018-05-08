@@ -1,0 +1,14 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_joint/joint/general_joint/general_joint/hinge_joint/x_hinge_joint_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("8_0_panel_door_large_JointEntityHingeJointComponent", GUID('0x2B2B7F02','0x581B2E5F','0x0077025C','0x00005500')); -- XHingeJointComponent
+  type:setGuid(GUID('0xDAC3F837','0xEEBD379F','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setLocalPosition0(VC3(0.1991, -0.0732, 1.9493))
+  type:setLocalPosition1(VC3(-25.228, 50.849, 39.63))
+  type:setLocalRotation1(QUAT(0, 1, 0, -8.9407e-008))
+  type:setRotationLimitLowAngle(-90)
+  type:setRotationLimitHighAngle(90)
+  type:setRotationLimitContactAngle(0.0049999998882413)
+  type:setRotationLimitDamping(40)
+end

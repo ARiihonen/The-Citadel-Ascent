@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/prefab_props/basic_courtyard/wooden_beam_set_basic_courtyard_05x0.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_10_elevator_working_test_ObjectEntityModelComponent", GUID('0xD59B2120','0x3E164BB2','0x00770288','0x00005500')); -- wooden_beam_set_basic_courtyard_05x05x4.fbxmodel_ModCom
+  type:setGuid(GUID('0xDBCF9390','0x3D2F1141','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setDiffuseColor(COL(0.5255, 0.6196, 0.7333))
+end

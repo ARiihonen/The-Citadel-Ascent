@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/generic_door_closed_container/generic_door_closed_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("12_generic_door_closed_ObjectEntity", GUID('0x663393C1','0x11EB02AA','0x0077024F','0x00005500')); -- generic_door_closedContainer
+  type:setGuid(GUID('0x73AB9885','0x7E503B89','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xCE9A89FE','0x7E503B8B','0x0077024F','0x00005500'), "4_12_generic_door_closed_ObjectEntityModelComponent");
+  type:addComponentTypeGUID(GUID('0xCE9A89FE','0x7E503B8B','0x0077024F','0x00005500')); -- 4_12_generic_door_closed_ObjectEntityModelComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

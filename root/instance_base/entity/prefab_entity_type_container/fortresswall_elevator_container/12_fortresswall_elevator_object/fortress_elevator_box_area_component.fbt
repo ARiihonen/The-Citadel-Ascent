@@ -1,0 +1,7 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_area/area/box_area/box_area_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("FortressElevatorBoxAreaComponent", GUID('0x15B46D26','0x00000000','0x00770200','0x00005500')); -- BoxAreaComponent
+  type:setGuid(GUID('0x5F5F3D25','0xBC2773AB','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

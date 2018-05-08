@@ -1,0 +1,9 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_joint/joint/general_joint/general_joint/hinge_joint/x_hinge_joint/8_10_fortresswall_elevator_joint_entity_hinge_joint/8_10_fortresswall_elevator_joint_ent.fbt")
+  local type = typeManager:inheritNewTypeByGUID("0_23_fortresswall_elevator_EntityHingeJointComponent", GUID('0xE39D0181','0x9C985B18','0x0077024F','0x00005500')); -- 8_10_fortresswall_elevator_JointEntityHingeJointComponent
+  type:setGuid(GUID('0xE12418CE','0xD8303ECF','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setLocalPosition0(VC3(0.1134, -0.4715, 0.1726))
+  type:setLocalPosition1(VC3(0.0571, -0.0968, -0.0165))
+end

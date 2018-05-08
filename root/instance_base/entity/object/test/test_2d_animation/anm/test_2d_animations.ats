@@ -1,0 +1,24 @@
+idle = addContext("idle", 1)
+pulled = addContext("pulled", 1)
+
+target_direction = addParam("target_direction")
+
+
+
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(0);
+s_idle:loop(false);
+s_idle:add("idle.fbxanim");
+--}
+
+--{ Animation: s_pulled
+s_pulled = addState(pulled, "s_pulled");
+s_pulled:blendTime(0);
+s_pulled:loop(false);
+s_pulled:add("pulled.fbxanim");
+--}
+
+
+

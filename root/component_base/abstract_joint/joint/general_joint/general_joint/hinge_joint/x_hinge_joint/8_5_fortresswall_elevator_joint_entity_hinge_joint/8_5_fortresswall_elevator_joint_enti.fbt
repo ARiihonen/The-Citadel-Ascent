@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_joint/joint/general_joint/general_joint/hinge_joint/x_hinge_joint_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("8_5_fortresswall_elevator_JointEntityHingeJointComponent", GUID('0x2B2B7F02','0x581B2E5F','0x0077025C','0x00005500')); -- XHingeJointComponent
+  type:setGuid(GUID('0xE2AD3625','0x9C965B00','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setLocalPosition0(VC3(0.1924, 3.0696, -3.3269))
+  type:setLocalPosition1(VC3(-0.1974, 0.3196, -0.1919))
+  type:setLocalRotation1(QUAT(0, -0.707107, 0, 0.707107))
+  type:setRotationLimitLowAngle(0)
+  type:setRotationLimitHighAngle(0)
+end

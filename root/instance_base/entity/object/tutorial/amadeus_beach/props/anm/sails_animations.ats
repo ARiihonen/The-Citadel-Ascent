@@ -1,0 +1,8 @@
+idle = addContext("idle", 1)
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:loopBlendTime(2400);
+s_idle:loop(true);
+s_idle:add("shipwreck_sails.fbxanim");
+--} 

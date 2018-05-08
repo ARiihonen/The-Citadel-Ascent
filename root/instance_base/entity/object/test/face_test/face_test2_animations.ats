@@ -1,0 +1,9 @@
+test = addContext("test", 1)
+
+
+--{ Animation: temp_test
+temp_test = addState(test, "temp_test");
+temp_test:blendTime(300);
+temp_test:loop(true);
+temp_test:add("face_test2.fbxanim");
+--}

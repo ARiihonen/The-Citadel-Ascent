@@ -1,0 +1,8 @@
+effect = addContext("effect",1)
+
+--{ Animation: s_effect
+s_effect = addState(effect, "s_effect");
+s_effect:blendTime(0); 
+s_effect:loop(false); 
+s_effect:add("possessed_robe_attack_effect.fbxanim"); 
+--} 

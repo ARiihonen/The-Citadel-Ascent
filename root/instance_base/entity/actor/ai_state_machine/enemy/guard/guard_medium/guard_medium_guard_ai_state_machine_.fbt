@@ -1,0 +1,64 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/guard_ai_state_machine_animation_com.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumGuardAIStateMachineAnimationComponent", GUID('0x75A26C5E','0x0700256E','0x00770214','0x00005500')); -- GuardAIStateMachineAnimationComponent
+  type:setGuid(GUID('0xB7EFE7E7','0xCBB06CF3','0x00770214','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/guard_ai_state_machine_state_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumStateComponent", GUID('0x6D1CB6D0','0xA5693CE6','0x00770279','0x00005500')); -- GuardAIStateMachineStateComponent
+  type:setGuid(GUID('0x24B220E2','0x9C9A6D2B','0x00770214','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setIdleSoundInterValMin(3000)
+  type:setIdleSoundInterValMax(5000)
+  type:setSpawnEnemyEffectDeathOnDestroyedEnter(true)
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/guard_ai_state_machine_ai_character_.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumGuardAIStateMachineAICharacterComponent", GUID('0x78EE06AD','0x8BEC3CE0','0x00770279','0x00005500')); -- GuardAIStateMachineAICharacterComponent
+  type:setGuid(GUID('0xB982E9A5','0xC4426CF1','0x00770214','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setEnableAiOnDamage(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xE1542039','0xED7A562C','0x00770239','0x00005500'), "GuardMediumChildIntantKillBowAttackCollectionAttackComponent");
+  type:setPropertyGUID(type.PropertyChildCatchAttackType, GUID('0xE1542039','0xED7A562C','0x00770239','0x00005500')) -- GuardMediumChildIntantKillBowAttackCollectionAttackComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x5D677422','0xA9FF6D31','0x00770214','0x00005500'), "GuardMediumGuardAttackCollectionComponentGuardIntantKillBowAttackCollectionAttackComponent");
+  type:setPropertyGUID(type.PropertyInstantKillArrowAttackType, GUID('0x5D677422','0xA9FF6D31','0x00770214','0x00005500')) -- GuardMediumGuardAttackCollectionComponentGuardIntantKillBowAttackCollectionAttackComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xB80F71C2','0x7FFC6D47','0x00770239','0x00005500'), "MediumGuardDecoyBreakingAttackCollectionAttackComponent");
+  type:setPropertyGUID(type.PropertyDecoyBreakingAttackType, GUID('0xB80F71C2','0x7FFC6D47','0x00770239','0x00005500')) -- MediumGuardDecoyBreakingAttackCollectionAttackComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x3C9D0E06','0xA0E26D2D','0x00770214','0x00005500'), "GuardMediumGuardAttackCollectionComponentGuardAttackLongCollectionAttackComponent");
+  type:setPropertyGUID(type.PropertyCloseRangeMeleeAttackType, GUID('0x3C9D0E06','0xA0E26D2D','0x00770214','0x00005500')) -- GuardMediumGuardAttackCollectionComponentGuardAttackLongCollectionAttackComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D1CB6D0','0xA5693CE6','0x00770279','0x00005500'), "GuardAIStateMachineStateComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x6D1CB6D0','0xA5693CE6','0x00770279','0x00005500')); -- GuardAIStateMachineStateComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x24B220E2','0x9C9A6D2B','0x00770214','0x00005500'), "GuardMediumStateComponent");
+  type:addComponentTypeGUID(GUID('0x24B220E2','0x9C9A6D2B','0x00770214','0x00005500')); -- GuardMediumStateComponent
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/guard_ai_state_machine_health_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumGuardAIStateMachineHealthComponent", GUID('0x75506F32','0x17F12570','0x00770214','0x00005500')); -- GuardAIStateMachineHealthComponent
+  type:setGuid(GUID('0x80DB2CDD','0xD3D66CF5','0x00770214','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/guard_ai_state_machine_trine_swing_m.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumGuardAIStateMachineTrineSwingMeleeWeaponComponent", GUID('0xC0D9313C','0x29352574','0x00770214','0x00005500')); -- GuardAIStateMachineTrineSwingMeleeWeaponComponent
+  type:setGuid(GUID('0xBDBE93DB','0xDF0B6CF9','0x00770214','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/guard_ai_state_machine_model_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumGuardAIStateMachineModelComponent", GUID('0x702609C0','0x21D82572','0x00770214','0x00005500')); -- GuardAIStateMachineModelComponent
+  type:setGuid(GUID('0x7F50814A','0xD98C6CF7','0x00770214','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  resourceManager:setLastKnownNameForGUID(GUID('0x8B7E1C6D','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/model/guard_medium.fbxmodel");
+  resourceManager:setLastKnownFilenameForGUID(GUID('0x8B7E1C6D','0x00000000','0x00770100','0x00004400'), "data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/model/guard_medium.fbxmodel");
+  type:setPropertyGUID(type.PropertyModel, GUID('0x8B7E1C6D','0x00000000','0x00770100','0x00004400')) -- data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/model/guard_medium.fbxmodel
+  type:setWrapLightValue(0.5)
+  type:setSetCustomSpecular(true)
+  type:setCustomSpecularPower(96)
+end

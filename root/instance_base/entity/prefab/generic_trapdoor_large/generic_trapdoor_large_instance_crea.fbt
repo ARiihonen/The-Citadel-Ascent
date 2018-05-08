@@ -1,0 +1,54 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("generic_trapdoor_largeInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xA39446ED','0x9EE16DBF','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x7EF19350','0x510157D8','0x0077026C','0x00005500'), "wall_set_basic_room_4x4_floor_1.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'), "handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x7EF19350','0x510157D8','0x0077026C','0x00005500'), "wall_set_basic_room_4x4_floor_1.fbxmodel");
+  typeManager:setLastKnownNameForGUID(GUID('0x80FA8694','0x9EE16DC3','0x0077024F','0x00005500'), "6_generic_trapdoor_large_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x80FA86B0','0x9EE16DC7','0x0077024F','0x00005500'), "8_generic_trapdoor_large_JointEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x7F1FDE51','0x9EE16DCB','0x0077024F','0x00005500'), "9_generic_trapdoor_large_ObjectEntity");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0x7EF19350','0x510157D8','0x0077026C','0x00005500'),  -- wall_set_basic_room_4x4_floor_1.fbxmodel
+    GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'),  -- handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel
+    GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'),  -- handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel
+    GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'),  -- handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel
+    GUID('0xC97F9D68','0x60CC1713','0x0077026C','0x00005500'),  -- handrail_wooden_basic_room_bottom_plank_1m_2.fbxmodel
+    GUID('0x7EF19350','0x510157D8','0x0077026C','0x00005500'),  -- wall_set_basic_room_4x4_floor_1.fbxmodel
+    GUID('0x80FA8694','0x9EE16DC3','0x0077024F','0x00005500'),  -- 6_generic_trapdoor_large_JointEntity
+    GUID('0x7A4CA12F','0x7498430C','0x0077020E','0x00005500'),  -- NavMeshHoleCreatorDynamicCollisionHelper
+    GUID('0x80FA86B0','0x9EE16DC7','0x0077024F','0x00005500'),  -- 8_generic_trapdoor_large_JointEntity
+    GUID('0x7F1FDE51','0x9EE16DCB','0x0077024F','0x00005500')}) -- 9_generic_trapdoor_large_ObjectEntity
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0.01, -0.0141, -0.0051), VC3(0.0087, -0.0305, 1.6701), VC3(-1.3744, -0.0305, -0.0066), VC3(1.3908, -0.0305, -0.0066), VC3(0.0087, -0.0305, -1.6746), VC3(0.01, -0.0517, -0.0051), VC3(1.482, -0.0052, 0.0483), VC3(-0.0088, 0.0324, 0.0039), VC3(-0.0126, 0.5622, 0.0691), VC3(0.0088, -0.0324, -0.0039)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(3.27826e-007, 6.98576e-008, -6.8293e-008, 1), QUAT(3.27826e-007, 6.98576e-008, -6.8293e-008, 1), QUAT(4.17232e-007, 0.707107, -1.78814e-007, 0.707107), QUAT(2.98023e-008, -0.707107, 2.08616e-007, 0.707107), QUAT(3.27826e-007, 6.98576e-008, -6.8293e-008, 1), QUAT(-1, 5.07278e-009, 2.88391e-007, 2.38419e-007), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1), QUAT(0, 0, 0, 1)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(0.7372, 1, 0.882), VC3(2.6324, 0.2974, 1), VC3(3.1573, 0.2974, 1), VC3(3.1573, 0.2974, 1), VC3(2.6324, 0.2974, 1), VC3(0.7372, 1, 0.882), VC3(2, 2, 2), VC3(0.9838, 0.0362, 6.0651), VC3(0.3, 0.3, 0.3), VC3(1.1802, 0.02, 7.0656)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setParentIds(IntPropertyArray({6, 8, 8}))
+  typeManager:setLastKnownNameForGUID(GUID('0xE3EE928C','0x9EE16DC5','0x0077024F','0x00005500'), "8_6_generic_trapdoor_large_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3EE94AA','0x9EE16DC9','0x0077024F','0x00005500'), "8_8_generic_trapdoor_large_JointEntityHingeJointComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xE3EE94AA','0x9EE16DC9','0x0077024F','0x00005500'), "8_8_generic_trapdoor_large_JointEntityHingeJointComponent");
+  type:setPropertyGUIDArray(type.PropertyParentComponents, 
+    {GUID('0xE3EE928C','0x9EE16DC5','0x0077024F','0x00005500'),  -- 8_6_generic_trapdoor_large_JointEntityHingeJointComponent
+    GUID('0xE3EE94AA','0x9EE16DC9','0x0077024F','0x00005500'),  -- 8_8_generic_trapdoor_large_JointEntityHingeJointComponent
+    GUID('0xE3EE94AA','0x9EE16DC9','0x0077024F','0x00005500')}) -- 8_8_generic_trapdoor_large_JointEntityHingeJointComponent
+  type:setParentPropertyNames(DynamicStringPropertyArray({"Component0", "Component0", "Component1"}))
+  type:setTargetInstanceIds(IntPropertyArray({9, 9, 7}))
+  typeManager:setLastKnownNameForGUID(GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'), "DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'), "DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent");
+  typeManager:setLastKnownNameForGUID(GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500'), "NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent");
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, 
+    {GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'),  -- DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent
+    GUID('0x87CAFE15','0xBC263698','0x0077020A','0x00005500'),  -- DynamicRopeTargetWoodCollisionHelperRopeTargetWoodCollisionHelperWoodCollisionHelperBoxPhysicsComponent
+    GUID('0xDE208AE5','0xD2EF4336','0x0077020E','0x00005500')}) -- NavMeshHoleCreatorDynamicCollisionHelperBoxPhysicsComponent
+  type:setChildLevels(IntPropertyArray({1, 1, 1, 1, 1, 1, 1, 1, 1, 0}))
+  type:setChildParentIDs(IntPropertyArray({9, 9, 9, 9, 9, 9, 9, 9, 9, -1}))
+  type:setInstanceLayers(IntPropertyArray({4, 4, 4, 4, 4, 4, 2, 2, 2, 2}))
+  type:setInstanceCounter(10)
+end

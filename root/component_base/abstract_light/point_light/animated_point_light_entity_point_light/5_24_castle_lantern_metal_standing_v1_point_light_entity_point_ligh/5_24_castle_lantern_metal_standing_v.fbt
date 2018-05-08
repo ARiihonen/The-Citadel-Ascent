@@ -1,0 +1,11 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/light/point_light/animated_point_light/animated_point_light_entity_point_light_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("5_24_castle_lantern_metal_standing_v1_PointLightEntityPointLightComponent", GUID('0xA17FAC48','0xA5FB03ED','0x007702A1','0x00005500')); -- AnimatedPointLightEntityPointLightComponent
+  type:setGuid(GUID('0x3BC4E386','0xF17742C8','0x00770288','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setRange(10)
+  type:setColor(COL(0.9608, 0.1725, 0))
+  type:setIntensity(15)
+  type:setColorMultiplier(COL(0.502, 0.502, 0.502))
+end

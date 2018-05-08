@@ -1,0 +1,19 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/metal_collision_helper_box_physics_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("MetalCollisionHelperLockPhysicsComponent", GUID('0x720AE09C','0xFF652466','0x00770279','0x00005500')); -- MetalCollisionHelperBoxPhysicsComponent
+  type:setGuid(GUID('0x8135DE4D','0xDC270E12','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setCollisionGroup(engine.component.AbstractPhysicsComponent.CollisionGroupDynamicNoStatic)
+  typeManager:setLastKnownNameForGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500'), "CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')); -- CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x030E2615','0xF0980E14','0x0077024F','0x00005500'), "MetalCollisionHelperLockPhysicsComponentBoxPhysicsCollisionComponent");
+  type:addComponentTypeGUID(GUID('0x030E2615','0xF0980E14','0x0077024F','0x00005500')); -- MetalCollisionHelperLockPhysicsComponentBoxPhysicsCollisionComponent
+end
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper_box_physics_component_box_physics_collision_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("MetalCollisionHelperLockPhysicsComponentBoxPhysicsCollisionComponent", GUID('0xEA21C83A','0x003B0A36','0x00770279','0x00005500')); -- CollisionHelperBoxPhysicsComponentBoxPhysicsCollisionComponent
+  type:setGuid(GUID('0x030E2615','0xF0980E14','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+end

@@ -1,0 +1,241 @@
+idle = addContext("idle", 1)
+still_nothing = addContext("still_nothing", 1)
+patience = addContext("patience", 1)
+so_many_days = addContext("so_many_days", 1)
+not_moving = addContext("not_moving", 1)
+not_going = addContext("not_going", 1)
+at_last = addContext("at_last", 1)
+end_idle = addContext("end_idle", 1)
+end_idle_look = addContext("end_idle_look",1)
+end_idle_look2 = addContext("end_idle_look2",-1)
+reach = addContext("reach",0)
+default = addContext("default",100)
+
+
+
+--Params
+angle_around_up = addParam("angle_around_up")
+angle_axis = addParam("angle_axis")
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:loopBlendTime(1200);
+--s_idle:from(s_reach_out);
+s_idle:blendTime(1200);
+s_idle:loop(true);
+s_idle:add("idle.fbxanim"); 
+--}
+
+--{ Animation: s_still_nothing
+s_still_nothing = addState(still_nothing, "s_still_nothing");
+s_still_nothing:loopBlendTime(1200);
+s_still_nothing:blendTime(1200);
+s_still_nothing:loop(true);
+s_still_nothing:add("still_nothing.fbxanim"); 
+--}
+
+--{ Animation: s_patience
+s_patience = addState(patience, "s_patience");
+s_patience:loopBlendTime(1200);
+s_patience:blendTime(1200);
+s_patience:loop(true);
+s_patience:add("patience.fbxanim");
+--}
+
+--{ Animation: s_so_many_days
+s_so_many_days = addState(so_many_days, "s_so_many_days");
+s_so_many_days:loopBlendTime(1200);
+s_so_many_days:blendTime(1200);
+s_so_many_days:loop(true);
+s_so_many_days:add("so_many_days.fbxanim"); 
+--}
+
+--{ Animation: s_not_going
+s_not_going = addState(not_going, "s_not_going");
+s_not_going:loopBlendTime(1200);
+s_not_going:blendTime(1200);
+s_not_going:loop(true);
+s_not_going:add("not_going.fbxanim"); 
+--}
+
+--{ Animation: s_not_moving
+s_not_moving = addState(not_moving, "s_not_moving");
+s_not_moving:loopBlendTime(1200);
+s_not_moving:blendTime(1200);
+s_not_moving:loop(true);
+s_not_moving:add("not_moving.fbxanim"); 
+--}
+
+--{ Animation: s_at_last
+s_at_last = addState(end_idle_look, "s_at_last");
+s_at_last:loopBlendTime(1200);
+s_at_last:blendTime(1200);
+s_at_last:loop(false);
+s_at_last:add("at_last_3.fbxanim");   
+--}
+
+--{ Animation: s_catch
+s_catch = addState(end_idle_look2, "s_catch");
+--s_catch:from(s_at_last);
+s_catch:blendTime(1200);
+--s_catch:restart(true);
+--s_catch:rootMotionScaleWeight(0.0); 
+
+s_catch:add(angle_axis(-10), angle_around_up(150), "catch_rd.fbxanim");
+s_catch:add(angle_axis(-10), angle_around_up(90), "catch_fd.fbxanim");
+s_catch:add(angle_axis(-10), angle_around_up(00), "catch_ld.fbxanim");
+s_catch:add(angle_axis(40), angle_around_up(150), "catch_ru.fbxanim");
+s_catch:add(angle_axis(40), angle_around_up(90), "catch_fu.fbxanim");
+s_catch:add(angle_axis(40), angle_around_up(00), "catch_lu.fbxanim");
+--s_catch:loop(true);
+--}
+
+--{ Animation: s_walk_away
+s_walk_away = addState(end_idle_look2, "s_walk_away");
+s_walk_away:from(s_catch);
+s_walk_away:loopBlendTime(1200); 
+s_walk_away:blendTime(1200);
+s_walk_away:loop(false);
+s_walk_away:add("walk_away_3.fbxanim");   
+--}
+
+--{ Animation: s_at_last2
+s_at_last2 = addState(at_last, "s_at_last2");
+s_at_last2:loopBlendTime(1200);
+s_at_last2:blendTime(1200);
+s_at_last2:loop(true);
+s_at_last2:add("at_last_3.fbxanim");   
+--}
+
+--{ Animation: s_at_last_lipsync_clean
+s_at_last_lipsync_clean = addState(at_last, "s_at_last_lipsync_clean",1);
+s_at_last_lipsync_clean:synchronizedStartTimeGroup(5);
+s_at_last_lipsync_clean:blendTime(200);
+s_at_last_lipsync_clean:loop(false);
+s_at_last_lipsync_clean:add("tpose2.fbxanim");
+s_at_last_lipsync_clean:addReference("tpose2.fbxanim");
+--}
+
+--{ Animation: s_at_last_lipsync
+s_at_last_lipsync = addState(at_last+reach, "s_at_last_lipsync",1);
+s_at_last_lipsync:synchronizedStartTimeGroup(5);
+s_at_last_lipsync:blendTime(200);
+s_at_last_lipsync:loop(false);
+s_at_last_lipsync:add("at_last_face.fbxanim");
+s_at_last_lipsync:addReference("tpose.fbxanim");
+--}
+
+
+--{ Animation: s_layer1_default
+s_layer1_default = addState(default, "s_layer1_default",1);
+s_layer1_default:blendTime(200);
+s_layer1_default:loop(false);
+s_layer1_default:add("tpose.fbxanim");
+s_layer1_default:addReference("tpose.fbxanim");
+--}
+
+
+
+--{ Animation: s_end_idle
+s_end_idle = addState(end_idle, "s_end_idle");
+s_end_idle:loopBlendTime(1200);
+s_end_idle:blendTime(1200); 
+s_end_idle:loop(true);
+s_end_idle:add("end_idle.fbxanim");   
+--}
+
+--{ Animation: s_end_idle_look
+s_end_idle_look = addState(end_idle_look, "s_end_idle_look");
+s_end_idle_look:from(s_at_last);
+s_end_idle_look:blendTime(1200);
+s_end_idle_look:loopBlendTime(1200);
+s_end_idle_look:restart(true);
+--s_end_idle_look:rootMotionScaleWeight(0.0);
+s_end_idle_look:add("end_idle_3.fbxanim");
+-- s_end_idle_look:add(angle_axis(-40), angle_around_up(-100), "end_idle_d_l.fbxanim");
+-- s_end_idle_look:add(angle_axis(-40), angle_around_up(30), "end_idle_d_r.fbxanim");
+-- s_end_idle_look:add(angle_axis(10), angle_around_up(-100), "end_idle_u_l.fbxanim");
+-- s_end_idle_look:add(angle_axis(10), angle_around_up(30), "end_idle_u_r.fbxanim");
+s_end_idle_look:loop(true);
+--}
+
+--{ Animation: s_end_idle_look2
+s_end_idle_look2 = addState(end_idle_look2, "s_end_idle_look2");
+s_end_idle_look2:from(s_walk_away);
+s_end_idle_look2:blendTime(1200);
+s_end_idle_look2:loopBlendTime(1200);
+s_end_idle_look2:restart(true);
+--s_end_idle_look2:rootMotionScaleWeight(0.0);
+s_end_idle_look2:add("end_idle_3.fbxanim");
+-- s_end_idle_look2:add(angle_axis(-40), angle_around_up(-100), "end_idle_d_l.fbxanim");
+-- s_end_idle_look2:add(angle_axis(-40), angle_around_up(30), "end_idle_d_r.fbxanim");
+-- s_end_idle_look2:add(angle_axis(10), angle_around_up(-100), "end_idle_u_l.fbxanim");
+-- s_end_idle_look2:add(angle_axis(10), angle_around_up(30), "end_idle_u_r.fbxanim");
+s_end_idle_look2:loop(true);
+--}
+
+
+
+--{ Animation: s_reach_in
+s_reach_in = addState(reach, "s_reach_in");
+--s_reach_in:from(s_idle);
+s_reach_in:blendTime(1200);
+--s_reach_in:restart(true);
+--s_reach_in:rootMotionScaleWeight(0.0);
+
+-- s_reach_in:add(angle_axis(0), angle_around_up(0), "reach_in_rd.fbxanim");
+-- s_reach_in:add(angle_axis(0), angle_around_up(10), "reach_in_fd.fbxanim");
+-- s_reach_in:add(angle_axis(0), angle_around_up(20), "reach_in_ld.fbxanim");
+-- s_reach_in:add(angle_axis(10), angle_around_up(0), "reach_in_ru.fbxanim");
+-- s_reach_in:add(angle_axis(10), angle_around_up(10), "reach_in_fu.fbxanim");
+-- s_reach_in:add(angle_axis(10), angle_around_up(20), "reach_in_lu.fbxanim");
+s_reach_in:add(angle_axis(-10), angle_around_up(150), "reach_in_rd.fbxanim");
+s_reach_in:add(angle_axis(-10), angle_around_up(90), "reach_in_fd.fbxanim");
+s_reach_in:add(angle_axis(-10), angle_around_up(00), "reach_in_ld.fbxanim");
+s_reach_in:add(angle_axis(40), angle_around_up(150), "reach_in_ru.fbxanim");
+s_reach_in:add(angle_axis(40), angle_around_up(90), "reach_in_fu.fbxanim");
+s_reach_in:add(angle_axis(40), angle_around_up(00), "reach_in_lu.fbxanim");
+
+--s_reach_in:loop(true);
+--}
+
+--{ Animation: s_reach
+s_reach = addState(reach, "s_reach");
+s_reach:from(s_reach_in);
+s_reach:blendTime(1200);
+s_reach:loopBlendTime(1200);
+s_reach:restart(true);
+--s_reach:rootMotionScaleWeight(0.0);
+
+-- s_reach:add(angle_axis(-10), angle_around_up(150), "reach_rd.fbxanim");
+-- s_reach:add(angle_axis(-10), angle_around_up(90), "reach_fd.fbxanim");
+-- s_reach:add(angle_axis(-10), angle_around_up(00), "reach_ld.fbxanim");
+s_reach:add(angle_axis(-10), angle_around_up(150), "reach_rd.fbxanim");
+s_reach:add(angle_axis(-10), angle_around_up(90), "reach_fd.fbxanim");
+s_reach:add(angle_axis(-10), angle_around_up(00), "reach_ld.fbxanim");
+s_reach:add(angle_axis(40), angle_around_up(150), "reach_ru.fbxanim");
+s_reach:add(angle_axis(40), angle_around_up(90), "reach_fu.fbxanim");
+s_reach:add(angle_axis(40), angle_around_up(00), "reach_lu.fbxanim");
+
+s_reach:loop(true);
+--}
+
+--{ Animation: s_reach_out
+s_reach_out = addState(idle, "s_reach_out");
+s_reach_out:from(s_reach_in);
+s_reach_out:from(s_reach);
+s_reach_out:blendTime(1200);
+--s_reach_out:restart(true);
+--s_reach_out:rootMotionScaleWeight(0.0); 
+
+s_reach_out:add(angle_axis(-10), angle_around_up(150), "reach_out_rd.fbxanim");
+s_reach_out:add(angle_axis(-10), angle_around_up(90), "reach_out_fd.fbxanim");
+s_reach_out:add(angle_axis(-10), angle_around_up(00), "reach_out_ld.fbxanim");
+s_reach_out:add(angle_axis(40), angle_around_up(150), "reach_out_ru.fbxanim");
+s_reach_out:add(angle_axis(40), angle_around_up(90), "reach_out_fu.fbxanim");
+s_reach_out:add(angle_axis(40), angle_around_up(00), "reach_out_lu.fbxanim");
+--s_reach_out:loop(true);
+--}
+
+
+

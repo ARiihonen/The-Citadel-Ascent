@@ -1,0 +1,18 @@
+rope = addContext("rope", 13)
+default = addContext("default", 127)
+
+--{ Animation: s_rope
+s_rope = addState(rope, "s_rope");
+s_rope:blendTime(0);
+s_rope:loop(false);
+-- s_rope:add("rope_scenery.fbxanim");
+s_rope:add("thief_rope_shoot.fbxanim");
+--}
+
+--{ Animation: s_default
+s_default = addState(default, "s_default");
+s_default:blendTime(0);
+s_default:loop(false);
+-- s_default:add("default_scenery.fbxanim");
+s_default:add("thief_rope_shoot.fbxanim");
+--}

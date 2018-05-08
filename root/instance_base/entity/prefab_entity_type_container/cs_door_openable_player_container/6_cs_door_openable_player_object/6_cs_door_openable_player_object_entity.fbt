@@ -1,0 +1,18 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/cs_door_openable_player_container/cs_door_openable_player_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("6_cs_door_openable_player_ObjectEntity", GUID('0x5FD7338E','0x883C0B49','0x0077024F','0x00005500')); -- cs_door_openable_playerContainer
+  type:setGuid(GUID('0x7D887AE5','0x883D0B59','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xC85D762B','0x883D0B5B','0x0077024F','0x00005500'), "0_6_cs_door_openable_player_ObjectEntityWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0xC85D762B','0x883D0B5B','0x0077024F','0x00005500')); -- 0_6_cs_door_openable_player_ObjectEntityWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500'), "GenericCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500')); -- GenericCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x720AE09C','0xFF652466','0x00770279','0x00005500'), "MetalCollisionHelperBoxPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0x720AE09C','0xFF652466','0x00770279','0x00005500')); -- MetalCollisionHelperBoxPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500'), "MetalCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500')); -- MetalCollisionHelperHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500'), "MetalCollisionHelperModelComponent");
+  type:addComponentTypeGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500')); -- MetalCollisionHelperModelComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

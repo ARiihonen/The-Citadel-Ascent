@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/helper/collision_helper/game_door_component_stop_lily.fbt")
+  local type = typeManager:inheritNewTypeByGUID("14_4_sewer_door_openable_ObjectEntityGameDoorComponent", GUID('0x664329D4','0xB9A92C20','0x0077021C','0x00005500')); -- GameDoorComponentStopLily
+  type:setGuid(GUID('0xD94B690D','0x8CC012A0','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setNavigationMeshObstacleRadius(0.75)
+  type:setNavigationMeshObstacleHeight(0.5)
+  type:setNavigationMeshObstacleOffset(VC3(0, -0.5, 0))
+end

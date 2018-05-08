@@ -1,0 +1,16 @@
+fuse = addContext("fuse", 1)
+idle = addContext("idle", 1)
+
+--{ Animation: s_fuse
+s_fuse = addState(fuse, "s_fuse");
+s_fuse:loop(false);
+--s_fuse:speedFactor(1);
+s_fuse:add("sticky_bomb_fuse.fbxanim");
+--} 
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle"); 
+s_idle:loop(false);
+
+s_idle:add("sticky_bomb_idle.fbxanim");
+--} 

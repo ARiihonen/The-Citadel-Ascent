@@ -1,0 +1,239 @@
+--idle = addContext("idle",1)
+fight1 = addContext("fight1",10)
+sleep = addContext("sleep",1)
+wake_up = addContext("wake_up",0)
+wake_up_short = addContext("wake_up_short",1)
+flower_attack = addContext("flower_attack",1)
+stagger = addContext("stagger",1)
+-- stagger2 = addContext("stagger2",1)
+fire_sweep = addContext("fire_sweep",1) 
+-- roar_attack = addContext("roar_attack",1)
+die = addContext("die",1)
+rage = addContext("rage",1)
+--EventAnimDieFinished
+
+
+
+
+--shelf_drop_y = addParam("shelf_drop_y")
+
+--look_at_x = addParam("look_at_x")
+--look_at_z = addParam("look_at_z")
+angle_axis = addParam("angle_axis")
+angle_around_up = addParam("angle_around_up")
+
+
+
+-- --{ Animation: s_roar_attack
+-- s_roar_attack = addState(roar_attack, "s_roar_attack");
+-- s_roar_attack:blendTime(400);
+-- s_roar_attack:restart(true);
+-- s_roar_attack:add("spit.fbxanim");
+-- s_roar_attack:addFinishedEvent("EventAnimAttackFinished");
+-- --}
+
+--{ Animation: s_flower_attack
+s_flower_attack = addState(flower_attack, "s_flower_attack");
+s_flower_attack:blendTime(300); 
+s_flower_attack:loopBlendTime(0);
+s_flower_attack:restart(true);
+s_flower_attack:loop(false);
+
+--s_flower_attack:rootMotionScaleWeight(0.0);
+--s_flower_attack:add("spit.fbxanim");
+-- s_flower_attack:add(angle_axis(-90), angle_around_up(30), "flower_attack_near_right.fbxanim"); 
+-- s_flower_attack:add(angle_axis(-90), angle_around_up(0), "flower_attack_near_mid.fbxanim");
+-- s_flower_attack:add(angle_axis(-90), angle_around_up(-30), "flower_attack_near_left.fbxanim");
+-- s_flower_attack:add(angle_axis(-30), angle_around_up(30), "flower_attack_far_right.fbxanim");
+-- s_flower_attack:add(angle_axis(-30), angle_around_up(0), "flower_attack_far_mid.fbxanim");
+-- s_flower_attack:add(angle_axis(-30), angle_around_up(-30), "flower_attack_far_left.fbxanim"); 
+
+s_flower_attack:add(angle_axis(-90), angle_around_up(30), "flower_attack_fast_near_right.fbxanim"); 
+s_flower_attack:add(angle_axis(-90), angle_around_up(0), "flower_attack_fast_near_mid.fbxanim");
+s_flower_attack:add(angle_axis(-90), angle_around_up(-30), "flower_attack_fast_near_left.fbxanim");
+s_flower_attack:add(angle_axis(-30), angle_around_up(30), "flower_attack_fast_far_right.fbxanim");
+s_flower_attack:add(angle_axis(-30), angle_around_up(0), "flower_attack_fast_far_mid.fbxanim");
+s_flower_attack:add(angle_axis(-30), angle_around_up(-30), "flower_attack_fast_far_left.fbxanim"); 
+-- s_flower_attack:add(angle_axis(0), angle_around_up(0), "flower_attack_fast_far_mid.fbxanim");
+
+-- s_flower_attack:add( "flower_attack.fbxanim"); 
+--s_flower_attack:loop(true);
+--s_flower_attack:absoluteRootMotionPosition(true);
+--s_flower_attack:absoluteRootMotionRotation(true);
+s_flower_attack:speedFactor(1.0);
+
+s_flower_attack:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+--{ Animation: s_flower_attack_fast
+s_flower_attack_fast = addState(flower_attack+rage, "s_flower_attack_fast");
+s_flower_attack_fast:blendTime(300); 
+s_flower_attack_fast:loopBlendTime(0);
+s_flower_attack_fast:restart(true);
+s_flower_attack_fast:loop(false);
+
+--s_flower_attack_fast:rootMotionScaleWeight(0.0);
+--s_flower_attack_fast:add("spit.fbxanim");
+s_flower_attack_fast:add(angle_axis(-90), angle_around_up(30), "flower_attack_fast_near_right.fbxanim"); 
+s_flower_attack_fast:add(angle_axis(-90), angle_around_up(0), "flower_attack_fast_near_mid.fbxanim");
+s_flower_attack_fast:add(angle_axis(-90), angle_around_up(-30), "flower_attack_fast_near_left.fbxanim");
+s_flower_attack_fast:add(angle_axis(-30), angle_around_up(30), "flower_attack_fast_far_right.fbxanim");
+s_flower_attack_fast:add(angle_axis(-30), angle_around_up(0), "flower_attack_fast_far_mid.fbxanim");
+s_flower_attack_fast:add(angle_axis(-30), angle_around_up(-30), "flower_attack_fast_far_left.fbxanim"); 
+-- s_flower_attack_fast:add(angle_axis(0), angle_around_up(0), "flower_attack_fast_far_mid.fbxanim");
+
+-- s_flower_attack_fast:add(angle_axis(-90), angle_around_up(30), "flower_attack_near_right.fbxanim"); 
+-- s_flower_attack_fast:add(angle_axis(-90), angle_around_up(0), "flower_attack_near_mid.fbxanim");
+-- s_flower_attack_fast:add(angle_axis(-90), angle_around_up(-30), "flower_attack_near_left.fbxanim");
+-- s_flower_attack_fast:add(angle_axis(-30), angle_around_up(30), "flower_attack_far_right.fbxanim");
+-- s_flower_attack_fast:add(angle_axis(-30), angle_around_up(0), "flower_attack_far_mid.fbxanim");
+-- s_flower_attack_fast:add(angle_axis(-30), angle_around_up(-30), "flower_attack_far_left.fbxanim"); 
+
+s_flower_attack_fast:speedFactor(1.0);
+-- s_flower_attack_fast:add( "flower_attack_fast.fbxanim"); 
+--s_flower_attack_fast:loop(true);
+--s_flower_attack_fast:absoluteRootMotionPosition(true);
+--s_flower_attack_fast:absoluteRootMotionRotation(true);
+s_flower_attack_fast:addFinishedEvent("EventAnimAttackFinished");
+--}
+
+--{ Animation: s_fight
+s_fight = addState(fight1, "s_fight");
+s_fight:blendTime(2000);
+s_fight:loopBlendTime(400);
+--s_fight:restart(true);
+--s_fight:rootMotionScaleWeight(0.0);
+
+s_fight:add(angle_axis(-90), angle_around_up(60), "fight2_near_right.fbxanim");
+s_fight:add(angle_axis(-90), angle_around_up(0), "fight2_near_mid.fbxanim");
+s_fight:add(angle_axis(-90), angle_around_up(-60), "fight2_near_left.fbxanim");
+s_fight:add(angle_axis(0), angle_around_up(60), "fight2_far_right.fbxanim"); 
+s_fight:add(angle_axis(0), angle_around_up(0), "fight2_far_mid.fbxanim");
+s_fight:add(angle_axis(0), angle_around_up(-60), "fight2_far_left.fbxanim");
+s_fight:loop(true);
+--s_fight:absoluteRootMotionPosition(true);
+--s_fight:absoluteRootMotionRotation(true);
+--s_fight:addFinishedEvent("EventAnimHelperFinished");
+--}
+
+
+
+
+--{ Animation: s_fire_sweep_start
+s_fire_sweep_start = addState(fire_sweep, "s_fire_sweep_start");
+s_fire_sweep_start:blendTime(500);
+s_fire_sweep_start:restart(true);
+--s_fire_sweep_start:rootMotionScaleWeight(0.0);
+
+s_fire_sweep_start:add(angle_around_up(55), "spit_fire_start_near_right.fbxanim");
+s_fire_sweep_start:add(angle_around_up(0), "spit_fire_start_near_mid.fbxanim");
+s_fire_sweep_start:add(angle_around_up(-55), "spit_fire_start_near_left.fbxanim");
+
+--s_fire_sweep_start:loop(true);
+--s_fire_sweep_start:absoluteRootMotionPosition(true);
+--s_fire_sweep_start:absoluteRootMotionRotation(true); 
+--s_fire_sweep_start:addFinishedEvent("EventAnimFireBreathFinished");
+--}
+
+
+--{ Animation: s_fire_sweep_cycle
+s_fire_sweep_cycle = addState(fire_sweep, "s_fire_sweep_cycle");
+s_fire_sweep_cycle:from(s_fire_sweep_start);
+s_fire_sweep_cycle:blendTime(500);
+s_fire_sweep_cycle:loopBlendTime(300);
+s_fire_sweep_cycle:loop(true);
+--s_fire_sweep_cycle:rootMotionScaleWeight(0.0);
+
+s_fire_sweep_cycle:add(angle_around_up(55), "spit_fire_cycle_near_right.fbxanim");
+s_fire_sweep_cycle:add(angle_around_up(0), "spit_fire_cycle_near_mid.fbxanim");
+s_fire_sweep_cycle:add(angle_around_up(-55), "spit_fire_cycle_near_left.fbxanim");
+--s_fire_sweep_cycle:add("spit_fire_cycle_near_mid.fbxanim");
+
+--s_fire_sweep_cycle:loop(true);
+--s_fire_sweep_cycle:absoluteRootMotionPosition(true);
+--s_fire_sweep_cycle:absoluteRootMotionRotation(true);
+--s_fire_sweep_cycle:addFinishedEvent("EventAnimFireBreathFinished");
+--}
+
+
+--{ Animation: s_fire_sweep_end
+s_fire_sweep_end = addState(fight1, "s_fire_sweep_end");
+s_fire_sweep_end:from(s_fire_sweep_cycle);
+--s_fire_sweep_end:from(s_fire_sweep_start);
+s_fire_sweep_end:blendTime(500);
+s_fire_sweep_end:restart(true);
+--s_fire_sweep_end:rootMotionScaleWeight(0.0);
+
+s_fire_sweep_end:add(angle_around_up(55), "spit_fire_end_near_right.fbxanim");
+s_fire_sweep_end:add(angle_around_up(0), "spit_fire_end_near_mid.fbxanim");
+s_fire_sweep_end:add(angle_around_up(-55), "spit_fire_end_near_left.fbxanim");
+
+--s_fire_sweep_end:loop(true);
+--s_fire_sweep_end:absoluteRootMotionPosition(true);
+--s_fire_sweep_end:absoluteRootMotionRotation(true);
+--s_fire_sweep_end:addFinishedEvent("EventAnimFireBreathFinished");
+--}
+
+
+
+
+
+--{ Animation: s_sleep
+s_sleep = addState(sleep, "s_sleep");
+s_sleep:blendTime(300);
+s_sleep:loop(true);
+s_sleep:add("sleep2.fbxanim"); 
+--}
+
+--{ Animation: s_stagger
+s_stagger = addState(stagger, "s_stagger");
+s_stagger:blendTime(300);
+s_stagger:restart(true);
+s_stagger:add("stagger2.fbxanim");
+s_stagger:addFinishedEvent("EventAnimStaggerFinished");
+--}
+
+
+--{ Animation: s_die
+s_die = addState(die, "s_die"); 
+s_die:blendTime(300);
+s_die:restart(false); 
+s_die:add("die.fbxanim");
+s_die:addFinishedEvent("EventAnimDieFinished");
+--}
+
+-- --{ Animation: s_stagger2
+-- s_stagger2 = addState(stagger2, "s_stagger2");
+-- s_stagger2:blendTime(300);
+-- s_stagger2:restart(true);
+-- s_stagger2:add("stagger2.fbxanim");
+-- s_stagger2:addFinishedEvent("EventAnimStaggerFinished");
+-- --}
+
+--{ Animation: s_wake_up_short
+s_wake_up_short = addState(wake_up_short, "s_wake_up_short");
+s_wake_up_short:blendTime(200);
+s_wake_up_short:loop(false);
+s_wake_up_short:add("wake_up3.fbxanim");
+-- s_wake_up_short:add(angle_axis(-90), angle_around_up(60), "wake_up2_near_right.fbxanim");
+-- s_wake_up_short:add(angle_axis(-90), angle_around_up(0), "wake_up2_near_mid.fbxanim");
+-- s_wake_up_short:add(angle_axis(-90), angle_around_up(-60), "wake_up2_near_left.fbxanim");
+-- s_wake_up_short:add(angle_axis(0), angle_around_up(60), "wake_up2_far_right.fbxanim");
+-- s_wake_up_short:add(angle_axis(0), angle_around_up(0), "wake_up2_far_mid.fbxanim");
+-- s_wake_up_short:add(angle_axis(0), angle_around_up(-60), "wake_up2_far_left.fbxanim");
+s_wake_up_short:addFinishedEvent("EventAnimWakeUpFinished");
+--}
+
+--{ Animation: s_wake_up
+s_wake_up = addState(wake_up, "s_wake_up");
+s_wake_up:blendTime(200);
+s_wake_up:loop(false);
+--s_wake_up:add("wake_up3.fbxanim");
+s_wake_up:add(angle_axis(-90), angle_around_up(60), "wake_up2_near_right.fbxanim");
+s_wake_up:add(angle_axis(-90), angle_around_up(0), "wake_up2_near_mid.fbxanim");
+s_wake_up:add(angle_axis(-90), angle_around_up(-60), "wake_up2_near_left.fbxanim");
+s_wake_up:add(angle_axis(-0), angle_around_up(60), "wake_up2_far_right.fbxanim");
+s_wake_up:add(angle_axis(-0), angle_around_up(0), "wake_up2_far_mid.fbxanim");
+s_wake_up:add(angle_axis(-0), angle_around_up(-60), "wake_up2_far_left.fbxanim");
+s_wake_up:addFinishedEvent("EventAnimWakeUpFinished");
+--}

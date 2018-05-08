@@ -1,0 +1,34 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab/prefab_entity_instance_creator_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("fortresstower_narrow_stairs_baseInstanceCreatorComponent", GUID('0x7D791CB6','0x50B97278','0x007702B3','0x00005500')); -- PrefabEntityInstanceCreatorComponent
+  type:setGuid(GUID('0xD3901ECE','0x8BA13730','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xCBCDB2AE','0x7DA37883','0x0077021D','0x00005500'), "3_rd_stone_stairs_4x4x8_27_degree_no_base_v2_ObjectEntity");
+  typeManager:setLastKnownNameForGUID(GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'), "RockCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'), "RockCollisionHelper");
+  typeManager:setLastKnownNameForGUID(GUID('0x77F13B3E','0xE8401DBC','0x0077021D','0x00005500'), "stairs_stone_narrow_straight.fbxmodel");
+  type:setPropertyGUIDArray(type.PropertyTypesToBeCreated, 
+    {GUID('0xCBCDB2AE','0x7DA37883','0x0077021D','0x00005500'),  -- 3_rd_stone_stairs_4x4x8_27_degree_no_base_v2_ObjectEntity
+    GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'),  -- RockCollisionHelper
+    GUID('0x3118AE7F','0x0A4B0A38','0x00770279','0x00005500'),  -- RockCollisionHelper
+    GUID('0x77F13B3E','0xE8401DBC','0x0077021D','0x00005500')}) -- stairs_stone_narrow_straight.fbxmodel
+  type:setInstanceDefaultPositions(VC3PropertyArray({VC3(0.7303, 0.3441, 0.002), VC3(-0.6711, -0.2126, -0.001), VC3(-0.0593, -0.1314, -0.001), VC3(0.6617, 0.6705, -0.0613)}))
+  type:setInstanceDefaultRotations(QUATPropertyArray({QUAT(7.19272e-008, 7.72707e-008, -0.281906, -0.959442), QUAT(6.51873e-008, 7.16248e-007, 1.74795e-007, -1), QUAT(2.48345e-007, 6.7497e-007, -0.258819, -0.965926), QUAT(1.57179e-007, -0.707107, 6.42633e-008, -0.707106)}))
+  type:setInstanceDefaultScales(VC3PropertyArray({VC3(2.9599, 0.3861, 4.4785), VC3(1.1596, 0.8136, 4.4902), VC3(2.1131, 0.4386, 4.4902), VC3(0.5511, 1, 0.7746)}))
+  type:setInstanceUVScales(VC2PropertyArray({VC2(1, 1), VC2(1, 1), VC2(1, 1), VC2(1, 1)}))
+  type:setIsPrefab(true)
+  type:setMasterInstanceIndex(-1)
+  type:setModelPositionOffset(VC3(0, 1.5, 0))
+  type:setModelScale(VC3(1, 1, 1))
+  type:setParentIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyParentComponents, {})
+  type:setParentPropertyNames(DynamicStringPropertyArray({}))
+  type:setTargetInstanceIds(IntPropertyArray({}))
+  type:setPropertyGUIDArray(type.PropertyTargetInstanceComponents, {})
+  type:setChildLevels(IntPropertyArray({0, 1, 1, 1}))
+  type:setChildParentIDs(IntPropertyArray({-1, 0, 0, 0}))
+  type:setInstanceLayers(IntPropertyArray({2, 2, 2, 4}))
+  type:setInstanceCounter(4)
+  type:setPrefabVersion(1)
+end

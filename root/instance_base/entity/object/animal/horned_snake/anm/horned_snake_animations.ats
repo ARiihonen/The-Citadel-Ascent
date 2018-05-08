@@ -1,0 +1,42 @@
+idle = addContext("idle", 1)
+idle1 = addContext("idle1", 1)
+idle2 = addContext("idle2", 1)
+creep1 = addContext("creep1", 1)
+run_away = addContext("run_away", 1)
+
+
+--{ Animation: snake_idle
+snake_idle = addState(idle, "snake_idle");
+snake_idle:blendTime(300);
+snake_idle:loop(true);
+snake_idle:add("idle.fbxanim");
+--}
+
+--{ Animation: snake_idle1
+snake_idle1 = addState(idle1, "snake_idle1");
+snake_idle1:blendTime(300);
+snake_idle1:loop(true);
+snake_idle1:add("idle1.fbxanim");
+--}
+
+--{ Animation: snake_idle2
+snake_idle2 = addState(idle2, "snake_idle2");
+snake_idle2:blendTime(300);
+snake_idle2:loop(true);
+snake_idle2:add("idle2.fbxanim");
+--}
+
+--{ Animation: snake_creep1
+snake_creep1 = addState(idle2, "snake_creep1");
+snake_creep1:from(snake_idle1);
+snake_creep1:blendTime(300);
+snake_creep1:loop(false);
+snake_creep1:add("creep_in_tree1.fbxanim");
+--}
+
+--{ Animation: s_run_away
+s_run_away = addState(run_away, "s_run_away");
+s_run_away:blendTime(300);
+s_run_away:loop(false);
+s_run_away:add("run_away.fbxanim");
+--}

@@ -1,0 +1,3441 @@
+-----------------------------------------------------
+--{ Contexts
+
+jump = addContext("jump", 1) 
+wall_jump = addContext("wall_jump", 1)
+fall = addContext("fall", 2)
+stand = addContext("stand", 3)
+run = addContext("run", 4)
+fast = addContext("fast", 10001)
+turn = addContext("turn", 16)
+backward = addContext("backward", 7)
+block = addContext("block", 0)
+block_end = addContext("block_end", -1)
+swamp = addContext("swamp", 50)
+attack1_sword = addContext("attack1_sword", -9)
+attack2_sword = addContext("attack2_sword", -10)
+attack3_sword = addContext("attack3_sword", -11)
+attack1_jump_sword = addContext("attack1_jump_sword", -2)
+attack_combo1_sword = addContext("attack_combo1_sword", 16)
+attack_combo2_sword = addContext("attack_combo2_sword", 17)
+attack_combo3_sword = addContext("attack_combo3_sword", 18)
+charge_hammer = addContext("charge_hammer", -15)
+execute_hammer = addContext("execute_hammer", -14)
+swing_hammer_left = addContext("swing_hammer_left", -13)
+swing_hammer_right = addContext("swing_hammer_right", -12)
+pull_lever = addContext("pull_lever", 16)
+hammer = addContext("hammer", 20);
+sword = addContext("sword", 118)
+carry = addContext("carry", 0)
+pickup = addContext("pickup", 1)
+throwing = addContext("throwing", -1)
+throw = addContext("throw", -2)
+left = addContext("left", 10000)
+slippery = addContext("slippery", 51)
+trampoline = addContext("trampoline", -1)
+fatal = addContext("fatal", -2)
+out_of_balance = addContext("out_of_balance", 49)
+out_of_balance2 = addContext("out_of_balance2", 15)
+pushed_back = addContext("pushed_back", 20)
+pushed_front = addContext("pushed_front", 21)
+pushed_up = addContext("pushed_up", 22)
+push = addContext("push", 19)
+wind = addContext("wind", 50)
+env_wind = addContext("env_wind", 51)
+env_wind2 = addContext("env_wind2", 51)
+stagger = addContext("stagger", 60)
+scared = addContext("scared", 70)
+trine_exiting = addContext("trine_exiting", 0)
+your_magics = addContext("your_magics", 0)
+reaction_what = addContext("reaction_what", 0)
+trine_rescuing = addContext("trine_rescuing", -100)
+hidden = addContext("hidden", -100)
+comfort = addContext("comfort", 0)
+meet_zoya = addContext("meet_zoya", -100)
+
+glide = addContext("glide", -2)
+glide_kick_start = addContext("glide_kick_start", 1)
+glide_kick = addContext("glide_kick", 0)
+
+grabbed = addContext("grabbed", -20)
+
+-- left = addContext("left", 100)
+
+right = addContext("right", 1000)
+
+blocked = addContext("blocked", 0)
+blocks = addContext("blocks", 100)
+switch = addContext("switch", 0)
+turn_right = addContext("turn_right", 1)
+turn_left = addContext("turn_left", 1)
+
+rush = addContext("rush", -20)
+
+die = addContext("die", -30)
+impact = addContext("impact", 100)
+back = addContext("back", 99)
+drown = addContext("drown", 97)
+down = addContext("down", 98)
+
+
+surface = addContext("surface", 100)
+
+swim = addContext("swim", 1)
+water = addContext("water", 2)
+
+hammer_throw_charge = addContext("hammer_throw_charge", 1)
+hammer_throw = addContext("hammer_throw", 0)
+hammer_throw_end = addContext("hammer_throw_end", -1)
+
+open_chest = addContext("open_chest", 1)
+
+fallen = addContext("fallen", -200)
+fallen_rise = addContext("fallen_rise", -200)
+
+tavern = addContext("tavern", 1)
+
+cart_push = addContext("cart_push", 1)
+cart_push2 = addContext("cart_push2", 1)
+cart_push3 = addContext("cart_push3", 1)
+
+alarmed = addContext("alarmed", 1)
+sad_what_none = addContext("sad_what_none", 1)
+--}
+-----------------------------------------------------
+--{ Parameters
+
+slope = addParam("slope")
+aim = addParam("aim")
+speed = addParam("speed")
+wind_direction = addParam("wind_direction")
+scared_direction = addParam("scared_direction")
+switch_angle = addParam("switch_angle")
+swim_direction = addParam("swim_direction")
+--}
+
+--{ Animation_set: Fallen
+--{ Animation: fallen_start
+fallen_start = addState(fallen, "fallen_start");
+fallen_start:blendTime(300);
+fallen_start:loop(false);
+fallen_start:add("fallen_start.anm");
+--}
+--{ Animation: fallen_loop
+fallen_loop = addState(fallen, "fallen_loop");
+fallen_loop:from(fallen_start);
+fallen_loop:blendTime(000);
+fallen_loop:loop(true);
+fallen_loop:add("fallen_loop.anm");
+--}
+--{ Animation: fallen_rise
+s_fallen_rise = addState(fallen_rise, "s_fallen_rise");
+s_fallen_rise:blendTime(300);
+s_fallen_rise:loop(false);
+s_fallen_rise:add("fallen_rise.anm");
+--}
+--{ Animation: fallen_rise_end
+fallen_rise_end = addState(stand, "fallen_rise_end");
+fallen_rise_end:from(s_fallen_rise);
+fallen_rise_end:blendTime(300);
+fallen_rise_end:loop(false);
+fallen_rise_end:add("fallen_rise_end.anm");
+--}
+--}
+
+--{ Animation_set: Tavern scene
+--{ Animation: tavern_sit
+tavern_sit = addState(tavern, "tavern_sit");
+tavern_sit:blendTime(000);
+tavern_sit:loop(true);
+tavern_sit:add("taverm_sit.anm");
+--}
+--}
+------------------------------------------------------
+--{ Basic animations
+
+--{ Sword
+--{ Animation: run_end_sword
+run_end_sword = addState(stand, "run_end_sword");
+run_end_sword:blendTime(300);
+run_end_sword:loop(false);
+run_end_sword:add(slope(-1.0), "run_end_sword_downhill.anm");
+run_end_sword:add(slope(0.0), "run_end_sword.anm");
+run_end_sword:add(slope(1.0), "run_end_sword_uphill.anm");
+--}
+
+--{ Animation: stand_sword
+stand_sword = addState(stand, "stand_sword");
+stand_sword:from(run_end_sword);
+stand_sword:from(fallen_rise_end);
+stand_sword:blendTime(0);
+stand_sword:loop(true);
+stand_sword:add(slope(-1.0), "stand_sword_downhill.anm");
+stand_sword:add(slope(0.0), "stand_sword.anm");
+stand_sword:add(slope(1.0), "stand_sword_uphill.anm");
+--}
+
+--{ Animation: run_start_sword
+run_start_sword = addState(run, "run_start_sword");
+run_start_sword:blendTime(300);
+run_start_sword:loop(false);
+run_start_sword:add(slope(-1.0), "run_start_sword_downhill.anm");
+run_start_sword:add(slope(0.0), "run_start_sword.anm");
+run_start_sword:add(slope(1.0), "run_start_sword_uphill.anm");
+--}
+
+--{ Animation: run_start_turning_sword
+run_start_turning_sword = addState(run+turn, "run_start_turning_sword");
+run_start_turning_sword:restart(true);
+run_start_turning_sword:blendTime(0);
+run_start_turning_sword:loop(false);
+run_start_turning_sword:add(slope(-1.0), "run_start_turning_sword_downhill.anm");
+run_start_turning_sword:add(slope(0.0), "run_start_turning_sword.anm");
+run_start_turning_sword:add(slope(1.0), "run_start_turning_sword_uphill.anm");
+--}
+
+--{ Animation: run_sword
+run_sword = addState(run, "run_sword");
+run_sword:from(run_start_sword);
+run_sword:from(run_start_turning_sword);
+run_sword:blendTime(0);
+run_sword:loop(true);
+run_sword:add(slope(-1.0), "run_sword_downhill.anm");
+run_sword:add(slope(0.0), "run_sword.anm");
+run_sword:add(slope(1.0), "run_sword_uphill.anm");
+--}
+
+--{ Animation: jump_sword
+jump_sword = addState(jump, "jump_sword");
+jump_sword:blendTime(200);
+jump_sword:loop(false);
+jump_sword:restart(true);
+jump_sword:add("jump_sword.anm");
+--}
+
+--{ Animation: jump_fast_sword
+jump_fast_sword = addState(jump, "jump_fast_sword");
+-- Hack for lacking fast jump support
+jump_fast_sword:restart(true);
+jump_fast_sword:from(jump_fast_sword);
+jump_fast_sword:from(run_sword);
+jump_fast_sword:from(run_start_sword);
+jump_fast_sword:from(run_start_turning_sword);
+jump_fast_sword:blendTime(200);
+jump_fast_sword:loop(false);
+jump_fast_sword:add("jump_fast_sword.anm");
+--}
+
+--{ Animation: drop_start_sword
+drop_start_sword = addState(fall, "drop_start_sword");
+drop_start_sword:from(jump_sword);
+drop_start_sword:blendTime(200);
+drop_start_sword:loop(false);
+drop_start_sword:add("drop_start_sword.anm");
+--}
+
+--{ Animation: drop_sword
+drop_sword = addState(fall, "drop_sword");
+drop_sword:blendTime(300);
+drop_sword:delay(100);
+drop_sword:loop(true);
+drop_sword:add("drop_sword.anm");
+--}
+
+--{ Animation: drop_fast_start_sword
+drop_fast_start_sword = addState(fall+fast, "drop_fast_start_sword");
+drop_fast_start_sword:from(jump_fast_sword);
+drop_fast_start_sword:from(jump_sword);
+drop_fast_start_sword:blendTime(200);
+drop_fast_start_sword:loop(false);
+drop_fast_start_sword:add("drop_fast_start_sword.anm");
+--}
+
+--{ Animation: drop_fast_sword
+drop_fast_sword = addState(fall+fast, "drop_fast_sword");
+drop_fast_sword:blendTime(300);
+drop_fast_sword:loop(true);
+drop_fast_sword:delay(100);
+drop_fast_sword:add("drop_fast_sword.anm");
+--}
+
+--{ Animation: drop_fast_start_turning_sword
+drop_fast_start_turning_sword = addState(fall+turn, "drop_fast_start_turning_sword");
+drop_fast_start_turning_sword:restart(true);
+drop_fast_start_turning_sword:blendTime(0);
+drop_fast_start_turning_sword:loop(false);
+drop_fast_start_turning_sword:add("drop_fast_start_turning_sword.anm");
+--}
+
+--{ Animation: wall_jump_sword
+wall_jump_sword = addState(wall_jump, "wall_jump_sword");
+wall_jump_sword:blendTime(200);
+wall_jump_sword:loop(false);
+wall_jump_sword:add("wall_jump_sword.anm");
+--}
+--{ Animation: land_sword
+land_sword = addState(stand, "land_sword");
+land_sword:from(jump_sword);
+land_sword:from(drop_start_sword);
+land_sword:from(drop_sword);
+land_sword:from(jump_fast_sword);
+land_sword:from(drop_fast_start_sword);
+land_sword:from(drop_fast_sword);
+land_sword:from(drop_fast_start_turning_sword);
+land_sword:from(wall_jump_sword);
+land_sword:blendTime(50);
+land_sword:loop(false);
+land_sword:add(slope(-1.0), "land_sword_downhill.anm");
+land_sword:add(slope(0.0), "land_sword.anm");
+land_sword:add(slope(1.0), "land_sword_uphill.anm");
+--}
+
+--{ Animation: land_running_sword
+land_running_sword = addState(run, "land_running_sword");
+land_running_sword:from(jump_sword);
+land_running_sword:from(drop_start_sword);
+land_running_sword:from(drop_sword);
+land_running_sword:from(jump_fast_sword);
+land_running_sword:from(drop_fast_start_sword);
+land_running_sword:from(drop_fast_sword);
+land_running_sword:from(drop_fast_start_turning_sword);
+land_running_sword:from(wall_jump_sword);
+land_running_sword:blendTime(200);
+land_running_sword:loop(false);
+land_running_sword:add(slope(-1.0), "land_running_sword_downhill.anm");
+land_running_sword:add(slope(0.0), "land_running_sword.anm");
+land_running_sword:add(slope(1.0), "land_running_sword_uphill.anm");
+--}
+
+--{ Animation: run_turning_sword
+run_turning_sword = addState(run+turn, "run_turning_sword");
+run_turning_sword:from(run_turning_sword);
+run_turning_sword:from(run_sword);
+run_turning_sword:from(land_running_sword);
+run_turning_sword:from(run_start_turning_sword);
+run_turning_sword:from(run_start_sword);
+run_turning_sword:restart(true);
+run_turning_sword:blendTime(0);
+run_turning_sword:loop(false);
+run_turning_sword:add(slope(-1.0), "run_turning_sword_downhill.anm");
+run_turning_sword:add(slope(0.0), "run_turning_sword.anm");
+run_turning_sword:add(slope(1.0), "run_turning_sword_uphill.anm");
+--}
+
+
+
+stand_sword:from(land_sword);
+run_sword:from(land_running_sword);
+jump_fast_sword:from(land_running_sword);
+
+--}
+
+--{ Hammer
+--{ Animation: run_end_hammer
+run_end_hammer = addState(stand+hammer, "run_end_hammer");
+run_end_hammer:blendTime(300);
+run_end_hammer:loop(false);
+run_end_hammer:add("run_end_hammer.anm");
+--}
+
+--{ Animation: stand_hammer
+stand_hammer = addState(stand+hammer, "stand_hammer");
+stand_hammer:from(run_end_hammer);
+stand_hammer:blendTime(0);
+stand_hammer:loop(true);
+stand_hammer:add("stand_hammer.anm");
+--}
+
+--{ Animation: run_start_hammer
+run_start_hammer = addState(run+hammer, "run_start_hammer");
+run_start_hammer:blendTime(300);
+run_start_hammer:loop(false);
+run_start_hammer:add("run_start_hammer.anm");
+--}
+
+--{ Animation: run_start_turning_hammer
+run_start_turning_hammer = addState(run+turn+hammer, "run_start_turning_hammer");
+run_start_turning_hammer:restart(true);
+run_start_turning_hammer:blendTime(0);
+run_start_turning_hammer:loop(false);
+run_start_turning_hammer:add("run_start_turning_hammer.anm");
+--}
+
+--{ Animation: run_hammer
+run_hammer = addState(run+hammer, "run_hammer");
+run_hammer:from(run_start_hammer);
+run_hammer:from(run_start_turning_hammer);
+run_hammer:blendTime(0);
+run_hammer:loop(true);
+run_hammer:add("run_hammer.anm");
+--}
+
+--{ Animation: jump_hammer
+jump_hammer = addState(jump+hammer, "jump_hammer");
+jump_hammer:restart(true);
+jump_hammer:blendTime(200);
+jump_hammer:loop(false);
+jump_hammer:add("jump_hammer.anm");
+--}
+
+--{ Animation: jump_fast_hammer
+jump_fast_hammer = addState(jump+hammer, "jump_fast_hammer");
+-- Hack for lacking fast jump support
+jump_fast_hammer:restart(true);
+jump_fast_hammer:from(jump_fast_hammer);
+jump_fast_hammer:from(run_hammer);
+jump_fast_hammer:from(run_start_hammer);
+jump_fast_hammer:from(run_start_turning_hammer);
+jump_fast_hammer:blendTime(200);
+jump_fast_hammer:loop(false);
+jump_fast_hammer:add("jump_fast_hammer.anm");
+--}
+
+--{ Animation: drop_start_hammer
+drop_start_hammer = addState(fall+hammer, "drop_start_hammer");
+drop_start_hammer:from(jump_hammer);
+drop_start_hammer:blendTime(200);
+drop_start_hammer:loop(false);
+drop_start_hammer:add("drop_start_hammer.anm");
+--}
+
+--{ Animation: drop_hammer
+drop_hammer = addState(fall+hammer, "drop_hammer");
+drop_hammer:blendTime(300);
+drop_hammer:delay(100);
+drop_hammer:loop(true);
+drop_hammer:add("drop_hammer.anm");
+--}
+
+--{ Animation: drop_fast_start_hammer
+drop_fast_start_hammer = addState(fall+fast+hammer, "drop_fast_start_hammer");
+drop_fast_start_hammer:from(jump_fast_hammer);
+drop_fast_start_hammer:from(jump_hammer);
+drop_fast_start_hammer:blendTime(200);
+drop_fast_start_hammer:loop(false);
+drop_fast_start_hammer:add("drop_fast_start_hammer.anm");
+--}
+
+--{ Animation: drop_fast_hammer
+drop_fast_hammer = addState(fall+fast+hammer, "drop_fast_hammer");
+drop_fast_hammer:blendTime(300);
+drop_fast_hammer:loop(true);
+drop_fast_hammer:delay(100);
+drop_fast_hammer:add("drop_fast_hammer.anm");
+--}
+
+--{ Animation: drop_fast_start_turning_hammer
+drop_fast_start_turning_hammer = addState(fall+turn+hammer, "drop_fast_start_turning_hammer");
+drop_fast_start_turning_hammer:restart(true);
+drop_fast_start_turning_hammer:blendTime(0);
+drop_fast_start_turning_hammer:loop(false);
+drop_fast_start_turning_hammer:add("drop_fast_start_turning_hammer.anm");
+--}
+
+--{ Animation: wall_jump_hammer
+wall_jump_hammer = addState(wall_jump+hammer, "wall_jump_hammer");
+wall_jump_hammer:blendTime(200);
+wall_jump_hammer:loop(false);
+wall_jump_hammer:add("wall_jump_hammer.anm");
+--}
+
+--{ Animation: land_hammer
+land_hammer = addState(stand+hammer, "land_hammer");
+land_hammer:from(wall_jump_hammer);
+land_hammer:from(jump_hammer);
+land_hammer:from(drop_start_hammer);
+land_hammer:from(drop_hammer);
+land_hammer:from(jump_fast_hammer);
+land_hammer:from(drop_fast_start_hammer);
+land_hammer:from(drop_fast_hammer);
+land_hammer:from(drop_fast_start_turning_hammer);
+land_hammer:blendTime(50);
+land_hammer:loop(false);
+land_hammer:add("land_hammer.anm");
+--}
+
+--{ Animation: land_running_hammer
+land_running_hammer = addState(run+hammer, "land_running_hammer");
+land_running_hammer:from(wall_jump_hammer);
+land_running_hammer:from(jump_hammer);
+land_running_hammer:from(drop_start_hammer);
+land_running_hammer:from(drop_hammer);
+land_running_hammer:from(jump_fast_hammer);
+land_running_hammer:from(drop_fast_start_hammer);
+land_running_hammer:from(drop_fast_hammer);
+land_running_hammer:from(drop_fast_start_turning_hammer);
+land_running_hammer:blendTime(200);
+land_running_hammer:loop(false);
+land_running_hammer:add("land_running_hammer.anm");
+--}
+
+--{ Animation: run_turning_hammer
+run_turning_hammer = addState(run+turn+hammer, "run_turning_hammer");
+run_turning_hammer:from(run_turning_hammer);
+run_turning_hammer:from(run_hammer);
+run_turning_hammer:from(land_running_hammer);
+run_turning_hammer:from(run_start_turning_hammer);
+run_turning_hammer:from(run_start_hammer);
+run_turning_hammer:restart(true);
+run_turning_hammer:blendTime(0);
+run_turning_hammer:loop(false);
+-- run_turning_hammer:add(slope(-1.0), "run_start_turning_hammer_downhill.anm");
+run_turning_hammer:add(slope(0.0), "run_turning_hammer.anm");
+-- run_turning_hammer:add(slope(1.0), "run_start_turning_hammer_uphill.anm");
+--}
+
+stand_hammer:from(land_hammer);
+run_hammer:from(land_running_hammer);
+jump_fast_hammer:from(land_running_hammer);
+
+--}
+
+--}
+
+--{ Blocking animations
+
+--{ Animation: stand_start_blocking
+stand_start_blocking = addState(stand+block, "stand_start_blocking");
+stand_start_blocking:blendTime(200);
+stand_start_blocking:loop(false);
+stand_start_blocking:add(aim(90 * 1.0), "stand_start_blocking_up.anm");
+stand_start_blocking:add(aim(90 * -0.2), "stand_start_blocking.anm");
+stand_start_blocking:add(aim(90 * -0.5), "stand_start_blocking_down.anm");
+stand_start_blocking:add(aim(90 * -1.0), "stand_start_blocking_down.anm");
+--}
+
+
+--{ Animation: stand_blocks
+stand_blocks = addState(stand+block+blocks, "stand_blocks");
+stand_blocks:blendTime(150);
+stand_blocks:restart(true);
+stand_blocks:loop(false);
+stand_blocks:add(aim(90 * 1.0), "blocks_hit_up.anm");
+stand_blocks:add(aim(90 * -0.2), "blocks_hit_down.anm");
+stand_blocks:add(aim(90 * -0.5), "blocks_hit_down.anm");
+stand_blocks:add(aim(90 * -1.0), "blocks_hit_down.anm");
+--}
+
+--{ Animation: turn_blocking
+turn_blocking = addState(stand+block+turn, "turn_blocking");
+turn_blocking:blendTime(0);
+turn_blocking:loop(false);
+turn_blocking:restart(true);
+-- turn_blocking:add(aim(90 * 1.0), "turn_blocking_up.anm");
+turn_blocking:add(aim(90 * 1.0), "turn_blocking_up.anm");
+turn_blocking:add(aim(90 * -0.2), "turn_blocking.anm");
+turn_blocking:add(aim(90 * -0.5), "turn_blocking_down.anm");
+turn_blocking:add(aim(90 * -1.0), "turn_blocking_down.anm");
+--}
+
+
+--{ Animation: stand_blocking
+stand_blocking = addState(stand+block, "stand_blocking");
+stand_blocking:from(stand_start_blocking);
+stand_blocking:from(stand_blocks);
+stand_blocking:from(stand_blocking);
+stand_blocking:from(turn_blocking);
+stand_blocking:restart(true);
+stand_blocking:blendTime(0);
+stand_blocking:loop(true);
+stand_blocking:add(aim(90 * 1.0), "stand_blocking_up.anm");
+stand_blocking:add(aim(90 * -0.2), "stand_blocking.anm");
+stand_blocking:add(aim(90 * -0.5), "stand_blocking_down.anm");
+stand_blocking:add(aim(90 * -1.0), "stand_blocking_down.anm");
+--}
+
+
+--{ Animation: run_start_blocking
+run_start_blocking = addState(run+block, "run_start_blocking");
+run_start_blocking:blendTime(300);
+run_start_blocking:loop(false);
+run_start_blocking:add(aim(90 * 1.0), "run_start_blocking_up.anm");
+run_start_blocking:add(aim(90 * 0.0), "run_start_blocking.anm");
+run_start_blocking:add(aim(90 * -0.5), "run_start_blocking_down.anm");
+run_start_blocking:add(aim(90 * -1.0), "run_start_blocking_down.anm");
+--}
+
+--{ Animation: run_blocking
+run_blocking = addState(run+block, "run_blocking");
+run_blocking:from(run_start_blocking);
+run_blocking:blendTime(0);
+run_blocking:loop(true);
+run_blocking:add(aim(90 * 1.0), "run_blocking_up.anm");
+run_blocking:add(aim(90 * 0.0), "run_blocking.anm");
+run_blocking:add(aim(90 * -0.5), "run_blocking_down.anm");
+run_blocking:add(aim(90 * -1.0), "run_blocking_down.anm");
+--}
+
+--{ Animation: walk_backward_start_blocking
+walk_backward_start_blocking = addState(run+backward+block, "walk_backward_start_blocking");
+walk_backward_start_blocking:blendTime(150);
+walk_backward_start_blocking:loop(false);
+walk_backward_start_blocking:add(aim(90 * -1.0), "walk_backward_start_blocking_down.anm");
+walk_backward_start_blocking:add(aim(90 * -0.5), "walk_backward_start_blocking_down.anm");
+walk_backward_start_blocking:add(aim(90 * 0.0), "walk_backward_start_blocking.anm");
+walk_backward_start_blocking:add(aim(90 * 1.0), "walk_backward_start_blocking_up.anm");
+--}
+
+--{ Animation: walk_backward_blocking
+walk_backward_blocking = addState(run+backward+block, "walk_backward_blocking");
+walk_backward_blocking:from(walk_backward_start_blocking);
+walk_backward_blocking:blendTime(00);
+walk_backward_blocking:loop(true);
+walk_backward_blocking:add(aim(90 * -1.0), "walk_backward_blocking_down.anm");
+walk_backward_blocking:add(aim(90 * -0.5), "walk_backward_blocking_down.anm");
+walk_backward_blocking:add(aim(90 * 0.0), "walk_backward_blocking.anm");
+walk_backward_blocking:add(aim(90 * 1.0), "walk_backward_blocking_up.anm");
+--}
+
+--{ Animation: walk_backward_end_blocking
+walk_backward_end_blocking = addState(stand+block, "walk_backward_end_blocking");
+walk_backward_end_blocking:from(walk_backward_blocking);
+walk_backward_end_blocking:from(walk_backward_start_blocking);
+walk_backward_end_blocking:blendTime(300);
+walk_backward_end_blocking:loop(false);
+walk_backward_end_blocking:add(aim(90 * -1.0), "walk_backward_end_blocking_down.anm");
+walk_backward_end_blocking:add(aim(90 * -0.5), "walk_backward_end_blocking_down.anm");
+walk_backward_end_blocking:add(aim(90 * 0.0), "walk_backward_end_blocking.anm");
+walk_backward_end_blocking:add(aim(90 * 1.0), "walk_backward_end_blocking_up.anm");
+--}
+
+--{ Animation: jump_blocking
+jump_blocking = addState(jump+block, "jump_blocking");
+jump_blocking:blendTime(200);
+jump_blocking:loop(false);
+jump_blocking:add(aim(90 * -1.0), "jump_blocking_down.anm");
+jump_blocking:add(aim(90 * -0.5), "jump_blocking_down.anm");
+jump_blocking:add(aim(90 * 0.0), "jump_blocking.anm");
+jump_blocking:add(aim(90 * 1.0), "jump_blocking_up.anm");
+--}
+
+--{ Animation: jump_fast_blocking
+jump_fast_blocking = addState(jump+block, "jump_fast_blocking");
+-- Hack for lacking fast jump support
+jump_fast_blocking:from(run_blocking);
+jump_fast_blocking:from(run_start_blocking);
+jump_fast_blocking:blendTime(200);
+jump_fast_blocking:loop(false);
+jump_fast_blocking:add(aim(90 * -1.0), "jump_blocking_down.anm");
+jump_fast_blocking:add(aim(90 * -0.5), "jump_blocking_down.anm");
+jump_fast_blocking:add(aim(90 * 0.0), "jump_blocking.anm");
+jump_fast_blocking:add(aim(90 * 1.0), "jump_blocking_up.anm");
+--}
+
+--{ Animation: drop_blocking
+drop_blocking = addState(fall+block, "drop_blocking");
+drop_blocking:blendTime(200);
+drop_blocking:delay(50);
+drop_blocking:loop(true);
+drop_blocking:restart(true);
+drop_blocking:add(aim(90 * -1.0), "drop_blocking_down.anm");
+drop_blocking:add(aim(90 * -0.5), "drop_blocking_down.anm");
+drop_blocking:add(aim(90 * 0.0), "drop_blocking.anm");
+drop_blocking:add(aim(90 * 1.0), "drop_blocking_up.anm");
+--}
+
+--{ Animation: jump2_blocking
+jump2_blocking = addState(fall+block, "jump2_blocking");
+jump2_blocking:from(jump_sword);
+jump2_blocking:blendTime(100);
+jump2_blocking:loop(false);
+jump2_blocking:add(aim(90 * -1.0), "jump_blocking_down.anm");
+jump2_blocking:add(aim(90 * -0.5), "jump_blocking_down.anm");
+jump2_blocking:add(aim(90 * 0.0), "jump_blocking.anm");
+jump2_blocking:add(aim(90 * 1.0), "jump_blocking_up.anm");
+--}
+
+--{ Animation: jump2_fast_blocking
+jump2_fast_blocking = addState(fall+fast+block, "jump2_fast_blocking");
+jump2_fast_blocking:from(jump_fast_sword);
+jump2_fast_blocking:blendTime(100);
+jump2_fast_blocking:loop(false);
+jump2_fast_blocking:add(aim(90 * -1.0), "jump_blocking_down.anm");
+jump2_fast_blocking:add(aim(90 * -0.5), "jump_blocking_down.anm");
+jump2_fast_blocking:add(aim(90 * 0.0), "jump_blocking.anm");
+jump2_fast_blocking:add(aim(90 * 1.0), "jump_blocking_up.anm");
+--}
+
+--{ Animation: drop_fast_start_blocking
+drop_fast_start_blocking = addState(fall+fast+block, "drop_fast_start_blocking");
+drop_fast_start_blocking:from(jump_fast_blocking);
+drop_fast_start_blocking:from(jump_blocking);
+drop_fast_start_blocking:blendTime(200);
+drop_fast_start_blocking:loop(false);
+drop_fast_start_blocking:add("drop_fast_start_blocking.anm");
+--}
+
+--{ Animation: drop_fast_blocking
+drop_fast_blocking = addState(fall+fast+block, "drop_fast_blocking");
+drop_fast_blocking:blendTime(300);
+drop_fast_blocking:loop(true);
+drop_fast_blocking:delay(100);
+drop_fast_blocking:add("drop_fast_blocking.anm");
+--}
+
+--{ Animation: drop_fast_start_turning_blocking
+--drop_fast_start_turning_blocking = addState(jump+turn+block, "drop_fast_start_turning_blocking");
+--drop_fast_start_turning_blocking:blendTime(0);
+--drop_fast_start_turning_blocking:loop(false);
+--drop_fast_start_turning_blocking:add("drop_fast_start_turning_blocking.anm");
+--}
+
+--{ Animation: land_blocking
+land_blocking = addState(stand+block, "land_blocking");
+land_blocking:from(jump_blocking);
+land_blocking:from(drop_blocking);
+land_blocking:from(jump_fast_blocking);
+land_blocking:from(drop_fast_start_blocking);
+land_blocking:from(drop_fast_blocking);
+--land_blocking:from(drop_fast_start_turning_blocking);
+land_blocking:blendTime(50);
+land_blocking:loop(false);
+land_blocking:add(aim(90 * -1.0), "land_blocking_down.anm");
+land_blocking:add(aim(90 * -0.5), "land_blocking_down.anm");
+land_blocking:add(aim(90 * 0.0), "land_blocking.anm");
+land_blocking:add(aim(90 * 1.0), "land_blocking_up.anm");
+--}
+
+--{ Animation: land_running_blocking
+land_running_blocking = addState(run+block, "land_running_blocking");
+land_running_blocking:from(jump_blocking);
+land_running_blocking:from(drop_blocking);
+land_running_blocking:from(jump_fast_blocking);
+land_running_blocking:from(drop_fast_start_blocking);
+land_running_blocking:from(drop_fast_blocking);
+--land_running_blocking:from(drop_fast_start_turning_blocking);
+land_running_blocking:blendTime(200);
+land_running_blocking:loop(false);
+land_running_blocking:add(aim(90 * 1.0), "land_running_blocking_up.anm");
+land_running_blocking:add(aim(90 * 0.0), "land_running_blocking.anm");
+land_running_blocking:add(aim(90 * -0.5), "land_running_blocking_down.anm");
+land_running_blocking:add(aim(90 * -1.0), "land_running_blocking_down.anm");
+--}
+
+--{ Animation: run_end_blocking
+run_end_blocking = addState(stand+block, "run_end_blocking");
+run_end_blocking:blendTime(300);
+run_end_blocking:from(run_start_blocking);
+run_end_blocking:from(land_running_blocking);
+run_end_blocking:from(run_blocking);
+run_end_blocking:loop(false);
+run_end_blocking:add(aim(90 * 1.0), "run_end_blocking_up.anm");
+run_end_blocking:add(aim(90 * -0.2), "run_end_blocking.anm");
+run_end_blocking:add(aim(90 * -0.5), "run_end_blocking_down.anm");
+run_end_blocking:add(aim(90 * -1), "run_end_blocking_down.anm");
+run_end_blocking:add(aim(90 * -1.0), "run_end_blocking_down.anm");
+--}
+
+stand_blocking:from(land_blocking);
+stand_blocking:from(run_end_blocking);
+stand_blocking:from(walk_backward_end_blocking);
+run_blocking:from(land_running_blocking);
+
+--}
+
+--{ Animation_set: Gliding animations
+--{ Animation: glide_start
+glide_start = addState(glide, "glide_start");
+glide_start:blendTime(300);
+glide_start:loop(false);
+glide_start:add("kite_shield_start.anm");
+--}
+--{ Animation: glide_start_stagger
+glide_start_stagger = addState(glide+stagger, "glide_start_stagger");
+glide_start_stagger:blendTime(300);
+glide_start_stagger:synchronizedStartTime();
+glide_start_stagger:loop(false);
+glide_start_stagger:add("kite_shield_start.anm");
+--}
+--{ Animation: glide_turn
+glide_turn = addState(glide+turn, "glide_turn");
+glide_turn:blendTime(300);
+glide_turn:restart(true);
+glide_turn:loop(false);
+glide_turn:add("kite_shield_turn.anm");
+--}
+--{ Animation: glide_loop
+glide_loop = addState(glide, "glide_loop");
+glide_loop:from(glide_start);
+glide_loop:from(glide_turn);
+glide_loop:from(glide_start_stagger);
+glide_loop:blendTime(0);
+glide_loop:loop(true);
+glide_loop:add("kite_shield_loop.anm");
+--}
+--{ Animation: kite_shield_kick_start
+kite_shield_kick_start = addState(glide+glide_kick_start, "kite_shield_kick_start");
+kite_shield_kick_start:blendTime(300);
+kite_shield_kick_start:loop(true);
+kite_shield_kick_start:add("kite_shield_kick_start.anm");
+--}
+--{ Animation: kite_shield_kick
+kite_shield_kick = addState(glide+glide_kick, "kite_shield_kick");
+kite_shield_kick:blendTime(200);
+kite_shield_kick:loop(false);
+kite_shield_kick:add("kite_shield_kick.anm");
+--}
+--}
+
+--{ Attack with sword
+
+--{ Animation: attack_jump_sword
+attack_jump_sword = addState(attack1_jump_sword, "attack_jump_sword");
+attack_jump_sword:blendTime(50);
+attack_jump_sword:loop(false);
+attack_jump_sword:restart(true);
+attack_jump_sword:add("attack_jump_sword.anm");
+--}
+--{ Animation: attack_jump_land_sword
+attack_jump_land_sword = addState(stand, "attack_jump_land_sword");
+attack_jump_land_sword:from(attack_jump_sword);
+attack_jump_land_sword:blendTime(100);
+attack_jump_land_sword:loop(false);
+attack_jump_land_sword:add("attack_jump_land_sword.anm");
+--}
+--{ Animation: attack_jump_land_running_sword
+attack_jump_land_running_sword = addState(run, "attack_jump_land_running_sword");
+attack_jump_land_running_sword:from(attack_jump_sword);
+attack_jump_land_running_sword:blendTime(100);
+attack_jump_land_running_sword:loop(false);
+attack_jump_land_running_sword:add("attack_jump_land_running_sword.anm");
+--}
+
+attacking1_sword = addState(attack1_sword, "attacking1_sword");
+attacking1_sword:blendTime(50);
+attacking1_sword:restart(true);
+attacking1_sword:add("attack1_sword.anm");
+
+attacking1_sword_run_stop = addState(attack1_sword+stand, "attacking1_sword_run_stop");
+attacking1_sword_run_start = addState(attack1_sword+run, "attacking1_sword_run_start");
+
+attacking1_sword_run_stop:blendTime(300);
+attacking1_sword_run_stop:from(attacking1_sword_run_start);
+attacking1_sword_run_stop:add(slope(-1.0), "run_end_pose2_sword.anm");
+attacking1_sword_run_stop:add(slope(0.0), "run_end_pose2_sword.anm");
+attacking1_sword_run_stop:add(slope(1.0), "run_end_pose2_sword.anm");
+
+attacking1_sword_run_start:blendTime(300);
+attacking1_sword_run_start:from(attacking1_sword_run_stop);
+attacking1_sword_run_start:add(slope(-1.0), "run_start_pose2_sword.anm");
+attacking1_sword_run_start:add(slope(0.0), "run_start_pose2_sword.anm");
+attacking1_sword_run_start:add(slope(1.0), "run_start_pose2_sword.anm");
+
+attacking1_sword_jumping = addState(jump+attack1_sword, "attacking1_sword_jumping");
+attacking1_sword_jumping:blendTime(300);
+attacking1_sword_jumping:add("attack1_sword.anm");
+
+attacking1_sword_land = addState(attack1_sword+stand, "attacking1_sword_land");
+attacking1_sword_land:blendTime(300);
+attacking1_sword_land:from(attacking1_sword_jumping);
+attacking1_sword_land:add(slope(-1.0), "land_pose2_sword.anm");
+attacking1_sword_land:add(slope(0.0), "land_pose2_sword.anm");
+attacking1_sword_land:add(slope(1.0), "land_pose2_sword.anm");
+
+attacking1_sword_land_running = addState(attack1_sword+run, "attacking1_sword_land_running");
+attacking1_sword_land_running:blendTime(300);
+attacking1_sword_land_running:from(attacking1_sword_jumping);
+attacking1_sword_land_running:add(slope(-1.0), "land_running_pose2_sword.anm");
+attacking1_sword_land_running:add(slope(0.0), "land_running_pose2_sword.anm");
+attacking1_sword_land_running:add(slope(1.0), "land_running_pose2_sword.anm");
+
+--
+
+
+attacking2_sword = addState(attack2_sword, "attacking2_sword");
+attacking2_sword:blendTime(300);
+attacking2_sword:add("attack2_sword.anm");
+
+attacking2_sword_run_stop = addState(attack2_sword+stand, "attacking2_sword_run_stop");
+attacking2_sword_run_start = addState(attack2_sword+run, "attacking2_sword_run_start");
+
+attacking2_sword_run_stop:blendTime(300);
+attacking2_sword_run_stop:from(attacking2_sword_run_start);
+attacking2_sword_run_stop:add(slope(-1.0), "run_end_sword.anm");
+attacking2_sword_run_stop:add(slope(0.0), "run_end_sword.anm");
+attacking2_sword_run_stop:add(slope(1.0), "run_end_sword.anm");
+
+attacking2_sword_run_start:blendTime(300);
+attacking2_sword_run_start:from(attacking2_sword_run_stop);
+attacking2_sword_run_start:add(slope(-1.0), "run_start_pose3_sword.anm");
+attacking2_sword_run_start:add(slope(0.0), "run_start_pose3_sword.anm");
+attacking2_sword_run_start:add(slope(1.0), "run_start_pose3_sword.anm");
+
+attacking2_sword_jumping = addState(jump+attack2_sword, "attacking2_sword_jumping");
+attacking2_sword_jumping:blendTime(300);
+attacking2_sword_jumping:add("attack2_sword.anm");
+
+attacking2_sword_land = addState(attack2_sword+stand, "attacking2_sword_land");
+attacking2_sword_land:blendTime(300);
+attacking2_sword_land:from(attacking2_sword_jumping);
+attacking2_sword_land:add(slope(-1.0), "land_sword.anm");
+attacking2_sword_land:add(slope(0.0), "land_sword.anm");
+attacking2_sword_land:add(slope(1.0), "land_sword.anm");
+
+attacking2_sword_land_running = addState(attack2_sword+run, "attacking2_sword_land_running");
+attacking2_sword_land_running:blendTime(300);
+attacking2_sword_land_running:from(attacking2_sword_jumping);
+attacking2_sword_land_running:add(slope(-1.0), "land_running_sword.anm");
+attacking2_sword_land_running:add(slope(0.0), "land_running_sword.anm");
+attacking2_sword_land_running:add(slope(1.0), "land_running_sword.anm");
+
+--
+
+attacking3_sword = addState(attack3_sword, "attacking3_sword");
+attacking3_sword:blendTime(300);
+attacking3_sword:add("attack3_sword.anm");
+
+attacking3_sword_run_stop = addState(attack3_sword+stand, "attacking3_sword_run_stop");
+attacking3_sword_run_start = addState(attack3_sword+run, "attacking3_sword_run_start");
+
+attacking3_sword_run_stop:blendTime(300);
+attacking3_sword_run_stop:from(attacking3_sword_run_start);
+attacking3_sword_run_stop:add(slope(-1.0), "run_end_pose2_sword.anm");
+attacking3_sword_run_stop:add(slope(0.0), "run_end_pose2_sword.anm");
+attacking3_sword_run_stop:add(slope(1.0), "run_end_pose2_sword.anm");
+
+attacking3_sword_run_start:blendTime(300);
+attacking3_sword_run_start:from(attacking3_sword_run_stop);
+attacking3_sword_run_start:add(slope(-1.0), "run_start_pose2_sword.anm");
+attacking3_sword_run_start:add(slope(0.0), "run_start_pose2_sword.anm");
+attacking3_sword_run_start:add(slope(1.0), "run_start_pose2_sword.anm");
+
+attacking3_sword_jumping = addState(jump+attack3_sword, "attacking3_sword_jumping");
+attacking3_sword_jumping:blendTime(300);
+attacking3_sword_jumping:add("attack3_sword.anm");
+
+attacking3_sword_land = addState(attack3_sword+stand, "attacking3_sword_land");
+attacking3_sword_land:blendTime(300);
+attacking3_sword_land:from(attacking3_sword_jumping);
+attacking3_sword_land:add(slope(-1.0), "land_pose2_sword.anm");
+attacking3_sword_land:add(slope(0.0), "land_pose2_sword.anm");
+attacking3_sword_land:add(slope(1.0), "land_pose2_sword.anm");
+
+attacking3_sword_land_running = addState(attack3_sword+run, "attacking3_sword_land_running");
+attacking3_sword_land_running:blendTime(300);
+attacking3_sword_land_running:from(attacking3_sword_jumping);
+attacking3_sword_land_running:add(slope(-1.0), "land_running_pose2_sword.anm");
+attacking3_sword_land_running:add(slope(0.0), "land_running_pose2_sword.anm");
+attacking3_sword_land_running:add(slope(1.0), "land_running_pose2_sword.anm");
+
+--{ Animation: run_start_turning_pose2_sword
+run_start_turning_pose2_sword = addState(run+turn, "run_start_turning_pose2_sword");
+run_start_turning_pose2_sword:from(attacking1_sword);
+run_start_turning_pose2_sword:from(attacking1_sword_run_stop);
+run_start_turning_pose2_sword:from(attacking1_sword_run_start);
+run_start_turning_pose2_sword:from(attacking1_sword_land);
+run_start_turning_pose2_sword:from(attacking1_sword_land_running);
+run_start_turning_pose2_sword:from(attacking3_sword);
+run_start_turning_pose2_sword:from(attacking3_sword_run_stop);
+run_start_turning_pose2_sword:from(attacking3_sword_run_start);
+run_start_turning_pose2_sword:from(attacking3_sword_land);
+run_start_turning_pose2_sword:from(attacking3_sword_land_running);
+
+run_start_turning_pose2_sword:blendTime(0);
+run_start_turning_pose2_sword:loop(false);
+run_start_turning_pose2_sword:add("run_start_turning_pose2_sword.anm");
+--}
+run_sword:from(run_start_turning_pose2_sword);
+
+--{ Animation: attack1_blocked_sword
+attack1_blocked_sword = addState(blocked, "attack1_blocked_sword");
+attack1_blocked_sword:blendTime(50);
+attack1_blocked_sword:loop(false);
+attack1_blocked_sword:add("attack1_blocked_sword.anm");
+--}
+
+--{ Animation: attack2_blocked_sword
+attack2_blocked_sword = addState(blocked, "attack2_blocked_sword");
+attack2_blocked_sword:from(attacking2_sword);
+attack2_blocked_sword:blendTime(50);
+attack2_blocked_sword:loop(false);
+attack2_blocked_sword:add("attack2_blocked_sword.anm");
+--}
+
+--{ Spin combos
+
+attacking_combo1_sword = addState(attack_combo1_sword, "attacking_combo1_sword");
+attacking_combo1_sword:blendTime(0);
+attacking_combo1_sword:add("attack1_combo_sword.anm");
+
+attacking_combo1_sword_stand = addState(attack_combo1_sword+stand, "attacking_combo1_sword_stand")
+attacking_combo1_sword_stand:blendTime(0)
+attacking_combo1_sword_stand:add("attack1_end_combo_sword.anm")
+
+
+
+attacking_combo2_sword = addState(attack_combo2_sword, "attacking_combo2_sword");
+attacking_combo2_sword:blendTime(0);
+attacking_combo2_sword:add("attack2_combo_sword.anm");
+
+attacking_combo2_sword_stand = addState(attack_combo2_sword+stand, "attacking_combo2_sword_stand");
+attacking_combo2_sword_stand:blendTime(0);
+attacking_combo2_sword_stand:add("attack2_end_combo_sword.anm");
+
+--
+
+attacking_combo3_sword = addState(attack_combo3_sword, "attacking_combo3_sword");
+attacking_combo3_sword:blendTime(0);
+attacking_combo3_sword:add("attack3_combo_sword.anm");
+
+attacking_combo3_sword_stand = addState(attack_combo3_sword+stand, "attacking_combo3_sword_stand")
+attacking_combo3_sword_stand:blendTime(0)
+attacking_combo3_sword_stand:add("attack3_end_combo_sword.anm")
+
+--}
+
+--}
+-----------------------------------------------------
+--{ Attack with hammer
+-- Charge the hammer
+charging_hammer = addState(charge_hammer, "charging_hammer");
+charging_hammer:blendTime(200);
+charging_hammer:add("attack_charge_hammer.anm");
+
+charging_hammer_jump = addState(jump+charge_hammer, "charging_hammer_jump");
+charging_hammer_jump:blendTime(200);
+charging_hammer_jump:add("attack_jump_charge_hammer.anm");
+
+charging_hammer_fall = addState(fall+charge_hammer, "charging_hammer_fall");
+charging_hammer_fall:blendTime(200);
+charging_hammer_fall:add("attack_jump_charge_hammer.anm");
+
+charging_hammer_trampoline = addState(trampoline+charge_hammer, "charging_hammer_trampoline");
+charging_hammer_trampoline:blendTime(200);
+charging_hammer_trampoline:add("attack_jump_charge_hammer.anm");
+
+-----------------------------------------------------
+-- Execute the big hammer hit
+
+executing_hammer = addState(execute_hammer, "executing_hammer");
+executing_hammer:blendTime(200);
+executing_hammer:add("attack_execute_hammer.anm");
+
+executing_hammer_jump = addState(execute_hammer, "executing_hammer_jump");
+executing_hammer_jump:from(charging_hammer_jump)
+executing_hammer_jump:from(charging_hammer_fall)
+executing_hammer_jump:from(charging_hammer_trampoline)
+executing_hammer_jump:blendTime(200);
+executing_hammer_jump:add("attack_jump_execute_hammer.anm");
+
+--{ Animation: executing_hammer_jump_turning
+executing_hammer_jump_turning = addState(execute_hammer+turn, "executing_hammer_jump_turning");
+executing_hammer_jump_turning:blendTime(200);
+executing_hammer_jump_turning:loop(false);
+executing_hammer_jump_turning:add("attack_execute_end_standing_hammer.anm");
+--}
+
+--{ Animation: attack_execute_end_standing_hammer
+attack_execute_end_standing_hammer = addState(stand+hammer, "attack_execute_end_standing_hammer");
+attack_execute_end_standing_hammer:from(executing_hammer);
+attack_execute_end_standing_hammer:from(executing_hammer_jump);
+attack_execute_end_standing_hammer:blendTime(300);
+attack_execute_end_standing_hammer:loop(false);
+attack_execute_end_standing_hammer:add("attack_execute_end_standing_hammer.anm");
+--}
+
+--{ Animation: attack_execute_end_running_hammer
+attack_execute_end_running_hammer = addState(run+hammer, "attack_execute_end_running_hammer");
+attack_execute_end_running_hammer:from(attack_execute_end_standing_hammer);
+attack_execute_end_running_hammer:from(executing_hammer);
+attack_execute_end_running_hammer:from(executing_hammer_jump);
+attack_execute_end_running_hammer:blendTime(300);
+attack_execute_end_running_hammer:loop(false);
+attack_execute_end_running_hammer:add("attack_execute_end_running_hammer.anm");
+--}
+-----------------------------------------------------
+-- Swing the hammer
+
+swinging_hammer_left = addState(swing_hammer_left, "swinging_hammer_left");
+swinging_hammer_left:blendTime(300);
+swinging_hammer_left:add("attack1_hammer.anm");
+
+--{ Animation: attack1_end_hammer
+attack1_end_hammer = addState(swing_hammer_left+stand+hammer, "attack1_end_hammer");
+attack1_end_hammer:from(swinging_hammer_left);
+attack1_end_hammer:blendTime(00);
+attack1_end_hammer:loop(false);
+attack1_end_hammer:add("attack1_end_hammer.anm");
+--}
+
+--{ Animation: attack1_end_running_hammer
+attack1_end_running_hammer = addState(swing_hammer_left+run+hammer, "attack1_end_running_hammer");
+attack1_end_running_hammer:from(swinging_hammer_left);
+attack1_end_running_hammer:blendTime(00);
+attack1_end_running_hammer:loop(false);
+attack1_end_running_hammer:add("attack1_end_running_hammer.anm");
+--}
+
+swinging_hammer_left_stand = addState(swing_hammer_left+stand, "swinging_hammer_left_stand");
+swinging_hammer_left_stand:blendTime(300);
+swinging_hammer_left_stand:add("stand2_hammer.anm");
+
+swinging_hammer_left_run = addState(swing_hammer_left+run, "swinging_hammer_left_run");
+swinging_hammer_left_run:blendTime(300);
+swinging_hammer_left_run:loop(true)
+swinging_hammer_left_run:add("run2_hammer.anm");
+
+swinging_hammer_right = addState(swing_hammer_right, "swinging_hammer_right");
+swinging_hammer_right:blendTime(300);
+swinging_hammer_right:add("attack2_hammer.anm");
+
+--{ Animation: attack2_end_hammer
+attack2_end_hammer = addState(swing_hammer_right+stand+hammer, "attack2_end_hammer");
+attack2_end_hammer:from(swinging_hammer_right);
+attack2_end_hammer:blendTime(00);
+attack2_end_hammer:loop(false);
+attack2_end_hammer:add("attack2_end_hammer.anm");
+--}
+
+--{ Animation: attack2_end_running_hammer
+attack2_end_running_hammer = addState(swing_hammer_right+run+hammer, "attack2_end_running_hammer");
+attack2_end_running_hammer:from(swinging_hammer_right);
+attack2_end_running_hammer:blendTime(00);
+attack2_end_running_hammer:loop(false);
+attack2_end_running_hammer:add("attack2_end_running_hammer.anm");
+--}
+
+swinging_hammer_right_stand = addState(swing_hammer_right+stand, "swinging_hammer_right_stand");
+swinging_hammer_right_stand:blendTime(300);
+swinging_hammer_right_stand:add("stand_hammer.anm");
+
+swinging_hammer_right_run = addState(swing_hammer_right+run, "swinging_hammer_right_run");
+swinging_hammer_right_run:blendTime(300);
+swinging_hammer_right_run:loop(true)
+swinging_hammer_right_run:add("run_hammer.anm");
+
+--{ Animation_set: Moving when charging
+
+--{ Animation: run_start_charging
+run_start_charging = addState(run+charge_hammer, "run_start_charging");
+run_start_charging:blendTime(300);
+run_start_charging:loop(false);
+-- run_start_charging:add(aim(90 * 1.0), "run_start_charging_up.anm");
+run_start_charging:add(aim(90 * 0.0), "run_start_charging.anm");
+-- run_start_charging:add(aim(90 * -0.5), "run_start_charging_down.anm");
+-- run_start_charging:add(aim(90 * -1.0), "run_start_charging_down.anm");
+--}
+--{ Animation: run_start_turning_charging
+run_start_turning_charging = addState(run+charge_hammer+turn, "run_start_turning_charging");
+run_start_turning_charging:blendTime(300);
+run_start_turning_charging:loop(false);
+-- run_start_turning_charging:add(aim(90 * 1.0), "run_start_turning_charging_up.anm");
+run_start_turning_charging:add(aim(90 * 0.0), "run_start_charging.anm");
+-- run_start_turning_charging:add(aim(90 * -0.5), "run_start_turning_charging_down.anm");
+-- run_start_turning_charging:add(aim(90 * -1.0), "run_start_turning_charging_down.anm");
+--}
+
+
+--{ Animation: run_charging
+run_charging = addState(run+charge_hammer, "run_charging");
+run_charging:from(run_start_charging);
+run_charging:from(run_start_turning_charging);
+run_charging:blendTime(0);
+run_charging:loop(true);
+-- run_charging:add(aim(90 * 1.0), "run_charging_up.anm");
+run_charging:add(aim(90 * 0.0), "run_charging.anm");
+-- run_charging:add(aim(90 * -0.5), "run_charging_down.anm");
+-- run_charging:add(aim(90 * -1.0), "run_charging_down.anm");
+--}
+--{ Animation: run_end_charging
+run_end_charging = addState(charge_hammer, "run_end_charging");
+run_end_charging:from(run_start_charging);
+run_end_charging:from(run_start_turning_charging);
+run_end_charging:from(run_charging);
+run_end_charging:blendTime(300);
+run_end_charging:loop(false);
+-- run_end_charging:add(aim(90 * 1.0), "run_end_charging_up.anm");
+run_end_charging:add(aim(90 * 0.0), "run_end_charging.anm");
+-- run_end_charging:add(aim(90 * -0.5), "run_end_charging_down.anm");
+-- run_end_charging:add(aim(90 * -1.0), "run_end_charging_down.anm");
+--}
+--{ Animation: stand_charging
+stand_charging = addState(charge_hammer, "stand_charging");
+stand_charging:blendTime(500);
+stand_charging:from(run_end_charging);
+stand_charging:from(charging_hammer);
+stand_charging:loop(true);
+-- stand_charging:add(aim(90 * 1.0), "stand_charging_up.anm");
+stand_charging:add(aim(90 * 0.0), "stand_charging.anm");
+-- stand_charging:add(aim(90 * -0.5), "stand_charging_down.anm");
+-- stand_charging:add(aim(90 * -1.0), "stand_charging_down.anm");
+--}
+--{ Animation: walk_backward_start_charging
+walk_backward_start_charging = addState(run+backward+charge_hammer, "walk_backward_start_charging");
+walk_backward_start_charging:blendTime(150);
+walk_backward_start_charging:loop(false);
+-- walk_backward_start_charging:add(aim(90 * -1.0), "walk_backward_start_charging_down.anm");
+-- walk_backward_start_charging:add(aim(90 * -0.5), "walk_backward_start_charging_down.anm");
+walk_backward_start_charging:add(aim(90 * 0.0), "walk_backward_start_charging.anm");
+-- walk_backward_start_charging:add(aim(90 * 1.0), "walk_backward_start_charging_up.anm");
+--}
+--{ Animation: walk_backward_charging
+walk_backward_charging = addState(run+backward+charge_hammer, "walk_backward_charging");
+walk_backward_charging:from(walk_backward_start_charging);
+walk_backward_charging:blendTime(00);
+walk_backward_charging:loop(true);
+-- walk_backward_charging:add(aim(90 * -1.0), "walk_backward_charging_down.anm");
+-- walk_backward_charging:add(aim(90 * -0.5), "walk_backward_charging_down.anm");
+walk_backward_charging:add(aim(90 * 0.0), "walk_backward_charging.anm");
+-- walk_backward_charging:add(aim(90 * 1.0), "walk_backward_charging_up.anm");
+--}
+--{ Animation: walk_backward_end_charging
+walk_backward_end_charging = addState(stand+charge_hammer, "walk_backward_end_charging");
+walk_backward_end_charging:from(walk_backward_charging);
+walk_backward_end_charging:from(walk_backward_start_charging);
+walk_backward_end_charging:blendTime(300);
+walk_backward_end_charging:loop(false);
+-- walk_backward_end_charging:add(aim(90 * -1.0), "walk_backward_end_charging_down.anm");
+-- walk_backward_end_charging:add(aim(90 * -0.5), "walk_backward_end_charging_down.anm");
+walk_backward_end_charging:add(aim(90 * 0.0), "walk_backward_end_charging.anm");
+-- walk_backward_end_charging:add(aim(90 * 1.0), "walk_backward_end_charging_up.anm");
+--}
+stand_charging:from(walk_backward_end_charging);
+
+--}
+
+--}
+
+--{ Animation_set: Throw hammer
+
+--{ Animation: run_start_throw_charging
+run_start_throw_charging = addState(run+hammer_throw_charge, "run_start_throw_charging");
+run_start_throw_charging:blendTime(300);
+run_start_throw_charging:loop(false);
+run_start_throw_charging:add(aim(90 * 1.0), "run_start_throw_charging_up.anm");
+run_start_throw_charging:add(aim(90 * 0.0), "run_start_throw_charging.anm");
+-- run_start_throw_charging:add(aim(90 * -0.5), "run_start_throw_charging_down.anm");
+-- run_start_throw_charging:add(aim(90 * -1.0), "run_start_throw_charging_down.anm");
+--}
+--{ Animation: run_throw_charging
+run_throw_charging = addState(run+hammer_throw_charge, "run_throw_charging");
+run_throw_charging:from(run_start_throw_charging);
+run_throw_charging:blendTime(0);
+run_throw_charging:loop(true);
+run_throw_charging:add(aim(90 * 1.0), "run_throw_charging_up.anm");
+run_throw_charging:add(aim(90 * 0.0), "run_throw_charging.anm");
+-- run_throw_charging:add(aim(90 * -0.5), "run_throw_charging_down.anm");
+-- run_throw_charging:add(aim(90 * -1.0), "run_throw_charging_down.anm");
+--}
+--{ Animation: run_end_throw_charging
+run_end_throw_charging = addState(stand+hammer_throw_charge, "run_end_throw_charging");
+run_end_throw_charging:from(run_start_throw_charging);
+run_end_throw_charging:from(run_throw_charging);
+run_end_throw_charging:blendTime(300);
+run_end_throw_charging:loop(false);
+run_end_throw_charging:add(aim(90 * 1.0), "run_end_throw_charging_up.anm");
+run_end_throw_charging:add(aim(90 * 0.0), "run_end_throw_charging.anm");
+-- run_end_throw_charging:add(aim(90 * -0.5), "run_end_throw_charging_down.anm");
+-- run_end_throw_charging:add(aim(90 * -1.0), "run_end_throw_charging_down.anm");
+--}
+--{ Animation: stand_start_throw_charging
+stand_start_throw_charging = addState(stand+hammer_throw_charge, "stand_start_throw_charging");
+stand_start_throw_charging:from(stand_hammer);
+stand_start_throw_charging:from(run_end_hammer);
+stand_start_throw_charging:from(land_hammer);
+stand_start_throw_charging:blendTime(300);
+stand_start_throw_charging:loop(false);
+stand_start_throw_charging:add(aim(90 * 0.0), "stand_start_throw_charging.anm");
+stand_start_throw_charging:add(aim(90 * 1.0), "stand_start_throw_charging_up.anm");
+--}
+--{ Animation: stand_throw_charging
+stand_throw_charging = addState(stand+hammer_throw_charge, "stand_throw_charging");
+stand_throw_charging:blendTime(500);
+stand_throw_charging:loop(false);
+stand_throw_charging:restart(true);
+stand_throw_charging:add(aim(90 * 1.0), "stand_throw_charging_up.anm");
+stand_throw_charging:add(aim(90 * 0.0), "stand_throw_charging.anm");
+-- stand_throw_charging:add(aim(90 * -0.5), "stand_throw_charging_down.anm");
+-- stand_throw_charging:add(aim(90 * -1.0), "stand_throw_charging_down.anm");
+--}
+--{ Animation: walk_backward_start_throw_charging
+walk_backward_start_throw_charging = addState(run+backward+hammer_throw_charge, "walk_backward_start_throw_charging");
+walk_backward_start_throw_charging:blendTime(150);
+walk_backward_start_throw_charging:loop(false);
+-- walk_backward_start_throw_charging:add(aim(90 * -1.0), "walk_backward_start_throw_charging_down.anm");
+-- walk_backward_start_throw_charging:add(aim(90 * -0.5), "walk_backward_start_throw_charging_down.anm");
+walk_backward_start_throw_charging:add(aim(90 * 0.0), "walk_backward_start_throw_charging.anm");
+walk_backward_start_throw_charging:add(aim(90 * 1.0), "walk_backward_start_throw_charging_up.anm");
+--}
+--{ Animation: walk_backward_throw_charging
+walk_backward_throw_charging = addState(run+backward+hammer_throw_charge, "walk_backward_throw_charging");
+walk_backward_throw_charging:from(walk_backward_start_throw_charging);
+walk_backward_throw_charging:blendTime(00);
+walk_backward_throw_charging:loop(true);
+-- walk_backward_throw_charging:add(aim(90 * -1.0), "walk_backward_throw_charging_down.anm");
+-- walk_backward_throw_charging:add(aim(90 * -0.5), "walk_backward_throw_charging_down.anm");
+walk_backward_throw_charging:add(aim(90 * 0.0), "walk_backward_throw_charging.anm");
+walk_backward_throw_charging:add(aim(90 * 1.0), "walk_backward_throw_charging_up.anm");
+--}
+--{ Animation: walk_backward_end_throw_charging
+walk_backward_end_throw_charging = addState(stand+hammer_throw_charge, "walk_backward_end_throw_charging");
+walk_backward_end_throw_charging:from(walk_backward_throw_charging);
+walk_backward_end_throw_charging:from(walk_backward_start_throw_charging);
+walk_backward_end_throw_charging:blendTime(300);
+walk_backward_end_throw_charging:loop(false);
+-- walk_backward_end_throw_charging:add(aim(90 * -1.0), "walk_backward_end_throw_charging_down.anm");
+-- walk_backward_end_throw_charging:add(aim(90 * -0.5), "walk_backward_end_throw_charging_down.anm");
+walk_backward_end_throw_charging:add(aim(90 * 0.0), "walk_backward_end_throw_charging.anm");
+walk_backward_end_throw_charging:add(aim(90 * 1.0), "walk_backward_end_throw_charging_up.anm");
+--}
+
+
+--{ Animation: throw_hammer_charge
+throw_hammer_charge = addState(hammer_throw_charge, "throw_hammer_charge");
+throw_hammer_charge:blendTime(300);
+throw_hammer_charge:loop(false);
+throw_hammer_charge:add("throw_hammer_charge.anm");
+--}
+--{ Animation: throw_hammer
+throw_hammer = addState(hammer_throw, "throw_hammer");
+throw_hammer:blendTime(100);
+throw_hammer:loop(false);
+throw_hammer:addFinishedEvent("EventAnimThrowExecute");
+throw_hammer:add("throw_hammer.anm");
+--}
+--{ Animation: throw_hammer_end
+throw_hammer_end = addState(hammer_throw_end, "throw_hammer_end");
+throw_hammer_end:from(throw_hammer);
+throw_hammer_end:blendTime(100);
+throw_hammer_end:loop(false);
+throw_hammer_end:addFinishedEvent("EventAnimThrowFinished");
+throw_hammer_end:addExitEvent("EventAnimThrowFinished");
+throw_hammer_end:add("throw_hammer_end.anm");
+--}
+--}
+
+--{ Animation_set: Rush
+--{ Animation: rush_start
+rush_start = addState(rush, "rush_start");
+rush_start:blendTime(300);
+rush_start:loop(true);
+rush_start:add("rush_start.anm");
+--}
+--{ Animation: rush_jump
+rush_jump = addState(rush+jump, "rush_jump");
+rush_jump:blendTime(150);
+rush_jump:loop(false);
+rush_jump:add("jump_fast_sword.anm");
+--}
+--}
+
+--{ Animation_set: Open chest
+--{ Animation: chest
+chest = addState(open_chest, "chest");
+chest:blendTime(200);
+chest:loop(false);
+chest:add("chest.anm");
+chest:addEnterEvent("EventAnimChestEntered");
+--}
+--}
+
+--{ Animation: s_grabbed
+s_grabbed = addState(grabbed, "s_grabbed");
+s_grabbed:blendTime(200);
+s_grabbed:loop(false);
+s_grabbed:add("grabbed.anm");
+--}
+
+--{ Carry
+  --{ Right
+--{ Animation: pick_up_start
+pick_up_start = addState(pickup+stand, "pick_up_start");
+pick_up_start:blendTime(200);
+pick_up_start:loop(false);
+pick_up_start:addFinishedEvent("EventAnimPickupStart");
+pick_up_start:add("pick_up_start.anm");
+--}
+--{ Animation: pick_up
+pick_up = addState(carry+stand, "pick_up");
+pick_up:from(pick_up_start);
+pick_up:blendTime(0);
+pick_up:loop(false);
+pick_up:add("pick_up.anm");
+--}
+--{ Animation: stand_carry
+stand_carry = addState(carry+stand, "stand_carry");
+stand_carry:from(pick_up);
+stand_carry:blendTime(0);
+stand_carry:loop(true);
+stand_carry:add("stand_carry.anm");
+--}
+--{ Animation: run_start_carry
+run_start_carry = addState(carry+run, "run_start_carry");
+run_start_carry:blendTime(300);
+run_start_carry:loop(false);
+run_start_carry:add("run_start_carry.anm");
+--}
+
+--{ Animation: run_carry
+run_carry = addState(carry+run, "run_carry");
+run_carry:from(run_start_carry);
+run_carry:blendTime(0);
+run_carry:loop(true);
+run_carry:add("run_carry.anm");
+--}
+--{ Animation: run_end_carry
+run_end_carry = addState(carry+stand, "run_end_carry");
+run_end_carry:from(run_carry);
+run_end_carry:from(run_start_carry);
+run_end_carry:blendTime(300);
+run_end_carry:loop(false);
+run_end_carry:add("run_end_carry.anm");
+--}
+--{ Animation: walk_backward_start_carry
+walk_backward_start_carry = addState(carry+run+backward, "walk_backward_start_carry");
+walk_backward_start_carry:blendTime(300);
+walk_backward_start_carry:loop(false);
+walk_backward_start_carry:add("walk_backward_start_carry.anm");
+--}
+--{ Animation: walk_backward_carry
+walk_backward_carry = addState(carry+run+backward, "walk_backward_carry");
+walk_backward_carry:from(walk_backward_start_carry);
+walk_backward_carry:blendTime(0);
+walk_backward_carry:loop(true);
+walk_backward_carry:add("walk_backward_carry.anm");
+--}
+--{ Animation: walk_backward_end_carry
+walk_backward_end_carry = addState(carry+stand, "walk_backward_end_carry");
+walk_backward_end_carry:from(walk_backward_carry);
+walk_backward_end_carry:from(walk_backward_start_carry);
+walk_backward_end_carry:blendTime(300);
+walk_backward_end_carry:loop(false);
+walk_backward_end_carry:add("walk_backward_end_carry.anm");
+--}
+--{ Animation: stand_throwing_start
+stand_throwing_start = addState(throwing, "stand_throwing_start");
+stand_throwing_start:blendTime(300);
+stand_throwing_start:loop(false);
+stand_throwing_start:add(aim(90 * 0.0), "stand_throwing.anm");
+stand_throwing_start:add(aim(90 * 0.6), "stand_throwing_up.anm");
+--}
+--{ Animation: stand_throwing
+stand_throwing = addState(throwing, "stand_throwing");
+stand_throwing:from(stand_throwing_start);
+stand_throwing:blendTime(0);
+stand_throwing:loop(true);
+stand_throwing:add(aim(90 * 0.0), "stand_throwing.anm");
+stand_throwing:add(aim(90 * 0.6), "stand_throwing_up.anm");
+--}
+--}
+  --{ Left
+--{ Animation: pick_up_start_mirrored
+pick_up_start_mirrored = addState(pickup+left+stand, "pick_up_start_mirrored");
+pick_up_start_mirrored:blendTime(0);
+pick_up_start_mirrored:loop(false);
+pick_up_start_mirrored:addFinishedEvent("EventAnimPickupStart");
+pick_up_start_mirrored:add("pick_up_start_mirrored.anm");
+--}
+--{ Animation: pick_up_mirrored
+pick_up_mirrored = addState(carry+left+stand, "pick_up_mirrored");
+pick_up_mirrored:from(pick_up_start_mirrored);
+pick_up_mirrored:blendTime(0);
+pick_up_mirrored:loop(false);
+pick_up_mirrored:add("pick_up_mirrored.anm");
+--}
+--{ Animation: stand_carry_mirrored
+stand_carry_mirrored = addState(carry+left+stand, "stand_carry_mirrored");
+stand_carry_mirrored:from(pick_up_mirrored);
+stand_carry_mirrored:blendTime(0);
+stand_carry_mirrored:loop(true);
+stand_carry_mirrored:add("stand_carry_mirrored.anm");
+--}
+--{ Animation: run_start_carry_mirrored
+run_start_carry_mirrored = addState(carry+left+run, "run_start_carry_mirrored");
+run_start_carry_mirrored:blendTime(300);
+run_start_carry_mirrored:loop(false);
+run_start_carry_mirrored:add("run_start_carry_mirrored.anm");
+--}
+-- run_start_turning_carry_mirrored
+--{ Animation: run_carry_mirrored
+run_carry_mirrored = addState(carry+left+run, "run_carry_mirrored");
+run_carry_mirrored:from(run_start_carry_mirrored);
+run_carry_mirrored:blendTime(0);
+run_carry_mirrored:loop(true);
+run_carry_mirrored:add("run_carry_mirrored.anm");
+--}
+--{ Animation: run_end_carry_mirrored
+run_end_carry_mirrored = addState(carry+left+stand, "run_end_carry_mirrored");
+run_end_carry_mirrored:from(run_carry_mirrored);
+run_end_carry_mirrored:from(run_start_carry_mirrored);
+run_end_carry_mirrored:blendTime(300);
+run_end_carry_mirrored:loop(false);
+run_end_carry_mirrored:add("run_end_carry_mirrored.anm");
+--}
+--{ Animation: walk_backward_start_carry_mirrored
+walk_backward_start_carry_mirrored = addState(carry+left+run+backward, "walk_backward_start_carry_mirrored");
+walk_backward_start_carry_mirrored:blendTime(300);
+walk_backward_start_carry_mirrored:loop(false);
+walk_backward_start_carry_mirrored:add("walk_backward_start_carry_mirrored.anm");
+--}
+--{ Animation: walk_backward_carry_mirrored
+walk_backward_carry_mirrored = addState(carry+left+run+backward, "walk_backward_carry_mirrored");
+walk_backward_carry_mirrored:from(walk_backward_start_carry_mirrored);
+walk_backward_carry_mirrored:blendTime(0);
+walk_backward_carry_mirrored:loop(true);
+walk_backward_carry_mirrored:add("walk_backward_carry_mirrored.anm");
+--}
+--{ Animation: walk_backward_end_carry_mirrored
+walk_backward_end_carry_mirrored = addState(carry+left+stand, "walk_backward_end_carry_mirrored");
+walk_backward_end_carry_mirrored:from(walk_backward_carry_mirrored);
+walk_backward_end_carry_mirrored:from(walk_backward_start_carry_mirrored);
+walk_backward_end_carry_mirrored:blendTime(300);
+walk_backward_end_carry_mirrored:loop(false);
+walk_backward_end_carry_mirrored:add("walk_backward_end_carry_mirrored.anm");
+--}
+--{ Animation: stand_throwing_start_mirrored
+stand_throwing_start_mirrored = addState(left+throwing, "stand_throwing_start_mirrored");
+stand_throwing_start_mirrored:blendTime(300);
+stand_throwing_start_mirrored:loop(false);
+stand_throwing_start_mirrored:add(aim(90 * 0.0), "stand_throwing_mirrored.anm");
+stand_throwing_start_mirrored:add(aim(90 * 0.6), "stand_throwing_mirrored_up.anm");
+--}
+--{ Animation: stand_throwing_mirrored
+stand_throwing_mirrored = addState(left+throwing, "stand_throwing_mirrored");
+stand_throwing_mirrored:from(stand_throwing_start_mirrored);
+stand_throwing_mirrored:blendTime(0);
+stand_throwing_mirrored:loop(true);
+stand_throwing_mirrored:add(aim(90 * 0.0), "stand_throwing_mirrored.anm");
+stand_throwing_mirrored:add(aim(90 * 0.6), "stand_throwing_mirrored_up.anm");
+--}
+
+--{ Animation: stand_throwing_turning
+stand_throwing_turning = addState(throwing, "stand_throwing_turning");
+stand_throwing_turning:from(stand_throwing_mirrored);
+stand_throwing_turning:from(stand_throwing_start_mirrored);
+stand_throwing_turning:blendTime(300);
+stand_throwing_turning:loop(false);
+stand_throwing_turning:add(aim(90 * 0.0), "stand_throwing_turning.anm");
+stand_throwing_turning:add(aim(90 * 0.6), "stand_throwing_turning_up.anm");
+--}
+--{ Animation: stand_throwing_turning_mirrored
+stand_throwing_turning_mirrored = addState(throwing+left, "stand_throwing_turning_mirrored");
+stand_throwing_turning_mirrored:from(stand_throwing);
+stand_throwing_turning_mirrored:from(stand_throwing_start);
+stand_throwing_turning_mirrored:blendTime(300);
+stand_throwing_turning_mirrored:loop(false);
+stand_throwing_turning_mirrored:add(aim(90 * 0.0), "stand_throwing_turning_mirrored.anm");
+stand_throwing_turning_mirrored:add(aim(90 * 0.6), "stand_throwing_turning_mirrored_up.anm");
+--}
+stand_throwing_turning:from(stand_throwing_turning_mirrored);
+stand_throwing_turning_mirrored:from(stand_throwing_turning);
+
+stand_throwing:from(stand_throwing_turning);
+stand_throwing_mirrored:from(stand_throwing_turning_mirrored);
+stand_carry_mirrored:from(walk_backward_end_carry_mirrored);
+stand_carry_mirrored:from(run_end_carry_mirrored);
+--}
+--{ Animation: run_start_turning_carry_start
+run_start_turning_carry_start = addState(carry+run, "run_start_turning_carry_start");
+run_start_turning_carry_start:from(pick_up_mirrored);
+run_start_turning_carry_start:from(stand_carry_mirrored);
+run_start_turning_carry_start:from(run_start_carry_mirrored);
+run_start_turning_carry_start:from(run_carry_mirrored);
+run_start_turning_carry_start:from(run_end_carry_mirrored);
+run_start_turning_carry_start:from(walk_backward_start_carry_mirrored);
+run_start_turning_carry_start:from(walk_backward_end_carry_mirrored);
+run_start_turning_carry_start:blendTime(300);
+run_start_turning_carry_start:loop(false);
+run_start_turning_carry_start:add("run_start_turning_carry_start.anm");
+--}
+--{ Animation: run_start_turning_carry
+run_start_turning_carry = addState(carry+run, "run_start_turning_carry");
+run_start_turning_carry:from(run_start_turning_carry_start);
+run_start_turning_carry:blendTime(0);
+run_start_turning_carry:loop(false);
+run_start_turning_carry:add("run_start_turning_carry.anm");
+--}
+--{ Animation: walk_backward_start_turning_carry_start_mirrored
+walk_backward_start_turning_carry_start_mirrored = addState(carry+left+run+backward, "walk_backward_start_turning_carry_start_mirrored");
+walk_backward_start_turning_carry_start_mirrored:from(pick_up);
+walk_backward_start_turning_carry_start_mirrored:from(stand_carry);
+walk_backward_start_turning_carry_start_mirrored:from(run_start_carry);
+walk_backward_start_turning_carry_start_mirrored:from(run_carry);
+walk_backward_start_turning_carry_start_mirrored:from(run_end_carry);
+walk_backward_start_turning_carry_start_mirrored:from(walk_backward_start_carry);
+walk_backward_start_turning_carry_start_mirrored:from(walk_backward_end_carry);
+walk_backward_start_turning_carry_start_mirrored:blendTime(300);
+walk_backward_start_turning_carry_start_mirrored:loop(false);
+walk_backward_start_turning_carry_start_mirrored:add("walk_backward_start_turning_carry_start_mirrored.anm");
+--}
+--{ Animation: walk_backward_start_turning_carry_mirrored
+walk_backward_start_turning_carry_mirrored = addState(carry+left+run+backward, "walk_backward_start_turning_carry_mirrored");
+walk_backward_start_turning_carry_mirrored:from(walk_backward_start_turning_carry_start_mirrored);
+walk_backward_start_turning_carry_mirrored:blendTime(0);
+walk_backward_start_turning_carry_mirrored:loop(false);
+walk_backward_start_turning_carry_mirrored:add("walk_backward_start_turning_carry_mirrored.anm");
+--}
+-- turn_carry
+stand_carry:from(walk_backward_end_carry);
+stand_carry:from(run_end_carry);
+run_end_carry:from(run_start_turning_carry);
+walk_backward_end_carry_mirrored:from(walk_backward_start_turning_carry_mirrored);
+--{ Animation: turn_carry
+turn_carry = addState(stand+carry, "turn_carry");
+turn_carry:from(run_start_turning_carry_start);
+turn_carry:from(pick_up_mirrored);
+turn_carry:from(stand_carry_mirrored);
+turn_carry:from(run_start_carry_mirrored);
+turn_carry:from(run_carry_mirrored);
+turn_carry:from(run_end_carry_mirrored);
+turn_carry:from(walk_backward_start_carry_mirrored);
+turn_carry:from(walk_backward_end_carry_mirrored);
+turn_carry:blendTime(300);
+turn_carry:loop(false);
+turn_carry:add("turn_carry.anm");
+--}
+--{ Animation: turn_carry_mirrored
+turn_carry_mirrored = addState(stand+carry+left, "turn_carry_mirrored");
+turn_carry_mirrored:from(walk_backward_start_turning_carry_start_mirrored);
+turn_carry_mirrored:from(stand_carry);
+turn_carry_mirrored:from(run_end_carry);
+turn_carry_mirrored:blendTime(300);
+turn_carry_mirrored:loop(false);
+turn_carry_mirrored:add("turn_carry_mirrored.anm");
+--}
+stand_carry_mirrored:from(turn_carry_mirrored);
+stand_carry:from(turn_carry);
+
+--{ Animation: throw_execute
+throw_execute = addState(throw, "throw_execute");
+throw_execute:blendTime(0);
+throw_execute:loop(false);
+--throw_execute:addFinishedEvent("EventAnimThrowEnd");
+throw_execute:add(aim(90 * 0.0), "throw_execute.anm");
+throw_execute:add(aim(90 * 0.6), "throw_execute_up.anm");
+--}
+--{ Animation: throw_to_stand_sword
+throw_to_stand_sword = addState(stand+sword, "throw_to_stand_sword");
+throw_to_stand_sword:from(throw_execute);
+throw_to_stand_sword:blendTime(0);
+throw_to_stand_sword:loop(false);
+throw_to_stand_sword:add(aim(90 * 0.0), "throw_to_stand_sword.anm");
+throw_to_stand_sword:add(aim(90 * 0.6), "throw_to_stand_sword_up.anm");
+--}
+
+stand_sword:from(throw_to_stand_sword);
+
+--}
+
+--{ Wind animations
+
+--{ Animation: run_end_sword_wind
+run_end_sword_wind = addState(wind+stand, "run_end_sword_wind");
+run_end_sword_wind:blendTime(300);
+run_end_sword_wind:loop(false);
+run_end_sword_wind:add(wind_direction(-2.0), "run_end_sword_wind_back.anm");
+run_end_sword_wind:add(wind_direction(-1.0), "run_end_sword_wind_up.anm");
+run_end_sword_wind:add(wind_direction(0.0), "run_end_sword_wind_front.anm");
+run_end_sword_wind:add(wind_direction(1.0), "run_end_sword_wind_up.anm");
+run_end_sword_wind:add(wind_direction(2.0), "run_end_sword_wind_back.anm");
+--}
+
+--{ Animation: stand_sword_wind
+stand_sword_wind = addState(wind+stand, "stand_sword_wind");
+stand_sword_wind:from(run_end_sword_wind);
+stand_sword_wind:blendTime(0);
+stand_sword_wind:loop(true);
+stand_sword_wind:add(wind_direction(-2.0), "stand_sword_wind_back.anm");
+stand_sword_wind:add(wind_direction(-1.0), "stand_sword_wind_up.anm");
+stand_sword_wind:add(wind_direction(0.0), "stand_sword_wind_front.anm");
+stand_sword_wind:add(wind_direction(1.0), "stand_sword_wind_up.anm");
+stand_sword_wind:add(wind_direction(2.0), "stand_sword_wind_back.anm");
+--}
+
+--{ Animation: run_start_sword_wind
+run_start_sword_wind = addState(wind+run, "run_start_sword_wind");
+run_start_sword_wind:blendTime(300);
+run_start_sword_wind:loop(false);
+run_start_sword_wind:add(wind_direction(-2.0), "run_start_sword_wind_back.anm");
+run_start_sword_wind:add(wind_direction(-1.0), "run_start_sword_wind_up.anm");
+run_start_sword_wind:add(wind_direction(0.0), "run_start_sword_wind_front.anm");
+run_start_sword_wind:add(wind_direction(1.0), "run_start_sword_wind_up.anm");
+run_start_sword_wind:add(wind_direction(2.0), "run_start_sword_wind_back.anm");
+--}
+
+--{ Animation: run_start_turning_sword_wind
+run_start_turning_sword_wind = addState(wind+run+turn, "run_start_turning_sword_wind");
+run_start_turning_sword_wind:blendTime(0);
+run_start_turning_sword_wind:loop(false);
+run_start_turning_sword_wind:add(wind_direction(-2.0), "run_start_turning_sword_wind_back.anm");
+run_start_turning_sword_wind:add(wind_direction(-1.0), "run_start_turning_sword_wind_up.anm");
+run_start_turning_sword_wind:add(wind_direction(0.0), "run_start_turning_sword_wind_front.anm");
+run_start_turning_sword_wind:add(wind_direction(1.0), "run_start_turning_sword_wind_up.anm");
+run_start_turning_sword_wind:add(wind_direction(2.0), "run_start_turning_sword_wind_back.anm");
+--}
+
+--{ Animation: run_sword_wind
+run_sword_wind = addState(wind+run, "run_sword_wind");
+run_sword_wind:from(run_start_sword_wind);
+run_sword_wind:from(run_start_turning_sword_wind);
+run_sword_wind:blendTime(0);
+run_sword_wind:loop(true);
+run_sword_wind:add(wind_direction(-2.0), "run_sword_wind_back.anm");
+run_sword_wind:add(wind_direction(-1.0), "run_sword_wind_up.anm");
+run_sword_wind:add(wind_direction(0.0), "run_sword_wind_front.anm");
+run_sword_wind:add(wind_direction(1.0), "run_sword_wind_up.anm");
+run_sword_wind:add(wind_direction(2.0), "run_sword_wind_back.anm");
+--}
+
+--{ Animation: jump_sword_wind
+jump_sword_wind = addState(wind+jump, "jump_sword_wind");
+jump_sword_wind:blendTime(200);
+jump_sword_wind:loop(false);
+jump_sword_wind:add(wind_direction(-2.0), "jump_sword_wind_back.anm");
+jump_sword_wind:add(wind_direction(-1.0), "jump_sword_wind_up.anm");
+jump_sword_wind:add(wind_direction(0.0), "jump_sword_wind_front.anm");
+jump_sword_wind:add(wind_direction(1.0), "jump_sword_wind_up.anm");
+jump_sword_wind:add(wind_direction(2.0), "jump_sword_wind_back.anm");
+--}
+
+--{ Animation: jump_fast_sword_wind
+jump_fast_sword_wind = addState(wind+jump, "jump_fast_sword_wind");
+-- Hack for lacking fast jump support
+jump_fast_sword_wind:from(run_sword_wind);
+jump_fast_sword_wind:from(run_start_sword_wind);
+jump_fast_sword_wind:from(run_start_turning_sword_wind);
+jump_fast_sword_wind:blendTime(200);
+jump_fast_sword_wind:loop(false);
+jump_fast_sword_wind:add(wind_direction(-2.0), "jump_fast_sword_wind_back.anm");
+jump_fast_sword_wind:add(wind_direction(-1.0), "jump_fast_sword_wind_up.anm");
+jump_fast_sword_wind:add(wind_direction(0.0), "jump_fast_sword_wind_front.anm");
+jump_fast_sword_wind:add(wind_direction(1.0), "jump_fast_sword_wind_up.anm");
+jump_fast_sword_wind:add(wind_direction(2.0), "jump_fast_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_start_sword_wind
+drop_start_sword_wind = addState(wind+fall, "drop_start_sword_wind");
+drop_start_sword_wind:from(jump_sword_wind);
+drop_start_sword_wind:blendTime(200);
+drop_start_sword_wind:loop(false);
+drop_start_sword_wind:add(wind_direction(-2.0), "drop_start_sword_wind_back.anm");
+drop_start_sword_wind:add(wind_direction(-1.0), "drop_start_sword_wind_up.anm");
+drop_start_sword_wind:add(wind_direction(0.0), "drop_start_sword_wind_front.anm");
+drop_start_sword_wind:add(wind_direction(1.0), "drop_start_sword_wind_up.anm");
+drop_start_sword_wind:add(wind_direction(2.0), "drop_start_sword_wind_back.anm");
+--}
+
+--{ Animation: float_in_wind_turning
+float_in_wind_turning = addState(wind+fall+turn, "float_in_wind_turning");
+float_in_wind_turning:blendTime(0);
+float_in_wind_turning:restart(true);
+float_in_wind_turning:loop(false);
+float_in_wind_turning:add("float_in_wind_turning.anm");
+--}
+
+--{ Animation: drop_sword_wind2
+-- drop_sword_wind2 = addState(wind+fall, "drop_sword_wind2");
+-- drop_sword_wind2:from(run_sword);
+-- drop_sword_wind2:from(run_start_sword);
+-- drop_sword_wind2:from(run_end_sword);
+-- drop_sword_wind2:from(land_running_sword);
+-- drop_sword_wind2:from(run_sword_wind);
+-- drop_sword_wind2:from(run_start_sword_wind);
+-- drop_sword_wind2:from(run_end_sword_wind);
+
+-- drop_sword_wind2:blendTime(100);
+-- drop_sword_wind2:delay(100);
+-- drop_sword_wind2:loop(true);
+-- drop_sword_wind2:add(wind_direction(-2.0), "drop_sword_wind_back.anm");
+-- drop_sword_wind2:add(wind_direction(-1.0), "drop_sword_wind_up.anm");
+-- drop_sword_wind2:add(wind_direction(0.0), "drop_sword_wind_front.anm");
+-- drop_sword_wind2:add(wind_direction(1.0), "drop_wind_down.anm");
+-- drop_sword_wind2:add(wind_direction(2.0), "drop_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_sword_wind
+drop_sword_wind = addState(wind+fall, "drop_sword_wind");
+drop_sword_wind:blendTime(500);
+drop_sword_wind:delay(100);
+drop_sword_wind:loop(true);
+drop_sword_wind:add(wind_direction(-2.0), "drop_sword_wind_back.anm");
+drop_sword_wind:add(wind_direction(-1.0), "drop_sword_wind_up.anm");
+drop_sword_wind:add(wind_direction(0.0), "drop_sword_wind_front.anm");
+drop_sword_wind:add(wind_direction(1.0), "drop_wind_down.anm");
+drop_sword_wind:add(wind_direction(2.0), "drop_sword_wind_back.anm");
+--}
+
+
+--{ Animation: drop_fast_start_sword_wind
+drop_fast_start_sword_wind = addState(wind+fall+fast, "drop_fast_start_sword_wind");
+drop_fast_start_sword_wind:from(jump_fast_sword_wind);
+drop_fast_start_sword_wind:from(jump_sword_wind);
+drop_fast_start_sword_wind:blendTime(200);
+drop_fast_start_sword_wind:loop(false);
+drop_fast_start_sword_wind:add(wind_direction(-2.0), "drop_fast_start_sword_wind_back.anm");
+drop_fast_start_sword_wind:add(wind_direction(-1.0), "drop_fast_start_sword_wind_up.anm");
+drop_fast_start_sword_wind:add(wind_direction(0.0), "drop_fast_start_sword_wind_front.anm");
+drop_fast_start_sword_wind:add(wind_direction(1.0), "drop_fast_start_sword_wind_up.anm");
+drop_fast_start_sword_wind:add(wind_direction(2.0), "drop_fast_start_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_sword_wind
+drop_fast_sword_wind = addState(wind+fall+fast, "drop_fast_sword_wind");
+drop_fast_sword_wind:blendTime(300);
+drop_fast_sword_wind:loop(true);
+drop_fast_sword_wind:delay(100);
+drop_fast_sword_wind:add(wind_direction(-2.0), "drop_fast_sword_wind_back.anm");
+drop_fast_sword_wind:add(wind_direction(-1.0), "drop_fast_sword_wind_up.anm");
+drop_fast_sword_wind:add(wind_direction(0.0), "drop_fast_sword_wind_front.anm");
+drop_fast_sword_wind:add(wind_direction(1.0), "drop_fast_sword_wind_up.anm");
+drop_fast_sword_wind:add(wind_direction(2.0), "drop_fast_sword_wind_back.anm");
+--}
+
+-- --{ Animation: drop_fast_start_turning_sword_wind
+-- drop_fast_start_turning_sword_wind = addState(wind+jump+turn, "drop_fast_start_turning_sword_wind");
+-- drop_fast_start_turning_sword_wind:blendTime(0);
+-- drop_fast_start_turning_sword_wind:loop(false);
+-- drop_fast_start_turning_sword_wind:add("drop_fast_start_turning_sword_wind_front.anm");
+-- --}
+
+--{ Animation: land_sword_wind
+land_sword_wind = addState(wind+stand, "land_sword_wind");
+land_sword_wind:from(jump_sword_wind);
+land_sword_wind:from(drop_start_sword_wind);
+land_sword_wind:from(drop_sword_wind);
+land_sword_wind:from(jump_fast_sword_wind);
+land_sword_wind:from(drop_fast_start_sword_wind);
+land_sword_wind:from(drop_fast_sword_wind);
+-- land_sword_wind:from(drop_fast_start_turning_sword_wind);
+land_sword_wind:blendTime(200);
+land_sword_wind:loop(false);
+land_sword_wind:add(wind_direction(-2.0), "land_sword_wind_back.anm");
+land_sword_wind:add(wind_direction(-1.0), "land_sword_wind_up.anm");
+land_sword_wind:add(wind_direction(0.0), "land_sword_wind_front.anm");
+land_sword_wind:add(wind_direction(1.0), "land_sword_wind_up.anm");
+land_sword_wind:add(wind_direction(2.0), "land_sword_wind_back.anm");
+--}
+
+--{ Animation: land_running_sword_wind
+land_running_sword_wind = addState(wind+run, "land_running_sword_wind");
+land_running_sword_wind:from(jump_sword_wind);
+land_running_sword_wind:from(drop_start_sword_wind);
+land_running_sword_wind:from(drop_sword_wind);
+land_running_sword_wind:from(jump_fast_sword_wind);
+land_running_sword_wind:from(drop_fast_start_sword_wind);
+land_running_sword_wind:from(drop_fast_sword_wind);
+-- land_running_sword_wind:from(drop_fast_start_turning_sword_wind);
+land_running_sword_wind:blendTime(200);
+land_running_sword_wind:loop(false);
+land_running_sword_wind:add(wind_direction(-2.0), "land_running_sword_wind_back.anm");
+land_running_sword_wind:add(wind_direction(-1.0), "land_running_sword_wind_up.anm");
+land_running_sword_wind:add(wind_direction(0.0), "land_running_sword_wind_front.anm");
+land_running_sword_wind:add(wind_direction(1.0), "land_running_sword_wind_up.anm");
+land_running_sword_wind:add(wind_direction(2.0), "land_running_sword_wind_back.anm");
+--}
+-- drop_sword_wind2:from(land_running_sword_wind);
+
+-- --{ Animation: run_start2_sword_wind
+-- run_start2_sword_wind = addState(wind+run, "run_start2_sword_wind");
+-- run_start2_sword_wind:from(run_idle);
+-- run_start2_sword_wind:from(land_running_idle);
+-- run_start2_sword_wind:from(run_start_idle);
+-- run_start2_sword_wind:from(run_start_turning_idle);
+-- run_start2_sword_wind:blendTime(300);
+-- run_start2_sword_wind:loop(false);
+-- run_start2_sword_wind:add(wind_direction(-2.0), "run_start2_sword_wind_back.anm");
+-- run_start2_sword_wind:add(wind_direction(-1.0), "run_start2_sword_wind_up.anm");
+-- run_start2_sword_wind:add(wind_direction(0.0), "run_start2_sword_wind_front.anm");
+-- run_start2_sword_wind:add(wind_direction(1.0), "run_start2_sword_wind_up.anm");
+-- run_start2_sword_wind:add(wind_direction(2.0), "run_start2_sword_wind_back.anm");
+-- --}
+
+--{ Animation: stand_start_sword_wind
+stand_start_sword_wind = addState(wind+stand, "stand_start_sword_wind");
+stand_start_sword_wind:from(stand_sword);
+stand_start_sword_wind:from(run_end_sword);
+stand_start_sword_wind:from(land_sword);
+stand_start_sword_wind:blendTime(600);
+stand_start_sword_wind:loop(false);
+stand_start_sword_wind:add(wind_direction(-2.0), "stand_sword_wind_back.anm");
+stand_start_sword_wind:add(wind_direction(-1.0), "stand_sword_wind_up.anm");
+stand_start_sword_wind:add(wind_direction(0.0), "stand_sword_wind_front.anm");
+stand_start_sword_wind:add(wind_direction(1.0), "stand_sword_wind_up.anm");
+stand_start_sword_wind:add(wind_direction(2.0), "stand_sword_wind_back.anm");
+--}
+
+-- --{ Animation: stand_end_sword_wind
+-- stand_end_sword_wind = addState(stand, "stand_end_sword_wind");
+-- stand_end_sword_wind:from(stand_sword_wind);
+-- stand_end_sword_wind:from(run_end_sword_wind);
+-- stand_end_sword_wind:from(land_sword_wind);
+-- stand_end_sword_wind:blendTime(300);
+-- stand_end_sword_wind:loop(false);
+-- stand_end_sword_wind:add(wind_direction(-2.0), "stand_end_sword_wind_back.anm");
+-- stand_end_sword_wind:add(wind_direction(-1.0), "stand_end_sword_wind_up.anm");
+-- stand_end_sword_wind:add(wind_direction(0.0), "stand_end_sword_wind_front.anm");
+-- stand_end_sword_wind:add(wind_direction(1.0), "stand_end_sword_wind_up.anm");
+-- stand_end_sword_wind:add(wind_direction(2.0), "stand_end_sword_wind_back.anm");
+-- --}
+
+stand_sword_wind:from(land_sword_wind);
+stand_sword_wind:from(stand_start_sword_wind);
+run_sword_wind:from(land_running_sword_wind);
+jump_fast_sword_wind:from(land_running_sword_wind);
+
+--}
+
+--{ Animation_set: Environment_wind
+
+--{ Animation: run_end_sword_env_wind
+run_end_sword_env_wind = addState(env_wind+stand, "run_end_sword_env_wind");
+run_end_sword_env_wind:blendTime(300);
+run_end_sword_env_wind:loop(false);
+run_end_sword_env_wind:add(wind_direction(0.0), "run_end_sword_wind_front.anm");
+--}
+
+--{ Animation: stand_sword_env_wind
+stand_sword_env_wind = addState(env_wind+stand, "stand_sword_env_wind");
+stand_sword_env_wind:from(run_end_sword_env_wind);
+stand_sword_env_wind:blendTime(0);
+stand_sword_env_wind:loop(true);
+stand_sword_env_wind:add(wind_direction(0.0), "stand_sword_wind_front.anm");
+--}
+
+--{ Animation: run_start_sword_env_wind
+run_start_sword_env_wind = addState(env_wind+run, "run_start_sword_env_wind");
+run_start_sword_env_wind:blendTime(300);
+run_start_sword_env_wind:loop(false);
+run_start_sword_env_wind:add(wind_direction(0.0), "run_start_sword_wind_front.anm");
+
+--}
+
+--{ Animation: run_start_turning_sword_env_wind
+run_start_turning_sword_env_wind = addState(env_wind+run+turn, "run_start_turning_sword_env_wind");
+run_start_turning_sword_env_wind:blendTime(0);
+run_start_turning_sword_env_wind:loop(false);
+run_start_turning_sword_env_wind:add(wind_direction(0.0), "run_start_turning_sword_wind_front.anm");
+--}
+
+--{ Animation: run_sword_env_wind
+run_sword_env_wind = addState(env_wind+run, "run_sword_env_wind");
+run_sword_env_wind:from(run_start_sword_env_wind);
+run_sword_env_wind:from(run_start_turning_sword_env_wind);
+run_sword_env_wind:blendTime(0);
+run_sword_env_wind:loop(true);
+run_sword_env_wind:add(wind_direction(0.0), "run_sword_wind_front.anm");
+--}
+
+--{ Animation: jump_sword_env_wind
+jump_sword_env_wind = addState(env_wind+jump, "jump_sword_env_wind");
+jump_sword_env_wind:blendTime(200);
+jump_sword_env_wind:loop(false);
+jump_sword_env_wind:add(wind_direction(0.0), "jump_sword_wind_front.anm");
+--}
+
+--{ Animation: jump_fast_sword_env_wind
+jump_fast_sword_env_wind = addState(env_wind+jump, "jump_fast_sword_env_wind");
+-- Hack for lacking fast jump support
+jump_fast_sword_env_wind:from(run_sword_env_wind);
+jump_fast_sword_env_wind:from(run_start_sword_env_wind);
+jump_fast_sword_env_wind:from(run_start_turning_sword_env_wind);
+jump_fast_sword_env_wind:blendTime(200);
+jump_fast_sword_env_wind:loop(false);
+jump_fast_sword_env_wind:add(wind_direction(0.0), "jump_fast_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_start_sword_env_wind
+drop_start_sword_env_wind = addState(env_wind+fall, "drop_start_sword_env_wind");
+drop_start_sword_env_wind:from(jump_sword_env_wind);
+drop_start_sword_env_wind:blendTime(200);
+drop_start_sword_env_wind:loop(false);
+drop_start_sword_env_wind:add(wind_direction(0.0), "drop_start_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_sword_env_wind
+drop_sword_env_wind = addState(env_wind+fall, "drop_sword_env_wind");
+drop_sword_env_wind:blendTime(300);
+drop_sword_env_wind:delay(100);
+drop_sword_env_wind:loop(true);
+drop_sword_env_wind:add("drop_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_start_sword_env_wind
+drop_fast_start_sword_env_wind = addState(env_wind+fall+fast, "drop_fast_start_sword_env_wind");
+drop_fast_start_sword_env_wind:from(jump_fast_sword_env_wind);
+drop_fast_start_sword_env_wind:from(jump_sword_env_wind);
+drop_fast_start_sword_env_wind:blendTime(200);
+drop_fast_start_sword_env_wind:loop(false);
+drop_fast_start_sword_env_wind:add("drop_fast_start_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_sword_env_wind
+drop_fast_sword_env_wind = addState(env_wind+fall+fast, "drop_fast_sword_env_wind");
+drop_fast_sword_env_wind:blendTime(300);
+drop_fast_sword_env_wind:loop(true);
+drop_fast_sword_env_wind:delay(100);
+drop_fast_sword_env_wind:add("drop_fast_sword_wind_front.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_sword_env_wind
+-- drop_fast_start_turning_sword_env_wind = addState(env_wind+jump+turn, "drop_fast_start_turning_sword_env_wind");
+-- drop_fast_start_turning_sword_env_wind:blendTime(0);
+-- drop_fast_start_turning_sword_env_wind:loop(false);
+-- drop_fast_start_turning_sword_env_wind:add("drop_fast_start_turning_sword_env_sword_wind_front.anm");
+-- --}
+
+--{ Animation: land_sword_env_wind
+land_sword_env_wind = addState(env_wind+stand, "land_sword_env_wind");
+land_sword_env_wind:from(jump_sword_env_wind);
+land_sword_env_wind:from(drop_start_sword_env_wind);
+land_sword_env_wind:from(drop_sword_env_wind);
+land_sword_env_wind:from(jump_fast_sword_env_wind);
+land_sword_env_wind:from(drop_fast_start_sword_env_wind);
+land_sword_env_wind:from(drop_fast_sword_env_wind);
+-- land_sword_env_wind:from(drop_fast_start_turning_sword_env_wind);
+land_sword_env_wind:blendTime(200);
+land_sword_env_wind:loop(false);
+land_sword_env_wind:add("land_sword_wind_front.anm");
+--}
+
+--{ Animation: land_running_sword_env_wind
+land_running_sword_env_wind = addState(env_wind+run, "land_running_sword_env_wind");
+land_running_sword_env_wind:from(jump_sword_env_wind);
+land_running_sword_env_wind:from(drop_start_sword_env_wind);
+land_running_sword_env_wind:from(drop_sword_env_wind);
+land_running_sword_env_wind:from(jump_fast_sword_env_wind);
+land_running_sword_env_wind:from(drop_fast_start_sword_env_wind);
+land_running_sword_env_wind:from(drop_fast_sword_env_wind);
+-- land_running_sword_env_wind:from(drop_fast_start_turning_sword_env_wind);
+land_running_sword_env_wind:blendTime(200);
+land_running_sword_env_wind:loop(false);
+land_running_sword_env_wind:add("land_running_sword_wind_front.anm");
+--}
+
+--{ Animation: run_start2_sword_env_wind
+run_start2_sword_env_wind = addState(env_wind+run, "run_start2_sword_env_wind");
+run_start2_sword_env_wind:from(run_sword);
+run_start2_sword_env_wind:from(land_running_sword);
+run_start2_sword_env_wind:from(run_start_sword);
+run_start2_sword_env_wind:from(run_start_turning_sword);
+run_start2_sword_env_wind:blendTime(300);
+run_start2_sword_env_wind:loop(false);
+run_start2_sword_env_wind:add("run_start2_sword_wind_front.anm");
+
+--}
+
+--{ Animation: stand_start_sword_env_wind
+stand_start_sword_env_wind = addState(env_wind+stand, "stand_start_sword_env_wind");
+stand_start_sword_env_wind:from(stand_sword);
+stand_start_sword_env_wind:from(run_end_sword);
+stand_start_sword_env_wind:from(land_sword);
+stand_start_sword_env_wind:blendTime(300);
+stand_start_sword_env_wind:loop(false);
+stand_start_sword_env_wind:add("stand_start_sword_wind_front.anm");
+
+--}
+
+--{ Animation: stand_end_sword_env_wind
+stand_end_sword_env_wind = addState(stand, "stand_end_sword_env_wind");
+stand_end_sword_env_wind:from(stand_sword_env_wind);
+stand_end_sword_env_wind:from(run_end_sword_env_wind);
+stand_end_sword_env_wind:from(land_sword_env_wind);
+stand_end_sword_env_wind:blendTime(300);
+stand_end_sword_env_wind:loop(false);
+stand_end_sword_env_wind:add("stand_end_sword_wind_front.anm");
+--}
+
+stand_sword_env_wind:from(land_sword_env_wind);
+stand_sword_env_wind:from(stand_start_sword_env_wind);
+run_sword_env_wind:from(land_running_sword_env_wind);
+jump_fast_sword_env_wind:from(land_running_sword_env_wind);
+
+
+--{ Animation_set: Left
+
+--{ Animation: run_end_sword_env_wind_left
+run_end_sword_env_wind_left = addState(env_wind+left+stand, "run_end_sword_env_wind_left");
+run_end_sword_env_wind_left:blendTime(300);
+run_end_sword_env_wind_left:loop(false);
+run_end_sword_env_wind_left:add(wind_direction(0.0), "run_end_sword_wind_back.anm");
+--}
+
+--{ Animation: stand_sword_env_wind_left
+stand_sword_env_wind_left = addState(env_wind+left+stand, "stand_sword_env_wind_left");
+stand_sword_env_wind_left:from(run_end_sword_env_wind_left);
+stand_sword_env_wind_left:blendTime(0);
+stand_sword_env_wind_left:loop(true);
+stand_sword_env_wind_left:add(wind_direction(0.0), "stand_sword_wind_back.anm");
+--}
+
+--{ Animation: run_start_sword_env_wind_left
+run_start_sword_env_wind_left = addState(env_wind+left+run, "run_start_sword_env_wind_left");
+run_start_sword_env_wind_left:blendTime(300);
+run_start_sword_env_wind_left:loop(false);
+run_start_sword_env_wind_left:add(wind_direction(0.0), "run_start_sword_wind_back.anm");
+
+--}
+
+--{ Animation: run_start_turning_sword_env_wind_left
+run_start_turning_sword_env_wind_left = addState(env_wind+left+run+turn, "run_start_turning_sword_env_wind_left");
+run_start_turning_sword_env_wind_left:blendTime(0);
+run_start_turning_sword_env_wind_left:loop(false);
+run_start_turning_sword_env_wind_left:add(wind_direction(0.0), "run_start_turning_sword_wind_back.anm");
+--}
+
+--{ Animation: run_sword_env_wind_left
+run_sword_env_wind_left = addState(env_wind+left+run, "run_sword_env_wind_left");
+run_sword_env_wind_left:from(run_start_sword_env_wind_left);
+run_sword_env_wind_left:from(run_start_turning_sword_env_wind_left);
+run_sword_env_wind_left:blendTime(0);
+run_sword_env_wind_left:loop(true);
+run_sword_env_wind_left:add(wind_direction(0.0), "run_sword_wind_back.anm");
+--}
+
+--{ Animation: jump_sword_env_wind_left
+jump_sword_env_wind_left = addState(env_wind+left+jump, "jump_sword_env_wind_left");
+jump_sword_env_wind_left:blendTime(200);
+jump_sword_env_wind_left:loop(false);
+jump_sword_env_wind_left:add(wind_direction(0.0), "jump_sword_wind_back.anm");
+--}
+
+--{ Animation: jump_fast_sword_env_wind_left
+jump_fast_sword_env_wind_left = addState(env_wind+left+jump, "jump_fast_sword_env_wind_left");
+-- Hack for lacking fast jump support
+jump_fast_sword_env_wind_left:from(run_sword_env_wind_left);
+jump_fast_sword_env_wind_left:from(run_start_sword_env_wind_left);
+jump_fast_sword_env_wind_left:from(run_start_turning_sword_env_wind_left);
+jump_fast_sword_env_wind_left:blendTime(200);
+jump_fast_sword_env_wind_left:loop(false);
+jump_fast_sword_env_wind_left:add(wind_direction(0.0), "jump_fast_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_start_sword_env_wind_left
+drop_start_sword_env_wind_left = addState(env_wind+left+fall, "drop_start_sword_env_wind_left");
+drop_start_sword_env_wind_left:from(jump_sword_env_wind_left);
+drop_start_sword_env_wind_left:blendTime(200);
+drop_start_sword_env_wind_left:loop(false);
+drop_start_sword_env_wind_left:add(wind_direction(0.0), "drop_start_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_sword_env_wind_left
+drop_sword_env_wind_left = addState(env_wind+left+fall, "drop_sword_env_wind_left");
+drop_sword_env_wind_left:blendTime(300);
+drop_sword_env_wind_left:delay(100);
+drop_sword_env_wind_left:loop(true);
+drop_sword_env_wind_left:add("drop_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_start_sword_env_wind_left
+drop_fast_start_sword_env_wind_left = addState(env_wind+left+fall+fast, "drop_fast_start_sword_env_wind_left");
+drop_fast_start_sword_env_wind_left:from(jump_fast_sword_env_wind_left);
+drop_fast_start_sword_env_wind_left:from(jump_sword_env_wind_left);
+drop_fast_start_sword_env_wind_left:blendTime(200);
+drop_fast_start_sword_env_wind_left:loop(false);
+drop_fast_start_sword_env_wind_left:add("drop_fast_start_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_sword_env_wind_left
+drop_fast_sword_env_wind_left = addState(env_wind+left+fall+fast, "drop_fast_sword_env_wind_left");
+drop_fast_sword_env_wind_left:blendTime(300);
+drop_fast_sword_env_wind_left:loop(true);
+drop_fast_sword_env_wind_left:delay(100);
+drop_fast_sword_env_wind_left:add("drop_fast_sword_wind_back.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_sword_env_wind_left
+-- drop_fast_start_turning_sword_env_wind_left = addState(env_wind+left+jump+turn, "drop_fast_start_turning_sword_env_wind_left");
+-- drop_fast_start_turning_sword_env_wind_left:blendTime(0);
+-- drop_fast_start_turning_sword_env_wind_left:loop(false);
+-- drop_fast_start_turning_sword_env_wind_left:add("drop_fast_start_turning_sword_env_wind_left_back.anm");
+-- --}
+
+--{ Animation: land_sword_env_wind_left
+land_sword_env_wind_left = addState(env_wind+left+stand, "land_sword_env_wind_left");
+land_sword_env_wind_left:from(jump_sword_env_wind_left);
+land_sword_env_wind_left:from(drop_start_sword_env_wind_left);
+land_sword_env_wind_left:from(drop_sword_env_wind_left);
+land_sword_env_wind_left:from(jump_fast_sword_env_wind_left);
+land_sword_env_wind_left:from(drop_fast_start_sword_env_wind_left);
+land_sword_env_wind_left:from(drop_fast_sword_env_wind_left);
+-- land_sword_env_wind_left:from(drop_fast_start_turning_sword_env_wind_left);
+land_sword_env_wind_left:blendTime(200);
+land_sword_env_wind_left:loop(false);
+land_sword_env_wind_left:add("land_sword_wind_back.anm");
+--}
+
+--{ Animation: land_running_sword_env_wind_left
+land_running_sword_env_wind_left = addState(env_wind+left+run, "land_running_sword_env_wind_left");
+land_running_sword_env_wind_left:from(jump_sword_env_wind_left);
+land_running_sword_env_wind_left:from(drop_start_sword_env_wind_left);
+land_running_sword_env_wind_left:from(drop_sword_env_wind_left);
+land_running_sword_env_wind_left:from(jump_fast_sword_env_wind_left);
+land_running_sword_env_wind_left:from(drop_fast_start_sword_env_wind_left);
+land_running_sword_env_wind_left:from(drop_fast_sword_env_wind_left);
+-- land_running_sword_env_wind_left:from(drop_fast_start_turning_sword_env_wind_left);
+land_running_sword_env_wind_left:blendTime(200);
+land_running_sword_env_wind_left:loop(false);
+land_running_sword_env_wind_left:add("land_running_sword_wind_back.anm");
+--}
+
+--{ Animation: run_start2_sword_env_wind_left
+run_start2_sword_env_wind_left = addState(env_wind+left+run, "run_start2_sword_env_wind_left");
+run_start2_sword_env_wind_left:from(run_sword);
+run_start2_sword_env_wind_left:from(land_running_sword);
+run_start2_sword_env_wind_left:from(run_start_sword);
+run_start2_sword_env_wind_left:from(run_start_turning_sword);
+run_start2_sword_env_wind_left:blendTime(300);
+run_start2_sword_env_wind_left:loop(false);
+run_start2_sword_env_wind_left:add("run_start2_sword_wind_back.anm");
+
+--}
+
+--{ Animation: stand_start_sword_env_wind_left
+stand_start_sword_env_wind_left = addState(env_wind+left+stand, "stand_start_sword_env_wind_left");
+stand_start_sword_env_wind_left:from(stand_sword);
+stand_start_sword_env_wind_left:from(run_end_sword);
+stand_start_sword_env_wind_left:from(land_sword);
+stand_start_sword_env_wind_left:blendTime(300);
+stand_start_sword_env_wind_left:loop(false);
+stand_start_sword_env_wind_left:add("stand_start_sword_wind_back.anm");
+
+--}
+
+--{ Animation: stand_end_sword_env_wind_left
+stand_end_sword_env_wind_left = addState(stand, "stand_end_sword_env_wind_left");
+stand_end_sword_env_wind_left:from(stand_sword_env_wind_left);
+stand_end_sword_env_wind_left:from(run_end_sword_env_wind_left);
+stand_end_sword_env_wind_left:from(land_sword_env_wind_left);
+stand_end_sword_env_wind_left:blendTime(300);
+stand_end_sword_env_wind_left:loop(false);
+stand_end_sword_env_wind_left:add("stand_end_sword_wind_back.anm");
+--}
+
+stand_sword_env_wind_left:from(land_sword_env_wind_left);
+stand_sword_env_wind_left:from(stand_start_sword_env_wind_left);
+run_sword_env_wind_left:from(land_running_sword_env_wind_left);
+jump_fast_sword_env_wind_left:from(land_running_sword_env_wind_left);
+
+--}
+--}
+--{ Animation_set: Environment_wind
+
+--{ Animation: run_end_sword_env_wind2
+run_end_sword_env_wind2 = addState(env_wind2+stand, "run_end_sword_env_wind2");
+run_end_sword_env_wind2:blendTime(300);
+run_end_sword_env_wind2:loop(false);
+run_end_sword_env_wind2:add(wind_direction(0.0), "run_end_sword_wind_front.anm");
+--}
+
+--{ Animation: stand_sword_env_wind2
+stand_sword_env_wind2 = addState(env_wind2+stand, "stand_sword_env_wind2");
+stand_sword_env_wind2:from(run_end_sword_env_wind2);
+stand_sword_env_wind2:blendTime(0);
+stand_sword_env_wind2:loop(true);
+stand_sword_env_wind2:add(wind_direction(0.0), "stand_sword_wind_front.anm");
+--}
+
+--{ Animation: run_start_sword_env_wind2
+run_start_sword_env_wind2 = addState(env_wind2+run, "run_start_sword_env_wind2");
+run_start_sword_env_wind2:blendTime(300);
+run_start_sword_env_wind2:loop(false);
+run_start_sword_env_wind2:add(wind_direction(0.0), "run_start_sword_wind_front.anm");
+
+--}
+
+--{ Animation: run_start_turning_sword_env_wind2
+run_start_turning_sword_env_wind2 = addState(env_wind2+run+turn, "run_start_turning_sword_env_wind2");
+run_start_turning_sword_env_wind2:blendTime(0);
+run_start_turning_sword_env_wind2:loop(false);
+run_start_turning_sword_env_wind2:add(wind_direction(0.0), "run_start_turning_sword_wind_front.anm");
+--}
+
+--{ Animation: run_sword_env_wind2
+run_sword_env_wind2 = addState(env_wind2+run, "run_sword_env_wind2");
+run_sword_env_wind2:from(run_start_sword_env_wind2);
+run_sword_env_wind2:from(run_start_turning_sword_env_wind2);
+run_sword_env_wind2:blendTime(0);
+run_sword_env_wind2:loop(true);
+run_sword_env_wind2:add(wind_direction(0.0), "run_sword_wind_front.anm");
+--}
+
+--{ Animation: jump_sword_env_wind2
+jump_sword_env_wind2 = addState(env_wind2+jump, "jump_sword_env_wind2");
+jump_sword_env_wind2:blendTime(200);
+jump_sword_env_wind2:loop(false);
+jump_sword_env_wind2:add(wind_direction(0.0), "jump_sword_wind_front.anm");
+--}
+
+--{ Animation: jump_fast_sword_env_wind2
+jump_fast_sword_env_wind2 = addState(env_wind2+jump, "jump_fast_sword_env_wind2");
+-- Hack for lacking fast jump support
+jump_fast_sword_env_wind2:from(run_sword_env_wind2);
+jump_fast_sword_env_wind2:from(run_start_sword_env_wind2);
+jump_fast_sword_env_wind2:from(run_start_turning_sword_env_wind2);
+jump_fast_sword_env_wind2:blendTime(200);
+jump_fast_sword_env_wind2:loop(false);
+jump_fast_sword_env_wind2:add(wind_direction(0.0), "jump_fast_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_start_sword_env_wind2
+drop_start_sword_env_wind2 = addState(env_wind2+fall, "drop_start_sword_env_wind2");
+drop_start_sword_env_wind2:from(jump_sword_env_wind2);
+drop_start_sword_env_wind2:blendTime(200);
+drop_start_sword_env_wind2:loop(false);
+drop_start_sword_env_wind2:add(wind_direction(0.0), "drop_start_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_sword_env_wind2
+drop_sword_env_wind2 = addState(env_wind2+fall, "drop_sword_env_wind2");
+drop_sword_env_wind2:blendTime(300);
+drop_sword_env_wind2:delay(100);
+drop_sword_env_wind2:loop(true);
+drop_sword_env_wind2:add("drop_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_start_sword_env_wind2
+drop_fast_start_sword_env_wind2 = addState(env_wind2+fall+fast, "drop_fast_start_sword_env_wind2");
+drop_fast_start_sword_env_wind2:from(jump_fast_sword_env_wind2);
+drop_fast_start_sword_env_wind2:from(jump_sword_env_wind2);
+drop_fast_start_sword_env_wind2:blendTime(200);
+drop_fast_start_sword_env_wind2:loop(false);
+drop_fast_start_sword_env_wind2:add("drop_fast_start_sword_wind_front.anm");
+--}
+
+--{ Animation: drop_fast_sword_env_wind2
+drop_fast_sword_env_wind2 = addState(env_wind2+fall+fast, "drop_fast_sword_env_wind2");
+drop_fast_sword_env_wind2:blendTime(300);
+drop_fast_sword_env_wind2:loop(true);
+drop_fast_sword_env_wind2:delay(100);
+drop_fast_sword_env_wind2:add("drop_fast_sword_wind_front.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_sword_env_wind2
+-- drop_fast_start_turning_sword_env_wind2 = addState(env_wind2+jump+turn, "drop_fast_start_turning_sword_env_wind2");
+-- drop_fast_start_turning_sword_env_wind2:blendTime(0);
+-- drop_fast_start_turning_sword_env_wind2:loop(false);
+-- drop_fast_start_turning_sword_env_wind2:add("drop_fast_start_turning_sword_env_sword_wind_front.anm");
+-- --}
+
+--{ Animation: land_sword_env_wind2
+land_sword_env_wind2 = addState(env_wind2+stand, "land_sword_env_wind2");
+land_sword_env_wind2:from(jump_sword_env_wind2);
+land_sword_env_wind2:from(drop_start_sword_env_wind2);
+land_sword_env_wind2:from(drop_sword_env_wind2);
+land_sword_env_wind2:from(jump_fast_sword_env_wind2);
+land_sword_env_wind2:from(drop_fast_start_sword_env_wind2);
+land_sword_env_wind2:from(drop_fast_sword_env_wind2);
+-- land_sword_env_wind2:from(drop_fast_start_turning_sword_env_wind2);
+land_sword_env_wind2:blendTime(200);
+land_sword_env_wind2:loop(false);
+land_sword_env_wind2:add("land_sword_wind_front.anm");
+--}
+
+--{ Animation: land_running_sword_env_wind2
+land_running_sword_env_wind2 = addState(env_wind2+run, "land_running_sword_env_wind2");
+land_running_sword_env_wind2:from(jump_sword_env_wind2);
+land_running_sword_env_wind2:from(drop_start_sword_env_wind2);
+land_running_sword_env_wind2:from(drop_sword_env_wind2);
+land_running_sword_env_wind2:from(jump_fast_sword_env_wind2);
+land_running_sword_env_wind2:from(drop_fast_start_sword_env_wind2);
+land_running_sword_env_wind2:from(drop_fast_sword_env_wind2);
+-- land_running_sword_env_wind2:from(drop_fast_start_turning_sword_env_wind2);
+land_running_sword_env_wind2:blendTime(200);
+land_running_sword_env_wind2:loop(false);
+land_running_sword_env_wind2:add("land_running_sword_wind_front.anm");
+--}
+
+--{ Animation: run_start2_sword_env_wind2
+run_start2_sword_env_wind2 = addState(env_wind2+run, "run_start2_sword_env_wind2");
+run_start2_sword_env_wind2:from(run_sword);
+run_start2_sword_env_wind2:from(land_running_sword);
+run_start2_sword_env_wind2:from(run_start_sword);
+run_start2_sword_env_wind2:from(run_start_turning_sword);
+run_start2_sword_env_wind2:blendTime(300);
+run_start2_sword_env_wind2:loop(false);
+run_start2_sword_env_wind2:add("run_start2_sword_wind_front.anm");
+
+--}
+
+--{ Animation: stand_start_sword_env_wind2
+stand_start_sword_env_wind2 = addState(env_wind2+stand, "stand_start_sword_env_wind2");
+stand_start_sword_env_wind2:from(stand_sword);
+stand_start_sword_env_wind2:from(run_end_sword);
+stand_start_sword_env_wind2:from(land_sword);
+stand_start_sword_env_wind2:blendTime(300);
+stand_start_sword_env_wind2:loop(false);
+stand_start_sword_env_wind2:add("stand_start_sword_wind_front.anm");
+
+--}
+
+--{ Animation: stand_end_sword_env_wind2
+stand_end_sword_env_wind2 = addState(stand, "stand_end_sword_env_wind2");
+stand_end_sword_env_wind2:from(stand_sword_env_wind2);
+stand_end_sword_env_wind2:from(run_end_sword_env_wind2);
+stand_end_sword_env_wind2:from(land_sword_env_wind2);
+stand_end_sword_env_wind2:blendTime(300);
+stand_end_sword_env_wind2:loop(false);
+stand_end_sword_env_wind2:add("stand_end_sword_wind_front.anm");
+--}
+
+stand_sword_env_wind2:from(land_sword_env_wind2);
+stand_sword_env_wind2:from(stand_start_sword_env_wind2);
+run_sword_env_wind2:from(land_running_sword_env_wind2);
+jump_fast_sword_env_wind2:from(land_running_sword_env_wind2);
+
+
+--{ Animation_set: right
+
+--{ Animation: run_end_sword_env_wind2_right
+run_end_sword_env_wind2_right = addState(env_wind2+right+stand, "run_end_sword_env_wind2_right");
+run_end_sword_env_wind2_right:blendTime(300);
+run_end_sword_env_wind2_right:loop(false);
+run_end_sword_env_wind2_right:add(wind_direction(0.0), "run_end_sword_wind_back.anm");
+--}
+
+--{ Animation: stand_sword_env_wind2_right
+stand_sword_env_wind2_right = addState(env_wind2+right+stand, "stand_sword_env_wind2_right");
+stand_sword_env_wind2_right:from(run_end_sword_env_wind2_right);
+stand_sword_env_wind2_right:blendTime(0);
+stand_sword_env_wind2_right:loop(true);
+stand_sword_env_wind2_right:add(wind_direction(0.0), "stand_sword_wind_back.anm");
+--}
+
+--{ Animation: run_start_sword_env_wind2_right
+run_start_sword_env_wind2_right = addState(env_wind2+right+run, "run_start_sword_env_wind2_right");
+run_start_sword_env_wind2_right:blendTime(300);
+run_start_sword_env_wind2_right:loop(false);
+run_start_sword_env_wind2_right:add(wind_direction(0.0), "run_start_sword_wind_back.anm");
+
+--}
+
+--{ Animation: run_start_turning_sword_env_wind2_right
+run_start_turning_sword_env_wind2_right = addState(env_wind2+right+run+turn, "run_start_turning_sword_env_wind2_right");
+run_start_turning_sword_env_wind2_right:blendTime(0);
+run_start_turning_sword_env_wind2_right:loop(false);
+run_start_turning_sword_env_wind2_right:add(wind_direction(0.0), "run_start_turning_sword_wind_back.anm");
+--}
+
+--{ Animation: run_sword_env_wind2_right
+run_sword_env_wind2_right = addState(env_wind2+right+run, "run_sword_env_wind2_right");
+run_sword_env_wind2_right:from(run_start_sword_env_wind2_right);
+run_sword_env_wind2_right:from(run_start_turning_sword_env_wind2_right);
+run_sword_env_wind2_right:blendTime(0);
+run_sword_env_wind2_right:loop(true);
+run_sword_env_wind2_right:add(wind_direction(0.0), "run_sword_wind_back.anm");
+--}
+
+--{ Animation: jump_sword_env_wind2_right
+jump_sword_env_wind2_right = addState(env_wind2+right+jump, "jump_sword_env_wind2_right");
+jump_sword_env_wind2_right:blendTime(200);
+jump_sword_env_wind2_right:loop(false);
+jump_sword_env_wind2_right:add(wind_direction(0.0), "jump_sword_wind_back.anm");
+--}
+
+--{ Animation: jump_fast_sword_env_wind2_right
+jump_fast_sword_env_wind2_right = addState(env_wind2+right+jump, "jump_fast_sword_env_wind2_right");
+-- Hack for lacking fast jump support
+jump_fast_sword_env_wind2_right:from(run_sword_env_wind2_right);
+jump_fast_sword_env_wind2_right:from(run_start_sword_env_wind2_right);
+jump_fast_sword_env_wind2_right:from(run_start_turning_sword_env_wind2_right);
+jump_fast_sword_env_wind2_right:blendTime(200);
+jump_fast_sword_env_wind2_right:loop(false);
+jump_fast_sword_env_wind2_right:add(wind_direction(0.0), "jump_fast_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_start_sword_env_wind2_right
+drop_start_sword_env_wind2_right = addState(env_wind2+right+fall, "drop_start_sword_env_wind2_right");
+drop_start_sword_env_wind2_right:from(jump_sword_env_wind2_right);
+drop_start_sword_env_wind2_right:blendTime(200);
+drop_start_sword_env_wind2_right:loop(false);
+drop_start_sword_env_wind2_right:add(wind_direction(0.0), "drop_start_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_sword_env_wind2_right
+drop_sword_env_wind2_right = addState(env_wind2+right+fall, "drop_sword_env_wind2_right");
+drop_sword_env_wind2_right:blendTime(300);
+drop_sword_env_wind2_right:delay(100);
+drop_sword_env_wind2_right:loop(true);
+drop_sword_env_wind2_right:add("drop_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_start_sword_env_wind2_right
+drop_fast_start_sword_env_wind2_right = addState(env_wind2+right+fall+fast, "drop_fast_start_sword_env_wind2_right");
+drop_fast_start_sword_env_wind2_right:from(jump_fast_sword_env_wind2_right);
+drop_fast_start_sword_env_wind2_right:from(jump_sword_env_wind2_right);
+drop_fast_start_sword_env_wind2_right:blendTime(200);
+drop_fast_start_sword_env_wind2_right:loop(false);
+drop_fast_start_sword_env_wind2_right:add("drop_fast_start_sword_wind_back.anm");
+--}
+
+--{ Animation: drop_fast_sword_env_wind2_right
+drop_fast_sword_env_wind2_right = addState(env_wind2+right+fall+fast, "drop_fast_sword_env_wind2_right");
+drop_fast_sword_env_wind2_right:blendTime(300);
+drop_fast_sword_env_wind2_right:loop(true);
+drop_fast_sword_env_wind2_right:delay(100);
+drop_fast_sword_env_wind2_right:add("drop_fast_sword_wind_back.anm");
+
+--}
+
+-- --{ Animation: drop_fast_start_turning_sword_env_wind2_right
+-- drop_fast_start_turning_sword_env_wind2_right = addState(env_wind2+right+jump+turn, "drop_fast_start_turning_sword_env_wind2_right");
+-- drop_fast_start_turning_sword_env_wind2_right:blendTime(0);
+-- drop_fast_start_turning_sword_env_wind2_right:loop(false);
+-- drop_fast_start_turning_sword_env_wind2_right:add("drop_fast_start_turning_sword_env_wind2_right_back.anm");
+-- --}
+
+--{ Animation: land_sword_env_wind2_right
+land_sword_env_wind2_right = addState(env_wind2+right+stand, "land_sword_env_wind2_right");
+land_sword_env_wind2_right:from(jump_sword_env_wind2_right);
+land_sword_env_wind2_right:from(drop_start_sword_env_wind2_right);
+land_sword_env_wind2_right:from(drop_sword_env_wind2_right);
+land_sword_env_wind2_right:from(jump_fast_sword_env_wind2_right);
+land_sword_env_wind2_right:from(drop_fast_start_sword_env_wind2_right);
+land_sword_env_wind2_right:from(drop_fast_sword_env_wind2_right);
+-- land_sword_env_wind2_right:from(drop_fast_start_turning_sword_env_wind2_right);
+land_sword_env_wind2_right:blendTime(200);
+land_sword_env_wind2_right:loop(false);
+land_sword_env_wind2_right:add("land_sword_wind_back.anm");
+--}
+
+--{ Animation: land_running_sword_env_wind2_right
+land_running_sword_env_wind2_right = addState(env_wind2+right+run, "land_running_sword_env_wind2_right");
+land_running_sword_env_wind2_right:from(jump_sword_env_wind2_right);
+land_running_sword_env_wind2_right:from(drop_start_sword_env_wind2_right);
+land_running_sword_env_wind2_right:from(drop_sword_env_wind2_right);
+land_running_sword_env_wind2_right:from(jump_fast_sword_env_wind2_right);
+land_running_sword_env_wind2_right:from(drop_fast_start_sword_env_wind2_right);
+land_running_sword_env_wind2_right:from(drop_fast_sword_env_wind2_right);
+-- land_running_sword_env_wind2_right:from(drop_fast_start_turning_sword_env_wind2_right);
+land_running_sword_env_wind2_right:blendTime(200);
+land_running_sword_env_wind2_right:loop(false);
+land_running_sword_env_wind2_right:add("land_running_sword_wind_back.anm");
+--}
+
+--{ Animation: run_start2_sword_env_wind2_right
+run_start2_sword_env_wind2_right = addState(env_wind2+right+run, "run_start2_sword_env_wind2_right");
+run_start2_sword_env_wind2_right:from(run_sword);
+run_start2_sword_env_wind2_right:from(land_running_sword);
+run_start2_sword_env_wind2_right:from(run_start_sword);
+run_start2_sword_env_wind2_right:from(run_start_turning_sword);
+run_start2_sword_env_wind2_right:blendTime(300);
+run_start2_sword_env_wind2_right:loop(false);
+run_start2_sword_env_wind2_right:add("run_start2_sword_wind_back.anm");
+
+--}
+
+--{ Animation: stand_start_sword_env_wind2_right
+stand_start_sword_env_wind2_right = addState(env_wind2+right+stand, "stand_start_sword_env_wind2_right");
+stand_start_sword_env_wind2_right:from(stand_sword);
+stand_start_sword_env_wind2_right:from(run_end_sword);
+stand_start_sword_env_wind2_right:from(land_sword);
+stand_start_sword_env_wind2_right:blendTime(300);
+stand_start_sword_env_wind2_right:loop(false);
+stand_start_sword_env_wind2_right:add("stand_start_sword_wind_back.anm");
+
+--}
+
+--{ Animation: stand_end_sword_env_wind2_right
+stand_end_sword_env_wind2_right = addState(stand, "stand_end_sword_env_wind2_right");
+stand_end_sword_env_wind2_right:from(stand_sword_env_wind2_right);
+stand_end_sword_env_wind2_right:from(run_end_sword_env_wind2_right);
+stand_end_sword_env_wind2_right:from(land_sword_env_wind2_right);
+stand_end_sword_env_wind2_right:blendTime(300);
+stand_end_sword_env_wind2_right:loop(false);
+stand_end_sword_env_wind2_right:add("stand_end_sword_wind_back.anm");
+--}
+
+stand_sword_env_wind2_right:from(land_sword_env_wind2_right);
+stand_sword_env_wind2_right:from(stand_start_sword_env_wind2_right);
+run_sword_env_wind2_right:from(land_running_sword_env_wind2_right);
+jump_fast_sword_env_wind2_right:from(land_running_sword_env_wind2_right);
+
+--}
+--}
+
+--{ Animation_set: Swim
+--{ Animation: water_float
+water_float = addState(water, "water_float");
+water_float:blendTime(300);
+water_float:loop(true);
+water_float:add("water_float.anm");
+--}
+--{ Animation: swim_start
+swim_start = addState(water+swim, "swim_start");
+swim_start:blendTime(300);
+swim_start:loop(false);
+swim_start:add(swim_direction(-180), "swim_start_left.anm");
+swim_start:add(swim_direction(-90), "swim_start_down.anm");
+swim_start:add(swim_direction(0), "swim_start_right.anm");
+swim_start:add(swim_direction(90), "swim_start_up.anm");
+swim_start:add(swim_direction(180), "swim_start_left.anm");
+--}
+--{ Animation: swimming
+swimming = addState(water+swim, "swimming");
+swimming:from(swim_start);
+swimming:blendTime(0);
+swimming:loop(true);
+swimming:add(swim_direction(-180), "swim_left.anm");
+swimming:add(swim_direction(-90), "swim_down.anm");
+swimming:add(swim_direction(0), "swim_right.anm");
+swimming:add(swim_direction(90), "swim_up.anm");
+swimming:add(swim_direction(180), "swim_left.anm");
+--}
+--{ Animation: swim_end
+swim_end = addState(water, "swim_end");
+swim_end:from(swim_start);
+swim_end:from(swimming);
+swim_end:blendTime(300);
+swim_end:loop(false);
+swim_end:add(swim_direction(-180), "swim_end_left.anm");
+swim_end:add(swim_direction(-90), "swim_end_down.anm");
+swim_end:add(swim_direction(0), "swim_end_right.anm");
+swim_end:add(swim_direction(90), "swim_end_up.anm");
+swim_end:add(swim_direction(180), "swim_end_left.anm");
+--}
+--{ Animation: float_surface
+float_surface = addState(water+surface, "float_surface");
+float_surface:blendTime(300);
+float_surface:loop(true);
+float_surface:add("float_surface.anm");
+--}
+--{ Animation: swim_surface
+swim_surface = addState(water+surface+swim, "swim_surface");
+swim_surface:blendTime(300);
+swim_surface:loop(true);
+swim_surface:add(swim_direction(-180), "swim_surface_left.anm");
+swim_surface:add(swim_direction(0), "swim_surface_right.anm");
+swim_surface:add(swim_direction(180), "swim_surface_left.anm");
+--}
+--}
+
+--{ Animation_set: Stagger_and_die
+--{ Animation: die_front
+die_front = addState(die, "die_front");
+die_front:blendTime(200);
+die_front:loop(false);
+die_front:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_front:add("die_front.anm");
+--}
+--{ Animation: die_back
+die_back = addState(die+back, "die_back");
+die_back:blendTime(200);
+die_back:loop(false);
+die_back:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_back:add("die_back.anm");
+--}
+--{ Animation: die_down
+die_down = addState(die+down, "die_down");
+die_down:blendTime(200);
+die_down:loop(false);
+die_down:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_down:add("die_down.anm");
+--}
+--{ Animation: die_impact
+die_impact = addState(die+impact, "die_impact");
+die_impact:blendTime(200);
+die_impact:loop(false);
+die_impact:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_impact:add("die_impact.anm");
+--}
+--{ Animation: die_impact_back
+die_impact_back = addState(die+back+impact, "die_impact_back");
+die_impact_back:blendTime(200);
+die_impact_back:loop(false);
+die_impact_back:addGlobalFinishedEvent("EventAnimCreateRagdoll");
+die_impact_back:add("die_impact_back.anm");
+--}
+--{ Animation: die_drown
+die_drown = addState(die+drown, "die_drown");
+die_drown:blendTime(2000);
+die_drown:loop(false);
+die_drown:addGlobalEnterEvent("EventAnimCreateRagdoll");
+die_drown:add("die_front.anm");
+--}
+--}
+
+--{ Slippery
+--{ Sword
+--{ Animation: run_end_slippery
+run_end_slippery = addState(stand+sword+slippery, "run_end_slippery");
+run_end_slippery:blendTime(300);
+run_end_slippery:loop(false);
+run_end_slippery:add("run_end_slippery.anm");
+--}
+
+--{ Animation: stand_slippery
+stand_slippery = addState(stand+sword+slippery, "stand_slippery");
+stand_slippery:from(run_end_slippery);
+stand_slippery:blendTime(0);
+stand_slippery:loop(true);
+stand_slippery:add("stand_slippery.anm");
+--}
+
+--{ Animation: run_start_slippery
+run_start_slippery = addState(run+sword+slippery, "run_start_slippery");
+run_start_slippery:blendTime(300);
+run_start_slippery:loop(false);
+run_start_slippery:add("run_start_slippery.anm");
+--}
+
+--{ Animation: run_start_turning_slippery
+run_start_turning_slippery = addState(run+turn+sword+slippery, "run_start_turning_slippery");
+run_start_turning_slippery:blendTime(0);
+run_start_turning_slippery:loop(false);
+run_start_turning_slippery:add("run_start_turning_slippery.anm");
+--}
+
+--{ Animation: run_slippery
+run_slippery = addState(run+sword+slippery, "run_slippery");
+run_slippery:from(run_start_slippery);
+run_slippery:from(run_start_turning_slippery);
+run_slippery:blendTime(0);
+run_slippery:loop(true);
+run_slippery:add("run_slippery.anm");
+--}
+
+--{ Animation: jump_slippery
+jump_slippery = addState(jump+sword+slippery, "jump_slippery");
+jump_slippery:blendTime(200);
+jump_slippery:loop(false);
+jump_slippery:add("jump_slippery.anm");
+--}
+
+--{ Animation: jump_fast_slippery
+jump_fast_slippery = addState(jump+sword+slippery, "jump_fast_slippery");
+-- Hack for lacking fast jump support
+jump_fast_slippery:from(run_slippery);
+jump_fast_slippery:from(run_start_slippery);
+jump_fast_slippery:from(run_start_turning_slippery);
+jump_fast_slippery:blendTime(200);
+jump_fast_slippery:loop(false);
+jump_fast_slippery:add("jump_fast_slippery.anm");
+--}
+
+--{ Animation: drop_start_slippery
+drop_start_slippery = addState(fall+sword+slippery, "drop_start_slippery");
+drop_start_slippery:from(jump_slippery);
+drop_start_slippery:blendTime(200);
+drop_start_slippery:loop(false);
+drop_start_slippery:add("drop_start_slippery.anm");
+--}
+
+--{ Animation: drop_slippery
+drop_slippery = addState(fall+sword+slippery, "drop_slippery");
+drop_slippery:blendTime(300);
+drop_slippery:delay(100);
+drop_slippery:loop(true);
+drop_slippery:add("drop_slippery.anm");
+--}
+
+--{ Animation: drop_fast_start_slippery
+drop_fast_start_slippery = addState(fall+fast+sword+slippery, "drop_fast_start_slippery");
+drop_fast_start_slippery:from(jump_fast_slippery);
+drop_fast_start_slippery:from(jump_slippery);
+drop_fast_start_slippery:blendTime(200);
+drop_fast_start_slippery:loop(false);
+drop_fast_start_slippery:add("drop_fast_start_slippery.anm");
+--}
+
+--{ Animation: drop_fast_slippery
+drop_fast_slippery = addState(fall+fast+sword+slippery, "drop_fast_slippery");
+drop_fast_slippery:blendTime(300);
+drop_fast_slippery:loop(true);
+drop_fast_slippery:delay(100);
+drop_fast_slippery:add("drop_fast_slippery.anm");
+--}
+
+--{ Animation: drop_fast_start_turning_slippery
+drop_fast_start_turning_slippery = addState(jump+turn+sword+slippery, "drop_fast_start_turning_slippery");
+drop_fast_start_turning_slippery:blendTime(0);
+drop_fast_start_turning_slippery:loop(false);
+drop_fast_start_turning_slippery:add("drop_fast_start_turning_slippery.anm");
+--}
+
+--{ Animation: land_slippery
+land_slippery = addState(stand+sword+slippery, "land_slippery");
+land_slippery:from(jump_slippery);
+land_slippery:from(drop_start_slippery);
+land_slippery:from(drop_slippery);
+land_slippery:from(jump_fast_slippery);
+land_slippery:from(drop_fast_start_slippery);
+land_slippery:from(drop_fast_slippery);
+land_slippery:from(drop_fast_start_turning_slippery);
+land_slippery:blendTime(200);
+land_slippery:loop(false);
+land_slippery:add("land_slippery.anm");
+--}
+
+--{ Animation: land_running_slippery
+land_running_slippery = addState(run+sword+slippery, "land_running_slippery");
+land_running_slippery:from(jump_slippery);
+land_running_slippery:from(drop_start_slippery);
+land_running_slippery:from(drop_slippery);
+land_running_slippery:from(jump_fast_slippery);
+land_running_slippery:from(drop_fast_start_slippery);
+land_running_slippery:from(drop_fast_slippery);
+land_running_slippery:from(drop_fast_start_turning_slippery);
+land_running_slippery:blendTime(200);
+land_running_slippery:loop(false);
+land_running_slippery:add("land_running_slippery.anm");
+--}
+
+
+
+stand_slippery:from(land_slippery);
+run_slippery:from(land_running_slippery);
+jump_fast_slippery:from(land_running_slippery);
+
+--}
+--{ Hammer
+--{ Animation_hammer: run_end_slippery
+run_end_slippery_hammer = addState(stand+hammer+slippery, "run_end_slippery_hammer");
+run_end_slippery_hammer:blendTime(300);
+run_end_slippery_hammer:loop(false);
+run_end_slippery_hammer:add("run_end_slippery.anm");
+--}
+
+--{ Animation_hammer: stand_slippery
+stand_slippery_hammer = addState(stand+hammer+slippery, "stand_slippery_hammer");
+stand_slippery_hammer:from(run_end_slippery_hammer);
+stand_slippery_hammer:blendTime(0);
+stand_slippery_hammer:loop(true);
+stand_slippery_hammer:add("stand_slippery.anm");
+--}
+
+--{ Animation_hammer: run_start_slippery
+run_start_slippery_hammer = addState(run+hammer+slippery, "run_start_slippery_hammer");
+run_start_slippery_hammer:blendTime(300);
+run_start_slippery_hammer:loop(false);
+run_start_slippery_hammer:add("run_start_slippery.anm");
+--}
+
+--{ Animation_hammer: run_start_turning_slippery
+run_start_turning_slippery_hammer = addState(run+turn+hammer+slippery, "run_start_turning_slippery_hammer");
+run_start_turning_slippery_hammer:blendTime(0);
+run_start_turning_slippery_hammer:loop(false);
+run_start_turning_slippery_hammer:add("run_start_turning_slippery.anm");
+--}
+
+--{ Animation_hammer: run_slippery
+run_slippery_hammer = addState(run+hammer+slippery, "run_slippery_hammer");
+run_slippery_hammer:from(run_start_slippery_hammer);
+run_slippery_hammer:from(run_start_turning_slippery_hammer);
+run_slippery_hammer:blendTime(0);
+run_slippery_hammer:loop(true);
+run_slippery_hammer:add("run_slippery.anm");
+--}
+
+--{ Animation_hammer: jump_slippery
+jump_slippery_hammer = addState(jump+hammer+slippery, "jump_slippery_hammer");
+jump_slippery_hammer:blendTime(200);
+jump_slippery_hammer:loop(false);
+jump_slippery_hammer:add("jump_slippery.anm");
+--}
+
+--{ Animation_hammer: jump_fast_slippery
+jump_fast_slippery_hammer = addState(jump+hammer+slippery, "jump_fast_slippery_hammer");
+-- Hack for lacking fast jump support
+jump_fast_slippery_hammer:from(run_slippery_hammer);
+jump_fast_slippery_hammer:from(run_start_slippery_hammer);
+jump_fast_slippery_hammer:from(run_start_turning_slippery_hammer);
+jump_fast_slippery_hammer:blendTime(200);
+jump_fast_slippery_hammer:loop(false);
+jump_fast_slippery_hammer:add("jump_fast_slippery.anm");
+--}
+
+--{ Animation_hammer: drop_start_slippery
+drop_start_slippery_hammer = addState(fall+hammer+slippery, "drop_start_slippery_hammer");
+drop_start_slippery_hammer:from(jump_slippery_hammer);
+drop_start_slippery_hammer:blendTime(200);
+drop_start_slippery_hammer:loop(false);
+drop_start_slippery_hammer:add("drop_start_slippery.anm");
+--}
+
+--{ Animation_hammer: drop_slippery
+drop_slippery_hammer = addState(fall+hammer+slippery, "drop_slippery_hammer");
+drop_slippery_hammer:blendTime(300);
+drop_slippery_hammer:delay(100);
+drop_slippery_hammer:loop(true);
+drop_slippery_hammer:add("drop_slippery.anm");
+--}
+
+--{ Animation_hammer: drop_fast_start_slippery
+drop_fast_start_slippery_hammer = addState(fall+fast+hammer+slippery, "drop_fast_start_slippery_hammer");
+drop_fast_start_slippery_hammer:from(jump_fast_slippery_hammer);
+drop_fast_start_slippery_hammer:from(jump_slippery_hammer);
+drop_fast_start_slippery_hammer:blendTime(200);
+drop_fast_start_slippery_hammer:loop(false);
+drop_fast_start_slippery_hammer:add("drop_fast_start_slippery.anm");
+--}
+
+--{ Animation_hammer: drop_fast_slippery
+drop_fast_slippery_hammer = addState(fall+fast+hammer+slippery, "drop_fast_slippery_hammer");
+drop_fast_slippery_hammer:blendTime(300);
+drop_fast_slippery_hammer:loop(true);
+drop_fast_slippery_hammer:delay(100);
+drop_fast_slippery_hammer:add("drop_fast_slippery.anm");
+--}
+
+--{ Animation_hammer: drop_fast_start_turning_slippery
+drop_fast_start_turning_slippery_hammer = addState(jump+turn+hammer+slippery, "drop_fast_start_turning_slippery_hammer");
+drop_fast_start_turning_slippery_hammer:blendTime(0);
+drop_fast_start_turning_slippery_hammer:loop(false);
+drop_fast_start_turning_slippery_hammer:add("drop_fast_start_turning_slippery.anm");
+--}
+
+--{ Animation_hammer: land_slippery
+land_slippery_hammer = addState(stand+hammer+slippery, "land_slippery_hammer");
+land_slippery_hammer:from(jump_slippery_hammer);
+land_slippery_hammer:from(drop_start_slippery_hammer);
+land_slippery_hammer:from(drop_slippery_hammer);
+land_slippery_hammer:from(jump_fast_slippery_hammer);
+land_slippery_hammer:from(drop_fast_start_slippery_hammer);
+land_slippery_hammer:from(drop_fast_slippery_hammer);
+land_slippery_hammer:from(drop_fast_start_turning_slippery_hammer);
+land_slippery_hammer:blendTime(200);
+land_slippery_hammer:loop(false);
+land_slippery_hammer:add("land_slippery.anm");
+--}
+
+--{ Animation_hammer: land_running_slippery
+land_running_slippery_hammer = addState(run+hammer+slippery, "land_running_slippery_hammer");
+land_running_slippery_hammer:from(jump_slippery_hammer);
+land_running_slippery_hammer:from(drop_start_slippery_hammer);
+land_running_slippery_hammer:from(drop_slippery_hammer);
+land_running_slippery_hammer:from(jump_fast_slippery_hammer);
+land_running_slippery_hammer:from(drop_fast_start_slippery_hammer);
+land_running_slippery_hammer:from(drop_fast_slippery_hammer);
+land_running_slippery_hammer:from(drop_fast_start_turning_slippery_hammer);
+land_running_slippery_hammer:blendTime(200);
+land_running_slippery_hammer:loop(false);
+land_running_slippery_hammer:add("land_running_slippery.anm");
+--}
+
+
+
+stand_slippery_hammer:from(land_slippery_hammer);
+run_slippery_hammer:from(land_running_slippery_hammer);
+jump_fast_slippery_hammer:from(land_running_slippery_hammer);
+
+--}
+
+--}
+
+--{ Out of balance
+--{ Animation: stand_start_out_of_balance
+stand_start_out_of_balance = addState(stand+out_of_balance, "stand_start_out_of_balance");
+stand_start_out_of_balance:blendTime(300);
+stand_start_out_of_balance:loop(false);
+stand_start_out_of_balance:add(slope(-1.0), "stand_start_out_of_balance_downhill.anm");
+stand_start_out_of_balance:add(slope(0.0), "stand_start_out_of_balance.anm");
+stand_start_out_of_balance:add(slope(1.0), "stand_start_out_of_balance_uphill.anm");
+--}
+--{ Animation: stand_out_of_balance
+stand_out_of_balance = addState(stand+out_of_balance, "stand_out_of_balance");
+stand_out_of_balance:blendTime(00);
+stand_out_of_balance:from(stand_start_out_of_balance);
+stand_out_of_balance:loop(true);
+stand_out_of_balance:add(slope(-1.0), "stand_out_of_balance_downhill.anm");
+stand_out_of_balance:add(slope(0.0), "stand_out_of_balance.anm");
+stand_out_of_balance:add(slope(1.0), "stand_out_of_balance_uphill.anm");
+--}
+--}
+--{ Out of balance2
+--{ Animation: stand_start_out_of_balance2
+stand_start_out_of_balance2 = addState(stand+out_of_balance2, "stand_start_out_of_balance2");
+stand_start_out_of_balance2:blendTime(300);
+stand_start_out_of_balance2:loop(false);
+stand_start_out_of_balance2:add(slope(-1.0), "stand_start_out_of_balance_downhill.anm");
+stand_start_out_of_balance2:add(slope(0.0), "stand_start_out_of_balance.anm");
+stand_start_out_of_balance2:add(slope(1.0), "stand_start_out_of_balance_uphill.anm");
+--}
+--{ Animation: stand_out_of_balance2
+stand_out_of_balance2 = addState(stand+out_of_balance2, "stand_out_of_balance2");
+stand_out_of_balance2:blendTime(00);
+stand_out_of_balance2:from(stand_start_out_of_balance2);
+stand_out_of_balance2:loop(true);
+stand_out_of_balance2:add(slope(-1.0), "stand_out_of_balance_downhill.anm");
+stand_out_of_balance2:add(slope(0.0), "stand_out_of_balance.anm");
+stand_out_of_balance2:add(slope(1.0), "stand_out_of_balance_uphill.anm");
+--}
+--}
+
+--{ Interaction
+--{ Stagger
+--{ Animation: stagger_sword
+stagger_sword = addState(stand+stagger, "stagger_sword");
+stagger_sword:blendTime(50);
+stagger_sword:loop(false);
+stagger_sword:add("stagger_sword.anm");
+--}
+stand_sword:from(stagger_sword);
+--{ Animation: stagger_hammer
+stagger_hammer = addState(stand+stagger+hammer, "stagger_hammer");
+stagger_hammer:blendTime(50);
+stagger_hammer:loop(false);
+stagger_hammer:add("stagger_hammer.anm");
+--}
+--}
+--{ Push
+--{ Animation: push_start_sword
+push_start_sword = addState(push+run, "push_start_sword");
+push_start_sword:blendTime(300);
+push_start_sword:loop(false);
+push_start_sword:add("push_start_sword.anm");
+--}
+--{ Animation: push_sword
+push_sword = addState(push+run, "push_sword");
+push_sword:from(push_start_sword);
+push_sword:blendTime(0);
+push_sword:loop(true);
+push_sword:add(speed(0.0), 0.75, "push_sword.anm");
+push_sword:add(speed(0.546675), 0.75, "push_sword.anm");
+push_sword:add(speed(0.7289), 1, "push_sword.anm");
+--}
+--}
+--{ Animation_set: Switch
+--{ Animation: switch_start
+switch_start = addState(switch, "switch_start");
+switch_start:blendTime(300);
+switch_start:loop(false);
+switch_start:add(switch_angle(-45), "switch_start_left.anm");
+switch_start:add(switch_angle(0), "switch_start_up.anm");
+switch_start:add(switch_angle(45), "switch_start_right.anm");
+--}
+--{ Animation: switch_turn_right
+switch_turn_right = addState(switch+turn_right, "switch_turn_right");
+switch_turn_right:blendTime(200);
+switch_turn_right:loop(false);
+switch_turn_right:add(switch_angle(-45), "switch_turn_right_left.anm");
+switch_turn_right:add(switch_angle(0), "switch_turn_right_up.anm");
+switch_turn_right:add(switch_angle(22.5), "switch_turn_right_right_up.anm");
+switch_turn_right:add(switch_angle(45), "switch_turn_right_right.anm");
+--}
+--{ Animation: switch_turn_left
+switch_turn_left = addState(switch+turn_left, "switch_turn_left");
+switch_turn_left:blendTime(200);
+switch_turn_left:loop(false);
+switch_turn_left:add(switch_angle(-45), "switch_turn_left_left.anm");
+switch_turn_left:add(switch_angle(0), "switch_turn_left_up.anm");
+switch_turn_left:add(switch_angle(22.5), "switch_turn_left_right_up.anm");
+switch_turn_left:add(switch_angle(45), "switch_turn_left_right.anm");
+--}
+--{ Animation: switch_idle
+switch_idle = addState(switch, "switch_idle");
+switch_idle:from(switch_turn_left);
+switch_idle:from(switch_turn_right);
+switch_idle:from(switch_start);
+switch_idle:blendTime(400);
+switch_idle:loop(true);
+switch_idle:add(switch_angle(-45), "switch_idle_left.anm");
+switch_idle:add(switch_angle(0), "switch_idle_up.anm");
+switch_idle:add(switch_angle(45), "switch_idle_right.anm");
+--}
+
+--}
+--{ Animation_set: Scared
+--{ Animation: run_end_scared
+run_end_scared_sword = addState(scared+stand, "run_end_scared_sword");
+run_end_scared_sword:blendTime(300);
+run_end_scared_sword:loop(false);
+run_end_scared_sword:add(scared_direction(-2), "run_end_scared_sword_back.anm");
+-- run_end_scared_sword:add(scared_direction(-1.5), "run_end_scared_sword_down_45.anm");
+run_end_scared_sword:add(scared_direction(-0.5), "run_end_scared_sword_up_45.anm");
+run_end_scared_sword:add(scared_direction(0), "run_end_scared_sword.anm");
+run_end_scared_sword:add(scared_direction(0.5), "run_end_scared_sword_down_45.anm");
+-- run_end_scared_sword:add(scared_direction(1.0), "run_end_scared_sword_up.anm");
+-- run_end_scared_sword:add(scared_direction(1.5), "run_end_scared_sword_up_45.anm");
+run_end_scared_sword:add(scared_direction(2), "run_end_scared_sword_back.anm");
+--}
+--{ Animation: run_start_scared_sword
+run_start_scared_sword = addState(scared+run+sword, "run_start_scared_sword");
+run_start_scared_sword:blendTime(300);
+run_start_scared_sword:loop(false);
+run_start_scared_sword:add(scared_direction(-2), "run_start_scared_sword_back.anm");
+-- run_start_scared_sword:add(scared_direction(-1.5), "run_start_scared_sword_down_45.anm");
+run_start_scared_sword:add(scared_direction(-0.5), "run_start_scared_sword_up_45.anm");
+run_start_scared_sword:add(scared_direction(0), "run_start_scared_sword.anm");
+run_start_scared_sword:add(scared_direction(0.5), "run_start_scared_sword_down_45.anm");
+-- run_start_scared_sword:add(scared_direction(1.0), "run_start_scared_sword_up.anm");
+-- run_start_scared_sword:add(scared_direction(1.5), "run_start_scared_sword_up_45.anm");
+run_start_scared_sword:add(scared_direction(2), "run_start_scared_sword_back.anm");
+--}
+--{ Animation: run_start3_scared_sword
+-- run_start3_scared_sword = addState(scared+run, "run_start3_scared_sword");
+-- run_start3_scared_sword:blendTime(400);
+-- run_start3_scared_sword:loop(false);
+-- run_start3_scared_sword:synchronizedStartTime();
+-- run_start3_scared_sword:add(scared_direction(-2), "run_start_scared_sword.anm");
+-- run_start3_scared_sword:add(scared_direction(-1.5), "run_start_scared_sword_down_45.anm");
+-- run_start3_scared_sword:add(scared_direction(-0.5), "run_start_scared_sword_down_45.anm");
+-- run_start3_scared_sword:add(scared_direction(0), "run_start_scared_sword.anm");
+-- run_start3_scared_sword:add(scared_direction(0.5), "run_start_scared_sword_up_45.anm");
+-- run_start3_scared_sword:add(scared_direction(1.0), "run_start_scared_sword_up.anm");
+-- run_start3_scared_sword:add(scared_direction(1.5), "run_start_scared_sword_up_45.anm");
+-- run_start3_scared_sword:add(scared_direction(2), "run_start_scared_sword.anm");
+--}
+--{ Animation: run_start_turning_scared_sword
+run_start_turning_scared_sword = addState(scared+run+turn, "run_start_turning_scared_sword");
+run_start_turning_scared_sword:blendTime(0);
+run_start_turning_scared_sword:loop(false);
+run_start_turning_scared_sword:add(scared_direction(-2), "run_start_turning_scared_sword_back.anm");
+-- run_start_turning_scared_sword:add(scared_direction(-1.5), "run_start_turning_scared_sword_down_45.anm");
+run_start_turning_scared_sword:add(scared_direction(-0.5), "run_start_turning_scared_sword_up_45.anm");
+run_start_turning_scared_sword:add(scared_direction(0), "run_start_turning_scared_sword.anm");
+run_start_turning_scared_sword:add(scared_direction(0.5), "run_start_turning_scared_sword_down_45.anm");
+-- run_start_turning_scared_sword:add(scared_direction(1.0), "run_start_turning_scared_sword_up.anm");
+-- run_start_turning_scared_sword:add(scared_direction(1.5), "run_start_turning_scared_sword_up_45.anm");
+run_start_turning_scared_sword:add(scared_direction(2), "run_start_turning_scared_sword_back.anm");
+--}
+--{ Animation: run_start2_scared_sword
+-- run_start2_scared_sword = addState(scared+run, "run_start2_scared_sword");
+-- run_start2_scared_sword:from(run_idle);
+-- run_start2_scared_sword:blendTime(400);
+-- run_start2_scared_sword:synchronizedStartTime();
+-- run_start2_scared_sword:loop(true);
+-- run_start2_scared_sword:add(scared_direction(-2), "run_scared_sword.anm");
+-- run_start2_scared_sword:add(scared_direction(-1.5), "run_scared_sword_down_45.anm");
+-- run_start2_scared_sword:add(scared_direction(-0.5), "run_scared_sword_down_45.anm");
+-- run_start2_scared_sword:add(scared_direction(0), "run_scared_sword.anm");
+-- run_start2_scared_sword:add(scared_direction(0.5), "run_scared_sword_up_45.anm");
+-- run_start2_scared_sword:add(scared_direction(1.0), "run_scared_sword_up.anm");
+-- run_start2_scared_sword:add(scared_direction(1.5), "run_scared_sword_up_45.anm");
+-- run_start2_scared_sword:add(scared_direction(2), "run_scared_sword.anm");
+--}
+--{ Animation: run_scared_sword
+run_scared_sword = addState(scared+run+sword, "run_scared_sword");
+run_scared_sword:from(run_start_scared_sword);
+-- run_scared_sword:from(run_start2_scared_sword);
+-- run_scared_sword:from(run_start3_scared_sword);
+run_scared_sword:from(run_start_turning_scared_sword);
+run_scared_sword:blendTime(0);
+run_scared_sword:loop(true);
+run_scared_sword:add(scared_direction(-2), "run_scared_sword_back.anm");
+-- run_scared_sword:add(scared_direction(-1.5), "run_scared_sword_down_45.anm");
+run_scared_sword:add(scared_direction(-0.5), "run_scared_sword_up_45.anm");
+run_scared_sword:add(scared_direction(0), "run_scared_sword.anm");
+run_scared_sword:add(scared_direction(0.5), "run_scared_sword_down_45.anm");
+-- run_scared_sword:add(scared_direction(1.0), "run_scared_sword_up.anm");
+-- run_scared_sword:add(scared_direction(1.5), "run_scared_sword_up_45.anm");
+run_scared_sword:add(scared_direction(2), "run_scared_sword_back.anm");
+--}
+--{ Animation: land_scared_sword
+land_scared_sword = addState(scared+stand, "land_scared_sword");
+land_scared_sword:from(jump_sword);
+land_scared_sword:from(drop_start_sword);
+land_scared_sword:from(drop_sword);
+land_scared_sword:from(jump_fast_sword);
+land_scared_sword:from(drop_fast_start_sword);
+land_scared_sword:from(drop_fast_sword);
+land_scared_sword:from(drop_fast_start_turning_sword);
+-- land_scared_sword:from(drop_start_breaking_sword);
+land_scared_sword:blendTime(200);
+land_scared_sword:loop(false);
+land_scared_sword:add(scared_direction(-2), "land_scared_sword_back.anm");
+-- land_scared_sword:add(scared_direction(-1.5), "land_scared_sword_down_45.anm");
+land_scared_sword:add(scared_direction(-0.5), "land_scared_sword_up_45.anm");
+land_scared_sword:add(scared_direction(0), "land_scared_sword.anm");
+land_scared_sword:add(scared_direction(0.5), "land_scared_sword_down_45.anm");
+-- land_scared_sword:add(scared_direction(1.0), "land_scared_sword_up.anm");
+-- land_scared_sword:add(scared_direction(1.5), "land_scared_sword_up_45.anm");
+land_scared_sword:add(scared_direction(2), "land_scared_sword_back.anm");
+--}
+--{ Animation: land_running_scared_sword
+land_running_scared_sword = addState(scared+run, "land_running_scared_sword");
+land_running_scared_sword:from(jump_sword);
+land_running_scared_sword:from(drop_start_sword);
+land_running_scared_sword:from(drop_sword);
+land_running_scared_sword:from(jump_fast_sword);
+land_running_scared_sword:from(drop_fast_start_sword);
+land_running_scared_sword:from(drop_fast_sword);
+land_running_scared_sword:from(drop_fast_start_turning_sword);
+-- land_running_scared_sword:from(drop_start_breaking_sword);
+land_running_scared_sword:blendTime(200);
+land_running_scared_sword:loop(false);
+land_running_scared_sword:add(scared_direction(-2), "land_running_scared_sword_back.anm");
+-- land_running_scared_sword:add(scared_direction(-1.5), "land_running_scared_sword_down_45.anm");
+land_running_scared_sword:add(scared_direction(-0.5), "land_running_scared_sword_up_45.anm");
+land_running_scared_sword:add(scared_direction(0), "land_running_scared_sword.anm");
+land_running_scared_sword:add(scared_direction(0.5), "land_running_scared_sword_down_45.anm");
+-- land_running_scared_sword:add(scared_direction(1.0), "land_running_scared_sword_up.anm");
+-- land_running_scared_sword:add(scared_direction(1.5), "land_running_scared_sword_up_45.anm");
+land_running_scared_sword:add(scared_direction(2), "land_running_scared_sword_back.anm");
+--}
+--{ Animation: stand_start_scared_sword
+-- stand_start_scared_sword = addState(stand+scared, "stand_start_scared_sword");
+-- stand_start_scared_sword:blendTime(300);
+-- stand_start_scared_sword:loop(false);
+-- stand_start_scared_sword:add(scared_direction(-2), "stand_start_scared_sword.anm");
+-- stand_start_scared_sword:add(scared_direction(-1.5), "stand_start_scared_sword_down_45.anm");
+-- stand_start_scared_sword:add(scared_direction(-0.5), "stand_start_scared_sword_down_45.anm");
+-- stand_start_scared_sword:add(scared_direction(0), "stand_start_scared_sword.anm");
+-- stand_start_scared_sword:add(scared_direction(0.5), "stand_start_scared_sword_up_45.anm");
+-- stand_start_scared_sword:add(scared_direction(1.0), "stand_start_scared_sword_up.anm");
+-- stand_start_scared_sword:add(scared_direction(1.5), "stand_start_scared_sword_up_45.anm");
+-- stand_start_scared_sword:add(scared_direction(2), "stand_start_scared_sword.anm");
+--}
+--{ Animation: stand_scared_sword
+stand_scared_sword = addState(stand+scared, "stand_scared_sword");
+stand_scared_sword:blendTime(100);
+stand_scared_sword:from(run_end_scared_sword);
+stand_scared_sword:loop(true);
+stand_scared_sword:add(scared_direction(-2), "stand_scared_sword_back.anm");
+-- stand_scared_sword:add(scared_direction(-1.5), "stand_scared_sword_down_45.anm");
+stand_scared_sword:add(scared_direction(-0.5), "stand_scared_sword_up_45.anm");
+stand_scared_sword:add(scared_direction(0), "stand_scared_sword.anm");
+stand_scared_sword:add(scared_direction(0.5), "stand_scared_sword_down_45.anm");
+-- stand_scared_sword:add(scared_direction(1.0), "stand_scared_sword_up.anm");
+-- stand_scared_sword:add(scared_direction(1.5), "stand_scared_sword_up_45.anm");
+stand_scared_sword:add(scared_direction(2), "stand_scared_sword_back.anm");
+--}
+--{ Animation: stand_end_scared_sword
+-- stand_end_scared_sword = addState(stand, "stand_end_scared_sword");
+-- stand_end_scared_sword:from(stand_scared_sword);
+-- stand_end_scared_sword:from(stand_start_scared_sword);
+-- stand_end_scared_sword:blendTime(300);
+-- stand_end_scared_sword:loop(false);
+-- stand_end_scared_sword:add(scared_direction(-2), "stand_end_scared_sword.anm");
+-- stand_end_scared_sword:add(scared_direction(-1.5), "stand_end_scared_sword_down_45.anm");
+-- stand_end_scared_sword:add(scared_direction(-0.5), "stand_end_scared_sword_down_45.anm");
+-- stand_end_scared_sword:add(scared_direction(0), "stand_end_scared_sword.anm");
+-- stand_end_scared_sword:add(scared_direction(0.5), "stand_end_scared_sword_up_45.anm");
+-- stand_end_scared_sword:add(scared_direction(1.0), "stand_end_scared_sword_up.anm");
+-- stand_end_scared_sword:add(scared_direction(1.5), "stand_end_scared_sword_up_45.anm");
+-- stand_end_scared_sword:add(scared_direction(2), "stand_end_scared_sword.anm");
+--}
+-- stand_scared_sword:from(land_scared_sword);
+-- stand_scared_sword:from(run_end_scared_sword);
+-- run_scared_sword:from(land_running_scared_sword);
+-- stand_idle:from(stand_end_scared_sword);
+
+
+
+--{ Animation: stand_start_scared_sword
+-- stand_start_scared_sword = addState(stand+scared, "stand_start_scared_sword");
+-- stand_start_scared_sword:blendTime(200);
+-- stand_start_scared_sword:loop(false);
+-- stand_start_scared_sword:add(scared_direction(-2.0), "stand_start_scared_sword_back.anm");
+-- stand_start_scared_sword:add(scared_direction(-0.5), "stand_start_scared_sword_up_45.anm");
+-- stand_start_scared_sword:add(scared_direction(0.0), "stand_start_scared_sword.anm");
+-- stand_start_scared_sword:add(scared_direction(2.0), "stand_start_scared_sword_back.anm");
+--}
+--}
+
+--{ Animation: attack_jump_land_scared_sword
+attack_jump_land_scared_sword = addState(stand+scared, "attack_jump_land_scared_sword");
+attack_jump_land_scared_sword:from(attack_jump_sword);
+attack_jump_land_scared_sword:blendTime(100);
+attack_jump_land_scared_sword:loop(false);
+attack_jump_land_scared_sword:add("attack_jump_land_sword.anm");
+--}
+--{ Animation: attack_jump_land_running_scared_sword
+attack_jump_land_running_scared_sword = addState(run+scared+sword+fast, "attack_jump_land_running_scared_sword");
+attack_jump_land_running_scared_sword:from(attack_jump_sword);
+attack_jump_land_running_scared_sword:blendTime(100);
+attack_jump_land_running_scared_sword:loop(false);
+attack_jump_land_running_scared_sword:add("attack_jump_land_running_sword.anm");
+--}
+
+--{ Animation_set: pushed
+--{ Animation: stand_pushed_back_sword
+stand_pushed_back_sword = addState(stand+pushed_back, "stand_pushed_back_sword");
+stand_pushed_back_sword:blendTime(300);
+stand_pushed_back_sword:loop(false);
+stand_pushed_back_sword:add("stand_pushed_back_sword.anm");
+--}
+--{ Animation: stand_end_pushed_back_sword
+stand_end_pushed_back_sword = addState(stand, "stand_end_pushed_back_sword");
+stand_end_pushed_back_sword:from(stand_pushed_back_sword);
+stand_end_pushed_back_sword:blendTime(300);
+stand_end_pushed_back_sword:loop(false);
+stand_end_pushed_back_sword:add("stand_end_pushed_back_sword.anm");
+--}
+--{ Animation: stand_pushed_up_sword
+stand_pushed_up_sword = addState(stand+pushed_up, "stand_pushed_up_sword");
+stand_pushed_up_sword:blendTime(100);
+stand_pushed_up_sword:loop(false);
+stand_pushed_up_sword:add("stand_pushed_up_sword.anm");
+--}
+--{ Animation: stand_end_pushed_up_sword
+-- stand_end_pushed_up_sword = addState(stand, "stand_end_pushed_up_sword");
+-- stand_end_pushed_up_sword:from(stand_pushed_up_sword);
+-- stand_end_pushed_up_sword:blendTime(300);
+-- stand_end_pushed_up_sword:loop(false);
+-- stand_end_pushed_up_sword:add("stand_end_pushed_up_sword.anm");
+--}
+--{ Animation: stand_pushed_front_sword
+stand_pushed_front_sword = addState(stand+pushed_front, "stand_pushed_front_sword");
+stand_pushed_front_sword:blendTime(300);
+stand_pushed_front_sword:loop(false);
+stand_pushed_front_sword:add("stand_pushed_front_sword.anm");
+--}
+--}
+-----------------------------------------------------
+-- Pulling lever
+--{ Animation: trampoline1
+trampoline1 = addState(trampoline, "trampoline1");
+trampoline1:blendTime(150);
+trampoline1:loop(false);
+trampoline1:restart(true);
+trampoline1:add("trampoline1.anm");
+--}
+--{ Animation: trampoline_turning
+trampoline_turning = addState(trampoline+turn, "trampoline_turning");
+trampoline_turning:blendTime(200);
+trampoline_turning:loop(false);
+trampoline_turning:restart(true);
+trampoline_turning:add("drop_fast_start_turning_sword.anm");
+--}
+--{ Animation: trampoline_turning_hammer
+trampoline_turning_hammer = addState(trampoline+turn+hammer, "trampoline_turning_hammer");
+trampoline_turning_hammer:blendTime(200);
+trampoline_turning_hammer:loop(false);
+trampoline_turning_hammer:restart(true);
+trampoline_turning_hammer:add("drop_fast_start_turning_hammer.anm");
+--}
+land_sword:from(trampoline1);
+land_running_sword:from(trampoline1);
+land_hammer:from(trampoline1);
+land_running_hammer:from(trampoline1);
+land_sword:from(trampoline_turning);
+land_running_sword:from(trampoline_turning);
+land_hammer:from(trampoline_turning);
+land_running_hammer:from(trampoline_turning);
+land_sword:from(trampoline_turning_hammer);
+land_running_sword:from(trampoline_turning_hammer);
+land_hammer:from(trampoline_turning_hammer);
+land_running_hammer:from(trampoline_turning_hammer);
+--{ Animation: trampoline2
+-- trampoline2 = addState(trampoline, "trampoline2");
+-- trampoline2:blendTime(150);
+-- trampoline2:loop(false);
+-- trampoline2:add("trampoline2.anm");
+--}
+
+--{ Animation: jump_trampoline_blocking
+jump_trampoline_blocking = addState(trampoline+block, "jump_trampoline_blocking");
+jump_trampoline_blocking:blendTime(300);
+jump_trampoline_blocking:loop(false);
+jump_trampoline_blocking:add(aim(90 * -1.0), "jump_blocking_down.anm");
+jump_trampoline_blocking:add(aim(90 * -0.5), "jump_blocking_down.anm");
+jump_trampoline_blocking:add(aim(90 * 0.0), "jump_blocking.anm");
+jump_trampoline_blocking:add(aim(90 * 1.0), "jump_blocking_up.anm");
+--}
+
+--{ Animation: trampoline_blocking
+trampoline_blocking = addState(trampoline+block, "trampoline_blocking");
+trampoline_blocking:from(jump_trampoline_blocking);
+trampoline_blocking:blendTime(0);
+-- trampoline_blocking:delay(50);
+trampoline_blocking:loop(true);
+trampoline_blocking:add(aim(90 * -1.0), "drop_blocking_down.anm");
+trampoline_blocking:add(aim(90 * -0.5), "drop_blocking_down.anm");
+trampoline_blocking:add(aim(90 * 0.0), "drop_blocking.anm");
+trampoline_blocking:add(aim(90 * 1.0), "drop_blocking_up.anm");
+--}
+
+
+--{ Animation: land_running_trampoline_sword
+-- land_running_trampoline_sword = addState(run+sword+fast, "land_running_trampoline_sword");
+-- land_running_trampoline_sword:from(trampoline1);
+-- land_running_trampoline_sword:blendTime(100);
+-- land_running_trampoline_sword:loop(false);
+-- land_running_trampoline_sword:add("land_running_trampoline_sword.anm");
+--}
+--{ Animation: land_running_trampoline2_sword
+-- land_running_trampoline2_sword = addState(run+sword+fast, "land_running_trampoline2_sword");
+-- land_running_trampoline2_sword:from(trampoline2);
+-- land_running_trampoline2_sword:blendTime(100);
+-- land_running_trampoline2_sword:loop(false);
+-- land_running_trampoline2_sword:add("land_running_trampoline2_sword.anm");
+--}
+pulling_lever = addState(pull_lever, "pulling_lever");
+pulling_lever:blendTime(300);
+pulling_lever:add("lever_pull.anm");
+
+-----------------------------------------------------
+-- N/A--}
+
+
+--}
+
+--{ Animation_set: Cutscene: Amadeus meets Pontius
+--{ Animation: trine_exit
+trine_exit = addState(trine_exiting, "trine_exit");
+trine_exit:blendTime(000);
+trine_exit:loop(false);
+trine_exit:add("trine_exit.anm");
+--}
+--{ Animation: your_magics_are
+your_magics_are = addState(your_magics, "your_magics_are");
+your_magics_are:blendTime(200);
+your_magics_are:loop(false);
+your_magics_are:add("your_magics_are_needed.anm");
+--}
+--{ Animation: reaction_this_wont_do
+reaction_this_wont_do = addState(reaction_what, "reaction_this_wont_do");
+reaction_this_wont_do:blendTime(300);
+reaction_this_wont_do:loop(false);
+reaction_this_wont_do:add("reaction_this_wont_do.anm");
+--}
+--{ Animation: comforting
+comforting = addState(comfort, "comforting");
+comforting:blendTime(200);
+comforting:loop(false);
+comforting:add("comforting.anm");
+--}
+--}
+
+--{ Animation_set: Cutscene: Trine rescues Pontius
+--{ Animation: trine_rescue
+trine_rescue = addState(trine_rescuing, "trine_rescue");
+trine_rescue:blendTime(000);
+trine_rescue:loop(true);
+trine_rescue:add("trine_rescue.anm");
+--}
+--{ Animation: down
+down = addState(hidden, "down");
+down:blendTime(300);
+down:loop(false);
+down:add("down.anm");
+--}
+--}
+
+--{ Animation_set: Cutscene: Meet zoya
+--{ Animation: meet_zoya_start
+meet_zoya_start = addState(meet_zoya, "meet_zoya_start");
+meet_zoya_start:blendTime(0);
+meet_zoya_start:loop(false);
+meet_zoya_start:add("meet_zoya_start.anm");
+--}
+--{ Animation: meet_zoya_loop
+meet_zoya_loop = addState(stand, "meet_zoya_loop");
+meet_zoya_loop:from(meet_zoya_start);
+meet_zoya_loop:blendTime(500);
+meet_zoya_loop:loop(true);
+meet_zoya_loop:add("stand_sword.anm");
+--}
+--{ Animation: s_cart_push
+s_cart_push = addState(cart_push, "s_cart_push");
+s_cart_push:blendTime(300);
+s_cart_push:loop(false);
+s_cart_push:add("cart_push.anm");
+--}
+--{ Animation: s_cart_push2
+s_cart_push2 = addState(cart_push2, "s_cart_push2");
+s_cart_push2:blendTime(300);
+s_cart_push2:loop(false);
+s_cart_push2:add("cart_push2.anm");
+--}
+--{ Animation: s_cart_push3
+s_cart_push3 = addState(cart_push3, "s_cart_push3");
+s_cart_push3:blendTime(300);
+s_cart_push3:loop(false);
+s_cart_push3:add("cart_push3.anm");
+--}
+--{ Animation: s_alarmed
+s_alarmed = addState(alarmed, "s_alarmed");
+s_alarmed:blendTime(300);
+s_alarmed:loop(false);
+s_alarmed:add("alarmed.anm");
+--}
+--{ Animation: s_sad_what_none
+s_sad_what_none = addState(sad_what_none, "s_sad_what_none");
+s_sad_what_none:blendTime(300);
+s_sad_what_none:loop(false);
+s_sad_what_none:add("sad_what_none.anm");
+--}
+--}

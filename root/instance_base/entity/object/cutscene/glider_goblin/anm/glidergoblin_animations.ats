@@ -1,0 +1,36 @@
+sheep_idle = addContext("sheep_idle", 1)
+cutscene_meet_goblin = addContext("cutscene_meet_goblin", 1)
+cutscene_flee = addContext("cutscene_flee", 0)
+glide = addContext("glide", 1)
+
+
+
+--{ Animation: s_sheep_idle
+s_sheep_idle = addState(sheep_idle, "s_sheep_idle");
+s_sheep_idle:loopBlendTime(300);
+s_sheep_idle:blendTime(0);
+s_sheep_idle:loop(true);
+s_sheep_idle:add("idle1.fbxanim");
+--}
+
+--{ Animation: s_cutscene_meet_goblin
+s_cutscene_meet_goblin = addState(cutscene_meet_goblin, "s_cutscene_meet_goblin");
+s_cutscene_meet_goblin:blendTime(200);
+s_cutscene_meet_goblin:loop(false);
+s_cutscene_meet_goblin:add("cutscene_meet_goblin.fbxanim");
+--}
+
+--{ Animation: s_cutscene_flee
+s_cutscene_flee = addState(cutscene_flee, "s_cutscene_flee");
+s_cutscene_flee:blendTime(600);
+s_cutscene_flee:loop(false);
+s_cutscene_flee:add("cutscene_meet_goblin_flee.fbxanim");
+--}
+
+--{ Animation: s_glide
+s_glide = addState(glide, "s_glide");
+--s_glide:loopBlendTime(300);
+s_glide:blendTime(300);
+s_glide:loop(true);
+s_glide:add("glide.fbxanim");
+--}

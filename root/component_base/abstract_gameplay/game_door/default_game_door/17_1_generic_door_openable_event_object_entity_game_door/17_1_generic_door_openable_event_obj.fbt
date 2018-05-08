@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_gameplay/game_door/default_game_door/default_game_door_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("17_1_generic_door_openable_event_ObjectEntityGameDoorComponent", GUID('0x6B49A559','0xAEE1454F','0x0077020A','0x00005500')); -- DefaultGameDoorComponent
+  type:setGuid(GUID('0xDCB1F411','0xE5B918FC','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setNavigationMeshObstacleRadius(1.5)
+end

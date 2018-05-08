@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_joint/joint/general_joint/general_joint/hinge_joint/x_hinge_joint_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("8_2_cs_door_openable_event_JointEntityHingeJointComponent", GUID('0x2B2B7F02','0x581B2E5F','0x0077025C','0x00005500')); -- XHingeJointComponent
+  type:setGuid(GUID('0xDBC1607E','0x6AF8211B','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setLocalPosition0(VC3(1.0369, -0.2756, -0.3048))
+  type:setLocalRotation0(QUAT(0, -1, 0, 0))
+  type:setLocalPosition1(VC3(29.973, 102.48, 57.291))
+  type:setRotationLimitLowAngle(0)
+  type:setRotationLimitHighAngle(0)
+end

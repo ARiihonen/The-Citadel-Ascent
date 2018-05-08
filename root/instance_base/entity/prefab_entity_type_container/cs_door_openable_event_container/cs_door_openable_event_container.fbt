@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/prefab_entity_type_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("cs_door_openable_eventContainer", GUID('0x69ADCCBB','0x093E0ED4','0x00770288','0x00005500')); -- PrefabEntityTypeContainer
+  type:setGuid(GUID('0x71FC3F22','0x6AF72113','0x0077024F','0x00005500'))
+  type:setAbstractType(true)
+  type:setGameAbstractType(false)
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

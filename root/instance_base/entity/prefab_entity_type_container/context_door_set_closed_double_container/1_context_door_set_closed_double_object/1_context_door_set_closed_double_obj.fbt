@@ -1,0 +1,18 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/context_door_set_closed_double_container/context_door_set_closed_double_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("1_ContextDoorSet_Closed_Double_ObjectEntity", GUID('0x7DD1D54E','0x85A63185','0x0077021C','0x00005500')); -- ContextDoorSet_Closed_DoubleContainer
+  type:setGuid(GUID('0x8C8792D9','0x85A6318D','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xE04C9467','0x85A7318F','0x0077021C','0x00005500'), "0_1_ContextDoorSet_Closed_Double_ObjectEntityWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0xE04C9467','0x85A7318F','0x0077021C','0x00005500')); -- 0_1_ContextDoorSet_Closed_Double_ObjectEntityWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xE70EBBE4','0x85A73191','0x0077021C','0x00005500'), "9_1_ContextDoorSet_Closed_Double_ObjectEntityModelComponent");
+  type:addComponentTypeGUID(GUID('0xE70EBBE4','0x85A73191','0x0077021C','0x00005500')); -- 9_1_ContextDoorSet_Closed_Double_ObjectEntityModelComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+  typeManager:setLastKnownNameForGUID(GUID('0x987D17FF','0xCEAE75D8','0x0077027A','0x00005500'), "WoodCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x987D17FF','0xCEAE75D8','0x0077027A','0x00005500')); -- WoodCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7E22036C','0x50142444','0x00770279','0x00005500'), "WoodCollisionHelperBoxPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0x7E22036C','0x50142444','0x00770279','0x00005500')); -- WoodCollisionHelperBoxPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7B493C4C','0x2D1D2440','0x00770279','0x00005500'), "WoodCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x7B493C4C','0x2D1D2440','0x00770279','0x00005500')); -- WoodCollisionHelperHittableComponent
+end

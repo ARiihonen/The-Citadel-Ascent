@@ -1,0 +1,8 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/object/castle/blockset/door_n_window_set_window_7.fbxmodel_.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4__5_generic_fortress_window_open_ObjectEntityModelComponent", GUID('0xA09F8E90','0x9365021F','0x0077022E','0x00005500')); -- door_n_window_set_window_7.fbxmodel_ModCom
+  type:setGuid(GUID('0xCBEA1723','0x406C2FA6','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setDiffuseColor(COL(0.502, 0.502, 0.502))
+end

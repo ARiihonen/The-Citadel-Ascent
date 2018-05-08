@@ -1,0 +1,447 @@
+idle = addContext("idle", 1)
+idle_b = addContext("idle_b", 1)
+idle_c = addContext("idle_c", 1)
+
+evade_idle_xp = addContext("evade_idle_xp", 1)
+evade_idle_xn = addContext("evade_idle_xn", 1)
+evade_idle_zp = addContext("evade_idle_zp", 1)
+evade_idle_zn = addContext("evade_idle_zn", 1)
+
+move_path = addContext("move_path", 1)
+move_path_b = addContext("move_path_b", 1)
+
+move_circle = addContext("move_circle", 1)
+move_circle_b = addContext("move_circle_b", 1)
+
+evade_xp = addContext("evade_xp", 1)
+evade_xn = addContext("evade_xn", 1)
+evade_zp = addContext("evade_zp", 1)
+evade_zn = addContext("evade_zn", 1)
+
+evade_c_xp = addContext("evade_c_xp", 1)
+evade_c_xn = addContext("evade_c_xn", 1)
+evade_c_zp = addContext("evade_c_zp", 1)
+evade_c_zn = addContext("evade_c_zn", 1)
+
+evade_c_return_xp = addContext("evade_c_return_xp", 1)
+evade_c_return_xn = addContext("evade_c_return_xn", 1)
+evade_c_return_zp = addContext("evade_c_return_zp", 1)
+evade_c_return_zn = addContext("evade_c_return_zn", 1)
+
+flee = addContext("flee", 1)
+flee_return = addContext("flee_return", 1)
+
+default = addContext("default", 100)
+norot = addContext("norot", 100)
+
+
+
+--{ Animation: s_evade_xp
+s_evade_xp = addState(evade_xp, "s_evade_xp");
+s_evade_xp:blendTime(0);
+s_evade_xp:restart(false);
+s_evade_xp:loopBlendTime(1500);
+s_evade_xp:loop(true);
+s_evade_xp:add("evade_xp.fbxanim");
+--} 
+
+--{ Animation: s_evade_xn
+s_evade_xn = addState(evade_xn, "s_evade_xn");
+s_evade_xn:blendTime(0);
+s_evade_xn:restart(false);
+s_evade_xn:loopBlendTime(1500);
+s_evade_xn:loop(false);
+s_evade_xn:add("evade_xn.fbxanim");
+--} 
+
+--{ Animation: s_evade_zp
+s_evade_zp = addState(evade_zp, "s_evade_zp");
+s_evade_zp:blendTime(0);
+s_evade_zp:restart(false);
+s_evade_zp:loopBlendTime(1500);
+s_evade_zp:loop(false);
+s_evade_zp:add("evade_zp.fbxanim");
+--} 
+
+--{ Animation: s_evade_zn
+s_evade_zn = addState(evade_zn, "s_evade_zn");
+s_evade_zn:blendTime(0);
+s_evade_zn:restart(false);
+s_evade_zn:loopBlendTime(1500);
+s_evade_zn:loop(false);
+s_evade_zn:add("evade_zn.fbxanim");
+--} 
+
+
+
+--{ Animation: s_evade_c_xp
+s_evade_c_xp = addState(evade_idle_xp, "s_evade_c_xp", 1);
+s_evade_c_xp:blendTime(600);
+s_evade_c_xp:restart(false);
+s_evade_c_xp:loopBlendTime(1500);
+s_evade_c_xp:loop(false);
+s_evade_c_xp:add("evade_c_xp.fbxanim");
+s_evade_c_xp:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_xp:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_idle_xp
+s_evade_c_idle_xp = addState(evade_idle_xp, "s_evade_c_idle_xp", 1);
+s_evade_c_idle_xp:from(s_evade_c_xp);
+s_evade_c_idle_xp:blendTime(1500);
+s_evade_c_idle_xp:restart(false);
+s_evade_c_idle_xp:loopBlendTime(1500);
+s_evade_c_idle_xp:loop(true);
+s_evade_c_idle_xp:add("evade_idle_xp.fbxanim");
+s_evade_c_idle_xp:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_idle_xp:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_return_xp2
+s_evade_c_return_xp2 = addState(default, "s_evade_c_return_xp2", 1);
+s_evade_c_return_xp2:from(s_evade_c_idle_xp);
+s_evade_c_return_xp2:from(s_evade_c_xp);
+s_evade_c_return_xp2:blendTime(600);
+s_evade_c_return_xp2:restart(false);
+s_evade_c_return_xp2:loopBlendTime(1500);
+s_evade_c_return_xp2:loop(false);
+s_evade_c_return_xp2:add("evade_c_xp_return.fbxanim");
+s_evade_c_return_xp2:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_return_xp2:setContextOnExit("norot", false);
+--} 
+
+
+
+--{ Animation: s_evade_c_xn
+s_evade_c_xn = addState(evade_idle_xn, "s_evade_c_xn", 1);
+s_evade_c_xn:blendTime(600);
+s_evade_c_xn:restart(false);
+s_evade_c_xn:loopBlendTime(1500);
+s_evade_c_xn:loop(false);
+s_evade_c_xn:add("evade_c_xn.fbxanim");
+s_evade_c_xn:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_xn:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_idle_xn
+s_evade_c_idle_xn = addState(evade_idle_xn, "s_evade_c_idle_xn", 1);
+s_evade_c_idle_xn:from(s_evade_c_xn);
+s_evade_c_idle_xn:blendTime(1500);
+s_evade_c_idle_xn:restart(false);
+s_evade_c_idle_xn:loopBlendTime(1500);
+s_evade_c_idle_xn:loop(true);
+s_evade_c_idle_xn:add("evade_idle_xn.fbxanim");
+s_evade_c_idle_xn:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_idle_xn:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_return_xn2
+s_evade_c_return_xn2 = addState(default, "s_evade_c_return_xn2", 1);
+s_evade_c_return_xn2:from(s_evade_c_xn);
+s_evade_c_return_xn2:blendTime(600);
+s_evade_c_return_xn2:restart(false);
+s_evade_c_return_xn2:loopBlendTime(1500);
+s_evade_c_return_xn2:loop(false);
+s_evade_c_return_xn2:add("evade_c_xn_return.fbxanim");
+s_evade_c_return_xn2:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_return_xn2:setContextOnExit("norot", false);
+--} 
+
+
+
+--{ Animation: s_evade_c_zp
+s_evade_c_zp = addState(evade_idle_zp, "s_evade_c_zp", 1);
+s_evade_c_zp:blendTime(600);
+s_evade_c_zp:restart(false);
+s_evade_c_zp:loopBlendTime(1500);
+s_evade_c_zp:loop(false);
+s_evade_c_zp:add("evade_c_zp.fbxanim");
+s_evade_c_zp:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_zp:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_idle_zp
+s_evade_c_idle_zp = addState(evade_idle_zp, "s_evade_c_idle_zp", 1);
+s_evade_c_idle_zp:from(s_evade_c_zp);
+s_evade_c_idle_zp:blendTime(1500);
+s_evade_c_idle_zp:restart(false);
+s_evade_c_idle_zp:loopBlendTime(1500);
+s_evade_c_idle_zp:loop(true);
+s_evade_c_idle_zp:add("evade_idle_zp.fbxanim");
+s_evade_c_idle_zp:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_idle_zp:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_return_zp2
+s_evade_c_return_zp2 = addState(default, "s_evade_c_return_zp2", 1);
+s_evade_c_return_zp2:from(s_evade_c_zp);
+s_evade_c_return_zp2:blendTime(600);
+s_evade_c_return_zp2:restart(false);
+s_evade_c_return_zp2:loopBlendTime(1500);
+s_evade_c_return_zp2:loop(false);
+s_evade_c_return_zp2:add("evade_c_zp_return.fbxanim");
+s_evade_c_return_zp2:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_return_zp2:setContextOnExit("norot", false);
+--} 
+
+
+
+--{ Animation: s_evade_c_zn
+s_evade_c_zn = addState(evade_idle_zn, "s_evade_c_zn", 1);
+s_evade_c_zn:blendTime(600);
+s_evade_c_zn:restart(false);
+s_evade_c_zn:loopBlendTime(1500);
+s_evade_c_zn:loop(false);
+s_evade_c_zn:add("evade_c_zn.fbxanim");
+s_evade_c_zn:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_zn:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_idle_zn
+s_evade_c_idle_zn = addState(evade_idle_zn, "s_evade_c_idle_zn", 1);
+s_evade_c_idle_zn:from(s_evade_c_zn);
+s_evade_c_idle_zn:blendTime(1500);
+s_evade_c_idle_zn:restart(false);
+s_evade_c_idle_zn:loopBlendTime(1500);
+s_evade_c_idle_zn:loop(true);
+s_evade_c_idle_zn:add("evade_idle_zn.fbxanim");
+s_evade_c_idle_zn:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_idle_zn:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_evade_c_return_zn2
+s_evade_c_return_zn2 = addState(default, "s_evade_c_return_zn2", 1);
+s_evade_c_return_zn2:from(s_evade_c_zn);
+s_evade_c_return_zn2:blendTime(600);
+s_evade_c_return_zn2:restart(false);
+s_evade_c_return_zn2:loopBlendTime(1500);
+s_evade_c_return_zn2:loop(false);
+s_evade_c_return_zn2:add("evade_c_zn_return.fbxanim");
+s_evade_c_return_zn2:addReference("evade_c_xp_base2.fbxanim");
+s_evade_c_return_zn2:setContextOnExit("norot", false);
+--} 
+
+
+
+--{ Animation: s_flee
+s_flee = addState(flee, "s_flee", 1);
+s_flee:speedFactor(0.7);
+s_flee:blendTime(600);
+s_flee:restart(false);
+s_flee:loop(false);
+s_flee:add("flee.fbxanim");
+s_flee:addReference("flee_base.fbxanim");
+s_flee:setContextOnEnter("norot", true);
+--} 
+
+--{ Animation: s_flee_return
+s_flee_return = addState(default, "s_flee_return", 1);
+s_flee_return:speedFactor(0.7);
+s_flee_return:from(s_flee);
+s_flee_return:blendTime(600);
+s_flee_return:restart(false);
+s_flee_return:loop(false);
+s_flee_return:add("flee_return.fbxanim");
+s_flee_return:addReference("flee_base.fbxanim");
+s_flee_return:setContextOnExit("norot", false);
+--}
+
+
+
+--{ Animation: s_evade_c_return_xp
+s_evade_c_return_xp = addState(evade_c_return_xp, "s_evade_c_return_xp");
+s_evade_c_return_xp:blendTime(0);
+s_evade_c_return_xp:restart(false);
+s_evade_c_return_xp:loopBlendTime(1500);
+s_evade_c_return_xp:loop(false);
+s_evade_c_return_xp:add("evade_c_xp_return.fbxanim");
+--} 
+
+--{ Animation: s_evade_c_return_xn
+s_evade_c_return_xn = addState(evade_c_return_xn, "s_evade_c_return_xn");
+s_evade_c_return_xn:blendTime(0);
+s_evade_c_return_xn:restart(false);
+s_evade_c_return_xn:loopBlendTime(1500);
+s_evade_c_return_xn:loop(false);
+s_evade_c_return_xn:add("evade_c_xn_return.fbxanim");
+--} 
+
+--{ Animation: s_evade_c_return_zp
+s_evade_c_return_zp = addState(evade_c_return_zp, "s_evade_c_return_zp");
+s_evade_c_return_zp:blendTime(0);
+s_evade_c_return_zp:restart(false);
+s_evade_c_return_zp:loopBlendTime(1500);
+s_evade_c_return_zp:loop(false);
+s_evade_c_return_zp:add("evade_c_zp_return.fbxanim");
+--} 
+
+--{ Animation: s_evade_c_return_zn
+s_evade_c_return_zn = addState(evade_c_return_zn, "s_evade_c_return_zn");
+s_evade_c_return_zn:blendTime(0);
+s_evade_c_return_zn:restart(false);
+s_evade_c_return_zn:loopBlendTime(1500);
+s_evade_c_return_zn:loop(false);
+s_evade_c_return_zn:add("evade_c_zn_return.fbxanim");
+--} 
+
+
+
+--{ Animation: s_layer1_default
+s_layer1_default = addState(default, "s_layer1_default", 1);
+s_layer1_default:blendTime(1200);
+s_layer1_default:restart(false);
+s_layer1_default:loopBlendTime(1500);
+s_layer1_default:loop(false);
+s_layer1_default:add("evade_c_xp_base2.fbxanim");
+s_layer1_default:addReference("evade_c_xp_base2.fbxanim");
+--} 
+
+
+
+--{ Animation: s_move_circle
+s_move_circle = addState(move_circle, "s_move_circle");
+s_move_circle:blendTime(0);
+s_move_circle:restart(false);
+s_move_circle:loopBlendTime(1500);
+s_move_circle:loop(true);
+s_move_circle:add("circle.fbxanim");
+--} 
+
+
+
+--{ Animation: s_move_circle_b
+s_move_circle_b = addState(move_circle_b, "s_move_circle_b");
+s_move_circle_b:blendTime(0);
+s_move_circle_b:synchronizedStartTimeGroup(1);
+s_move_circle_b:restart(false);
+s_move_circle_b:loopBlendTime(1500);
+s_move_circle_b:loop(true);
+s_move_circle_b:add("circle_b.fbxanim");
+--} 
+
+--{ Animation: s_move_circle_b_norot
+s_move_circle_b_norot = addState(move_circle_b+norot, "s_move_circle_b_norot");
+s_move_circle_b_norot:blendTime(6);
+s_move_circle_b_norot:speedFactor(0.01);
+s_move_circle_b_norot:synchronizedStartTimeGroup(1);
+s_move_circle_b_norot:restart(false);
+s_move_circle_b_norot:loopBlendTime(1500);
+s_move_circle_b_norot:loop(true);
+s_move_circle_b_norot:add("circle_b_norot.fbxanim");
+--} 
+
+
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(0);
+s_idle:synchronizedStartTimeGroup(1);
+s_idle:restart(false);
+s_idle:loopBlendTime(1500);
+s_idle:loop(true);
+s_idle:add("idle.fbxanim");
+--} 
+
+--{ Animation: s_idle_norot
+s_idle_norot = addState(idle+norot, "s_idle_norot");
+s_idle_norot:blendTime(6);
+s_idle_norot:speedFactor(0.01);
+s_idle_norot:synchronizedStartTimeGroup(1);
+s_idle_norot:restart(false);
+s_idle_norot:loopBlendTime(1500);
+s_idle_norot:loop(true);
+s_idle_norot:add("idle_norot.fbxanim");
+--} 
+
+
+
+--{ Animation: s_idle_b
+s_idle_b = addState(idle_b, "s_idle_b");
+s_idle_b:blendTime(0);
+s_idle_b:synchronizedStartTimeGroup(2);
+s_idle_b:restart(false);
+s_idle_b:loopBlendTime(1500);
+s_idle_b:loop(true);
+s_idle_b:add("idle_b.fbxanim");
+--}
+
+--{ Animation: s_idle_b_norot
+s_idle_b_norot = addState(idle_b+norot, "s_idle_b_norot");
+s_idle_b_norot:blendTime(6);
+s_idle_b_norot:speedFactor(0.01);
+s_idle_b_norot:synchronizedStartTimeGroup(2);
+s_idle_b_norot:restart(false);
+s_idle_b_norot:loopBlendTime(1500);
+s_idle_b_norot:loop(true);
+s_idle_b_norot:add("idle_b_norot.fbxanim");
+--} 
+
+
+
+--{ Animation: s_idle_c
+s_idle_c = addState(idle_c, "s_idle_c");
+s_idle_c:blendTime(0);
+s_idle_c:synchronizedStartTimeGroup(3);
+s_idle_c:restart(false);
+s_idle_c:loopBlendTime(1500);
+s_idle_c:loop(true);
+s_idle_c:add("idle_c.fbxanim");
+--} 
+
+--{ Animation: s_idle_c_norot
+s_idle_c_norot = addState(idle_c+norot, "s_idle_c_norot");
+s_idle_c_norot:blendTime(6);
+s_idle_c_norot:speedFactor(0.01);
+s_idle_c_norot:synchronizedStartTimeGroup(3);
+s_idle_c_norot:restart(false);
+s_idle_c_norot:loopBlendTime(1500);
+s_idle_c_norot:loop(true);
+s_idle_c_norot:add("idle_c_norot.fbxanim");
+--} 
+
+
+
+--{ Animation: s_move_path
+s_move_path = addState(move_path, "s_move_path");
+s_move_path:blendTime(1200);
+s_move_path:synchronizedStartTimeGroup(5);
+s_move_path:restart(false);
+s_move_path:loopBlendTime(1500);
+s_move_path:loop(true);
+s_move_path:add("move_path.fbxanim");
+--}
+
+--{ Animation: s_move_path_norot
+s_move_path_norot = addState(move_path+norot, "s_move_path_norot");
+s_move_path_norot:blendTime(6);
+s_move_path_norot:speedFactor(0.01);
+s_move_path_norot:synchronizedStartTimeGroup(5);
+s_move_path_norot:restart(false);
+s_move_path_norot:loopBlendTime(1500);
+s_move_path_norot:loop(true);
+s_move_path_norot:add("move_path_norot.fbxanim");
+--}
+
+
+
+--{ Animation: s_move_path_b
+s_move_path_b = addState(move_path_b, "s_move_path_b");
+s_move_path_b:blendTime(1200);
+s_move_path_b:synchronizedStartTimeGroup(4);
+s_move_path_b:restart(false);
+s_move_path_b:loopBlendTime(1500);
+s_move_path_b:loop(true);
+s_move_path_b:add("move_path_b.fbxanim");
+--}
+
+--{ Animation: s_move_path_b_norot
+s_move_path_b_norot = addState(move_path_b+norot, "s_move_path_b_norot");
+s_move_path_b_norot:blendTime(6);
+s_move_path_b_norot:speedFactor(0.01);
+s_move_path_b_norot:synchronizedStartTimeGroup(4);
+s_move_path_b_norot:restart(false);
+s_move_path_b_norot:loopBlendTime(1500);
+s_move_path_b_norot:loop(true);
+s_move_path_b_norot:add("move_path_b_norot.fbxanim");
+--}
+

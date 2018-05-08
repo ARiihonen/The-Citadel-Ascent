@@ -1,0 +1,14 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/cart_dynamic_1container/11_cart_dynamic_1_object/cart_physics_audio_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("15_12_fortresswall_elevator_ObjectEntityPhysicsAudioComponent", GUID('0x67383175','0x8FBF7B2E','0x0077025D','0x00005500')); -- CartPhysicsAudioComponent
+  type:setGuid(GUID('0xDCBAD20E','0x9C985B26','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setAttenuationScale(0.5)
+  type:setLinearVelocityRtpcMinVelocity(1)
+  type:setLinearVelocityRtpcMaxVelocity(1.2999999523163)
+  typeManager:setLastKnownNameForGUID(GUID('0x69EAD002','0x1B0A15A8','0x007702C3','0x00005500'), "PointAudioPointAreaComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x69EAD002','0x1B0A15A8','0x007702C3','0x00005500')); -- PointAudioPointAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xE6988A2A','0x4DE66865','0x0077024F','0x00005500'), "100__12_fortresswall_elevator_ObjectEntityPointAreaComponent");
+  type:addComponentTypeGUID(GUID('0xE6988A2A','0x4DE66865','0x0077024F','0x00005500')); -- 100__12_fortresswall_elevator_ObjectEntityPointAreaComponent
+end

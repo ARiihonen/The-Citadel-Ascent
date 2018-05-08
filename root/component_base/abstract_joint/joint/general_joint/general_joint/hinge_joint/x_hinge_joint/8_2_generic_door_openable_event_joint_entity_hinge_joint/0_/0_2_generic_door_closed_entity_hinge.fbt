@@ -1,0 +1,12 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/abstract_joint/joint/general_joint/general_joint/hinge_joint/x_hinge_joint/8_2_generic_door_openable_event_joint_entity_hinge_joint/8_2_generic_door_openable_event_join.fbt")
+  local type = typeManager:inheritNewTypeByGUID("0_2_generic_door_closed_EntityHingeJointComponent", GUID('0xE87A0C1A','0xE5B91900','0x0077024F','0x00005500')); -- 8_2_generic_door_openable_event_JointEntityHingeJointComponent
+  type:setGuid(GUID('0xBEAB0442','0x11EC02B4','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setLocalPosition0(VC3(-0.0791, -0.2288, -0.2981))
+  type:setLocalRotation0(QUAT(0, -1, 0, -2.98023e-008))
+  type:setLocalPosition1(VC3(0.0969, 1.09, 0.2329))
+  type:setRotationLimitLowAngle(0)
+  type:setRotationLimitHighAngle(0)
+end

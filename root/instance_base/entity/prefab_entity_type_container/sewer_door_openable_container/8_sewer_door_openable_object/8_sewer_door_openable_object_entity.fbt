@@ -1,0 +1,20 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/sewer_door_openable_container/sewer_door_openable_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("8_sewer_door_openable_ObjectEntity", GUID('0x668C9E5D','0x8CBF128C','0x0077024F','0x00005500')); -- sewer_door_openableContainer
+  type:setGuid(GUID('0x69860EB0','0x8CC112AE','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0xCEF369B0','0x8CC112B0','0x0077024F','0x00005500'), "1_8_sewer_door_openable_ObjectEntityWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0xCEF369B0','0x8CC112B0','0x0077024F','0x00005500')); -- 1_8_sewer_door_openable_ObjectEntityWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500'), "2_8_sewer_door_openable_ObjectEntityPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0xD8FFC756','0x8CC112B2','0x0077024F','0x00005500')); -- 2_8_sewer_door_openable_ObjectEntityPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500'), "BasicActivationAreaHolderComponent");
+  type:addComponentTypeGUID(GUID('0x6D2BC467','0x6EB27C07','0x0077024F','0x00005500')); -- BasicActivationAreaHolderComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500'), "GenericCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500')); -- GenericCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500'), "MetalCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500')); -- MetalCollisionHelperHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500'), "MetalCollisionHelperModelComponent");
+  type:addComponentTypeGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500')); -- MetalCollisionHelperModelComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

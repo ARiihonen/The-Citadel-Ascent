@@ -1,0 +1,29 @@
+--{ Contexts
+cutscene_meet = addContext("cutscene_meet", 1)
+cutscene_summon = addContext("cutscene_summon", 1)
+cutscene_meet_wait = addContext("cutscene_meet_wait", 1)
+
+
+
+--{ Animation: s_cutscene_meet
+s_cutscene_meet = addState(cutscene_meet, "s_cutscene_meet");
+s_cutscene_meet:blendTime(0);
+s_cutscene_meet:loop(false);
+s_cutscene_meet:add("smoke_cutscene_meet.fbxanim");
+--}
+
+--{ Animation: s_cutscene_summon
+s_cutscene_summon = addState(cutscene_summon, "s_cutscene_summon");
+s_cutscene_summon:blendTime(0);
+s_cutscene_summon:loop(false);
+s_cutscene_summon:add("smoke_cutscene_summon.fbxanim");
+--}
+
+
+
+--{ Animation: s_cutscene_meet_wait
+s_cutscene_meet_wait = addState(cutscene_meet_wait, "s_cutscene_meet_wait");
+s_cutscene_meet_wait:blendTime(0);
+s_cutscene_meet_wait:loop(false);
+s_cutscene_meet_wait:add("smoke_cutscene_meet.fbxanim");
+--}

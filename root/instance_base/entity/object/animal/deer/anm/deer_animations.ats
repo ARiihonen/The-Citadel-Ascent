@@ -1,0 +1,98 @@
+--{ Contexts
+idle = addContext("idle", 1)
+short_idle = addContext("short_idle", 1)
+trot_test = addContext("trot_test", 1)
+
+encounter_idle1 = addContext("encounter_idle1", 8)
+encounter_walk1 = addContext("encounter_walk1", 7)
+encounter_idle2 = addContext("encounter_idle2", 6)
+encounter_walk2 = addContext("encounter_walk2", 5)
+encounter_idle3 = addContext("encounter_idle3", 4)
+encounter_walk3 = addContext("encounter_walk3", 3)
+encounter_idle4 = addContext("encounter_idle4", 2)
+encounter_walk4 = addContext("encounter_walk4", 1)
+
+--{ Animation: s_idle
+s_idle = addState(idle, "s_idle");
+s_idle:blendTime(300);
+s_idle:loop(true);
+s_idle:add("idle.fbxanim");
+--}
+
+--{ Animation: s_short_idle
+s_short_idle = addState(short_idle, "s_short_idle");
+s_short_idle:blendTime(300);
+s_short_idle:loop(true);
+s_short_idle:add("short_idle.fbxanim");
+--}
+
+--{ Animation: s_trot_test
+s_trot_test = addState(trot_test, "s_trot_test");
+s_trot_test:blendTime(300);
+s_trot_test:loop(true);
+s_trot_test:add("run_test.fbxanim");
+--}
+
+
+--{ Animation: s_encounter_idle1
+s_encounter_idle1 = addState(encounter_idle1, "s_encounter_idle1");
+s_encounter_idle1:blendTime(1000);
+s_encounter_idle1:loop(true);
+s_encounter_idle1:add("encounter_idle1.fbxanim");
+--}
+
+
+--{ Animation: s_encounter_idle2
+s_encounter_idle2 = addState(encounter_idle2, "s_encounter_idle2");
+s_encounter_idle2:blendTime(1000);
+s_encounter_idle2:loop(true);
+s_encounter_idle2:add("encounter_idle2.fbxanim");
+--}
+
+
+--{ Animation: s_encounter_idle3
+s_encounter_idle3 = addState(encounter_idle3, "s_encounter_idle3");
+s_encounter_idle3:blendTime(1000);
+s_encounter_idle3:loop(true);
+s_encounter_idle3:add("encounter_idle3.fbxanim");
+--}
+
+
+--{ Animation: s_encounter_idle4
+s_encounter_idle4 = addState(encounter_idle4, "s_encounter_idle4");
+s_encounter_idle4:blendTime(1000);
+s_encounter_idle4:loop(true);
+s_encounter_idle4:add("encounter_idle4.fbxanim");
+--}
+
+
+--{ Animation: s_encounter_walk1
+s_encounter_walk1 = addState(encounter_walk1, "s_encounter_walk1");
+s_encounter_walk1:blendTime(1000);
+s_encounter_walk1:loop(false);
+s_encounter_walk1:add("encounter_walk1.fbxanim");
+--}
+
+
+--{ Animation: s_encounter_walk2
+s_encounter_walk2 = addState(encounter_walk2, "s_encounter_walk2");
+s_encounter_walk2:blendTime(200);
+s_encounter_walk2:loop(false);
+s_encounter_walk2:speedFactor(0.9);
+s_encounter_walk2:add("encounter_walk2.fbxanim");
+--}
+
+
+--{ Animation: s_encounter_walk3
+s_encounter_walk3 = addState(encounter_walk3, "s_encounter_walk3");
+s_encounter_walk3:blendTime(200);
+s_encounter_walk3:loop(false);
+s_encounter_walk3:add("encounter_walk3.fbxanim");
+--}
+
+--{ Animation: s_encounter_walk4
+s_encounter_walk4 = addState(encounter_walk4, "s_encounter_walk4");
+s_encounter_walk4:blendTime(200);
+s_encounter_walk4:loop(false);
+s_encounter_walk4:add("encounter_walk4.fbxanim");
+--}

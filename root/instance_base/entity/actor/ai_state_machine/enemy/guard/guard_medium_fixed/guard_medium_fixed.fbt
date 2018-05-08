@@ -1,0 +1,163 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/actor/ai_state_machine/enemy/guard/guard.fbt")
+  local type = typeManager:inheritNewTypeByGUID("GuardMediumFixed", GUID('0x006BA60B','0xE92B256C','0x00770214','0x00005500')); -- Guard
+  type:setGuid(GUID('0x0F003CC0','0x8130596E','0x0077021C','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x5B945ABF','0x07787E14','0x007702B3','0x00005500'), "AIRandomNumberGeneratorComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x5B945ABF','0x07787E14','0x007702B3','0x00005500')); -- AIRandomNumberGeneratorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x99EB9950','0x0FB35172','0x00770279','0x00005500'), "AIStateMachineAIActivationAreaHolderComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x99EB9950','0x0FB35172','0x00770279','0x00005500')); -- AIStateMachineAIActivationAreaHolderComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x790BA1E5','0x18822319','0x00770239','0x00005500'), "AIStateMachineAIConversationComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x790BA1E5','0x18822319','0x00770239','0x00005500')); -- AIStateMachineAIConversationComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7E33E29B','0x8DB272E7','0x00770279','0x00005500'), "AIStateMachineAINavigationComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x7E33E29B','0x8DB272E7','0x00770279','0x00005500')); -- AIStateMachineAINavigationComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x836DD0C9','0x195852FA','0x00770239','0x00005500'), "AIStateMachineAISoundGeneratorComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x836DD0C9','0x195852FA','0x00770239','0x00005500')); -- AIStateMachineAISoundGeneratorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6083A067','0x0B7F36EE','0x00770239','0x00005500'), "AIStateMachineAlertnessComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x6083A067','0x0B7F36EE','0x00770239','0x00005500')); -- AIStateMachineAlertnessComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x694D00D6','0x7BB972E3','0x00770279','0x00005500'), "AIStateMachineBoxAreaComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x694D00D6','0x7BB972E3','0x00770279','0x00005500')); -- AIStateMachineBoxAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x70F2C868','0x9F2A72ED','0x00770279','0x00005500'), "AIStateMachineDoEffectComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x70F2C868','0x9F2A72ED','0x00770279','0x00005500')); -- AIStateMachineDoEffectComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x752623AB','0x9CA072EB','0x00770279','0x00005500'), "AIStateMachineHittableComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x752623AB','0x9CA072EB','0x00770279','0x00005500')); -- AIStateMachineHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x77672FD1','0x3D3B5C47','0x0077027F','0x00005500'), "AIStateMachinePatrolComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x77672FD1','0x3D3B5C47','0x0077027F','0x00005500')); -- AIStateMachinePatrolComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x75D00F38','0x07E972D5','0x00770279','0x00005500'), "AIStateMachinePhysicsComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x75D00F38','0x07E972D5','0x00770279','0x00005500')); -- AIStateMachinePhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7E7BB536','0xF5EF5C4F','0x00770279','0x00005500'), "AIStateMachinePhysicsQuakeInfoComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x7E7BB536','0xF5EF5C4F','0x00770279','0x00005500')); -- AIStateMachinePhysicsQuakeInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x5EFDE787','0x313B72E1','0x00770279','0x00005500'), "AIStateMachinePointAreaComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x5EFDE787','0x313B72E1','0x00770279','0x00005500')); -- AIStateMachinePointAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8594FDDB','0xBC2172DF','0x00770279','0x00005500'), "AIStateMachineRootMotionJointComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x8594FDDB','0xBC2172DF','0x00770279','0x00005500')); -- AIStateMachineRootMotionJointComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x88D8032D','0x138972E9','0x00770279','0x00005500'), "AIStateMachineSceneNetSyncComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x88D8032D','0x138972E9','0x00770279','0x00005500')); -- AIStateMachineSceneNetSyncComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD61E81FA','0x45F07FBF','0x00770288','0x00005500'), "AIStateMachineSimpleBehaviorCollectionComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0xD61E81FA','0x45F07FBF','0x00770288','0x00005500')); -- AIStateMachineSimpleBehaviorCollectionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8DA58941','0xDE1B6232','0x00770288','0x00005500'), "AIStateMachineSituationAwarenessComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x8DA58941','0xDE1B6232','0x00770288','0x00005500')); -- AIStateMachineSituationAwarenessComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x3717192C','0x00000000','0x00770200','0x00005500'), "BackStabTargetComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x3717192C','0x00000000','0x00770200','0x00005500')); -- BackStabTargetComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D014DE1','0xD5900BD3','0x00770288','0x00005500'), "BasicReverbAudioReceiverComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x6D014DE1','0xD5900BD3','0x00770288','0x00005500')); -- BasicReverbAudioReceiverComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x766A9099','0x9A696BE1','0x00770239','0x00005500'), "EnemyContactEffectCreatorComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x766A9099','0x9A696BE1','0x00770239','0x00005500')); -- EnemyContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x78EE06AD','0x8BEC3CE0','0x00770279','0x00005500'), "GuardAIStateMachineAICharacterComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x78EE06AD','0x8BEC3CE0','0x00770279','0x00005500')); -- GuardAIStateMachineAICharacterComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x75A26C5E','0x0700256E','0x00770214','0x00005500'), "GuardAIStateMachineAnimationComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x75A26C5E','0x0700256E','0x00770214','0x00005500')); -- GuardAIStateMachineAnimationComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x75506F32','0x17F12570','0x00770214','0x00005500'), "GuardAIStateMachineHealthComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x75506F32','0x17F12570','0x00770214','0x00005500')); -- GuardAIStateMachineHealthComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x702609C0','0x21D82572','0x00770214','0x00005500'), "GuardAIStateMachineModelComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x702609C0','0x21D82572','0x00770214','0x00005500')); -- GuardAIStateMachineModelComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xC0D9313C','0x29352574','0x00770214','0x00005500'), "GuardAIStateMachineTrineSwingMeleeWeaponComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0xC0D9313C','0x29352574','0x00770214','0x00005500')); -- GuardAIStateMachineTrineSwingMeleeWeaponComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xCFF152EE','0x2FB11545','0x00770239','0x00005500'), "GuardAITargetComponentTargetToAnimationParamsComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0xCFF152EE','0x2FB11545','0x00770239','0x00005500')); -- GuardAITargetComponentTargetToAnimationParamsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x9FB69301','0x12C61FEA','0x00770239','0x00005500'), "GuardAITargetTimerToDamperConnectionComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x9FB69301','0x12C61FEA','0x00770239','0x00005500')); -- GuardAITargetTimerToDamperConnectionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6DD0978D','0x2F831258','0x00770239','0x00005500'), "GuardAttackCollectionComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x6DD0978D','0x2F831258','0x00770239','0x00005500')); -- GuardAttackCollectionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x5A035FA3','0x155832EE','0x00770239','0x00005500'), "GuardRangedWeaponComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x5A035FA3','0x155832EE','0x00770239','0x00005500')); -- GuardRangedWeaponComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6C4E9C65','0xABBF223B','0x00770239','0x00005500'), "GuardSoundListenerComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x6C4E9C65','0xABBF223B','0x00770239','0x00005500')); -- GuardSoundListenerComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x2A17974C','0xF95521DB','0x0077022D','0x00005500'), "GuardTargetComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x2A17974C','0xF95521DB','0x0077022D','0x00005500')); -- GuardTargetComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x669F5952','0xA0CE1611','0x00770239','0x00005500'), "GuardTargetDamperTimerComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x669F5952','0xA0CE1611','0x00770239','0x00005500')); -- GuardTargetDamperTimerComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x32AFDCAC','0xA25334E6','0x007702AE','0x00005500'), "SwimPointAreaComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x32AFDCAC','0xA25334E6','0x007702AE','0x00005500')); -- SwimPointAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x340F10DA','0x5F4E7E6B','0x0077025D','0x00005500'), "GuardFootstepsComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x340F10DA','0x5F4E7E6B','0x0077025D','0x00005500')); -- GuardFootstepsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x71C633FE','0xCE824C87','0x0077025D','0x00005500'), "GuardAIStateMachineAudioComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x71C633FE','0xCE824C87','0x0077025D','0x00005500')); -- GuardAIStateMachineAudioComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6F63A448','0xF5DA5F22','0x0077022D','0x00005500'), "GuardGameInventoryComponent");
+  type:removeInheritedComponentTypeGUID(GUID('0x6F63A448','0xF5DA5F22','0x0077022D','0x00005500')); -- GuardGameInventoryComponent
+  -- inherits CorpseAlignToSurfaceComponent GUID('0x6F8271C4','0x00000000','0x00770200','0x00005500')
+  -- inherits EnemyCharacterPhysicsContactDamageToSelfComponent GUID('0xC6157394','0xF7924761','0x00770239','0x00005500')
+  -- inherits GuardAnimationAudioComponent GUID('0x6A35872E','0xABE57706','0x0077021A','0x00005500')
+  -- inherits GuardAnimationEventComponent GUID('0x6B79D92C','0x70F53662','0x0077025F','0x00005500')
+  -- inherits GuardDoEffectOnWaterContactComponent GUID('0x83FD8EFA','0x10AD1E47','0x0077025D','0x00005500')
+  -- inherits GuardGameConeVolumeComponent GUID('0x6C6A274D','0x1C2C239E','0x0077024E','0x00005500')
+  -- inherits GuardGameGuardDifficultyComponent GUID('0x74F4B88E','0x23E76EBC','0x0077029F','0x00005500')
+  -- inherits GuardGameHidingFromGuardsComponent GUID('0x6E034D7E','0x27955466','0x00770265','0x00005500')
+  -- inherits GuardGameHidingIndicationDifficultyComponent GUID('0x9C4BFA17','0x12160DBB','0x00770265','0x00005500')
+  -- inherits GuardGuardHighlightComponent GUID('0x6A079A75','0x45B813C6','0x0077029F','0x00005500')
+  -- inherits GuardMacbethAudioPropertiesComponent GUID('0x7CA42CBF','0xD9546930','0x0077025D','0x00005500')
+  typeManager:setLastKnownNameForGUID(GUID('0x8CAC0C6C','0x9C506CB9','0x00770214','0x00005500'), "GuardMediumAIRandomNumberGeneratorComponent");
+  type:addComponentTypeGUID(GUID('0x8CAC0C6C','0x9C506CB9','0x00770214','0x00005500')); -- GuardMediumAIRandomNumberGeneratorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD642CC85','0xBA386CBB','0x00770214','0x00005500'), "GuardMediumAIStateMachineAIActivationAreaHolderComponent");
+  type:addComponentTypeGUID(GUID('0xD642CC85','0xBA386CBB','0x00770214','0x00005500')); -- GuardMediumAIStateMachineAIActivationAreaHolderComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xCF8A34E8','0xCA1E6CBD','0x00770214','0x00005500'), "GuardMediumAIStateMachineAIConversationComponent");
+  type:addComponentTypeGUID(GUID('0xCF8A34E8','0xCA1E6CBD','0x00770214','0x00005500')); -- GuardMediumAIStateMachineAIConversationComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x9A141AF7','0xDDA86CBF','0x00770214','0x00005500'), "GuardMediumAIStateMachineAINavigationComponent");
+  type:addComponentTypeGUID(GUID('0x9A141AF7','0xDDA86CBF','0x00770214','0x00005500')); -- GuardMediumAIStateMachineAINavigationComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD2E2E497','0xE6B86CC1','0x00770214','0x00005500'), "GuardMediumAIStateMachineAISoundGeneratorComponent");
+  type:addComponentTypeGUID(GUID('0xD2E2E497','0xE6B86CC1','0x00770214','0x00005500')); -- GuardMediumAIStateMachineAISoundGeneratorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8FE7DCDA','0xF1FF6CC3','0x00770214','0x00005500'), "GuardMediumAIStateMachineAlertnessComponent");
+  type:addComponentTypeGUID(GUID('0x8FE7DCDA','0xF1FF6CC3','0x00770214','0x00005500')); -- GuardMediumAIStateMachineAlertnessComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x79D9576D','0xFAFC6CC5','0x00770214','0x00005500'), "GuardMediumAIStateMachineAudioComponent");
+  type:addComponentTypeGUID(GUID('0x79D9576D','0xFAFC6CC5','0x00770214','0x00005500')); -- GuardMediumAIStateMachineAudioComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x95DA08B6','0x0EDD6CC9','0x00770214','0x00005500'), "GuardMediumAIStateMachineBoxAreaComponent");
+  type:addComponentTypeGUID(GUID('0x95DA08B6','0x0EDD6CC9','0x00770214','0x00005500')); -- GuardMediumAIStateMachineBoxAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x96438B2A','0x214E6CCD','0x00770214','0x00005500'), "GuardMediumAIStateMachineDoEffectComponent");
+  type:addComponentTypeGUID(GUID('0x96438B2A','0x214E6CCD','0x00770214','0x00005500')); -- GuardMediumAIStateMachineDoEffectComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x9750679A','0x34986CD1','0x00770214','0x00005500'), "GuardMediumAIStateMachineHittableComponent");
+  type:addComponentTypeGUID(GUID('0x9750679A','0x34986CD1','0x00770214','0x00005500')); -- GuardMediumAIStateMachineHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7C608AC7','0x3C976CD3','0x00770214','0x00005500'), "GuardMediumAIStateMachinePatrolComponent");
+  type:addComponentTypeGUID(GUID('0x7C608AC7','0x3C976CD3','0x00770214','0x00005500')); -- GuardMediumAIStateMachinePatrolComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x98FAD4D9','0x48A76CD5','0x00770214','0x00005500'), "GuardMediumAIStateMachinePhysicsComponent");
+  type:addComponentTypeGUID(GUID('0x98FAD4D9','0x48A76CD5','0x00770214','0x00005500')); -- GuardMediumAIStateMachinePhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD0E661CE','0x4FF66CD7','0x00770214','0x00005500'), "GuardMediumAIStateMachinePhysicsQuakeInfoComponent");
+  type:addComponentTypeGUID(GUID('0xD0E661CE','0x4FF66CD7','0x00770214','0x00005500')); -- GuardMediumAIStateMachinePhysicsQuakeInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8F8667E0','0x58096CD9','0x00770214','0x00005500'), "GuardMediumAIStateMachinePointAreaComponent");
+  type:addComponentTypeGUID(GUID('0x8F8667E0','0x58096CD9','0x00770214','0x00005500')); -- GuardMediumAIStateMachinePointAreaComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xC32CA53B','0x606F6CDB','0x00770214','0x00005500'), "GuardMediumAIStateMachineRootMotionJointComponent");
+  type:addComponentTypeGUID(GUID('0xC32CA53B','0x606F6CDB','0x00770214','0x00005500')); -- GuardMediumAIStateMachineRootMotionJointComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x9CBD2563','0x67A86CDD','0x00770214','0x00005500'), "GuardMediumAIStateMachineSceneNetSyncComponent");
+  type:addComponentTypeGUID(GUID('0x9CBD2563','0x67A86CDD','0x00770214','0x00005500')); -- GuardMediumAIStateMachineSceneNetSyncComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xE44FC198','0x6D756CDF','0x00770214','0x00005500'), "GuardMediumAIStateMachineSimpleBehaviorCollectionComponent");
+  type:addComponentTypeGUID(GUID('0xE44FC198','0x6D756CDF','0x00770214','0x00005500')); -- GuardMediumAIStateMachineSimpleBehaviorCollectionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD33107E6','0x79886CE1','0x00770214','0x00005500'), "GuardMediumAIStateMachineSituationAwarenessComponent");
+  type:addComponentTypeGUID(GUID('0xD33107E6','0x79886CE1','0x00770214','0x00005500')); -- GuardMediumAIStateMachineSituationAwarenessComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x66EC2669','0x81136CE3','0x00770214','0x00005500'), "GuardMediumBackStabTargetComponent");
+  type:addComponentTypeGUID(GUID('0x66EC2669','0x81136CE3','0x00770214','0x00005500')); -- GuardMediumBackStabTargetComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xBB8FEDDC','0x87886CE5','0x00770214','0x00005500'), "GuardMediumBasicMacbethAudioPropertiesComponent");
+  type:addComponentTypeGUID(GUID('0xBB8FEDDC','0x87886CE5','0x00770214','0x00005500')); -- GuardMediumBasicMacbethAudioPropertiesComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x98E75AF5','0x92236CE7','0x00770214','0x00005500'), "GuardMediumBasicReverbAudioReceiverComponent");
+  type:addComponentTypeGUID(GUID('0x98E75AF5','0x92236CE7','0x00770214','0x00005500')); -- GuardMediumBasicReverbAudioReceiverComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8661BF94','0xAEB26CED','0x00770214','0x00005500'), "GuardMediumEnemyContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x8661BF94','0xAEB26CED','0x00770214','0x00005500')); -- GuardMediumEnemyContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6D6B91E5','0x99734899','0x0077025D','0x00005500'), "GuardMediumFootstepsComponent");
+  type:addComponentTypeGUID(GUID('0x6D6B91E5','0x99734899','0x0077025D','0x00005500')); -- GuardMediumFootstepsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xB982E9A5','0xC4426CF1','0x00770214','0x00005500'), "GuardMediumGuardAIStateMachineAICharacterComponent");
+  type:addComponentTypeGUID(GUID('0xB982E9A5','0xC4426CF1','0x00770214','0x00005500')); -- GuardMediumGuardAIStateMachineAICharacterComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xB7EFE7E7','0xCBB06CF3','0x00770214','0x00005500'), "GuardMediumGuardAIStateMachineAnimationComponent");
+  type:addComponentTypeGUID(GUID('0xB7EFE7E7','0xCBB06CF3','0x00770214','0x00005500')); -- GuardMediumGuardAIStateMachineAnimationComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x80DB2CDD','0xD3D66CF5','0x00770214','0x00005500'), "GuardMediumGuardAIStateMachineHealthComponent");
+  type:addComponentTypeGUID(GUID('0x80DB2CDD','0xD3D66CF5','0x00770214','0x00005500')); -- GuardMediumGuardAIStateMachineHealthComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7F50814A','0xD98C6CF7','0x00770214','0x00005500'), "GuardMediumGuardAIStateMachineModelComponent");
+  type:addComponentTypeGUID(GUID('0x7F50814A','0xD98C6CF7','0x00770214','0x00005500')); -- GuardMediumGuardAIStateMachineModelComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xBDBE93DB','0xDF0B6CF9','0x00770214','0x00005500'), "GuardMediumGuardAIStateMachineTrineSwingMeleeWeaponComponent");
+  type:addComponentTypeGUID(GUID('0xBDBE93DB','0xDF0B6CF9','0x00770214','0x00005500')); -- GuardMediumGuardAIStateMachineTrineSwingMeleeWeaponComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x00851A5F','0xE9566CFB','0x00770214','0x00005500'), "GuardMediumGuardAITargetComponentTargetToAnimationParamsComponent");
+  type:addComponentTypeGUID(GUID('0x00851A5F','0xE9566CFB','0x00770214','0x00005500')); -- GuardMediumGuardAITargetComponentTargetToAnimationParamsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0xD5B59788','0xEF216CFD','0x00770214','0x00005500'), "GuardMediumGuardAITargetTimerToDamperConnectionComponent");
+  type:addComponentTypeGUID(GUID('0xD5B59788','0xEF216CFD','0x00770214','0x00005500')); -- GuardMediumGuardAITargetTimerToDamperConnectionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x9BFAFB3A','0x03DB6D01','0x00770214','0x00005500'), "GuardMediumGuardAttackCollectionComponent");
+  type:addComponentTypeGUID(GUID('0x9BFAFB3A','0x03DB6D01','0x00770214','0x00005500')); -- GuardMediumGuardAttackCollectionComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x704768D7','0x0F526D03','0x00770214','0x00005500'), "GuardMediumGuardRangedWeaponComponent");
+  type:addComponentTypeGUID(GUID('0x704768D7','0x0F526D03','0x00770214','0x00005500')); -- GuardMediumGuardRangedWeaponComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x7F5A4D1D','0x15F86D05','0x00770214','0x00005500'), "GuardMediumGuardSoundListenerComponent");
+  type:addComponentTypeGUID(GUID('0x7F5A4D1D','0x15F86D05','0x00770214','0x00005500')); -- GuardMediumGuardSoundListenerComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x694C1DAA','0x22CC6D07','0x00770214','0x00005500'), "GuardMediumGuardTargetComponent");
+  type:addComponentTypeGUID(GUID('0x694C1DAA','0x22CC6D07','0x00770214','0x00005500')); -- GuardMediumGuardTargetComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8CEEBBAC','0x2A3D6D09','0x00770214','0x00005500'), "GuardMediumGuardTargetDamperTimerComponent");
+  type:addComponentTypeGUID(GUID('0x8CEEBBAC','0x2A3D6D09','0x00770214','0x00005500')); -- GuardMediumGuardTargetDamperTimerComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x67F24B11','0x35296D0D','0x00770214','0x00005500'), "GuardMediumSwimPointAreaComponent");
+  type:addComponentTypeGUID(GUID('0x67F24B11','0x35296D0D','0x00770214','0x00005500')); -- GuardMediumSwimPointAreaComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

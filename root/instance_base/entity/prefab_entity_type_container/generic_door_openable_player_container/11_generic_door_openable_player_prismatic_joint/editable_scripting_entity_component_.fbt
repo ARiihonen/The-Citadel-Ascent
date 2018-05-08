@@ -1,0 +1,10 @@
+do
+  typeManager:loadTypeScript("data/root/component_base/editable_scripting/editable_scripting_entity_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("EditableScriptingEntityComponentDoorJointStats", GUID('0x54716C34','0x00000000','0x00770200','0x00005500')); -- EditableScriptingEntityComponent
+  type:setGuid(GUID('0x85E26562','0x6F0D0956','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setEditorComment("local0: VC3(-0.8, 0.2, 0.127) local1: VC3(-0.3, 0, 0)")
+  type:setVisualizationShape(engine.component.ScriptingVisualizationShapeMinimal)
+  type:setVisualizationShapeColor(COL(0, 0, 0))
+end

@@ -1,0 +1,16 @@
+drizzle = addContext("drizzle", 1)
+torrential = addContext("torrential", 1)
+
+--{ Animation: basic_rain1
+basic_rain1 = addState(drizzle, "basic_rain1");
+basic_rain1:blendTime(0);
+basic_rain1:loop(true);
+basic_rain1:add("basic_rain1.fbxanim");
+--}
+
+--{ Animation: hard_rain1
+hard_rain1 = addState(torrential, "hard_rain1");
+hard_rain1:blendTime(0);
+hard_rain1:loop(true);
+hard_rain1:add("hard_rain1.fbxanim");
+--}

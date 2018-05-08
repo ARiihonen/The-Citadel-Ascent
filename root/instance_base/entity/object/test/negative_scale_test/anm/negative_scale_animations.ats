@@ -1,0 +1,8 @@
+scale = addContext("scale", 4)
+
+--{ Animation: s_scale
+s_scale = addState(scale, "s_scale");
+s_scale:blendTime(0);
+s_scale:loop(true);
+s_scale:add("negative_scale_test_anim_01.fbxanim");
+--}

@@ -1,0 +1,18 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/prefab_entity_type_container/generic_fortress_window_closed_container/generic_fortress_window_closed_container.fbt")
+  local type = typeManager:inheritNewTypeByGUID("4_generic_fortress_window_closed_ObjectEntity", GUID('0x7D4A3D40','0xF3AE529D','0x0077024F','0x00005500')); -- generic_fortress_window_closedContainer
+  type:setGuid(GUID('0xA041ED87','0xF3AE529F','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  typeManager:setLastKnownNameForGUID(GUID('0x0DCCB396','0xF3AE52A1','0x0077024F','0x00005500'), "0_4_generic_fortress_window_closed_ObjectEntityWallInfoComponent");
+  type:addComponentTypeGUID(GUID('0x0DCCB396','0xF3AE52A1','0x0077024F','0x00005500')); -- 0_4_generic_fortress_window_closed_ObjectEntityWallInfoComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x0BB99092','0x42040FE4','0x0077024F','0x00005500'), "4__4_generic_fortress_window_closed_ObjectEntityPhysicsComponent");
+  type:addComponentTypeGUID(GUID('0x0BB99092','0x42040FE4','0x0077024F','0x00005500')); -- 4__4_generic_fortress_window_closed_ObjectEntityPhysicsComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500'), "GenericCollisionContactEffectCreatorComponent");
+  type:addComponentTypeGUID(GUID('0x8CA92EAB','0x95B650FB','0x007702C7','0x00005500')); -- GenericCollisionContactEffectCreatorComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500'), "MetalCollisionHelperHittableComponent");
+  type:addComponentTypeGUID(GUID('0x8080F065','0xD6952448','0x00770279','0x00005500')); -- MetalCollisionHelperHittableComponent
+  typeManager:setLastKnownNameForGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500'), "MetalCollisionHelperModelComponent");
+  type:addComponentTypeGUID(GUID('0x6EC79A58','0xE8AD2464','0x00770279','0x00005500')); -- MetalCollisionHelperModelComponent
+  -- inherits TransformComponent GUID('0x343547E3','0x00000000','0x00770200','0x00005500')
+end

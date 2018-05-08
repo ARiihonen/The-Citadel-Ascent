@@ -1,0 +1,9 @@
+do
+  typeManager:loadTypeScript("data/root/instance_base/entity/audio/point_audio/point_audio_point_area_component.fbt")
+  local type = typeManager:inheritNewTypeByGUID("100__12_fortresswall_elevator_ObjectEntityPointAreaComponent", GUID('0x69EAD002','0x1B0A15A8','0x007702C3','0x00005500')); -- PointAudioPointAreaComponent
+  type:setGuid(GUID('0xE6988A2A','0x4DE66865','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setListenMask(BitSet("AreaGroupActivation{ ParticlesActivation = 0, PhysicsActivation = 0, GameplayActivation = 0, CameraPositionActivation = 0 }"))
+  type:setNotifyMask(BitSet("AreaGroupActivation{ ParticlesActivation = 1, PhysicsActivation = 0, GameplayActivation = 0, CameraPositionActivation = 0 }"))
+end

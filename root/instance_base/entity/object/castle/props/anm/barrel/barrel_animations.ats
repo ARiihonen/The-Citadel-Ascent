@@ -1,0 +1,14 @@
+barrel_fire = addContext("barrel_fire", 1)
+idle = addContext("idle", 1)
+
+--{ Animation: s_barrel_fire
+s_barrel_fire = addState(barrel_fire, "s_barrel_fire");
+s_barrel_fire:loop(false);
+s_barrel_fire:add("barrel_fire.fbxanim");
+--} 
+  
+--{ Animation: s_barrel_idle
+s_barrel_idle = addState(idle, "s_barrel_idle"); 
+s_barrel_idle:loop(false);
+s_barrel_idle:add("barrel_fire_idle.fbxanim");
+--}   

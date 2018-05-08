@@ -1,0 +1,26 @@
+stand = addContext("stand", 1)
+walk = addContext("walk", 1)
+
+target_direction = addParam("target_direction")
+
+
+
+
+--{ Animation: s_stand
+s_stand = addState(stand, "s_stand");
+s_stand:blendTime(0);
+s_stand:loop(true);
+s_stand:add("still.fbxanim");
+--}
+
+
+--{ Animation: s_walk
+s_walk = addState(walk, "s_walk");
+s_walk:blendTime(0);
+s_walk:loop(true);
+s_walk:add(target_direction(-180), "move_left.fbxanim");
+s_walk:add(target_direction(-90), "move_left.fbxanim");
+s_walk:add(target_direction(0), "move_forward.fbxanim");
+s_walk:add(target_direction(90), "move_right.fbxanim");
+s_walk:add(target_direction(180), "move_right.fbxanim");
+--}

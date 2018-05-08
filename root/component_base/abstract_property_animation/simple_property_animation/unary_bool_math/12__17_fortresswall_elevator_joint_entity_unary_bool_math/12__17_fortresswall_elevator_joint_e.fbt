@@ -1,0 +1,7 @@
+do
+  local type = typeManager:inheritNewTypeByGUID("12__17_fortresswall_elevator_JointEntityUnaryBoolMathComponent", GUID('0x31C894DF','0x00000000','0x00770200','0x00005500')); -- UnaryBoolMathComponent
+  type:setGuid(GUID('0xE58E7272','0xAE2A1738','0x0077024F','0x00005500'))
+  type:setAbstractType(false)
+  type:setGameAbstractType(false)
+  type:setOutResult(true)
+end
